@@ -211,23 +211,7 @@
 <!-- Opciones para móvil -->
 <div id="optionsContainerMobile" style="display:none;"></div>
 <!-- Opciones para escritorio -->
-<div id="filterContainerDesktop" style="position:absolute; top:50px; right:300px; z-index:2;">
-  <label id="formationLabel" style="color:#fff; font-size:1.2em; font-weight:bold; display:block; margin-bottom:8px;">
-    <span id="formationText">Formación:</span>
-    <select id="formationSelect" style="font-size:1em; padding:4px 12px; border-radius:6px; border:none; margin-left:8px;">
-      <option value="4-3-3">4-3-3</option>
-    </select>
-  </label>
-  <label id="filterLabel" style="color:#fff; font-size:1.2em; font-weight:bold;">
-    <input type="checkbox" id="filterByPosition" style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
-    Filtrar jugadores por posición
-  </label>
-  <br>
-  <label id="watermarkLabel" style="color:#fff; font-size:1.2em; font-weight:bold; margin-top:8px; display:inline-block;">
-    <input type="checkbox" id="watermarkToggle" checked style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
-    Marca de agua
-  </label>
-</div>
+<div id="filterContainerDesktop" style="position:absolute; top:50px; right:300px; z-index:2;"></div>
 <div id="playerListModal" class="player-list-modal" style="display:none;">
     <div class="player-list-box">
       <h3>Selecciona jugador</h3>
@@ -473,7 +457,7 @@
     fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia2.jpg';
   }
 });
-    // Duplicar el contenido de opciones para móvil
+    // Opciones para móvil
 function renderMobileOptions() {
   const mobile = document.getElementById('optionsContainerMobile');
   mobile.innerHTML = `
@@ -537,8 +521,6 @@ document.addEventListener('DOMContentLoaded', checkMobileOptions);
   if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
   document.getElementById('watermarkLabel').childNodes[2].textContent = translations[currentLang].watermark;
   document.getElementById('formationText').textContent = translations[currentLang].formacion;
-  const btn = document.getElementById('langBtn');
-  btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
   // Móvil
   if (document.getElementById('filterLabelMobile'))
     document.getElementById('filterLabelMobile').childNodes[2].textContent = translations[currentLang].filter;
@@ -547,6 +529,39 @@ document.addEventListener('DOMContentLoaded', checkMobileOptions);
   if (document.getElementById('formationTextMobile'))
     document.getElementById('formationTextMobile').textContent = translations[currentLang].formacion;
 }
+    function renderDesktopOptions() {
+  const desktop = document.getElementById('filterContainerDesktop');
+  desktop.innerHTML = `
+    <label id="formationLabel" style="color:#fff; font-size:1.2em; font-weight:bold; display:block; margin-bottom:8px;">
+      <span id="formationText">Formación:</span>
+      <select id="formationSelect" style="font-size:1em; padding:4px 12px; border-radius:6px; border:none; margin-left:8px;">
+        <option value="4-3-3">4-3-3</option>
+      </select>
+    </label>
+    <label id="filterLabel" style="color:#fff; font-size:1.2em; font-weight:bold;">
+      <input type="checkbox" id="filterByPosition" style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
+      Filtrar jugadores por posición
+    </label>
+    <br>
+    <label id="watermarkLabel" style="color:#fff; font-size:1.2em; font-weight:bold; margin-top:8px; display:inline-block;">
+      <input type="checkbox" id="watermarkToggle" checked style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
+      Marca de agua
+    </label>
+  `;
+}
+function checkOptionsPlacement() {
+  if (window.innerWidth <= 700) {
+    document.getElementById('filterContainerDesktop').style.display = 'none';
+    document.getElementById('optionsContainerMobile').style.display = 'block';
+    renderMobileOptions();
+  } else {
+    document.getElementById('filterContainerDesktop').style.display = 'block';
+    document.getElementById('optionsContainerMobile').style.display = 'none';
+    renderDesktopOptions();
+  }
+}
+window.addEventListener('resize', checkOptionsPlacement);
+document.addEventListener('DOMContentLoaded', checkOptionsPlacement);
   </script>
 </body>
 </html>
