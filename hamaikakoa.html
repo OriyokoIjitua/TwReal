@@ -196,6 +196,11 @@
         <input type="checkbox" id="filterByPosition" style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
         Filtrar jugadores por posición
       </label>
+      <br>
+      <label id="watermarkLabel" style="color:#fff; font-size:1.2em; font-weight:bold; margin-top:8px; display:inline-block;">
+        <input type="checkbox" id="watermarkToggle" checked style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
+        Marca de agua
+      </label>
     </div>
   </div>
   <div class="field-container" style="margin-top:32px;">
@@ -224,14 +229,16 @@
         descargar: 'Descargar',
         limpiar: 'Limpiar',
         seleccionaJugador: 'Selecciona jugador',
-        cerrar: 'Cerrar'
+        cerrar: 'Cerrar',
+        watermark: 'Marca de agua'
       },
       eu: {
         filter: 'Jokalariak postuarekiko filtratu',
         descargar: 'Jaitsi',
         limpiar: 'Garbitu',
         seleccionaJugador: 'Jokalaria aukeratu',
-        cerrar: 'Itxi'
+        cerrar: 'Itxi',
+        watermark: 'Ur-marka'
       }
     };
     // Idioma actual
@@ -246,6 +253,7 @@
   if (modalTitle) modalTitle.textContent = translations[currentLang].seleccionaJugador;
   const closeBtn = document.querySelector('.close-modal-btn');
   if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
+  document.getElementById('watermarkLabel').childNodes[2].textContent = translations[currentLang].watermark;
       const btn = document.getElementById('langBtn');
       btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
     }
@@ -416,6 +424,14 @@
     }
 
     renderPositions();
+    document.getElementById('watermarkToggle').addEventListener('change', function() {
+  const fieldImg = document.querySelector('.field-img');
+  if (this.checked) {
+    fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia.jpg';
+  } else {
+    fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia2.jpg';
+  }
+});
   </script>
 </body>
 </html>
