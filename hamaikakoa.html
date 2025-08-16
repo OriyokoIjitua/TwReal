@@ -123,6 +123,58 @@
       margin-top: 18px;
       float: right;
     }
+    @media (max-width: 700px) {
+    .field-container {
+      width: 98vw;
+      height: 120vw;
+      min-width: 0;
+      min-height: 0;
+      margin: 16px auto 8px auto;
+      border-radius: 16px;
+    }
+    .field-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .player-pos {
+      width: 16vw;
+      height: 16vw;
+      min-width: 60px;
+      min-height: 60px;
+      max-width: 90px;
+      max-height: 90px;
+    }
+    .player-pos.selected {
+      width: 19vw;
+      height: 19vw;
+      min-width: 70px;
+      min-height: 70px;
+      max-width: 110px;
+      max-height: 110px;
+    }
+    #filterContainer {
+      right: 8vw !important;
+      top: 8vw !important;
+    }
+    #langSwitch {
+      right: 8vw !important;
+      top: 2vw !important;
+    }
+    #downloadBtn, #clearBtn {
+      min-width: 120px;
+      font-size: 1.1em;
+      padding: 12px 18px;
+    }
+    .player-list-box {
+      max-width: 96vw;
+      padding: 18px 8px;
+    }
+    .player-list-img {
+      width: 36px;
+      height: 36px;
+    }
+  }
   </style>
 </head>
 <body>
