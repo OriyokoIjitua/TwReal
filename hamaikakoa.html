@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Real Sociedad</title>
+  <style>
+  body { font-family: Arial, sans-serif; background: #003366; margin: 0; padding: 0; }
+    .field-container {
+      position: relative;
+      width: 650px;
+      height: 764px;
+      margin: 40px auto 16px auto;
+      background: #fff;
+      border-radius: 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .field-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+    }
+    .player-pos {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+      transition: box-shadow 0.2s, width 0.2s, height 0.2s;
+    }
+    .player-pos.selected {
+      width: 130px;
+      height: 130px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+    }
+    .player-pos:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    }
+    .player-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  border: 2px solid #0077cc;
+    }
+    .plus-icon {
+      font-size: 3em;
+      color: #0077cc;
+      font-weight: bold;
+      user-select: none;
+    }
+    .player-list-modal {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+    .player-list-box {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      max-width: 420px;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+    }
+    .player-list-box h3 { margin-top: 0; }
+    .player-list-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .player-list-item:hover {
+      background: #f0f8ff;
+    }
+    .player-list-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #eee;
+      border: 1px solid #0077cc;
+    }
+    .player-list-name {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #222;
+    }
+    .player-list-dorsal {
+      font-size: 1em;
+      color: #0077cc;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .close-modal-btn {
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 18px;
+      float: right;
+    }
+    @media (max-width: 700px) {
+    .field-container {
+      width: 98vw;
+      height: 120vw;
+      min-width: 0;
+      min-height: 0;
+      margin: 16px auto 8px auto;
+      border-radius: 16px;
+    }
+    .field-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .player-pos {
+      width: 16vw;
+      height: 16vw;
+      min-width: 60px;
+      min-height: 60px;
+      max-width: 90px;
+      max-height: 90px;
+    }
+    .player-pos.selected {
+      width: 19vw;
+      height: 19vw;
+      min-width: 70px;
+      min-height: 70px;
+      max-width: 110px;
+      max-height: 110px;
+    }
+    #filterContainer {
+      right: 8vw !important;
+      top: 8vw !important;
+    }
+    #langSwitch {
+      right: 8vw !important;
+      top: 2vw !important;
+    }
+    #downloadBtn, #clearBtn {
+      min-width: 120px;
+      font-size: 1.1em;
+      padding: 12px 18px;
+    }
+    .player-list-box {
+      max-width: 96vw;
+      padding: 18px 8px;
+    }
+    .player-list-img {
+      width: 36px;
+      height: 36px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div style="position:relative;">
+    <div id="langSwitch" style="position:absolute; top:18px; right:24px;">
+      <button id="langBtn" style="background:#fff; color:#003366; border-radius:8px; border:none; font-weight:bold; font-size:1em; padding:6px 18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12);">Eus</button>
+    </div>
+  </div>
+  <div style="position:relative; width:100%; height:0;">
+    <div id="filterContainer" style="position:absolute; top:50px; right:300px; z-index:2;">
+      <label id="filterLabel" style="color:#fff; font-size:1.2em; font-weight:bold;">
+        <input type="checkbox" id="filterByPosition" style="transform:scale(1.3); margin-right:8px; vertical-align:middle;">
+        Filtrar jugadores por posición
+      </label>
+    </div>
+  </div>
+  <div class="field-container" style="margin-top:32px;">
+  <img class="field-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia.jpg" alt="Campo">
+    <!-- Posiciones de jugadores -->
+    <div id="positions"></div>
+  </div>
+  <div style="text-align:center; margin-bottom:32px;">
+    <div style="display:inline-block; vertical-align:top;">
+  <button id="downloadBtn" style="margin:0 12px 0 0; padding:18px 36px; border-radius:10px; font-size:1.4em; background:#0077cc; color:#fff; border:none; cursor:pointer; min-width:170px;">Descargar</button>
+    </div>
+    <button id="clearBtn" style="padding:18px 36px; border-radius:10px; font-size:1.4em; background:#0077cc; color:#fff; border:none; cursor:pointer; min-width:170px;">Limpiar</button>
+  </div>
+  <div id="playerListModal" class="player-list-modal" style="display:none;">
+    <div class="player-list-box">
+      <h3>Selecciona jugador</h3>
+      <div id="playerList"></div>
+      <button class="close-modal-btn" onclick="closePlayerList()">Cerrar</button>
+    </div>
+  </div>
+  <script>
+    // Traducciones
+    const translations = {
+      es: {
+        filter: 'Filtrar jugadores por posición',
+        descargar: 'Descargar',
+        limpiar: 'Limpiar',
+        seleccionaJugador: 'Selecciona jugador',
+        cerrar: 'Cerrar'
+      },
+      eu: {
+        filter: 'Jokalariak postuarekiko filtratu',
+        descargar: 'Jaitsi',
+        limpiar: 'Garbitu',
+        seleccionaJugador: 'Jokalaria aukeratu',
+        cerrar: 'Itxi'
+      }
+    };
+    // Idioma actual
+    let currentLang = 'es';
+    function updateLangBtn() {
+  // Actualizar textos según idioma
+  document.getElementById('filterLabel').childNodes[2].textContent = translations[currentLang].filter;
+  document.getElementById('downloadBtn').textContent = translations[currentLang].descargar;
+  document.getElementById('clearBtn').textContent = translations[currentLang].limpiar;
+  // Actualizar textos de la lista de jugadores y botón cerrar si existen
+  const modalTitle = document.querySelector('.player-list-box h3');
+  if (modalTitle) modalTitle.textContent = translations[currentLang].seleccionaJugador;
+  const closeBtn = document.querySelector('.close-modal-btn');
+  if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
+      const btn = document.getElementById('langBtn');
+      btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
+    }
+    document.getElementById('langBtn').onclick = function() {
+      currentLang = currentLang === 'es' ? 'eu' : 'es';
+      updateLangBtn();
+      // Aquí podrías añadir lógica para cambiar textos si lo necesitas
+    };
+    updateLangBtn();
+    // Lista de jugadores y posiciones válidas
+    const players = [
+  { dorsal: 1, name: 'A. Remiro', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/alex_remiro.jpg', positions: ['POR'] },
+  { dorsal: 2, name: 'Aramburu', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_mikel_aramburu.jpg', positions: ['LI','LD'] },
+  { dorsal: 3, name: 'Aihen', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/aihen_munoz.jpg', positions: ['LD','LI'] },
+  { dorsal: 4, name: 'Gorrotxa', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_gorrotxategi.jpg', positions: ['MCD','MC'] },
+  { dorsal: 5, name: 'Zubeldia', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/igor_zubeldia.jpg', positions: ['DFC'] },
+  { dorsal: 6, name: 'Aritz', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/aritz_elustondo.jpg', positions: ['DFC','LD'] },
+  { dorsal: 7, name: 'Barrene', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/ander_barrenetxea.jpg', positions: ['EI','ED'] },
+  { dorsal: 8, name: 'Turrientes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/benat_turrientes.jpg', positions: ['MC','MCD','MCO'] },
+  { dorsal: 9, name: 'Óskarsson', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/orri_oskarsson.jpg', positions: ['DC'] },
+  { dorsal: 10, name: 'Oyarzabal', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/mikel_oyarzabal.jpg', positions: ['DC','EI','ED'] },
+  { dorsal: 11, name: 'Guedes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/goncalo_guedes.jpg', positions: ['EI','ED','DC'] },
+  { dorsal: 13, name: 'Marrero', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/unai_marrero.jpg', positions: ['POR'] },
+  { dorsal: 14, name: 'Take', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/takefusa_kubo.jpg', positions: ['ED','EI'] },
+  { dorsal: 15, name: 'Urko', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/urko_gonzalez_de_zarate.jpg', positions: ['MCD','MC'] },
+  { dorsal: 16, name: 'Ćaleta-Car', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/duje_caletacar.jpg', positions: ['DFC'] },
+  { dorsal: 17, name: 'Sergio Gómez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sergio_gomez.jpg', positions: ['LD','LI','MC','MCO','EI','ED'] },
+  { dorsal: 18, name: 'H. Traoré', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/hamari_traore.jpg', positions: ['LD','LI'] },
+  { dorsal: 19, name: 'Karrikaburu', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_karrikaburu.jpg', positions: ['DC'] },
+  { dorsal: 20, name: 'Pacheco', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_pacheco.jpg', positions: ['DFC'] },
+  { dorsal: 21, name: 'Zakharyan', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/arsen_zakharyan.jpg', positions: ['MCO','EI','ED'] },
+  { dorsal: 22, name: 'Goti', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/mikel_goti.jpg', positions: ['MCO','MC','EI','ED'] },
+  { dorsal: 23, name: 'Brais Méndez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/brais_mendez.jpg', positions: ['MC','MCO'] },
+  { dorsal: 24, name: 'Sučić', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/luka_sucic.jpg', positions: ['MC','MCO'] },
+  { dorsal: 28, name: 'Marín', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/pablo_marin.jpg', positions: ['MC','MCO'] },
+  { dorsal: 31, name: 'Jon Martín', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_martin.jpg', positions: ['DFC'] },
+  { dorsal: 33, name: 'Rupérez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/inaki_ruperez.jpg', positions: ['LD','LI','ED'] },
+  { dorsal: 40, name: 'Mariezkurrena', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/arkaitz_mariezkurrena.jpg', positions: ['DC','ED','EI','MCO'] }
+    ];
+
+    // Posiciones en el campo (formación 4-3-3)
+    const positions = [
+      // Delanteros (arriba, centrados)
+      { x: 70, y: 60, role: 'EI' }, // Extremo Izq
+      { x: 270, y: 20, role: 'DC' }, // Delantero Centro
+      { x: 470, y: 60, role: 'ED' }, // Extremo Der
+      // Centrocampistas (más centrados)
+      { x: 270, y: 310, role: 'MCD' }, // Pivote
+      { x: 170, y: 210, role: 'MC' }, // Mediocentro izq
+      { x: 370, y: 190, role: 'MCO' }, // Mediopunta der
+      // Defensas (más cerca del portero)
+      { x: 45, y: 420, role: 'LI' }, // Lateral Izq
+      { x: 190, y: 470, role: 'DFC' }, // Central Izq
+      { x: 350, y: 470, role: 'DFC' }, // Central Der
+      { x: 495, y: 420, role: 'LD' }, // Lateral Der
+      // Portero (abajo, más cerca)
+      { x: 270, y: 600, role: 'POR' }
+    ];
+
+    // Estado de jugadores asignados
+    let assigned = Array(positions.length).fill(null);
+
+    function renderPositions() {
+      const container = document.getElementById('positions');
+      container.innerHTML = '';
+      positions.forEach((pos, idx) => {
+        const div = document.createElement('div');
+        div.className = 'player-pos' + (assigned[idx] ? ' selected' : '');
+        div.style.left = pos.x + 'px';
+        div.style.top = pos.y + 'px';
+        div.onclick = (e) => {
+          e.stopPropagation();
+          openPlayerList(idx);
+        };
+        if (assigned[idx]) {
+          div.innerHTML = '<img class="player-img" src="' + assigned[idx].img + '" title="' + assigned[idx].name + ' (' + assigned[idx].dorsal + ')" />';
+        } else {
+          div.innerHTML = '<span class="plus-icon">+</span>';
+        }
+        container.appendChild(div);
+      });
+    }
+
+    function openPlayerList(idx) {
+      const modal = document.getElementById('playerListModal');
+      modal.style.display = 'flex';
+      const list = document.getElementById('playerList');
+      list.innerHTML = '';
+      // Actualizar título y botón cerrar según idioma
+      const modalTitle = document.querySelector('.player-list-box h3');
+      if (modalTitle) modalTitle.textContent = translations[currentLang].seleccionaJugador;
+      const closeBtn = document.querySelector('.close-modal-btn');
+      if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
+      const filterActive = document.getElementById('filterByPosition').checked;
+      const posRole = positions[idx].role;
+      players.forEach(player => {
+        if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
+        const item = document.createElement('div');
+        item.className = 'player-list-item';
+        item.onclick = () => {
+          // Si el jugador ya está asignado, intercambiar posiciones
+          const currentIdx = assigned.findIndex(p => p && p.dorsal === player.dorsal);
+          if (currentIdx !== -1 && currentIdx !== idx) {
+            const temp = assigned[idx];
+            assigned[idx] = player;
+            assigned[currentIdx] = temp;
+          } else {
+            assigned[idx] = player;
+          }
+          modal.style.display = 'none';
+          renderPositions();
+        };
+        item.innerHTML =
+          '<span class="player-list-dorsal">' + player.dorsal + '</span>' +
+          '<img class="player-list-img" src="' + player.img + '" />' +
+          '<span class="player-list-name">' + player.name + '</span>';
+        list.appendChild(item);
+      });
+    // Actualizar lista de jugadores al cambiar el filtro
+    document.getElementById('filterByPosition').addEventListener('change', () => {
+      renderPositions();
+    });
+      // Cerrar modal al click fuera de la caja
+      setTimeout(() => {
+        modal.onclick = function(e) {
+          if (e.target === modal) {
+            modal.style.display = 'none';
+          }
+        };
+      }, 50);
+    }
+
+    function closePlayerList() {
+      document.getElementById('playerListModal').style.display = 'none';
+    }
+
+    // Descargar alineación como imagen
+    function setupButtons() {
+      document.getElementById('downloadBtn').onclick = function() {
+        const field = document.querySelector('.field-container');
+        if (window.html2canvas) {
+          window.html2canvas(field, {
+        backgroundColor: null,
+        useCORS: true,
+        scale: 2 // Mejora la calidad duplicando la resolución
+      }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'Hamaikakoa.jpg';
+            link.href = canvas.toDataURL('image/jpeg', 0.98); // Calidad máxima
+            link.click();
+          });
+        } else {
+          alert('html2canvas no está cargado todavía. Espera unos segundos y vuelve a intentarlo.');
+        }
+      };
+      document.getElementById('clearBtn').onclick = function() {
+        assigned = Array(positions.length).fill(null);
+        renderPositions();
+      };
+    }
+    setupButtons();
+    // Cargar html2canvas si no existe
+    if (!window.html2canvas) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js';
+      script.onload = setupButtons;
+      document.body.appendChild(script);
+    }
+
+    renderPositions();
+  </script>
+</body>
+</html>
