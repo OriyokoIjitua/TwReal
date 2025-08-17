@@ -130,6 +130,8 @@
       right: 300px;
       z-index: 2;
       background: none;
+      width: auto;
+      text-align: left;
     }
     @media (max-width: 700px) {
       #optionsBlock {
@@ -137,12 +139,16 @@
         top: auto !important;
         right: auto !important;
         display: block;
-        margin: 24px auto 0 auto;
+        margin: 0 auto 0 auto;
         width: 100vw;
         max-width: 100vw;
         text-align: center;
         z-index: 2;
         background: none;
+      }
+      #optionsBlock .d-flex {
+        justify-content: center !important;
+        text-align: center;
       }
       .field-container {
     width: 98vw;
@@ -229,7 +235,7 @@
 </div>
 <!-- Opciones: formación, filtro, marca de agua -->
 <div id="optionsBlock" class="d-block mt-3">
-  <div class="mb-3 d-flex align-items-center justify-content-center flex-wrap">
+  <div class="mb-3 d-flex align-items-center flex-wrap" style="justify-content: flex-start;">
     <label id="formationLabel" class="form-label mb-0 me-2" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="formationText">Formación:</span>
     </label>
@@ -237,13 +243,13 @@
       <option value="4-3-3">4-3-3</option>
     </select>
   </div>
-  <div class="mb-3 d-flex align-items-center justify-content-center flex-wrap">
+  <div class="mb-3 d-flex align-items-center flex-wrap" style="justify-content: flex-start;">
     <input type="checkbox" id="filterByPosition" class="form-check-input me-2" style="transform:scale(1.3); vertical-align:middle;">
     <label id="filterLabel" for="filterByPosition" class="form-label mb-0" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="filterText">Filtrar jugadores por posición</span>
     </label>
   </div>
-  <div class="d-flex align-items-center justify-content-center flex-wrap">
+  <div class="d-flex align-items-center flex-wrap" style="justify-content: flex-start;">
     <input type="checkbox" id="watermarkToggle" checked class="form-check-input me-2" style="transform:scale(1.3); vertical-align:middle;">
     <label id="watermarkLabel" for="watermarkToggle" class="form-label mb-0" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="watermarkText">Marca de agua</span>
