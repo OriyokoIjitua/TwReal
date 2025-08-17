@@ -125,30 +125,31 @@
       float: right;
     }
     #optionsBlock {
-      position: absolute;
-      top: 50px;
-      right: 300px;
-      z-index: 2;
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 32px;
+      margin-bottom: 24px;
+      text-align: center;
       background: none;
-      width: auto;
-      text-align: left;
+      position: static !important;
+      z-index: 2;
+      justify-content: center;
+    }
+    #optionsBlock > div {
+      margin-bottom: 20px !important;
+      justify-content: center;
     }
     @media (max-width: 700px) {
       #optionsBlock {
-        position: static !important;
-        top: auto !important;
-        right: auto !important;
-        display: block;
-        margin: 0 auto 24px auto;
-        width: 100vw;
-        max-width: 100vw;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        z-index: 2;
-        background: none;
+        gap: 32px;
       }
-      #optionsBlock .d-flex {
-        justify-content: center !important;
-        text-align: center;
+      #optionsBlock > div {
+        margin-bottom: 24px !important;
+        justify-content: center;
       }
       .field-container {
     width: 98vw;
@@ -222,8 +223,8 @@
     </div>
   </div>
 <!-- Opciones: formación, filtro, marca de agua -->
-<div id="optionsBlock">
-  <div class="mb-3 d-flex align-items-center flex-wrap">
+<div id="optionsBlock" class="d-flex flex-wrap align-items-center justify-content-center gap-4 mb-4" style="margin-top:32px;">
+  <div class="d-flex align-items-center flex-wrap justify-content-center" style="margin-bottom:20px;">
     <label id="formationLabel" class="form-label mb-0 me-2" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="formationText">Formación:</span>
     </label>
@@ -231,13 +232,13 @@
       <option value="4-3-3">4-3-3</option>
     </select>
   </div>
-  <div class="mb-3 d-flex align-items-center flex-wrap">
+  <div class="d-flex align-items-center flex-wrap justify-content-center" style="margin-bottom:20px;">
     <input type="checkbox" id="filterByPosition" class="form-check-input me-2" style="transform:scale(1.3); vertical-align:middle;">
     <label id="filterLabel" for="filterByPosition" class="form-label mb-0" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="filterText">Filtrar jugadores por posición</span>
     </label>
   </div>
-  <div class="d-flex align-items-center flex-wrap">
+  <div class="d-flex align-items-center flex-wrap justify-content-center" style="margin-bottom:20px;">
     <input type="checkbox" id="watermarkToggle" checked class="form-check-input me-2" style="transform:scale(1.3); vertical-align:middle;">
     <label id="watermarkLabel" for="watermarkToggle" class="form-label mb-0" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="watermarkText">Marca de agua</span>
