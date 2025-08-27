@@ -343,7 +343,8 @@
   { dorsal: '', name: 'Odriozola', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/alvaro_odriozola.jpg', positions: ['LI','LD','ED'] },
   { dorsal: '', name: 'Javi López', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/javi_lopez.jpg', positions: ['LD','LI'] },
   { dorsal: '', name: 'Sadiq', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sadiq_umar.jpg', positions: ['DC'] },
-  { dorsal: '', name: 'Becker', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sheraldo_becker.jpg', positions: ['EI','ED','DC'] }
+  { dorsal: '', name: 'Becker', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sheraldo_becker.jpg', positions: ['EI','ED','DC'] },
+  { dorsal: '', name: 'Coming soon...', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/carlos_soler.jpg', positions: ['MC','MCD','MCO'], disabled: true }
     ];
 
     // Posiciones en el campo (formación 4-3-3)
@@ -474,24 +475,31 @@
         if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
         const item = document.createElement('div');
         item.className = 'player-list-item';
-        item.onclick = () => {
-          // Identificador único: dorsal si existe, si no, nombre
-          const getId = p => p ? (p.dorsal ? p.dorsal : p.name) : null;
-          const playerId = getId(player);
-          const currentIdx = assigned.findIndex(p => getId(p) === playerId);
-          if (currentIdx !== -1 && currentIdx !== idx) {
-            const temp = assigned[idx];
-            assigned[idx] = player;
-            assigned[currentIdx] = temp;
-          } else {
-            assigned[idx] = player;
-          }
-          modal.style.display = 'none';
-          renderPositions();
-        };
+        let imgTag = '<img class="player-list-img" src="' + player.img + '" />';
+        if (player.disabled) {
+          imgTag = '<img class="player-list-img" src="' + player.img + '" style="filter: grayscale(1); opacity: 0.6;" />';
+          item.style.pointerEvents = 'none';
+          item.style.opacity = '0.6';
+        } else {
+          item.onclick = () => {
+            // Identificador único: dorsal si existe, si no, nombre
+            const getId = p => p ? (p.dorsal ? p.dorsal : p.name) : null;
+            const playerId = getId(player);
+            const currentIdx = assigned.findIndex(p => getId(p) === playerId);
+            if (currentIdx !== -1 && currentIdx !== idx) {
+              const temp = assigned[idx];
+              assigned[idx] = player;
+              assigned[currentIdx] = temp;
+            } else {
+              assigned[idx] = player;
+            }
+            modal.style.display = 'none';
+            renderPositions();
+          };
+        }
         item.innerHTML =
-          '<span class="player-list-dorsal">' + player.dorsal + '</span>' +
-          '<img class="player-list-img" src="' + player.img + '" />' +
+          '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
+          imgTag +
           '<span class="player-list-name">' + player.name + '</span>';
         list.appendChild(item);
       });
