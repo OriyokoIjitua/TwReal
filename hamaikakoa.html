@@ -228,9 +228,11 @@
     <label id="formationLabel" class="form-label mb-0 me-2" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="formationText">Formación:</span>
     </label>
-    <select id="formationSelect" class="form-select w-auto" style="font-size:1em; padding:4px 12px; border-radius:6px; border:none; min-width:90px;">
+  <select id="formationSelect" class="form-select w-auto" style="font-size:1em; padding:4px 12px; border-radius:6px; border:none; min-width:110px; max-width:110px;">
   <option value="4-3-3">4-3-3</option>
   <option value="4-2-3-1">4-2-3-1</option>
+  <option value="4-4-2 (1)">4-4-2 (1)</option>
+  <option value="4-4-2 (2)">4-4-2 (2)</option>
     </select>
   </div>
   <div class="d-flex align-items-center flex-wrap justify-content-center" style="margin-bottom:20px;">
@@ -372,7 +374,33 @@
         { x: 340, y: 470, role: 'DFC' }, // Central Der
         { x: 485, y: 420, role: 'LD' }, // Lateral Der
         { x: 260, y: 600, role: 'POR' }
-      ]
+      ],
+      '4-4-2 (1)': [
+        { x: 160, y: 40, role: 'DC' }, // Delantero Izq
+        { x: 360, y: 40, role: 'DC' }, // Delantero Der
+        { x: 190, y: 310, role: 'MCD' }, // Pivote izq
+        { x: 330, y: 310, role: 'MCD' }, // Pivote der
+        { x: 100, y: 190, role: 'MC' }, // Mediocentro izq
+        { x: 420, y: 190, role: 'MCO' }, // Mediopunta der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 485, y: 420, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-4-2 (2)': [
+        { x: 160, y: 40, role: 'DC' }, // Delantero Izq
+        { x: 360, y: 40, role: 'DC' }, // Delantero Der
+        { x: 260, y: 320, role: 'MCD' }, // Pivote
+        { x: 100, y: 220, role: 'MC' }, // MC izq
+        { x: 420, y: 220, role: 'MC' }, // MC der
+        { x: 260, y: 160, role: 'MCO' }, // Mediopunta
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 485, y: 420, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
     };
 
   // Inicializar formación según el selector
@@ -391,46 +419,22 @@
       const prevPositions = formations[prevFormation];
       const nextPositions = formations[newFormation];
       let newAssigned = Array(nextPositions.length).fill(null);
-      // Mapeo de roles entre formaciones
-      // 4-3-3: [EI,DC,ED,MCD,MC,MCO,LI,DFC,DFC,LD,POR]
-      // 4-2-3-1: [EI,DC,ED,MCD,MCD,MCO,LI,DFC,DFC,LD,POR]
-      // EI,DC,ED,LI,DFC,DFC,LD,POR son iguales (mismo orden)
-      // MCD (4-3-3) -> MCD izq (4-2-3-1)
-      // MC (4-3-3) -> MCD der (4-2-3-1)
-      // MCO igual
-      if (prevFormation === '4-3-3' && newFormation === '4-2-3-1') {
-        // EI,DC,ED
-        newAssigned[0] = assigned[0]; // EI
-        newAssigned[1] = assigned[1]; // DC
-        newAssigned[2] = assigned[2]; // ED
-        newAssigned[3] = assigned[3]; // MCD -> MCD izq
-        newAssigned[4] = assigned[4]; // MC -> MCD der
-        newAssigned[5] = assigned[5]; // MCO
-        newAssigned[6] = assigned[6]; // LI
-        newAssigned[7] = assigned[7]; // DFC
-        newAssigned[8] = assigned[8]; // DFC
-        newAssigned[9] = assigned[9]; // LD
-        newAssigned[10] = assigned[10]; // POR
-      } else if (prevFormation === '4-2-3-1' && newFormation === '4-3-3') {
-        newAssigned[0] = assigned[0]; // EI
-        newAssigned[1] = assigned[1]; // DC
-        newAssigned[2] = assigned[2]; // ED
-        newAssigned[3] = assigned[3]; // MCD izq -> MCD
-        newAssigned[4] = assigned[4]; // MCD der -> MC
-        newAssigned[5] = assigned[5]; // MCO
-        newAssigned[6] = assigned[6]; // LI
-        newAssigned[7] = assigned[7]; // DFC
-        newAssigned[8] = assigned[8]; // DFC
-        newAssigned[9] = assigned[9]; // LD
-        newAssigned[10] = assigned[10]; // POR
-      } else {
-        // Si se añaden más formaciones, se puede ampliar el mapeo aquí
-        newAssigned = Array(nextPositions.length).fill(null);
-      }
-      currentFormation = newFormation;
-      positions = formations[currentFormation];
-      assigned = newAssigned;
-      renderPositions();
+
+      newAssigned[0] = assigned[0];
+      newAssigned[1] = assigned[1];
+      newAssigned[2] = assigned[2];
+      newAssigned[3] = assigned[3];
+      newAssigned[4] = assigned[4];
+      newAssigned[5] = assigned[5];
+      newAssigned[6] = assigned[6];
+      newAssigned[7] = assigned[7];
+      newAssigned[8] = assigned[8];
+      newAssigned[9] = assigned[9];
+      newAssigned[10] = assigned[10];
+  currentFormation = newFormation;
+  positions = formations[currentFormation];
+  assigned = newAssigned;
+  renderPositions();
     });
 
     function renderPositions() {
