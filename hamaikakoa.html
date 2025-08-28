@@ -1,9 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>
+    // Traducciones para el menú lateral
+    const menuTranslations = {
+      es: { plantilla: 'Plantilla', once: 'Crear once' },
+      eu: { plantilla: 'Taldea', once: 'Hamaikakoa sortu'}
+    };
+    let menuLang = 'es';
+    // Leer idioma guardado en localStorage si existe
+    if (localStorage.getItem('lang')) {
+      menuLang = localStorage.getItem('lang');
+    }
+    function updateMenuLang() {
+      document.getElementById('menu-once').textContent = menuTranslations[menuLang].once;
+      document.getElementById('menu-plantilla').textContent = menuTranslations[menuLang].plantilla;
+      document.getElementById('langBtn').textContent = menuLang === 'es' ? 'Eus' : 'Cast';
+    }
+    document.addEventListener('DOMContentLoaded', updateMenuLang);
+    // También actualizar menú al cambiar idioma, asegurando que el botón existe
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('langBtn').addEventListener('click', function() {
+        menuLang = menuLang === 'es' ? 'eu' : 'es';
+        localStorage.setItem('lang', menuLang); // Guardar idioma
+        updateMenuLang();
+      });
+    });
+  </script>
   <meta charset="UTF-8">
   <title>Real Sociedad</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 210px;
+      height: 100vh;
+      background: #002244;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 48px;
+      z-index: 100;
+      box-shadow: 2px 0 12px rgba(0,0,0,0.08);
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+      padding: 16px 32px;
+      width: 100%;
+      display: block;
+      border-left: 4px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    .sidebar a.active, .sidebar a:hover {
+      background: #003366;
+      border-left: 4px solid #0077cc;
+    }
+    .main-content {
+      margin-left: 210px;
+      padding: 0;
+    }
+    @media (max-width: 900px) {
+      .sidebar { width: 56px; padding-top: 24px; }
+      .sidebar a { font-size: 1em; padding: 12px 8px; }
+      .main-content { margin-left: 56px; }
+    }
+  </style>
   <style>
   body { font-family: Arial, sans-serif; background: #003366; margin: 0; padding: 0; }
     .field-container {
@@ -217,13 +284,18 @@
   </style>
 </head>
 <body>
-  <div style="position:relative;">
-    <div id="langSwitch" style="position:absolute; top:18px; right:24px;">
-      <button id="langBtn" style="background:#fff; color:#003366; border-radius:8px; border:none; font-weight:bold; font-size:1em; padding:6px 18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12);">Eus</button>
-    </div>
+  <div class="sidebar">
+    <a href="plantilla.html" id="menu-plantilla">Plantilla</a>
+    <a href="hamaikakoa.html" id="menu-once" class="active">Crear once</a>
   </div>
-<!-- Opciones: formación, filtro, marca de agua -->
-<div id="optionsBlock" class="d-flex flex-wrap align-items-center justify-content-center gap-4 mb-4" style="margin-top:32px;">
+  <div class="main-content">
+    <div style="position:relative;">
+      <div id="langSwitch" style="position:absolute; top:18px; right:24px;">
+        <button id="langBtn" style="background:#fff; color:#003366; border-radius:8px; border:none; font-weight:bold; font-size:1em; padding:6px 18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12);">Eus</button>
+      </div>
+    </div>
+    <!-- Opciones: formación, filtro, marca de agua -->
+    <div id="optionsBlock" class="d-flex flex-wrap align-items-center justify-content-center gap-4 mb-4" style="margin-top:32px;">
   <div class="d-flex align-items-center flex-wrap justify-content-center" style="margin-bottom:20px;">
     <label id="formationLabel" class="form-label mb-0 me-2" style="color:#fff; font-size:1.2em; font-weight:bold;">
       <span id="formationText">Formación:</span>
@@ -233,6 +305,7 @@
   <option value="4-2-3-1">4-2-3-1</option>
   <option value="4-4-2 (1)">4-4-2 (1)</option>
   <option value="4-4-2 (2)">4-4-2 (2)</option>
+  <option value="5-3-2">5-3-2</option>
     </select>
   </div>
   <div class="d-flex align-items-center flex-wrap justify-content-center" style="margin-bottom:20px;">
@@ -277,7 +350,9 @@
         seleccionaJugador: 'Selecciona jugador',
         cerrar: 'Cerrar',
         watermark: 'Marca de agua',
-        formacion: 'Formación:'
+        formacion: 'Formación:',
+        menuOnce: 'Crear once',
+        menuPlantilla: 'Plantilla'
       },
       eu: {
         filter: 'Jokalariak postuarekiko filtratu',
@@ -286,22 +361,29 @@
         seleccionaJugador: 'Jokalaria aukeratu',
         cerrar: 'Itxi',
         watermark: 'Ur-marka',
-        formacion: 'Formazioa:'
+        formacion: 'Formazioa:',
+        menuOnce: 'Hamaikakoa sortu',
+        menuPlantilla: 'Taldea'
       }
     };
     // Idioma actual
     let currentLang = 'es';
+  // Sincronizar idioma principal con menú
+  currentLang = menuLang;
     function updateLangBtn() {
-  // Actualizar textos según idioma
-  document.getElementById('filterText').textContent = translations[currentLang].filter;
-  document.getElementById('downloadBtn').textContent = translations[currentLang].descargar;
-  document.getElementById('clearBtn').textContent = translations[currentLang].limpiar;
-  const modalTitle = document.querySelector('.player-list-box h3');
-  if (modalTitle) modalTitle.textContent = translations[currentLang].seleccionaJugador;
-  const closeBtn = document.querySelector('.close-modal-btn');
-  if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
-  document.getElementById('watermarkText').textContent = translations[currentLang].watermark;
-  document.getElementById('formationText').textContent = translations[currentLang].formacion;
+      // Actualizar textos según idioma
+      document.getElementById('filterText').textContent = translations[currentLang].filter;
+      document.getElementById('downloadBtn').textContent = translations[currentLang].descargar;
+      document.getElementById('clearBtn').textContent = translations[currentLang].limpiar;
+      const modalTitle = document.querySelector('.player-list-box h3');
+      if (modalTitle) modalTitle.textContent = translations[currentLang].seleccionaJugador;
+      const closeBtn = document.querySelector('.close-modal-btn');
+      if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
+      document.getElementById('watermarkText').textContent = translations[currentLang].watermark;
+      document.getElementById('formationText').textContent = translations[currentLang].formacion;
+      // Menú lateral
+      document.getElementById('menu-once').textContent = translations[currentLang].menuOnce;
+      document.getElementById('menu-plantilla').textContent = translations[currentLang].menuPlantilla;
       const btn = document.getElementById('langBtn');
       btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
     }
@@ -326,7 +408,7 @@
   { dorsal: 11, name: 'Guedes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/goncalo_guedes.jpg', positions: ['EI','ED','DC'] },
   { dorsal: 13, name: 'Marrero', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/unai_marrero.jpg', positions: ['POR'] },
   { dorsal: 14, name: 'Take', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/takefusa_kubo.jpg', positions: ['ED','EI'] },
-  { dorsal: 15, name: 'Urko', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/urko_gonzalez_de_zarate.jpg', positions: ['MCD','MC'] },
+//  { dorsal: 15, name: 'Urko', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/urko_gonzalez_de_zarate.jpg', positions: ['MCD','MC'] },
   { dorsal: 16, name: 'Ćaleta-Car', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/duje_caletacar.jpg', positions: ['DFC'] },
   { dorsal: 17, name: 'Sergio Gómez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sergio_gomez.jpg', positions: ['LD','LI','MC','MCO','EI','ED'] },
   { dorsal: 18, name: 'H. Traoré', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/hamari_traore.jpg', positions: ['LD','LI'] },
@@ -354,12 +436,12 @@
         { x: 60, y: 60, role: 'EI' }, // Extremo Izq
         { x: 260, y: 20, role: 'DC' }, // Delantero Centro
         { x: 460, y: 60, role: 'ED' }, // Extremo Der
-        { x: 260, y: 310, role: 'MCD' }, // Pivote
-        { x: 160, y: 210, role: 'MC' }, // Mediocentro izq
         { x: 360, y: 190, role: 'MCO' }, // Mediopunta der
-        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 160, y: 210, role: 'MC' }, // Mediocentro izq
+        { x: 260, y: 310, role: 'MCD' }, // Pivote
         { x: 180, y: 470, role: 'DFC' }, // Central Izq
         { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
         { x: 485, y: 420, role: 'LD' }, // Lateral Der
         { x: 260, y: 600, role: 'POR' }
       ],
@@ -367,41 +449,54 @@
         { x: 60, y: 100, role: 'EI' }, // Extremo Izq
         { x: 260, y: 20, role: 'DC' }, // Delantero Centro
         { x: 460, y: 100, role: 'ED' }, // Extremo Der
+        { x: 260, y: 190, role: 'MCO' }, // Mediopunta
         { x: 160, y: 310, role: 'MCD' }, // Pivote izq
         { x: 360, y: 310, role: 'MCD' }, // Pivote der
-        { x: 260, y: 190, role: 'MCO' }, // Mediopunta
-        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
         { x: 180, y: 470, role: 'DFC' }, // Central Izq
         { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
         { x: 485, y: 420, role: 'LD' }, // Lateral Der
         { x: 260, y: 600, role: 'POR' }
       ],
       '4-4-2 (1)': [
         { x: 160, y: 40, role: 'DC' }, // Delantero Izq
         { x: 360, y: 40, role: 'DC' }, // Delantero Der
+        { x: 420, y: 190, role: 'MCO' }, // Mediopunta der
+        { x: 100, y: 190, role: 'MC' }, // Mediocentro izq
         { x: 190, y: 310, role: 'MCD' }, // Pivote izq
         { x: 330, y: 310, role: 'MCD' }, // Pivote der
-        { x: 100, y: 190, role: 'MC' }, // Mediocentro izq
-        { x: 420, y: 190, role: 'MCO' }, // Mediopunta der
-        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
         { x: 180, y: 470, role: 'DFC' }, // Central Izq
         { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
         { x: 485, y: 420, role: 'LD' }, // Lateral Der
         { x: 260, y: 600, role: 'POR' }
       ],
       '4-4-2 (2)': [
         { x: 160, y: 40, role: 'DC' }, // Delantero Izq
         { x: 360, y: 40, role: 'DC' }, // Delantero Der
-        { x: 260, y: 320, role: 'MCD' }, // Pivote
+        { x: 260, y: 160, role: 'MCO' }, // Mediopunta
         { x: 100, y: 220, role: 'MC' }, // MC izq
         { x: 420, y: 220, role: 'MC' }, // MC der
-        { x: 260, y: 160, role: 'MCO' }, // Mediopunta
-        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 260, y: 320, role: 'MCD' }, // Pivote
         { x: 180, y: 470, role: 'DFC' }, // Central Izq
         { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
         { x: 485, y: 420, role: 'LD' }, // Lateral Der
         { x: 260, y: 600, role: 'POR' }
       ],
+      '5-3-2': [
+        { x: 160, y: 40, role: 'DC' }, // Delantero Izq
+        { x: 360, y: 40, role: 'DC' }, // Delantero Der
+        { x: 360, y: 180, role: 'MCO' }, // Mediopunta der
+        { x: 160, y: 200, role: 'MC' }, // Mediocentro izq
+        { x: 260, y: 300, role: 'MCD' }, // Pivote
+        { x: 140, y: 490, role: 'DFC' }, // Central Izq
+        { x: 260, y: 440, role: 'DFC' }, // Central
+        { x: 380, y: 490, role: 'DFC' }, // Central Der
+        { x: 35, y: 390, role: 'LI' }, // Lateral Izq (más adelantado)
+        { x: 485, y: 390, role: 'LD' }, // Lateral Der (más adelantado)
+        { x: 260, y: 600, role: 'POR' }
+      ]
     };
 
   // Inicializar formación según el selector
@@ -631,6 +726,8 @@ document.addEventListener('DOMContentLoaded', checkMobileOptions);
   if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
   document.getElementById('watermarkText').textContent = translations[currentLang].watermark;
   document.getElementById('formationText').textContent = translations[currentLang].formacion;
+  document.getElementById('menu-once').textContent = menuTranslations[menuLang].once;
+  document.getElementById('menu-plantilla').textContent = menuTranslations[menuLang].plantilla;
   const btn = document.getElementById('langBtn');
   btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
   // Móvil
