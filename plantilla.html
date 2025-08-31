@@ -143,47 +143,46 @@
   <script>
     // Jugadores en plantilla
     const players = [
-  { dorsal: 1, name: 'A. Remiro', fullname: 'Álex Remiro', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/alex_remiro.jpg', song: 'alex_remiro.mp3' },
-  { dorsal: 2, name: 'Aramburu', fullname: 'Jon Mikel Aramburu', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_mikel_aramburu.jpg', song: 'jon_mikel_aramburu.mp3' },
-  { dorsal: 3, name: 'Aihen', fullname: 'Aihen Muñoz', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/aihen_munoz.jpg', song: 'aihen_munoz.mp3' },
-  { dorsal: 4, name: 'Gorrotxa', fullname: 'Jon Gorrotxategi', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_gorrotxategi.jpg', song: 'jon_gorrotxategi.mp3' },
-  { dorsal: 5, name: 'Zubeldia', fullname: 'Igor Zubeldia', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/igor_zubeldia.jpg', song: 'igor_zubeldia.mp3' },
-  { dorsal: 6, name: 'Aritz', fullname: 'Aritz Elustondo', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/aritz_elustondo.jpg', song: 'aritz_elustondo.mp3' },
-  { dorsal: 7, name: 'Barrene', fullname: 'Ander Barrenetxea', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/ander_barrenetxea.jpg', song: 'ander_barrenetxea.mp3' },
-  { dorsal: 8, name: 'Turrientes', fullname: 'Beñat Turrientes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/benat_turrientes.jpg', song: 'benat_turrientes.mp3' },
-  { dorsal: 9, name: 'Óskarsson', fullname: 'Orri Óskarsson', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/orri_oskarsson.jpg', song: 'orri_oskarsson.mp3' },
-  { dorsal: 10, name: 'Oyarzabal', fullname: 'Mikel Oyarzabal', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/mikel_oyarzabal.jpg', song: 'mikel_oyarzabal.mp3' },
-  { dorsal: 11, name: 'Guedes', fullname: 'Gonçalo Guedes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/goncalo_guedes.jpg', song: 'goncalo_guedes.mp3' },
-  { dorsal: 13, name: 'Marrero', fullname: 'Unai Marrero', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/unai_marrero.jpg', song: 'unai_marrero.mp3' },
-  { dorsal: 14, name: 'Take', fullname: 'Takefusa Kubo', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/takefusa_kubo.jpg', song: 'takefusa_kubo.mp3' },
-  { dorsal: 16, name: 'Ćaleta-Car', fullname: 'Duje Ćaleta-Car', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/duje_caletacar.jpg', song: 'duje_caletacar.mp3' },
-  { dorsal: 17, name: 'Sergio Gómez', fullname: 'Sergio Gómez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sergio_gomez.jpg', song: 'sergio_gomez.mp3' },
-  { dorsal: 18, name: 'H. Traoré', fullname: 'Hamari Traoré', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/hamari_traore.jpg', song: 'hamari_traore.mp3' },
-  { dorsal: 19, name: 'Karrikaburu', fullname: 'Jon Karrikaburu', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_karrikaburu.jpg', song: 'jon_karrikaburu.mp3' },
-  { dorsal: 21, name: 'Zakharyan', fullname: 'Arsen Zakharyan', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/arsen_zakharyan.jpg', song: 'arsen_zakharyan.mp3' },
-  { dorsal: 22, name: 'Goti', fullname: 'Mikel Goti', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/mikel_goti.jpg', song: 'mikel_goti.mp3' },
-  { dorsal: 23, name: 'Brais Méndez', fullname: 'Brais Méndez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/brais_mendez.jpg', song: 'brais_mendez.mp3' },
-  { dorsal: 24, name: 'Sučić', fullname: 'Luka Sučić', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/luka_sucic.jpg', song: 'luka_sucic.mp3' },
-  { dorsal: 28, name: 'Marín', fullname: 'Pablo Marín', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/pablo_marin.jpg', song: 'pablo_marin.mp3' },
-  { dorsal: 31, name: 'Jon Martín', fullname: 'Jon Martín', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_martin.jpg', song: 'jon_martin.mp3' },
-  { dorsal: 33, name: 'Rupérez', fullname: 'Iñaki Rupérez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/inaki_ruperez.jpg', song: 'inaki_ruperez.mp3' },
-  { dorsal: 40, name: 'Mariezkurrena', fullname: 'Arkaitz Mariezkurrena', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/arkaitz_mariezkurrena.jpg', song: 'arkaitz_mariezkurrena.mp3' },
-  { dorsal: '', name: 'Odriozola', fullname: 'Álvaro Odriozola', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/alvaro_odriozola.jpg', song: 'alvaro_odriozola.mp3' },
-  { dorsal: '', name: 'Javi López', fullname: 'Javi López', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/javi_lopez.jpg', song: 'javi_lopez.mp3' },
-  { dorsal: '', name: 'Sadiq', fullname: 'Sadiq Umar', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sadiq_umar.jpg', song: 'sadiq_umar.mp3' },
-  { dorsal: '', name: 'Becker', fullname: 'Sheraldo Becker', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sheraldo_becker.jpg', song: 'sheraldo_becker.mp3' },
-  { dorsal: '', name: 'Coming soon...', fullname: '', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/carlos_soler.jpg', song: 'carlos_soler.mp3', disabled: true },
-  { dorsal: '', name: 'Coming soon...', fullname: '', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/yangel_herrera.jpg', song: 'yangel_herrera.mp3', disabled: true }
+  { dorsal: 1, name: 'A. Remiro', fullname: 'Álex Remiro', url_name: 'alex_remiro', pos: 'POR' },
+  { dorsal: 2, name: 'Aramburu', fullname: 'Jon Mikel Aramburu', url_name: 'jon_mikel_aramburu', pos: 'DEF' },
+  { dorsal: 3, name: 'Aihen', fullname: 'Aihen Muñoz', url_name: 'aihen_munoz', pos: 'DEF' },
+  { dorsal: 4, name: 'Gorrotxa', fullname: 'Jon Gorrotxategi', url_name: 'jon_gorrotxategi', pos: 'MED' },
+  { dorsal: 5, name: 'Zubeldia', fullname: 'Igor Zubeldia', url_name: 'igor_zubeldia', pos: 'DEF' },
+  { dorsal: 6, name: 'Aritz', fullname: 'Aritz Elustondo', url_name: 'aritz_elustondo', pos: 'DEF' },
+  { dorsal: 7, name: 'Barrene', fullname: 'Ander Barrenetxea', url_name: 'ander_barrenetxea', pos: 'DEL' },
+  { dorsal: 8, name: 'Turrientes', fullname: 'Beñat Turrientes', url_name: 'benat_turrientes', pos: 'MED' },
+  { dorsal: 9, name: 'Óskarsson', fullname: 'Orri Óskarsson', url_name: 'orri_oskarsson', pos: 'DEL' },
+  { dorsal: 10, name: 'Oyarzabal', fullname: 'Mikel Oyarzabal', url_name: 'mikel_oyarzabal', pos: 'DEL' },
+  { dorsal: 11, name: 'Guedes', fullname: 'Gonçalo Guedes', url_name: 'goncalo_guedes', pos: 'DEL' },
+  { dorsal: 13, name: 'Marrero', fullname: 'Unai Marrero', url_name: 'unai_marrero', pos: 'POR' },
+  { dorsal: 14, name: 'Take', fullname: 'Takefusa Kubo', url_name: 'takefusa_kubo', pos: 'DEL' },
+  { dorsal: 16, name: 'Ćaleta-Car', fullname: 'Duje Ćaleta-Car', url_name: 'duje_caletacar', pos: 'DEF' },
+  { dorsal: 17, name: 'Sergio Gómez', fullname: 'Sergio Gómez', url_name: 'sergio_gomez', pos: 'DEF' },
+  { dorsal: 18, name: 'H. Traoré', fullname: 'Hamari Traoré', url_name: 'hamari_traore', pos: 'DEF' },
+  { dorsal: 19, name: 'Karrikaburu', fullname: 'Jon Karrikaburu', url_name: 'jon_karrikaburu', pos: 'DEL' },
+  { dorsal: 21, name: 'Zakharyan', fullname: 'Arsen Zakharyan', url_name: 'arsen_zakharyan', pos: 'MED' },
+  { dorsal: 22, name: 'Goti', fullname: 'Mikel Goti', url_name: 'mikel_goti', pos: 'MED' },
+  { dorsal: 23, name: 'Brais Méndez', fullname: 'Brais Méndez', url_name: 'brais_mendez', pos: 'MED' },
+  { dorsal: 24, name: 'Sučić', fullname: 'Luka Sučić', url_name: 'luka_sucic', pos: 'MED' },
+  { dorsal: 28, name: 'Marín', fullname: 'Pablo Marín', url_name: 'pablo_marin', pos: 'MED' },
+  { dorsal: 31, name: 'Jon Martín', fullname: 'Jon Martín', url_name: 'jon_martin', pos: 'DEF' },
+  { dorsal: 33, name: 'Rupérez', fullname: 'Iñaki Rupérez', url_name: 'inaki_ruperez', pos: 'DEF' },
+  { dorsal: 40, name: 'Mariezkurrena', fullname: 'Arkaitz Mariezkurrena', url_name: 'arkaitz_mariezkurrena', pos: 'DEL' },
+  { dorsal: '', name: 'Odriozola', fullname: 'Álvaro Odriozola', url_name: 'alvaro_odriozola', pos: 'DEF' },
+  { dorsal: '', name: 'Sadiq', fullname: 'Sadiq Umar', url_name: 'sadiq_umar', pos: 'DEL' },
+  { dorsal: '', name: 'Becker', fullname: 'Sheraldo Becker', url_name: 'sheraldo_becker', pos: 'DEL' },
+  { dorsal: '', name: 'C. Soler', fullname: 'Carlos Soler', url_name: 'carlos_soler', pos: 'MED' },
+  { dorsal: '', name: 'Herrera', fullname: 'Yangel Herrera', url_name: 'yangel_herrera', pos: 'MED' }
     ];
     // Jugadores vendidos/cedidos
     const vendidos = [
-  { name: 'Javi López', fullname: 'Javi López', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/javi_lopez.jpg', status: { es: 'Cedido', eu: 'Utzita' }, song: 'javi_lopez.mp3' },
-  { name: 'Pacheco', fullname: 'Jon Pacheco', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_pacheco.jpg', status: { es: 'Cedido', eu: 'Utzita' }, song: 'jon_pacheco.mp3' },
-  { name: 'Carlos Fdez.', fullname: 'Carlos Fernández', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/carlos_fernandez.jpg', status: { es: 'Cedido', eu: 'Utzita' }, song: 'carlos_fernandez.mp3' },
-  { name: 'Urko', fullname: 'Urko González de Zárate', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/urko_gonzalez_de_zarate.jpg', status: { es: 'Transferido', eu: 'Salduta' }, song: 'urko_gonzalez_de_zarate.mp3' },
-  { name: 'Olasagasti', fullname: 'Jon Ander Olasagasti', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_ander_olasagasti.jpg', status: { es: 'Transferido', eu: 'Salduta' }, song: 'jon_ander_olasagasti.mp3' },
-  { name: 'Zubimendi', fullname: 'Martin Zubimendi', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/martin_zubimendi.jpg', status: { es: 'Transferido', eu: 'Salduta' }, song: 'martin_zubimendi.mp3' },
-  { name: 'Magunazelaia', fullname: 'Jon Magunazelaia', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/jon_magunazelaia.jpg', status: { es: 'Transferido', eu: 'Salduta' }, song: 'jon_magunazelaia.mp3' }
+  { name: 'Javi López', fullname: 'Javi López', status: { es: 'Cedido', eu: 'Utzita' }, url_name: 'javi_lopez' },
+  { name: 'Pacheco', fullname: 'Jon Pacheco', status: { es: 'Cedido', eu: 'Utzita' }, url_name: 'jon_pacheco' },
+  { name: 'Carlos Fdez.', fullname: 'Carlos Fernández', status: { es: 'Cedido', eu: 'Utzita' }, url_name: 'carlos_fernandez' },
+  { name: 'Urko', fullname: 'Urko González de Zárate', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'urko_gonzalez_de_zarate' },
+  { name: 'Olasagasti', fullname: 'Jon Ander Olasagasti', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'jon_ander_olasagasti' },
+  { name: 'Zubimendi', fullname: 'Martin Zubimendi', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'martin_zubimendi' },
+  { name: 'Magunazelaia', fullname: 'Jon Magunazelaia', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'jon_magunazelaia' }
     ];
     // Traducciones
     const translations = {
@@ -211,16 +210,17 @@
       const container = document.getElementById('playersContainer');
       container.innerHTML = '';
       players.forEach((player, idx) => {
+        const isDisabled = player.url_name === 'yangel_herrera' || player.url_name === 'carlos_soler';
         const card = document.createElement('div');
         card.className = 'player-card';
         card.innerHTML = `
-          <img class="player-img" src="${player.img}" alt="${player.name}"${player.disabled ? ' style=\"filter: grayscale(1); opacity: 0.6;\"' : ''}>
-          <div class="player-info">
+          <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}.jpg" alt="${player.name}" style="${isDisabled ? 'filter: grayscale(1); opacity:0.6;' : ''}">
+          <div class="player-info" style="${isDisabled ? 'opacity:0.6;' : ''}">
             <span class="player-name">${player.name}</span>
             <span class="player-fullname">${player.fullname}</span>
             <span class="player-dorsal">${player.dorsal ? translations[currentLang].dorsal + ': ' + player.dorsal : ''}</span>
           </div>
-          ${player.disabled ? '' : `<button class="play-btn" data-idx="${idx}">▶️</button>`}
+          ${isDisabled ? '' : `<button class="play-btn" data-idx="${idx}">▶️</button>`}
         `;
         container.appendChild(card);
       });
@@ -233,7 +233,7 @@
         const card = document.createElement('div');
         card.className = 'player-card';
         card.innerHTML = `
-          <img class="player-img" src="${player.img}" alt="${player.name}">
+          <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}.jpg" alt="${player.name}">
           <div class="player-info">
             <span class="player-name">${player.name}</span>
             <span class="player-fullname">${player.fullname}</span>
@@ -249,19 +249,8 @@
     let currentBtn = null;
     let audioPositions = {};
     function getSongUrl(player, isVendido) {
-      if (!player.song) return null;
-      if (isVendido) {
-        if (player.song === 'javi_lopez.mp3') {
-          return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/javi_lopez_2.mp3`;
-        }
-        return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.song}`;
-      }
-      else {
-        if (player.song === 'ander_barrenetxea.mp3') {
-          return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/ander_barrenetxea_2.mp3`;
-        }
-        return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/rs.mp3`;
-      }
+      if (!player.url_name) return null;
+      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.url_name}.mp3`;
     }
     function setupPlayButtons() {
       document.querySelectorAll('.play-btn').forEach(btn => {
