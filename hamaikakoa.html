@@ -748,7 +748,6 @@
       const filterActive = document.getElementById('filterByPosition').checked;
       const posRole = positions[idx].role;
       players.forEach(player => {
-        // Deshabilitar Yangel Herrera y Carlos Soler
         const isDisabled = player.name === 'C. Soler';
         if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
         const item = document.createElement('div');
