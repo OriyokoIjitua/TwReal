@@ -249,7 +249,18 @@
     let audioPositions = {};
     function getSongUrl(player, isVendido) {
       if (!player.song) return null;
-      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.song}`;
+      if (isVendido) {
+        if (player.song === 'javi_lopez.mp3') {
+          return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/javi_lopez_2.mp3`;
+        }
+        return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.song}`;
+      }
+      else {
+        if (player.song === 'ander_barrenetxea.mp3') {
+          return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/ander_barrenetxea_2.mp3`;
+        }
+        return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/rs.mp3`;
+      }
     }
     function setupPlayButtons() {
       document.querySelectorAll('.play-btn').forEach(btn => {
