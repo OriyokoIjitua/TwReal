@@ -427,8 +427,8 @@
   { dorsal: '', name: 'Javi López', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/javi_lopez.jpg', positions: ['LD','LI'] },
   { dorsal: '', name: 'Sadiq', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sadiq_umar.jpg', positions: ['DC'] },
   { dorsal: '', name: 'Becker', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/sheraldo_becker.jpg', positions: ['EI','ED','DC'] },
-  { dorsal: '', name: 'C. Soler', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/carlos_soler.jpg', positions: ['MC','MCD','MCO'] },
-  { dorsal: '', name: 'Herrera', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/yangel_herrera.jpg', positions: ['MC','MCD'] }
+  { dorsal: '', name: 'Herrera', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/yangel_herrera.jpg', positions: ['MC','MCD'] },
+  { dorsal: '', name: 'C. Soler', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/carlos_soler.jpg', positions: ['MC','MCD','MCO'] }
     ];
 
     // Posiciones en el campo (formación 4-3-3)
@@ -749,7 +749,7 @@
       const posRole = positions[idx].role;
       players.forEach(player => {
         // Deshabilitar Yangel Herrera y Carlos Soler
-        const isDisabled = player.name === 'Herrera' || player.name === 'C. Soler';
+        const isDisabled = player.name === 'C. Soler';
         if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
         const item = document.createElement('div');
         item.className = 'player-list-item';
