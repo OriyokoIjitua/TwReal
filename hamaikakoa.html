@@ -748,61 +748,53 @@
       const filterActive = document.getElementById('filterByPosition').checked;
       const posRole = positions[idx].role;
       players.forEach(player => {
-        const isDisabled = player.name === 'C. Soler';
         if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
         const item = document.createElement('div');
         item.className = 'player-list-item';
-        let imgTag = '<img class="player-list-img" src="' + player.img + '" />';
-        if (isDisabled || player.disabled) {
-          imgTag = '<img class="player-list-img" src="' + player.img + '" style="filter: grayscale(1); opacity: 0.6;" />';
-          item.style.pointerEvents = 'none';
-          item.style.opacity = '0.6';
-        } else {
-          item.onclick = () => {
-            // Identificador único: dorsal si existe, si no, nombre
-            const getId = p => p ? (p.dorsal ? p.dorsal : p.name) : null;
-            const playerId = getId(player);
-            const cambios = window.cambiosOnce || {};
-            // Eliminar al jugador de suplentes en todas las posiciones
-            Object.keys(cambios).forEach(k => {
-              cambios[k] = cambios[k].filter(n => n !== player.name);
-            });
-            const currentIdx = assigned.findIndex(p => getId(p) === playerId);
-            if (currentIdx !== -1 && currentIdx !== idx) {
-              const temp = assigned[idx];
-              assigned[idx] = player;
-              assigned[currentIdx] = temp;
-              // Si hay suplentes en la posición original, el primero pasa a titular
-              if (Array.isArray(cambios[currentIdx]) && cambios[currentIdx].length > 0) {
-                const nuevoTitular = cambios[currentIdx][0];
-                const nuevoPlayer = players.find(p => p.name === nuevoTitular);
-                assigned[currentIdx] = nuevoPlayer;
-                // Eliminar ese suplente de la lista
-                cambios[currentIdx] = cambios[currentIdx].filter(n => n !== nuevoTitular);
-                window.cambiosOnce = cambios;
-              }
-              // Si el jugador seleccionado era suplente en la nueva posición, el titular anterior pasa a suplente
-              if (Array.isArray(cambios[idx]) && !cambios[idx].includes(temp?.name) && temp) {
-                cambios[idx].push(temp.name);
-                window.cambiosOnce = cambios;
-              }
-            } else {
-              // Si el jugador seleccionado era suplente en la nueva posición, el titular anterior pasa a suplente
-              const temp = assigned[idx];
-              assigned[idx] = player;
-              if (Array.isArray(cambios[idx]) && !cambios[idx].includes(temp?.name) && temp) {
-                cambios[idx].push(temp.name);
-                window.cambiosOnce = cambios;
-              }
+        item.onclick = () => {
+          // Identificador único: dorsal si existe, si no, nombre
+          const getId = p => p ? (p.dorsal ? p.dorsal : p.name) : null;
+          const playerId = getId(player);
+          const cambios = window.cambiosOnce || {};
+          // Eliminar al jugador de suplentes en todas las posiciones
+          Object.keys(cambios).forEach(k => {
+            cambios[k] = cambios[k].filter(n => n !== player.name);
+          });
+          const currentIdx = assigned.findIndex(p => getId(p) === playerId);
+          if (currentIdx !== -1 && currentIdx !== idx) {
+            const temp = assigned[idx];
+            assigned[idx] = player;
+            assigned[currentIdx] = temp;
+            // Si hay suplentes en la posición original, el primero pasa a titular
+            if (Array.isArray(cambios[currentIdx]) && cambios[currentIdx].length > 0) {
+              const nuevoTitular = cambios[currentIdx][0];
+              const nuevoPlayer = players.find(p => p.name === nuevoTitular);
+              assigned[currentIdx] = nuevoPlayer;
+              // Eliminar ese suplente de la lista
+              cambios[currentIdx] = cambios[currentIdx].filter(n => n !== nuevoTitular);
+              window.cambiosOnce = cambios;
             }
-            window.cambiosOnce = cambios;
-            modal.style.display = 'none';
-            renderPositions();
-          };
-        }
+            // Si el jugador seleccionado era suplente en la nueva posición, el titular anterior pasa a suplente
+            if (Array.isArray(cambios[idx]) && !cambios[idx].includes(temp?.name) && temp) {
+              cambios[idx].push(temp.name);
+              window.cambiosOnce = cambios;
+            }
+          } else {
+            // Si el jugador seleccionado era suplente en la nueva posición, el titular anterior pasa a suplente
+            const temp = assigned[idx];
+            assigned[idx] = player;
+            if (Array.isArray(cambios[idx]) && !cambios[idx].includes(temp?.name) && temp) {
+              cambios[idx].push(temp.name);
+              window.cambiosOnce = cambios;
+            }
+          }
+          window.cambiosOnce = cambios;
+          modal.style.display = 'none';
+          renderPositions();
+        };
         item.innerHTML =
           '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
-          imgTag +
+          '<img class="player-list-img" src="' + player.img + '" />' +
           '<span class="player-list-name">' + player.name + '</span>';
         list.appendChild(item);
       });

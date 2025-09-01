@@ -62,7 +62,8 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      justify-items: center;
+      justify-items: start; /* Cambia 'center' por 'start' */
+      margin-left: 40px;    /* Igual que el margen de los títulos */
     }
     .player-card {
       background: #fff;
@@ -134,8 +135,15 @@
     <a href="hamaikakoa.html" id="menu-once">Crear once</a>
   </div>
   <div class="main-content">
-  <h2 id="plantillaTitle" style="color:#fff; font-weight:bold; margin-left:32px; margin-bottom:40px;"></h2>
-  <div class="players-grid" id="playersContainer"></div>
+  <h2 id="plantillaTitle" style="color:#fff; font-weight:bold; margin-left:32px; margin-bottom:0px;"></h2>
+  <h2 id="porterosTitle" style="color:#fff; font-weight:bold; font-size:1.5em; margin-left:40px; margin-top:20px; margin-bottom:10px;"></h2>
+  <div class="players-grid" id="porterosContainer"></div>
+  <h2 id="defensasTitle" style="color:#fff; font-weight:bold; font-size:1.5em; margin-left:40px; margin-top:20px; margin-bottom:10px;"></h2>
+  <div class="players-grid" id="defensasContainer"></div>
+  <h2 id="centrocampistasTitle" style="color:#fff; font-weight:bold; font-size:1.5em; margin-left:40px; margin-top:20px; margin-bottom:10px;"></h2>
+  <div class="players-grid" id="centrocampistasContainer"></div>
+  <h2 id="delanterosTitle" style="color:#fff; font-weight:bold; font-size:1.5em; margin-left:40px; margin-top:20px; margin-bottom:10px;"></h2>
+  <div class="players-grid" id="delanterosContainer"></div>
   <h2 id="vendidosTitle" style="color:#fff; font-weight:bold; margin-left:32px; margin-top:56px; margin-bottom:40px;"></h2>
   <div class="players-grid" id="vendidosContainer"></div>
   <button id="langBtn" style="background:#fff; color:#003366; border-radius:8px; border:none; font-weight:bold; font-size:1em; padding:6px 18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12); position:fixed; top:18px; right:24px; z-index:200;">Eus</button>
@@ -191,6 +199,10 @@
         menuOnce: 'Crear once',
         menuPlantilla: 'Plantilla',
         plantillaTitle: 'En plantilla',
+        porterosTitle: 'Porteros',
+        defensasTitle: 'Defensas',
+        centrocampistasTitle: 'Centrocampistas',
+        delanterosTitle: 'Delanteros',
         vendidosTitle: 'Vendidos/Cedidos',
         transferido: 'Transferido',
         cedido: 'Cedido'
@@ -200,6 +212,10 @@
         menuOnce: 'Hamaikakoa sortu',
         menuPlantilla: 'Taldea',
         plantillaTitle: 'Taldekideak',
+        porterosTitle: 'Atezainak',
+        defensasTitle: 'Atzelariak',
+        centrocampistasTitle: 'Erdilariak',
+        delanterosTitle: 'Aurrelariak',
         vendidosTitle: 'Salduta/Utzita',
         transferido: 'Salduta',
         cedido: 'Utzita'
@@ -207,24 +223,32 @@
     };
     let currentLang = localStorage.getItem('lang') || 'es';
     function renderPlayers() {
-      const container = document.getElementById('playersContainer');
-      container.innerHTML = '';
-      players.forEach((player, idx) => {
-        const isDisabled = player.url_name === 'carlos_soler';
-        const card = document.createElement('div');
-        card.className = 'player-card';
-        card.innerHTML = `
-          <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}.jpg" alt="${player.name}" style="${isDisabled ? 'filter: grayscale(1); opacity:0.6;' : ''}">
-          <div class="player-info" style="${isDisabled ? 'opacity:0.6;' : ''}">
-            <span class="player-name">${player.name}</span>
-            <span class="player-fullname">${player.fullname}</span>
-            <span class="player-dorsal">${player.dorsal ? translations[currentLang].dorsal + ': ' + player.dorsal : ''}</span>
-          </div>
-          ${isDisabled ? '' : `<button class="play-btn" data-idx="${idx}">▶️</button>`}
-        `;
-        container.appendChild(card);
-      });
-    }
+  const posList = [
+    { pos: 'POR', containerId: 'porterosContainer' },
+    { pos: 'DEF', containerId: 'defensasContainer' },
+    { pos: 'MED', containerId: 'centrocampistasContainer' },
+    { pos: 'DEL', containerId: 'delanterosContainer' }
+  ];
+  posList.forEach(({ pos, containerId }) => {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    players.forEach((player, idx) => {
+      if (player.pos !== pos) return;
+      const card = document.createElement('div');
+      card.className = 'player-card';
+      card.innerHTML = `
+        <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}.jpg" alt="${player.name}">
+        <div class="player-info">
+          <span class="player-name">${player.name}</span>
+          <span class="player-fullname">${player.fullname}</span>
+          <span class="player-dorsal">${player.dorsal ? translations[currentLang].dorsal + ': ' + player.dorsal : ''}</span>
+        </div>
+        <button class="play-btn" data-idx="${idx}">▶️</button>
+      `;
+      container.appendChild(card);
+    });
+  });
+}
     
     function renderVendidos() {
       const container = document.getElementById('vendidosContainer');
@@ -309,12 +333,16 @@
   // Actualizar títulos
   document.getElementById('plantillaTitle').textContent = translations[currentLang].plantillaTitle;
   document.getElementById('vendidosTitle').textContent = translations[currentLang].vendidosTitle;
+  document.getElementById('porterosTitle').textContent = translations[currentLang].porterosTitle;
+  document.getElementById('defensasTitle').textContent = translations[currentLang].defensasTitle;
+  document.getElementById('centrocampistasTitle').textContent = translations[currentLang].centrocampistasTitle;
+  document.getElementById('delanterosTitle').textContent = translations[currentLang].delanterosTitle;
   // Actualizar botón idioma
   document.getElementById('langBtn').textContent = currentLang === 'es' ? 'Eus' : 'Cast';
   renderPlayers();
   renderVendidos();
   setupPlayButtons();
-    }
+}
     document.getElementById('langBtn').onclick = function() {
   currentLang = currentLang === 'es' ? 'eu' : 'es';
   localStorage.setItem('lang', currentLang); // Guardar idioma
