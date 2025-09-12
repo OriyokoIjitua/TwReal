@@ -2,6 +2,169 @@
 <html lang="es">
 <head>
   <script>
+// Explicaciones de las canciones por jugador/entrenador/vendido
+const songExplanations = {
+  alex_remiro: {
+    es: 'La primera frase de la canción, poco más que decir.',
+    eu: 'Abestiko lehen esaldia, badakizue zer dan.'
+  },
+  jon_mikel_aramburu: {
+    es: 'Pues me hizo gracia la canción esta de Maduro, poco más.',
+    eu: 'Grazia in zidan Maduroren abestiak, egia esan.'
+  },
+  aihen_munoz: {
+    es: 'Porque el tío no deja de ser titular ni bajo tortura',
+    eu: 'Tipoa titularra izango delako mehatxupean ere.'
+  },
+  jon_gorrotxategi: {
+    es: 'Porque es el puto amo, mi rayito de esperanza tras la marcha de Zubimendi.',
+    eu: 'Puto hoberena delako, nere esperantza Zubimendi joan ondoren.'
+  },
+  igor_zubeldia: {
+    es: 'Xubel con su pandereta, poco más que decir.',
+    eu: 'Xubel panderoakin, gutxi gehio.'
+  },
+  aritz_elustondo: {
+    es: 'Pues porque es un cachondo y uno más de nosotros.',
+    eu: 'Tipoa gu baino gehio animatzen dulako Reala, krixton katxondo da.'
+  },
+  ander_barrenetxea: {
+    es: 'No hacen falta explicaciones.',
+    eu: 'Ez du azalpenik behar.'
+  },
+  benat_turrientes: {
+    es: 'Eterna promesa, el nuevo Barrene.',
+    eu: 'Barrene 2.0, zenbat urte daramatza promesa izaten.'
+  },
+  orri_oskarsson: {
+    es: 'Su futbol es puro sexo.',
+    eu: 'Sexua. Larrua jo. Txortan egin.'
+  },
+  mikel_oyarzabal: {
+    es: 'Mikelon. Pura mandanga.',
+    eu: 'Mikelontxu, sexuaren oligarka, mandangaren sortzailea.'
+  },
+  goncalo_guedes: {
+    es: 'Yo qué sé, es portugués, no? Pues toma, canción brasileña.',
+    eu: 'Yo qué sé, portugaldarra da, ez? Ba, brasildar abestia.'
+  },
+  yangel_herrera: {
+    es: 'Espero que tenga más rojas que partidos.',
+    eu: 'Partida baino txartel gorri gehiagorekin bukatzea espero det.'
+  },
+  unai_marrero: {
+    es: 'Ya me jodería ser azpeitiarra.',
+    eu: 'Benetan, nor da azpeitiarra? xddd'
+  },
+  takefusa_kubo: {
+    es: '“Chino, abre los ojos” le decían en Mestalla. Pues toma, chinito de amol.',
+    eu: 'Pixkat razistada, baina kariñokin, ez Mestallan bezela.'
+  },
+  sadiq_umar: {
+    es: 'Sadiq, porfa, vete ya.',
+    eu: 'Zoaz por kulo hartzea, Sadiq.'
+  },
+  duje_caletacar: {
+    es: 'xd',
+    eu: 'xd'
+  },
+  carlos_soler: {
+    es: 'Es valenciano, no? Pues toma bacalao.',
+    eu: 'Valentziarra da, ezta? Ba beira, bacalao.'
+  },
+  jon_karrikaburu: {
+    es: 'Se ve a quedar y va a hacer SEXO.',
+    eu: 'Aurten hemen geratuko da, SEXUA.'
+  },
+  alvaro_odriozola: {
+    es: 'Lleva politos apretados, ya sabéis.',
+    eu: 'Polito estuak daramatza, badakizue.'
+  },
+  arsen_zakharyan: {
+    es: 'Putin, hijo de putin, deja que Zakha vuelva de la guerra.',
+    eu: 'Putinek preso du Zakha, ukraniarrak akabatzen. Putinkumea.'
+  },
+  mikel_goti: {
+    es: 'Atzetik club xd',
+    eu: 'Atzetik club xd'
+  },
+  brais_mendez: {
+    es: 'Miña terra galega.',
+    eu: 'Naiz gaita jotzen ez jakin, sentitzen naz gallego.'
+  },
+  luka_sucic: {
+    es: 'Ya sabéis, los nazis y el gas.',
+    eu: 'Badakizue, naziak eta gasa.'
+  },
+  pablo_marin: {
+    es: 'Es riojano, empezó a beber con 5 años.',
+    eu: 'Sozioa riojakoa da, ardoa bere DNAn dago.'
+  },
+  jon_martin: {
+    es: 'SERGIO PATXI, DON’T STOP JONMA.',
+    eu: 'SERGIO PATXI, DON’T STOP JONMA.'
+  },
+  inaki_ruperez: {
+    es: 'Clásico navarrico, temazo de época.',
+    eu: 'Klasiko naparra, parrandarako temazoa.'
+  },
+  aitor_fraga: {
+    es: 'Por las pedazo cejas que tiene el colega.',
+    eu: 'Sozioak ditun bekain puxkengatik.'
+  },
+  arkaitz_mariezkurrena: {
+    es: 'Sagardowski.',
+    eu: 'Sagardowski.'
+  },
+  javi_lopez: {
+    es: 'Perdóname, Javi. A lo mejor nunca fuiste tan malo.',
+    eu: 'Barkaidazu, Javi. Agian etzinen hain txarra.'
+  },
+  jon_pacheco: {
+    es: 'Lleva años siendo promesa, pero Jonma es más presente que él. Le han comido la tostada.',
+    eu: 'Urteak daramatza promesa izaten, ta Jonma (Bost urte gutxiagokin) hobea da. Denbora bukatu zaizu, txo.'
+  },
+  carlos_fernandez: {
+    es: 'Macho, lleva más años teniendo que irse de la Real que como profesional.',
+    eu: 'Tipoak urte gehio daramatza Realetik atera beharrean profesionala izaten baino.'
+  },
+  sheraldo_becker: {
+    es: 'El rey del GU.',
+    eu: 'GU-ko erregea.'
+  },
+  sergio_gomez: {
+    es: 'Visca el pa amb tomàquet!',
+    eu: 'Visca el pa amb tomàquet!'
+  },
+  hamari_traore: {
+    es: 'Vuelve, Juanmari, pintamos a Odriozola de negro y los cambiamos.',
+    eu: 'Gutako bat, Juanmari Traoré, Anderren aita.'
+  },
+  urko_gonzalez_de_zarate: {
+    es: 'Aperribay dijo que se iba a quedar, pero se le dio la patada. Aperry joputa.',
+    eu: 'Esan zuten aurten hemen geratu zela, baina ez da hala izan. Aperry putakumia.'
+  },
+  jon_ander_olasagasti: {
+    es: 'El Zidane del Txofre. Nunca debió irse.',
+    eu: 'Txofreko Zizou. Ez zen jun behar.'
+  },
+  martin_zubimendi: {
+    es: 'Nos prometió amor eterno y se ha ido. Pues que no vuelva.',
+    eu: 'Geratzeko aukera izan zun, baina jun egin da. Ba ez dadila itzuli.'
+  },
+  jon_magunazelaia: {
+    es: 'Se va a Eibar xd',
+    eu: 'Eibarrea doa xd'
+  },
+  sergio_francisco: {
+    es: 'Estos dos son literalmente Epi y Blas.',
+    eu: 'Bi hauek Epi ta Blas dia, klabaus.'
+  },
+  iosu_rivas: {
+    es: 'Estos dos son literalmente Epi y Blas.',
+    eu: 'Bi hauek Epi ta Blas dia, klabaus.'
+  }
+};
     // Traducciones para el menú lateral
     const menuTranslations = {
       es: { plantilla: 'Plantilla', once: 'Crear once' },
@@ -23,6 +186,42 @@
   <title>Real Sociedad</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+/* Icono info debajo del botón de música */
+.play-btn + .song-info-icon {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 32px);
+  transform: translate(-50%, 0);
+  width: 32px;
+  text-align: center;
+  font-size: 1.3em;
+  color: #0077cc;
+  z-index: 3;
+  margin-top: 0;
+}
+.song-info-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -12px;
+  transform: translate(-50%, -100%);
+  background: #fff;
+  color: #003366;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  padding: 6px 12px;
+  font-size: 0.75em;
+  font-weight: normal;
+  min-width: 120px;
+  max-width: 220px;
+  white-space: pre-line;
+  pointer-events: auto;
+  z-index: 99999999999999999;
+}
+.song-info-icon:hover .song-info-tooltip,
+.song-info-icon:focus .song-info-tooltip {
+  display: block;
+}
     body { font-family: Arial, sans-serif; background: #003366; margin: 0; padding: 0; }
     .sidebar {
       position: fixed;
@@ -86,6 +285,18 @@
   transform: translateY(-50%);
   z-index: 2;
   margin-left: 0 !important;
+}
+.play-btn + .song-info-icon {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 32px);
+  transform: translate(-50%, 0);
+  width: 32px;
+  text-align: center;
+  font-size: 1.3em;
+  color: #0077cc;
+  z-index: 3;
+  margin-top: 0;
 }
 .player-info {
   flex: 1;
@@ -311,8 +522,25 @@ const entrenadores = [
           <span class="player-fullname">${player.fullname}</span>
           <span class="player-dorsal">${player.dorsal ? translations[currentLang].dorsal + ': ' + player.dorsal : ''}</span>
         </div>
-        <button class="play-btn" data-idx="${idx}">▶️</button>
+        <div style="display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;">
+          <button class="play-btn" data-idx="${idx}" style="margin-right: -20px;">▶️</button>
+          <div class="song-info-icon" tabindex="0" style="margin-left: -27px;">ⓘ<span class="song-info-tooltip"></span></div>
+        </div>
       `;
+      // Tooltip explicación canción
+      const infoIcon = card.querySelector('.song-info-icon');
+      if (infoIcon) {
+        infoIcon.addEventListener('mouseenter', function() {
+          const expl = songExplanations[player.url_name];
+          if (expl) {
+            infoIcon.querySelector('.song-info-tooltip').textContent = expl[currentLang];
+            infoIcon.querySelector('.song-info-tooltip').style.display = 'block';
+          }
+        });
+        infoIcon.addEventListener('mouseleave', function() {
+          infoIcon.querySelector('.song-info-tooltip').style.display = 'none';
+        });
+      }
       container.appendChild(card);
     });
   });
@@ -334,8 +562,25 @@ const entrenadores = [
             <span class="player-fullname">${coach.fullname}</span>
             <span class="player-dorsal">${coach.rol[currentLang]}</span>
           </div>
-          <button class="play-btn" data-idx="e${idx}">▶️</button>
+          <div style="display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;">
+            <button class="play-btn" data-idx="e${idx}" style="margin-right: -20px;">▶️</button>
+            <div class="song-info-icon" tabindex="0" style="margin-left: -27px;">ⓘ<span class="song-info-tooltip"></span></div>
+          </div>
         `;
+        // Tooltip explicación canción entrenadores
+        const infoIcon = card.querySelector('.song-info-icon');
+        if (infoIcon) {
+          infoIcon.addEventListener('mouseenter', function() {
+            const expl = songExplanations[coach.url_name];
+            if (expl) {
+              infoIcon.querySelector('.song-info-tooltip').textContent = expl[currentLang];
+              infoIcon.querySelector('.song-info-tooltip').style.display = 'block';
+            }
+          });
+          infoIcon.addEventListener('mouseleave', function() {
+            infoIcon.querySelector('.song-info-tooltip').style.display = 'none';
+          });
+        }
         container.appendChild(card);
       });
     }
@@ -356,8 +601,25 @@ const entrenadores = [
             <span class="player-fullname">${player.fullname}</span>
             <span class="player-dorsal">${player.status[currentLang]}</span>
           </div>
-          <button class="play-btn" data-idx="v${idx}">▶️</button>
+          <div style="display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;">
+            <button class="play-btn" data-idx="v${idx}" style="margin-right: -20px;">▶️</button>
+            <div class="song-info-icon" tabindex="0" style="margin-left: -27px;">ⓘ<span class="song-info-tooltip"></span></div>
+          </div>
         `;
+        // Tooltip explicación canción vendidos
+        const infoIcon = card.querySelector('.song-info-icon');
+        if (infoIcon) {
+          infoIcon.addEventListener('mouseenter', function() {
+            const expl = songExplanations[player.url_name];
+            if (expl) {
+              infoIcon.querySelector('.song-info-tooltip').textContent = expl[currentLang];
+              infoIcon.querySelector('.song-info-tooltip').style.display = 'block';
+            }
+          });
+          infoIcon.addEventListener('mouseleave', function() {
+            infoIcon.querySelector('.song-info-tooltip').style.display = 'none';
+          });
+        }
         container.appendChild(card);
       });
     }
