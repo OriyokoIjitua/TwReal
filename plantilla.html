@@ -397,7 +397,7 @@ const songExplanations = {
   <script>
     // 1. Mapa de banderas por país
 const flags = {
-  'Catalunya': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Catalonia.svg/40px-Flag_of_Catalonia.svg.png',
+  'Catalunya': 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Estelada_dels_Pa%C3%AFsos_Catalans_independents.svg',
   'Islandia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/40px-Flag_of_Iceland.svg.png',
   'Surinam': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Flag_of_Suriname.svg/40px-Flag_of_Suriname.svg.png',
   'España': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/40px-Flag_of_Spain.svg.png',
@@ -433,7 +433,7 @@ const players = [
   { dorsal: 15, name: 'Sadiq', fullname: 'Sadiq Umar', url_name: 'sadiq_umar', pos: 'DEL', pais: 'Nigeria' },
   { dorsal: 16, name: 'Ćaleta-Car', fullname: 'Duje Ćaleta-Car', url_name: 'duje_caletacar', pos: 'DEF', pais: 'Croacia' },
   { dorsal: 17, name: 'Sergio Gómez', fullname: 'Sergio Gómez', url_name: 'sergio_gomez', pos: 'DEF', pais: 'Catalunya' },
-  { dorsal: 18, name: 'C. Soler', fullname: 'Carlos Soler', url_name: 'carlos_soler', pos: 'MED', pais: 'España' },
+  { dorsal: 18, name: 'C. Soler', fullname: 'Carlos Soler', url_name: 'carlos_soler', pos: 'MED', pais: 'Catalunya' },
   { dorsal: 19, name: 'Karrikaburu', fullname: 'Jon Karrikaburu', url_name: 'jon_karrikaburu', pos: 'DEL', pais: 'Euskal Herria' },
   { dorsal: 20, name: 'Odriozola', fullname: 'Álvaro Odriozola', url_name: 'alvaro_odriozola', pos: 'DEF', pais: 'Euskal Herria' },
   { dorsal: 21, name: 'Zakharyan', fullname: 'Arsen Zakharyan', url_name: 'arsen_zakharyan', pos: 'MED', pais: 'Rusia' },
@@ -592,7 +592,7 @@ const entrenadores = [
         const card = document.createElement('div');
         card.className = 'player-card';
         card.innerHTML = `
-          <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}.jpg" alt="${player.name}">
+          <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}_2.jpg" alt="${player.name}">
           <div class="player-info">
             <span class="player-name">
               <img src="${flags[player.pais] || defaultFlag}" alt="flag" style="vertical-align:middle; margin-right:8px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">
