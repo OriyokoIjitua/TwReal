@@ -160,6 +160,10 @@ const songExplanations = {
     es: 'Se va a Eibar xd',
     eu: 'Eibarrea doa xd'
   },
+  nayef_aguerd: {
+    es: 'إيمانول ألجواسيل، شريف الغجر',
+    eu: 'إيمانول ألجواسيل، شريف الغجر'
+  },
   sergio_francisco: {
     es: 'Estos dos son literalmente Epi y Blas.',
     eu: 'Bi hauek Epi ta Blas dia, klabaus.'
@@ -265,8 +269,8 @@ const songExplanations = {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      justify-items: start; /* Cambia 'center' por 'start' */
-      margin-left: 40px;    /* Igual que el margen de los títulos */
+      justify-items: start;
+      margin-left: 40px;
     }
     .player-card {
       background: #fff;
@@ -399,7 +403,8 @@ const songExplanations = {
   <button id="langBtn" style="background:#fff; color:#003366; border-radius:8px; border:none; font-weight:bold; font-size:1em; padding:6px 18px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12); position:fixed; top:18px; right:24px; z-index:200;">Eus</button>
   </div>
   <script>
-    // 1. Mapa de banderas por país
+
+    // Banderas
 const flags = {
   'Catalunya': 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Estelada_dels_Pa%C3%AFsos_Catalans_independents.svg',
   'Francia': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/40px-Flag_of_France.svg.png',
@@ -418,16 +423,15 @@ const flags = {
   'Austria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/40px-Flag_of_Austria.svg.png',
   'Netherlands': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/40px-Flag_of_the_Netherlands.svg.png',
   'Cameroon': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/40px-Flag_of_Cameroon.svg.png',
+  'Marruecos': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/40px-Flag_of_Morocco.svg.png',
   'Euskal Herria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/40px-Flag_of_the_Basque_Country.svg.png',
   'Nafarroa': 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Bandera_de_Reino_de_Navarra.svg',
   'Gipuzkoa': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Guip%C3%BAzcoa.svg/2560px-Flag_of_Guip%C3%BAzcoa.svg.png',
   'Bizkaia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Bandera_de_Vizcaya.svg/1200px-Bandera_de_Vizcaya.svg.png',
   'Araba': 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_%C3%81lava.svg'
 };
-const defaultFlag = flags['Euskal Herria'];
 
-// 2. Añade el atributo pais a cada jugador, entrenador y vendido
-// Ejemplo para jugadores (hazlo igual para entrenadores y vendidos):
+// Plantilla
 const players = [
   { dorsal: 1, name: 'A. Remiro', fullname: 'Álex Remiro', url_name: 'alex_remiro', pos: 'POR', pais: 'Euskal Herria', pais2: 'Nafarroa' },
   { dorsal: 2, name: 'Aramburu', fullname: 'Jon Mikel Aramburu', url_name: 'jon_mikel_aramburu', pos: 'DEF', pais: 'Venezuela', pais2: 'Euskal Herria' },
@@ -461,7 +465,7 @@ const players = [
   { dorsal: 40, name: 'Mariezkurrena', fullname: 'Arkaitz Mariezkurrena', url_name: 'arkaitz_mariezkurrena', pos: 'DEL', pais: 'Euskal Herria', pais2: 'Gipuzkoa' }
     ];
 
-    // Sustituye el array de entrenadores por:
+// Entrenadores
 const entrenadores = [
   { name: 'Sergio Francisco', fullname: 'Sergio Francisco', url_name: 'sergio_francisco', pais: 'Euskal Herria', pais2: null, rol: { es: '1.º entrenador', eu: '1. entrenatzailea' } },
   { name: 'Iosu', fullname: 'Iosu Rivas', url_name: 'iosu_rivas', pais: 'Euskal Herria', pais2: null, rol: { es: '2.º entrenador', eu: '2. entrenatzailea' } }
@@ -477,7 +481,8 @@ const entrenadores = [
   { name: 'Urko', fullname: 'Urko González de Zárate', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'urko_gonzalez_de_zarate', pais: 'Euskal Herria', pais2: 'Araba' },
   { name: 'Olasagasti', fullname: 'Jon Ander Olasagasti', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'jon_ander_olasagasti', pais: 'Euskal Herria', pais2: 'Gipuzkoa' },
   { name: 'Zubimendi', fullname: 'Martin Zubimendi', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'martin_zubimendi', pais: 'Euskal Herria', pais2: 'Gipuzkoa' },
-  { name: 'Magunazelaia', fullname: 'Jon Magunazelaia', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'jon_magunazelaia', pais: 'Euskal Herria', pais2: 'Gipuzkoa' }
+  { name: 'Magunazelaia', fullname: 'Jon Magunazelaia', status: { es: 'Transferido', eu: 'Salduta' }, url_name: 'jon_magunazelaia', pais: 'Euskal Herria', pais2: 'Gipuzkoa' },
+  { name: 'N. Aguerd', fullname: 'Nayef Aguerd', status: { es: 'Fin de cesión', eu: 'Lagapenaren amaiera' }, url_name: 'nayef_aguerd', pais: 'Marruecos', pais2: null }
     ];
     // Traducciones
     const translations = {
@@ -530,8 +535,8 @@ const entrenadores = [
         <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${player.url_name}.jpg" alt="${player.name}">
         <div class="player-info">
           <span class="player-name">
-            <img src="${flags[player.pais] || defaultFlag}" alt="flag" style="vertical-align:middle; margin-right:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">
-            ${player.pais2 ? `<img src="${flags[player.pais2] || defaultFlag}" alt="flag2" style="vertical-align:middle; margin-left:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">` : ''}
+            <img src="${flags[player.pais]}" alt="flag" style="vertical-align:middle; margin-right:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">
+            ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="vertical-align:middle; margin-left:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">` : ''}
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
