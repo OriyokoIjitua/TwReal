@@ -15,7 +15,7 @@
   { "tipo": "jugador", "dorsal": 14, "name": "Take", "fullname": "Takefusa Kubo", "url_name": "takefusa_kubo", "pos": "DEL", "pais": "Japón", "pais2": null },
   { "tipo": "jugador", "dorsal": 16, "name": "Olasagasti", "fullname": "Jon Ander Olasagasti", "url_name": "jon_ander_olasagasti", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 17, "name": "Sergio Gómez", "fullname": "Sergio Gómez", "url_name": "sergio_gomez", "pos": "DEL", "pais": "Catalunya", "pais2": null },
-  { "tipo": "jugador", "dorsal": 18, "name": "H. Traoré", "fullname": "Hamari Traoré", "url_name": "hamari_traore", "pos": "DEF", "pais": "Mali", "pais2": "Euskal Herria" },
+  { "tipo": "jugador", "dorsal": 18, "name": "H. Traoré", "fullname": "Hamari Traoré", "url_name": "hamari_traore", "pos": "DEF", "pais": "Mali", "pais2": null },
   { "tipo": "jugador", "dorsal": 19, "name": "Aramburu", "fullname": "Jon Mikel Aramburu", "url_name": "jon_mikel_aramburu", "pos": "DEF", "pais": "Venezuela", "pais2": "Euskal Herria" },
   { "tipo": "jugador", "dorsal": 20, "name": "Pacheco", "fullname": "Jon Pacheco", "url_name": "jon_pacheco", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Nafarroa" },
   { "tipo": "jugador", "dorsal": 21, "name": "N. Aguerd", "fullname": "Nayef Aguerd", "url_name": "nayef_aguerd", "pos": "DEF", "pais": "Marruecos", "pais2": null },
