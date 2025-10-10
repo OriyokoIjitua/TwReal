@@ -12,20 +12,6 @@
     if (localStorage.getItem('lang')) {
       menuLang = localStorage.getItem('lang');
     }
-    function updateMenuLang() {
-      document.getElementById('menu-once').textContent = menuTranslations[menuLang].once;
-      document.getElementById('menu-plantilla').textContent = menuTranslations[menuLang].plantilla;
-      document.getElementById('langBtn').textContent = menuLang === 'es' ? 'Eus' : 'Cast';
-    }
-    document.addEventListener('DOMContentLoaded', updateMenuLang);
-    // También actualizar menú al cambiar idioma, asegurando que el botón existe
-    document.addEventListener('DOMContentLoaded', function() {
-      document.getElementById('langBtn').addEventListener('click', function() {
-        menuLang = menuLang === 'es' ? 'eu' : 'es';
-        localStorage.setItem('lang', menuLang); // Guardar idioma
-        updateMenuLang();
-      });
-    });
   </script>
   <meta charset="UTF-8">
   <title>Real Sociedad</title>
@@ -373,8 +359,9 @@
     let currentLang = 'es';
   // Sincronizar idioma principal con menú
   currentLang = menuLang;
-    function updateLangBtn() {
-      // Actualizar textos según idioma
+    // Centraliza la actualización de textos UI y menú
+    function updateUI() {
+      // Textos principales
       document.getElementById('filterText').textContent = translations[currentLang].filter;
       document.getElementById('downloadBtn').textContent = translations[currentLang].descargar;
       document.getElementById('clearBtn').textContent = translations[currentLang].limpiar;
@@ -384,59 +371,62 @@
       if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
       document.getElementById('watermarkText').textContent = translations[currentLang].watermark;
       document.getElementById('formationText').textContent = translations[currentLang].formacion;
-      // Menú lateral
-      document.getElementById('menu-once').textContent = translations[currentLang].menuOnce;
-      document.getElementById('menu-plantilla').textContent = translations[currentLang].menuPlantilla;
+      // Menú lateral (usa menuTranslations para mantener consistencia con el menú del encabezado)
+      document.getElementById('menu-once').textContent = menuTranslations[currentLang].once;
+      document.getElementById('menu-plantilla').textContent = menuTranslations[currentLang].plantilla;
       const btn = document.getElementById('langBtn');
-      btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
+      if (btn) btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
+      // Móvil
+      if (document.getElementById('filterLabelMobile'))
+        document.getElementById('filterLabelMobile').childNodes[2].textContent = translations[currentLang].filter;
+      if (document.getElementById('watermarkLabelMobile'))
+        document.getElementById('watermarkLabelMobile').childNodes[2].textContent = translations[currentLang].watermark;
+      if (document.getElementById('formationTextMobile'))
+        document.getElementById('formationTextMobile').textContent = translations[currentLang].formacion;
     }
+
+    // Botón de idioma: alterna currentLang y guarda en localStorage
     document.getElementById('langBtn').onclick = function() {
       currentLang = currentLang === 'es' ? 'eu' : 'es';
-      updateLangBtn();
-      // Aquí podrías añadir lógica para cambiar textos si lo necesitas
+      localStorage.setItem('lang', currentLang);
+      updateUI();
     };
-    updateLangBtn();
-    // Lista de jugadores y posiciones válidas
-    const players = [
-      { dorsal: 1, name: 'A. Remiro', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/alex_remiro.jpg', positions: ['POR'] },
-      { dorsal: 2, name: 'Aramburu', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/jon_mikel_aramburu.jpg', positions: ['LI','LD'] },
-      { dorsal: 3, name: 'Aihen', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/aihen_munoz.jpg', positions: ['LD','LI'] },
-      { dorsal: 4, name: 'Gorrotxa', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/jon_gorrotxategi.jpg', positions: ['MCD','MC'] },
-      { dorsal: 5, name: 'Zubeldia', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/igor_zubeldia.jpg', positions: ['DFC'] },
-      { dorsal: 6, name: 'Aritz', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/aritz_elustondo.jpg', positions: ['DFC','LD'] },
-      { dorsal: 7, name: 'Barrene', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/ander_barrenetxea.jpg', positions: ['EI','ED'] },
-      { dorsal: 8, name: 'Turrientes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/benat_turrientes.jpg', positions: ['MC','MCD'] },
-      { dorsal: 9, name: 'Óskarsson', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/orri_oskarsson.jpg', positions: ['DC'] },
-      { dorsal: 10, name: 'Oyarzabal', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/mikel_oyarzabal.jpg', positions: ['MCO','DC','EI','ED'] },
-      { dorsal: 11, name: 'Guedes', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/goncalo_guedes.jpg', positions: ['EI','ED','DC'] },
-      { dorsal: 12, name: 'Herrera', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/yangel_herrera.jpg', positions: ['MC','MCD'] },
-      { dorsal: 13, name: 'Marrero', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/unai_marrero.jpg', positions: ['POR'] },
-      { dorsal: 14, name: 'Take', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/takefusa_kubo.jpg', positions: ['ED','EI','MCO'] },
-    //  { dorsal: 15, name: 'Urko', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/urko_gonzalez_de_zarate.jpg', positions: ['MCD','MC'] },
-      { dorsal: 15, name: 'Sadiq', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/sadiq_umar.jpg', positions: ['DC'] },
-      { dorsal: 16, name: 'Ćaleta-Car', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/duje_caletacar.jpg', positions: ['DFC'] },
-      { dorsal: 17, name: 'Sergio Gómez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/sergio_gomez.jpg', positions: ['LD','LI','MC','MCO','EI','ED'] },
-    //  { dorsal: 18, name: 'H. Traoré', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/hamari_traore.jpg', positions: ['LD','LI'] },
-      { dorsal: 18, name: 'C. Soler', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/carlos_soler.jpg', positions: ['MC','MCD','MCO'] },
-      { dorsal: 19, name: 'Karrikaburu', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/jon_karrikaburu.jpg', positions: ['DC'] },
-    //  { dorsal: 20, name: 'Pacheco', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/jon_pacheco.jpg', positions: ['DFC'] },
-      { dorsal: 20, name: 'Odriozola', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/alvaro_odriozola.jpg', positions: ['LI','LD','ED'] },
-      { dorsal: 21, name: 'Zakharyan', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/arsen_zakharyan.jpg', positions: ['MCO','EI','ED'] },
-      { dorsal: 22, name: 'Goti', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/mikel_goti.jpg', positions: ['MCO','MC','EI','ED'] },
-      { dorsal: 23, name: 'Brais Méndez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/brais_mendez.jpg', positions: ['MC','MCO'] },
-      { dorsal: 24, name: 'Sučić', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/luka_sucic.jpg', positions: ['MC','MCO'] },
-      { dorsal: 28, name: 'Marín', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/pablo_marin.jpg', positions: ['MC','MCO'] },
-      { dorsal: 31, name: 'Jon Martín', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/jon_martin.jpg', positions: ['DFC'] },
-      { dorsal: 32, name: 'Fraga', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/aitor_fraga.jpg', positions: ['POR'] },
-      { dorsal: 33, name: 'Rupérez', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/inaki_ruperez.jpg', positions: ['LD','LI','ED'] },
-      { dorsal: 36, name: 'Lebarbier', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/alex_lebarbier.jpg', positions: ['DFC','MCD','MC'] },
-      { dorsal: 38, name: 'Beitia', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/luken_beitia.jpg', positions: ['DFC'] },
-      { dorsal: 40, name: 'Mariezkurrena', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/arkaitz_mariezkurrena.jpg', positions: ['DC','ED','EI','MCO'] }
-    //  { dorsal: '', name: 'Javi López', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/javi_lopez.jpg', positions: ['LD','LI'] },
-    //  { dorsal: '', name: 'Becker', img: 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/sheraldo_becker.jpg', positions: ['EI','ED','DC'] },
-    ];
+    // Inicializar UI
+    updateUI();
+    // Lista de jugadores: se leerá exactamente igual que en `plantilla.html`
+    let players = [];
+    const IMG_ROOT = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/';
 
-    // Posiciones en el campo (formación 4-3-3)
+    // Cargar datos por temporada desde el JSON en raw.githubusercontent (igual que plantilla.html)
+    async function cargarDatosTemporada(temporada) {
+      try {
+        const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        });
+        const jugadoresData = data.filter(ind => ind.tipo === 'jugador');
+        players = jugadoresData.map(p => ({
+          dorsal: p.dorsal,
+          name: p.name,
+          url_name: p.url_name,
+          img: IMG_ROOT + temporada + '/' + (p.url_name || '').trim() + '.jpg',
+          positions: Array.isArray(p.positions) ? p.positions : (p.positions ? [p.positions] : [] ),
+          fullname: p.fullname,
+          pais: p.pais,
+          pais2: p.pais2,
+          pos: p.pos,
+          cancion: p.cancion
+        }));
+        renderPositions();
+      } catch (err) {
+        console.error('Error cargando plantilla_' + temporada + '.json:', err);
+        showLoadError('No se ha podido cargar el JSON de plantilla para la temporada ' + temporada + '. Comprueba la conexión o sirve los archivos vía HTTP.');
+      }
+    }
+
+    // Cargar la temporada por defecto (igual que plantilla.html)
+    cargarDatosTemporada('2025-26');
+
     // Definición de formaciones
     const formations = {
       '4-3-3': [
@@ -952,29 +942,7 @@ function checkMobileOptions() {
 }
 window.addEventListener('resize', checkMobileOptions);
 document.addEventListener('DOMContentLoaded', checkMobileOptions);
-    // Actualizar traducciones en móvil
-    function updateLangBtn() {
-  document.getElementById('filterText').textContent = translations[currentLang].filter;
-  document.getElementById('downloadBtn').textContent = translations[currentLang].descargar;
-  document.getElementById('clearBtn').textContent = translations[currentLang].limpiar;
-  const modalTitle = document.querySelector('.player-list-box h3');
-  if (modalTitle) modalTitle.textContent = translations[currentLang].seleccionaJugador;
-  const closeBtn = document.querySelector('.close-modal-btn');
-  if (closeBtn) closeBtn.textContent = translations[currentLang].cerrar;
-  document.getElementById('watermarkText').textContent = translations[currentLang].watermark;
-  document.getElementById('formationText').textContent = translations[currentLang].formacion;
-  document.getElementById('menu-once').textContent = menuTranslations[menuLang].once;
-  document.getElementById('menu-plantilla').textContent = menuTranslations[menuLang].plantilla;
-  const btn = document.getElementById('langBtn');
-  btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
-  // Móvil
-  if (document.getElementById('filterLabelMobile'))
-    document.getElementById('filterLabelMobile').childNodes[2].textContent = translations[currentLang].filter;
-  if (document.getElementById('watermarkLabelMobile'))
-    document.getElementById('watermarkLabelMobile').childNodes[2].textContent = translations[currentLang].watermark;
-  if (document.getElementById('formationTextMobile'))
-    document.getElementById('formationTextMobile').textContent = translations[currentLang].formacion;
-}
+    // Las traducciones y textos UI se gestionan por la función única `updateUI` definida arriba.
   </script>
   <style>
   .dorsal-badge-onfield {

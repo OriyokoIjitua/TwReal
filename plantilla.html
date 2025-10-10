@@ -2,22 +2,6 @@
 <html lang="es">
 <head>
   <script>
-    // Traducciones para el menú lateral
-    const menuTranslations = {
-      es: { plantilla: 'Plantilla', once: 'Crear once' },
-      eu: { plantilla: 'Taldea', once: 'Hamaikakoa sortu'}
-    };
-    let menuLang = 'es';
-    // Leer idioma guardado en localStorage si existe
-    if (localStorage.getItem('lang')) {
-      menuLang = localStorage.getItem('lang');
-    }
-    function updateMenuLang() {
-      document.getElementById('menu-once').textContent = menuTranslations[menuLang].once;
-      document.getElementById('menu-plantilla').textContent = menuTranslations[menuLang].plantilla;
-      document.getElementById('langBtn').textContent = menuLang === 'es' ? 'Eus' : 'Cast';
-    }
-    document.addEventListener('DOMContentLoaded', updateMenuLang);
   </script>
   <meta charset="UTF-8">
   <title>Real Sociedad</title>
@@ -558,7 +542,6 @@ function renderVendidos() {
   currentLang = currentLang === 'es' ? 'eu' : 'es';
   localStorage.setItem('lang', currentLang); // Guardar idioma
   updateLangBtn();
-  document.addEventListener('DOMContentLoaded', updateLangBtn);
     };
     updateLangBtn();
   </script>
