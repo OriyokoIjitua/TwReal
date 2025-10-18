@@ -253,10 +253,10 @@ const flags = {
   'IslMan': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Isle_of_Mann.svg/40px-Flag_of_the_Isle_of_Mann.svg.png',
   'Brittany': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Flag_of_Brittany.svg/40px-Flag_of_Brittany.svg.png',
   'Euskal Herria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/40px-Flag_of_the_Basque_Country.svg.png',
-  'Nafarroa': 'https://upload.wikimedia.org/wikipedia/commons/f/f1/Bandera_de_Reino_de_Navarra.svg',
-  'Gipuzkoa': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Flag_of_Guip%C3%BAzcoa.svg/2560px-Flag_of_Guip%C3%BAzcoa.svg.png',
-  'Bizkaia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Bandera_de_Vizcaya.svg/1200px-Bandera_de_Vizcaya.svg.png',
-  'Araba': 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Flag_of_%C3%81lava.svg'
+  'Nafarroa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Nafarroa.png',
+  'Gipuzkoa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Gipuzkoa.png',
+  'Bizkaia': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Bizkaia.png',
+  'Araba': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Araba.png'
 };
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
@@ -322,6 +322,12 @@ if (temporadaSelect) {
     };
     let currentLang = localStorage.getItem('lang') || 'es';
 
+    function getFlagStyle(pais) {
+      const noDeform = ['Nafarroa', 'Gipuzkoa', 'Bizkaia', 'Araba'];
+      const base = 'vertical-align:middle; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);';
+      return noDeform.includes(pais) ? base + ' object-fit:contain;' : base;
+    }
+
     function renderPlayers() {
   const posList = [
     { pos: 'POR', containerId: 'porterosContainer' },
@@ -342,8 +348,8 @@ if (temporadaSelect) {
         <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}">
         <div class="player-info">
           <span class="player-name">
-            <img src="${flags[player.pais]}" alt="flag" style="vertical-align:middle; margin-right:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">
-            ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="vertical-align:middle; margin-left:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">` : ''}
+            <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
+            ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
@@ -385,8 +391,8 @@ function renderEntrenadores() {
       <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}">
       <div class="player-info">
         <span class="player-name">
-          <img src="${flags[coach.pais]}" alt="flag" style="vertical-align:middle; margin-right:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">
-          ${coach.pais2 ? `<img src=\"${flags[coach.pais2]}\" alt=\"flag2\" style=\"vertical-align:middle; margin-left:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);\">` : ''}
+          <img src="${flags[coach.pais]}" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
+          ${coach.pais2 ? `<img src=\"${flags[coach.pais2]}\" alt=\"flag2\" style=\"${getFlagStyle(coach.pais2)} margin-left:2px;\">` : ''}
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
@@ -426,8 +432,8 @@ function renderVendidos() {
       <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}_2.jpg" alt="${player.name}">
       <div class="player-info">
         <span class="player-name">
-          <img src="${flags[player.pais]}" alt="flag" style="vertical-align:middle; margin-right:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);">
-          ${player.pais2 ? `<img src=\"${flags[player.pais2]}\" alt=\"flag2\" style=\"vertical-align:middle; margin-left:2px; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);\">` : ''}
+          <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
+          ${player.pais2 ? `<img src=\"${flags[player.pais2]}\" alt=\"flag2\" style=\"${getFlagStyle(player.pais2)} margin-left:2px;\">` : ''}
           ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>
