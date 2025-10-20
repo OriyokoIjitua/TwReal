@@ -23,6 +23,10 @@
   { "tipo": "jugador", "dorsal": 23, "name": "Brais Méndez", "fullname": "Brais Méndez", "url_name": "brais_mendez", "pos": "MED", "pais": "Galicia", "pais2": null },
   { "tipo": "jugador", "dorsal": 24, "name": "Sučić", "fullname": "Luka Sučić", "url_name": "luka_sucic", "pos": "MED", "pais": "Croacia", "pais2": "Austria" },
   { "tipo": "jugador", "dorsal": 28, "name": "Marín", "fullname": "Pablo Marín", "url_name": "pablo_marin", "pos": "MED", "pais": "España", "pais2": null },
+  { "tipo": "jugador", "dorsal": 31, "name": "Jon Martín", "fullname": "Jon Martín", "url_name": "jon_martin", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "jugador", "dorsal": 37, "name": "Beitia", "fullname": "Luken Beitia", "url_name": "luken_beitia", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "jugador", "dorsal": 40, "name": "Mariezkurrena", "fullname": "Arkaitz Mariezkurrena", "url_name": "arkaitz_mariezkurrena", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "jugador", "dorsal": 43, "name": "Díaz", "fullname": "Dani Díaz", "url_name": "dani_diaz", "pos": "DEL", "pais": "España", "pais2": null },
 
   { "tipo": "entrenador", "name": "Imanol", "fullname": "Imanol Alguacil", "url_name": "imanol_alguacil", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" } },
   { "tipo": "entrenador", "name": "Labaka", "fullname": "Mikel Labaka", "url_name": "mikel_labaka", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "rol": { "es": "2.º entrenador", "eu": "2. entrenatzailea" } },
