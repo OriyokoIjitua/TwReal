@@ -192,6 +192,19 @@
       .player-card { padding: 12px 8px; gap: 12px; }
       .player-img { width: 48px; height: 48px; }
     }
+
+    /* Móvil: una tarjeta por fila */
+    @media (max-width: 700px) {
+      .players-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+        margin-left: 12px;
+      }
+      .player-card {
+        max-width: 96vw;
+        width: 96vw;
+      }
+    }
   </style>
 </head>
 <body>
@@ -252,6 +265,9 @@ const flags = {
   'Escocia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Scotland.svg/40px-Flag_of_Scotland.svg.png',
   'IslMan': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Isle_of_Mann.svg/40px-Flag_of_the_Isle_of_Mann.svg.png',
   'Brittany': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Flag_of_Brittany.svg/40px-Flag_of_Brittany.svg.png',
+  'Inglaterra': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/40px-Flag_of_England.svg.png',
+  'Ivory Coast': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg/40px-Flag_of_C%C3%B4te_d%27Ivoire.svg.png',
+  'Norway': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/40px-Flag_of_Norway.svg.png',
   'Euskal Herria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/40px-Flag_of_the_Basque_Country.svg.png',
   'Nafarroa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Nafarroa.png',
   'Gipuzkoa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Gipuzkoa.png',
@@ -350,6 +366,8 @@ if (temporadaSelect) {
           <span class="player-name">
             <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
             ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
+            ${player.pais3 ? `<img src="${flags[player.pais3]}" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
+            ${player.pais4 ? `<img src="${flags[player.pais4]}" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
