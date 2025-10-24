@@ -218,8 +218,8 @@
       <select id="seasonSelect" style="font-size:1em; border-radius:6px; padding:4px 12px;">
         <option value="2025-26" selected>2025-26</option>
         <option value="2024-25">2024-25</option>
-  <!--
         <option value="2023-24">2023-24</option>
+  <!--
         <option value="2022-23">2022-23</option>
         <option value="2021-22">2021-22</option>
   -->
@@ -411,6 +411,8 @@ function renderEntrenadores() {
         <span class="player-name">
           <img src="${flags[coach.pais]}" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
           ${coach.pais2 ? `<img src=\"${flags[coach.pais2]}\" alt=\"flag2\" style=\"${getFlagStyle(coach.pais2)} margin-left:2px;\">` : ''}
+          ${coach.pais3 ? `<img src=\"${flags[coach.pais3]}\" alt=\"flag3\" style=\"${getFlagStyle(coach.pais3)} margin-left:2px;\">` : ''}
+          ${coach.pais4 ? `<img src=\"${flags[coach.pais4]}\" alt=\"flag4\" style=\"${getFlagStyle(coach.pais4)} margin-left:2px;\">` : ''}
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
@@ -451,8 +453,10 @@ function renderVendidos() {
       <div class="player-info">
         <span class="player-name">
           <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
-          ${player.pais2 ? `<img src=\"${flags[player.pais2]}\" alt=\"flag2\" style=\"${getFlagStyle(player.pais2)} margin-left:2px;\">` : ''}
-          ${player.name}
+          ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
+            ${player.pais3 ? `<img src="${flags[player.pais3]}" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
+            ${player.pais4 ? `<img src="${flags[player.pais4]}" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
+            ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>
         <span class="player-dorsal">${player.status[currentLang]}</span>
