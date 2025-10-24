@@ -13,7 +13,7 @@
   { "tipo": "jugador", "dorsal": 12, "name": "Zakharyan", "fullname": "Arsen Zakharyan", "url_name": "arsen_zakharyan", "pos": "MED", "pais": "Rusia", "pais2": "Armenia" },
   { "tipo": "jugador", "dorsal": 13, "name": "Marrero", "fullname": "Unai Marrero", "url_name": "unai_marrero", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 14, "name": "Take", "fullname": "Takefusa Kubo", "url_name": "takefusa_kubo", "pos": "DEL", "pais": "Japón", "pais2": null },
-  { "tipo": "jugador", "dorsal": 15, "name": "G. de Zarate", "fullname": "Urko González de Zárate", "url_name": "urko_gonzalez_de_zarate", "pos": "MED", "pais": "Euskal Herria", "pais2": "Araba" },
+  { "tipo": "jugador", "dorsal": 15, "name": "G. de Zarate", "fullname": "Urko González de Zarate", "url_name": "urko_gonzalez_de_zarate", "pos": "MED", "pais": "Euskal Herria", "pais2": "Araba" },
   { "tipo": "jugador", "dorsal": 16, "name": "Olasagasti", "fullname": "Jon Ander Olasagasti", "url_name": "jon_ander_olasagasti", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 17, "name": "Tierney", "fullname": "Kieran Tierney", "url_name": "kieran_tierney", "pos": "DEF", "pais": "Escocia", "pais2": "IslMan" },
   { "tipo": "jugador", "dorsal": 18, "name": "H. Traoré", "fullname": "Hamari Traoré", "url_name": "hamari_traore", "pos": "DEF", "pais": "Mali", "pais2": null },
