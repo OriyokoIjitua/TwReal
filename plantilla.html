@@ -269,10 +269,10 @@ const flags = {
   'Ivory Coast': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg/40px-Flag_of_C%C3%B4te_d%27Ivoire.svg.png',
   'Norway': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/40px-Flag_of_Norway.svg.png',
   'Euskal Herria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/40px-Flag_of_the_Basque_Country.svg.png',
-  'Nafarroa': '/img/Nafarroa.png',
-  'Gipuzkoa': '/img/Gipuzkoa.png',
-  'Bizkaia': '/img/Bizkaia.png',
-  'Araba': '/img/Araba.png'
+  'Nafarroa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Nafarroa.png',
+  'Gipuzkoa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Gipuzkoa.png',
+  'Bizkaia': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Bizkaia.png',
+  'Araba': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Araba.png'
 };
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
@@ -362,7 +362,7 @@ if (temporadaSelect) {
       const card = document.createElement('div');
       card.className = 'player-card';
       card.innerHTML = `
-        <img class="player-img" src="/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
+        <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
           <span class="player-name">
             <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
@@ -407,7 +407,7 @@ function renderEntrenadores() {
     const card = document.createElement('div');
     card.className = 'player-card';
     card.innerHTML = `
-      <img class="player-img" src="/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
+      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
         <span class="player-name">
           <img src="${flags[coach.pais]}" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
@@ -450,7 +450,7 @@ function renderVendidos() {
     const card = document.createElement('div');
     card.className = 'player-card';
     card.innerHTML = `
-      <img class="player-img" src="/img/${temporadaCarpeta}/${player.url_name}_2.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
+      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}_2.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
         <span class="player-name">
           <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
@@ -489,7 +489,7 @@ function renderVendidos() {
     let audioPositions = {};
     function getSongUrl(player, isVendido) {
       if (!player.url_name) return null;
-      return `/mp3/${player.url_name}.mp3`;
+      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.url_name}.mp3`;
     }
     
     function setupEasterEgg() {
@@ -507,7 +507,7 @@ function renderVendidos() {
         currentAudio.pause();
         if (currentBtn) currentBtn.textContent = '▶️';
       }
-      currentAudio = new Audio('/mp3/erreala-ale.mp3');
+      currentAudio = new Audio('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/erreala-ale.mp3');
       currentBtn = null;
       currentAudio.play();
       currentAudio.onended = function() {
