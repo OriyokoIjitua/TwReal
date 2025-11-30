@@ -269,10 +269,10 @@ const flags = {
   'Ivory Coast': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg/40px-Flag_of_C%C3%B4te_d%27Ivoire.svg.png',
   'Norway': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/40px-Flag_of_Norway.svg.png',
   'Euskal Herria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/40px-Flag_of_the_Basque_Country.svg.png',
-  'Nafarroa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Nafarroa.png',
-  'Gipuzkoa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Gipuzkoa.png',
-  'Bizkaia': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Bizkaia.png',
-  'Araba': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Araba.png'
+  'Nafarroa': '/img/Nafarroa.png',
+  'Gipuzkoa': '/img/Gipuzkoa.png',
+  'Bizkaia': '/img/Bizkaia.png',
+  'Araba': '/img/Araba.png'
 };
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
@@ -280,7 +280,7 @@ let jugadores = [], entrenadores = [], salidas = [];
 
 async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
-  const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => r.json());
+  const data = await fetch(`/temporadas/plantilla_${temporada}.json`).then(r => r.json());
   jugadores = data.filter(ind => ind.tipo === 'jugador');
   entrenadores = data.filter(ind => ind.tipo === 'entrenador');
   salidas = data.filter(ind => ind.tipo === 'salida');
