@@ -280,7 +280,7 @@ let jugadores = [], entrenadores = [], salidas = [];
 
 async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
-  const data = await fetch(`/temporadas/plantilla_${temporada}.json`).then(r => r.json());
+  const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => r.json());
   jugadores = data.filter(ind => ind.tipo === 'jugador');
   entrenadores = data.filter(ind => ind.tipo === 'entrenador');
   salidas = data.filter(ind => ind.tipo === 'salida');
