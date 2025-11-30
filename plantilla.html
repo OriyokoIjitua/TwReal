@@ -288,6 +288,7 @@ async function cargarDatosTemporada(temporada) {
   renderEntrenadores();
   renderVendidos();
   setupPlayButtons();
+  setupEasterEgg();
 }
 
 // Llama a cargarDatosTemporada cuando cambie el selector de temporada
@@ -353,7 +354,7 @@ if (temporadaSelect) {
   ];
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
-  posList.forEach(({ pos, containerId }) => {
+    posList.forEach(({ pos, containerId }) => {
     const container = document.getElementById(containerId);
     container.innerHTML = '';
     jugadores.forEach((player, idx) => {
@@ -361,7 +362,7 @@ if (temporadaSelect) {
       const card = document.createElement('div');
       card.className = 'player-card';
       card.innerHTML = `
-        <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}">
+        <img class="player-img" src="/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
           <span class="player-name">
             <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
@@ -406,7 +407,7 @@ function renderEntrenadores() {
     const card = document.createElement('div');
     card.className = 'player-card';
     card.innerHTML = `
-      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}">
+      <img class="player-img" src="/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
         <span class="player-name">
           <img src="${flags[coach.pais]}" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
@@ -449,7 +450,7 @@ function renderVendidos() {
     const card = document.createElement('div');
     card.className = 'player-card';
     card.innerHTML = `
-      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}_2.jpg" alt="${player.name}">
+      <img class="player-img" src="/img/${temporadaCarpeta}/${player.url_name}_2.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
         <span class="player-name">
           <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
@@ -488,7 +489,35 @@ function renderVendidos() {
     let audioPositions = {};
     function getSongUrl(player, isVendido) {
       if (!player.url_name) return null;
-      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.url_name}.mp3`;
+      return `/mp3/${player.url_name}.mp3`;
+    }
+    
+    function setupEasterEgg() {
+      document.querySelectorAll('[data-easter-egg="imanol_alguacil"]').forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          playEasterEggAudio();
+        });
+      });
+    }
+    
+    function playEasterEggAudio() {
+      if (currentAudio) {
+        currentAudio.pause();
+        if (currentBtn) currentBtn.textContent = '▶️';
+      }
+      currentAudio = new Audio('/mp3/erreala-ale.mp3');
+      currentBtn = null;
+      currentAudio.play();
+      currentAudio.onended = function() {
+        currentAudio = null;
+        currentBtn = null;
+      };
+      currentAudio.onpause = function() {
+        currentAudio = null;
+        currentBtn = null;
+      };
     }
     function setupPlayButtons() {
       document.querySelectorAll('.play-btn').forEach(btn => {
@@ -565,6 +594,7 @@ function renderVendidos() {
   renderEntrenadores();
   renderVendidos();
   setupPlayButtons();
+  setupEasterEgg();
 }
     document.getElementById('langBtn').onclick = function() {
   currentLang = currentLang === 'es' ? 'eu' : 'es';
