@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eus">
 <head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Logo.png" type="image/png">
+  <title>Real Sociedad</title>
   <script>
     // Traducciones para el menú lateral
     const menuTranslations = {
@@ -312,7 +315,7 @@
   </div>
 </div>
 <div class="field-container" style="margin-top:32px;">
-  <img class="field-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia.jpg" alt="Campo">
+  <img class="field-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia.jpg" alt="Campo">
   <!-- Posiciones de jugadores -->
   <div id="positions"></div>
 </div>
@@ -900,9 +903,9 @@
     document.getElementById('watermarkToggle').addEventListener('change', function() {
   const fieldImg = document.querySelector('.field-img');
   if (this.checked) {
-    fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia.jpg';
+    fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia.jpg';
   } else {
-    fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia2.jpg';
+    fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia2.jpg';
   }
 });
     // Duplicar el contenido de opciones para móvil
@@ -942,9 +945,9 @@ function renderMobileOptions() {
     document.getElementById('watermarkToggle').checked = this.checked;
     const fieldImg = document.querySelector('.field-img');
     if (this.checked) {
-      fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia.jpg';
+      fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia.jpg';
     } else {
-      fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Zelaia2.jpg';
+      fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia2.jpg';
     }
   };
 }

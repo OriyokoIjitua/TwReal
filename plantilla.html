@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eus">
 <head>
   <script>
   </script>
   <meta charset="UTF-8">
+  <link rel="icon" href="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Logo.png" type="image/png">
   <title>Real Sociedad</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
@@ -242,38 +243,6 @@
   </div>
   <script>
 
-    // Banderas
-const flags = {
-  'Catalunya': 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Estelada_dels_Pa%C3%AFsos_Catalans_independents.svg',
-  'Francia': 'https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/40px-Flag_of_France.svg.png',
-  'Islandia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/40px-Flag_of_Iceland.svg.png',
-  'Surinam': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Flag_of_Suriname.svg/40px-Flag_of_Suriname.svg.png',
-  'España': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/40px-Flag_of_Spain.svg.png',
-  'Japón': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/40px-Flag_of_Japan.svg.png',
-  'Galicia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Flag_of_Galicia.svg/40px-Flag_of_Galicia.svg.png',
-  'Croacia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Flag_of_Croatia.svg/40px-Flag_of_Croatia.svg.png',
-  'Rusia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Russia.svg/40px-Flag_of_Russia.svg.png',
-  'Venezuela': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Flag_of_Venezuela.svg/40px-Flag_of_Venezuela.svg.png',
-  'Nigeria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Flag_of_Nigeria.svg/40px-Flag_of_Nigeria.svg.png',
-  'Mali': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Flag_of_Mali.svg/40px-Flag_of_Mali.svg.png',
-  'Portugal': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Flag_of_Portugal_%28official%29.svg/40px-Flag_of_Portugal_%28official%29.svg.png',
-  'Armenia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Flag_of_Armenia.svg/40px-Flag_of_Armenia.svg.png',
-  'Austria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_Austria.svg/40px-Flag_of_Austria.svg.png',
-  'Netherlands': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/40px-Flag_of_the_Netherlands.svg.png',
-  'Cameroon': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Flag_of_Cameroon.svg/40px-Flag_of_Cameroon.svg.png',
-  'Marruecos': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Flag_of_Morocco.svg/40px-Flag_of_Morocco.svg.png',
-  'Escocia': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Flag_of_Scotland.svg/40px-Flag_of_Scotland.svg.png',
-  'IslMan': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Flag_of_the_Isle_of_Mann.svg/40px-Flag_of_the_Isle_of_Mann.svg.png',
-  'Brittany': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Flag_of_Brittany.svg/40px-Flag_of_Brittany.svg.png',
-  'Inglaterra': 'https://upload.wikimedia.org/wikipedia/en/thumb/b/be/Flag_of_England.svg/40px-Flag_of_England.svg.png',
-  'Ivory Coast': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg/40px-Flag_of_C%C3%B4te_d%27Ivoire.svg.png',
-  'Norway': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Flag_of_Norway.svg/40px-Flag_of_Norway.svg.png',
-  'Euskal Herria': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Flag_of_the_Basque_Country.svg/40px-Flag_of_the_Basque_Country.svg.png',
-  'Nafarroa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Nafarroa.png',
-  'Gipuzkoa': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Gipuzkoa.png',
-  'Bizkaia': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Bizkaia.png',
-  'Araba': 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/Araba.png'
-};
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
 let jugadores = [], entrenadores = [], salidas = [];
@@ -365,10 +334,10 @@ if (temporadaSelect) {
         <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
           <span class="player-name">
-            <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
-            ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
-            ${player.pais3 ? `<img src="${flags[player.pais3]}" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
-            ${player.pais4 ? `<img src="${flags[player.pais4]}" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
+            <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
+            ${player.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
+            ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
+            ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
@@ -410,10 +379,10 @@ function renderEntrenadores() {
       <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
         <span class="player-name">
-          <img src="${flags[coach.pais]}" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
-          ${coach.pais2 ? `<img src=\"${flags[coach.pais2]}\" alt=\"flag2\" style=\"${getFlagStyle(coach.pais2)} margin-left:2px;\">` : ''}
-          ${coach.pais3 ? `<img src=\"${flags[coach.pais3]}\" alt=\"flag3\" style=\"${getFlagStyle(coach.pais3)} margin-left:2px;\">` : ''}
-          ${coach.pais4 ? `<img src=\"${flags[coach.pais4]}\" alt=\"flag4\" style=\"${getFlagStyle(coach.pais4)} margin-left:2px;\">` : ''}
+          <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${coach.pais}.png" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
+          ${coach.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${coach.pais2}.png" alt="flag2" style="${getFlagStyle(coach.pais2)} margin-left:2px;">` : ''}
+          ${coach.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${coach.pais3}.png" alt="flag3" style="${getFlagStyle(coach.pais3)} margin-left:2px;">` : ''}
+          ${coach.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${coach.pais4}.png" alt="flag4" style="${getFlagStyle(coach.pais4)} margin-left:2px;">` : ''}
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
@@ -453,10 +422,10 @@ function renderVendidos() {
       <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}_2.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
         <span class="player-name">
-          <img src="${flags[player.pais]}" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
-          ${player.pais2 ? `<img src="${flags[player.pais2]}" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
-            ${player.pais3 ? `<img src="${flags[player.pais3]}" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
-            ${player.pais4 ? `<img src="${flags[player.pais4]}" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
+          <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
+          ${player.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
+            ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
+            ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
             ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>
