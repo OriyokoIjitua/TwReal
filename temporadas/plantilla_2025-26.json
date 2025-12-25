@@ -59,7 +59,7 @@
   { "tipo": "sanse", "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "dorsal": 35, "pos": "POR" },
   { "tipo": "sanse", "name": "Balda", "fullname": "Jon Balda", "url_name": "jon_balda", "dorsal": "-", "pos": "DEF" },
   { "tipo": "sanse", "name": "P. Rodríguez", "fullname": "Peru Rodríguez", "url_name": "peru_rodriguez", "dorsal": "-", "pos": "DEF" },
-  { "tipo": "sanse", "name": "Kita", "fullname": "Kasunari Kita", "url_name": "kazunari_kita", "dorsal": "-", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Kita", "fullname": "Kazunari Kita", "url_name": "kazunari_kita", "dorsal": "-", "pos": "DEF" },
   { "tipo": "sanse", "name": "Dadie", "fullname": "Alberto Dadie", "url_name": "alberto_dadie", "dorsal": "-", "pos": "DEF" },
   { "tipo": "sanse", "name": "Agote", "fullname": "Unax Agote", "url_name": "unax_agote", "dorsal": "-", "pos": "DEF" },
   { "tipo": "sanse", "name": "Astigarraga", "fullname": "Eneko Astigarraga", "url_name": "eneko_astigarraga", "dorsal": "-", "pos": "DEF" },
