@@ -497,7 +497,7 @@
         const eligibleDorsals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 31, 33];
         
         const inicialJugadores = data.filter(p => 
-          (p.tipo === 'jugador' || p.tipo === 'salida') && 
+          (p.tipo === 'jugador' || p.tipo === 'salida' || p.tipo === 'sanse') && 
           eligibleDorsals.includes(p.dorsal) &&
           !excludeUrlNames.includes(p.url_name)
         );
@@ -672,9 +672,11 @@
       const newDorsal = document.getElementById('dorsalInput').value;
       if (newDorsal && !isNaN(newDorsal)) {
         simulationData[currentDorsalSection][currentDorsalIdx].dorsal = parseInt(newDorsal);
-        saveAndRender();
-        closeDorsalModal();
+      } else {
+        simulationData[currentDorsalSection][currentDorsalIdx].dorsal = 99;
       }
+      saveAndRender();
+      closeDorsalModal();
     }
 
     // ============= AÑADIR JUGADOR =============
@@ -747,7 +749,7 @@
       const currentPlayerNames = new Set(Object.values(simulationData).flat().map(p => p.url_name));
       
       const availablePlayers = plantillaCompleta.filter(p =>
-        (p.tipo === 'jugador' || p.tipo === 'salida') &&
+        (p.tipo === 'jugador' || p.tipo === 'salida' || p.tipo === 'sanse') &&
         !excludeUrlNames.includes(p.url_name) &&
         !currentPlayerNames.has(p.url_name)
       );
@@ -817,11 +819,11 @@
     function addCustomPlayer() {
       const nombre = document.getElementById('custom-nombre').value;
       const deportivo = document.getElementById('custom-deportivo').value;
-      const dorsal = document.getElementById('custom-dorsal').value;
+      const dorsal = document.getElementById('custom-dorsal').value || '99';
       const fotoFile = document.getElementById('custom-foto').files[0];
 
-      if (!nombre || !dorsal) {
-        alert('Completa nombre y dorsal');
+      if (!nombre) {
+        alert('Completa el nombre');
         return;
       }
 
