@@ -276,6 +276,7 @@
   <div class="sidebar">
     <a href="plantilla.html" id="menu-plantilla">Plantilla</a>
     <a href="hamaikakoa.html" id="menu-once" class="active">Crear once</a>
+    <a href="merkatuSim.html" id="menu-merkatu">Merkatu Simulaketa</a>
   </div>
   <div class="main-content">
     <div style="position:relative;">
@@ -347,7 +348,8 @@
         watermark: 'Marca de agua',
         formacion: 'Formación:',
         menuOnce: 'Crear once',
-        menuPlantilla: 'Plantilla'
+        menuPlantilla: 'Plantilla',
+        menuMerkatu: 'Simulación de Mercado'
       },
       eu: {
         filter: 'Jokalariak postuarekiko filtratu',
@@ -358,7 +360,8 @@
         watermark: 'Ur-marka',
         formacion: 'Formazioa:',
         menuOnce: 'Hamaikakoa sortu',
-        menuPlantilla: 'Taldea'
+        menuPlantilla: 'Taldea',
+        menuMerkatu: 'Merkatu Simulaketa'
       }
     };
     // Idioma actual
@@ -380,6 +383,7 @@
       // Menú lateral (usa menuTranslations para mantener consistencia con el menú del encabezado)
       document.getElementById('menu-once').textContent = menuTranslations[currentLang].once;
       document.getElementById('menu-plantilla').textContent = menuTranslations[currentLang].plantilla;
+      document.getElementById('menu-merkatu').textContent = translations[currentLang].menuMerkatu;
       const btn = document.getElementById('langBtn');
       if (btn) btn.textContent = currentLang === 'es' ? 'Eus' : 'Cast';
       // Móvil

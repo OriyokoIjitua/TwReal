@@ -212,6 +212,7 @@
   <div class="sidebar">
     <a href="plantilla.html" id="menu-plantilla" class="active">Plantilla</a>
     <a href="hamaikakoa.html" id="menu-once">Crear once</a>
+    <a href="merkatuSim.html" id="menu-merkatu">Merkatu Simulaketa</a>
   </div>
   <div class="main-content">
     <div style="display:flex; align-items:center; gap:16px; margin: 7px 0 0 32px;">
@@ -279,6 +280,7 @@ if (temporadaSelect) {
         dorsal: 'Dorsal',
         menuOnce: 'Crear once',
         menuPlantilla: 'Plantilla',
+        menuMerkatu: 'Simulación de Mercado',
         plantillaTitle: 'En plantilla',
         porterosTitle: 'Porteros',
         defensasTitle: 'Defensas',
@@ -294,6 +296,7 @@ if (temporadaSelect) {
         dorsal: 'Dortsala',
         menuOnce: 'Hamaikakoa sortu',
         menuPlantilla: 'Taldea',
+        menuMerkatu: 'Merkatu Simulaketa',
         plantillaTitle: 'Taldekideak',
         porterosTitle: 'Atezainak',
         defensasTitle: 'Atzelariak',
@@ -545,6 +548,7 @@ function renderVendidos() {
   // Actualizar menú lateral
   document.getElementById('menu-once').textContent = translations[currentLang].menuOnce;
   document.getElementById('menu-plantilla').textContent = translations[currentLang].menuPlantilla;
+  document.getElementById('menu-merkatu').textContent = translations[currentLang].menuMerkatu;
   // Actualizar títulos
   document.getElementById('plantillaTitle').textContent = translations[currentLang].plantillaTitle;
   document.getElementById('vendidosTitle').textContent = translations[currentLang].vendidosTitle;
