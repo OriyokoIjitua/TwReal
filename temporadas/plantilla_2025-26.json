@@ -54,5 +54,25 @@
   { "tipo": "salida", "name": "Magunazelaia", "fullname": "Jon Magunazelaia", "dorsal": 25, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "jon_magunazelaia", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "cancion": { "es": "Se va a Eibar xd", "eu": "Eibarrea doa xd" } },
   { "tipo": "salida", "name": "Imanol", "fullname": "Imanol Alguacil", "url_name": "imanol_alguacil", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa", "cancion": { "es": "Oriyoko ijitua.", "eu": "Oriyoko ijitua." } },
   { "tipo": "salida", "name": "Labaka", "fullname": "Mikel Labaka", "url_name": "mikel_labaka", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa", "cancion": { "es": "Muuuuuuuuuuuuu.", "eu": "Muuuuuuuuuuuuu." } },
-  { "tipo": "salida", "name": "N. Aguerd", "fullname": "Nayef Aguerd", "dorsal": 21, "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" }, "url_name": "nayef_aguerd", "pais": "Marruecos", "pais2": null, "cancion": { "es": "إيمانول ألجواسيل، شريف الغجر", "eu": "إيمانول ألجواسيل، شريف الغجر" } }
+  { "tipo": "salida", "name": "N. Aguerd", "fullname": "Nayef Aguerd", "dorsal": 21, "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" }, "url_name": "nayef_aguerd", "pais": "Marruecos", "pais2": null, "cancion": { "es": "إيمانول ألجواسيل، شريف الغجر", "eu": "إيمانول ألجواسيل، شريف الغجر" } },
+
+  { "tipo": "sanse", "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "pos": "POR" },
+  { "tipo": "sanse", "name": "Balda", "fullname": "Jon Balda", "url_name": "jon_balda", "pos": "DEF" },
+  { "tipo": "sanse", "name": "P. Rodríguez", "fullname": "Peru Rodríguez", "url_name": "peru_rodriguez", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Kita", "fullname": "Kasunari Kita", "url_name": "kazunari_kita", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Dadie", "fullname": "Alberto Dadie", "url_name": "alberto_dadie", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Agote", "fullname": "Unax Agote", "url_name": "unax_agote", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Astigarraga", "fullname": "Eneko Astigarraga", "url_name": "eneko_astigarraga", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Diaz de Alda", "fullname": "Ekain Diaz de Alda", "url_name": "ekain_diaz_de_alda", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Garro", "fullname": "Jon Garro", "url_name": "jon_garro", "pos": "DEF" },
+  { "tipo": "sanse", "name": "Calderon", "fullname": "Iker Calderon", "url_name": "iker_calderon", "pos": "DEF" },
+  { "tipo": "sanse", "name": "G. Gorosabel", "fullname": "Gorka Gorosabel", "url_name": "gorka_gorosabel", "pos": "MED" },
+  { "tipo": "sanse", "name": "Eceizabarrena", "fullname": "Jon Eceizabarrena", "url_name": "jon_eceizabarrena", "pos": "MED" },
+  { "tipo": "sanse", "name": "M. Rodríguez", "fullname": "Mikel Rodríguez", "url_name": "mikel_rodriguez", "pos": "MED" },
+  { "tipo": "sanse", "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "pos": "MED" },
+  { "tipo": "sanse", "name": "Orobengoa", "fullname": "Ekain Orobengoa", "url_name": "ekain_orobengoa", "pos": "DEL" },
+  { "tipo": "sanse", "name": "Ochieng", "fullname": "Job Ochieng", "url_name": "job_ochieng", "pos": "DEL" },
+  { "tipo": "sanse", "name": "Osazuwa", "fullname": "Sidney Osazuwa", "url_name": "sidney_osazuwa", "pos": "DEL" },
+  { "tipo": "sanse", "name": "Ramirez", "fullname": "Darío Ramirez", "url_name": "dario_ramirez", "pos": "DEL" },
+  { "tipo": "sanse", "name": "J. Gorosabel", "fullname": "Jakes Gorosabel", "url_name": "jakes_gorosabel", "pos": "DEL" }
 ]
