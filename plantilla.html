@@ -336,7 +336,8 @@ if (equipoSelect) {
         vendidosTitle: 'Vendidos/Cedidos',
         transferido: 'Transferido',
         cedido: 'Cedido',
-        season: 'Temporada:'
+        season: 'Temporada:',
+        team: 'Equipo:'
       },
       eu: {
         dorsal: 'Dortsala',
@@ -352,7 +353,8 @@ if (equipoSelect) {
         vendidosTitle: 'Salduta/Utzita',
         transferido: 'Salduta',
         cedido: 'Utzita',
-        season: 'Denboraldia:'
+        season: 'Denboraldia:',
+        team: 'Taldea:'
       }
     };
     let currentLang = localStorage.getItem('lang') || 'eu';
@@ -634,6 +636,10 @@ function renderVendidos() {
   // Cambiar label temporada
   if (document.getElementById('seasonLabel')) {
     document.getElementById('seasonLabel').textContent = translations[currentLang].season;
+  }
+  // Cambiar label equipo
+  if (document.getElementById('equipoLabel')) {
+    document.getElementById('equipoLabel').textContent = translations[currentLang].team;
   }
   renderPlayers();
   renderEntrenadores();
