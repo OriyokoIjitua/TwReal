@@ -487,7 +487,7 @@ function renderVendidos() {
     return;
   }
   
-  container.style.display = 'block';
+  container.style.display = 'grid';
   title.style.display = 'block';
   container.innerHTML = '';
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
@@ -501,9 +501,9 @@ function renderVendidos() {
         <span class="player-name">
           <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
           ${player.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
-            ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
-            ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
-            ${player.name}
+          ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
+          ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
+          ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>
         <span class="player-dorsal">${player.status[currentLang]}</span>
