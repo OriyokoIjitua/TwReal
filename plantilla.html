@@ -226,6 +226,11 @@
         <option value="2021-22">2021-22</option>
   -->
       </select>
+      <label for="equipoSelect" id="equipoLabel" style="color:#fff; font-weight:bold; font-size:1.1em; margin-left:24px; display:none;">Equipo:</label>
+      <select id="equipoSelect" style="font-size:1em; border-radius:6px; padding:4px 12px; display:none;">
+        <option value="real" selected>Real Sociedad</option>
+        <option value="sanse">Sanse</option>
+      </select>
     </div>
     <h2 id="plantillaTitle" style="color:#fff; font-weight:bold; margin-top:20px; margin-left:32px; margin-bottom:0px;"></h2>
   <h2 id="porterosTitle" style="color:#fff; font-weight:bold; font-size:1.5em; margin-left:40px; margin-top:20px; margin-bottom:10px;"></h2>
@@ -246,14 +251,39 @@
 
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
-let jugadores = [], entrenadores = [], salidas = [];
+let jugadores = [], entrenadores = [], salidas = [], sanseJugadores = [], sanseEntrenadores = [];
+let currentTeam = 'real'; // 'real' o 'sanse'
 
 async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
   const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => r.json());
-  jugadores = data.filter(ind => ind.tipo === 'jugador');
+  
+  // Jugadores del Real Sociedad (tipo: 'jugador' o 'dual')
+  jugadores = data.filter(ind => ind.tipo === 'jugador' || (ind.tipo === 'dual'));
+  
+  // Entrenadores del Real Sociedad (tipo: 'entrenador')
   entrenadores = data.filter(ind => ind.tipo === 'entrenador');
+  
+  // Salidas
   salidas = data.filter(ind => ind.tipo === 'salida');
+  
+  // Jugadores Sanse (tipo: 'sanse' o 'dual')
+  sanseJugadores = data.filter(ind => ind.tipo === 'sanse' || (ind.tipo === 'dual')).sort((a, b) => a.dorsal2 - b.dorsal2);
+  
+  // Entrenadores Sanse (tipo: 'entrenador-sanse')
+  sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
+  
+  // Mostrar/ocultar desplegable de equipo
+  const equipoSelect = document.getElementById('equipoSelect');
+  const equipoLabel = document.getElementById('equipoLabel');
+  if (temporada === '2025-26') {
+    equipoSelect.style.display = 'block';
+    equipoLabel.style.display = 'block';
+  } else {
+    equipoSelect.style.display = 'none';
+    equipoLabel.style.display = 'none';
+  }
+  
   renderPlayers();
   renderEntrenadores();
   renderVendidos();
@@ -263,8 +293,12 @@ async function cargarDatosTemporada(temporada) {
 
 // Llama a cargarDatosTemporada cuando cambie el selector de temporada
 const temporadaSelect = document.getElementById('seasonSelect');
+const equipoSelect = document.getElementById('equipoSelect');
+
 if (temporadaSelect) {
   temporadaSelect.addEventListener('change', function() {
+    currentTeam = 'real'; // Reset a Real Sociedad cuando cambias temporada
+    if (equipoSelect) equipoSelect.value = 'real';
     cargarDatosTemporada(this.value);
   });
   // Cargar la temporada inicial
@@ -272,6 +306,18 @@ if (temporadaSelect) {
 } else {
   // Si no hay selector, cargar por defecto 2025
   cargarDatosTemporada('2025-26');
+}
+
+// Event listener para el desplegable de equipo
+if (equipoSelect) {
+  equipoSelect.addEventListener('change', function() {
+    currentTeam = this.value;
+    renderPlayers();
+    renderEntrenadores();
+    renderVendidos();
+    setupPlayButtons();
+    setupEasterEgg();
+  });
 }
 
     // Traducciones
@@ -326,13 +372,20 @@ if (temporadaSelect) {
   ];
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
+  const isSanse = currentTeam === 'sanse';
+  const playersToRender = isSanse ? sanseJugadores : jugadores;
+  
     posList.forEach(({ pos, containerId }) => {
     const container = document.getElementById(containerId);
     container.innerHTML = '';
-    jugadores.forEach((player, idx) => {
+    playersToRender.forEach((player, idx) => {
       if (player.pos !== pos) return;
       const card = document.createElement('div');
       card.className = 'player-card';
+      
+      // Usar dorsal2 si es Sanse, dorsal si es Real
+      const dorsalDisplay = isSanse && player.dorsal2 ? player.dorsal2 : player.dorsal;
+      
       card.innerHTML = `
         <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
@@ -344,9 +397,9 @@ if (temporadaSelect) {
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
-          <span class="player-dorsal">${player.dorsal ? translations[currentLang].dorsal + ': ' + player.dorsal : ''}</span>
+          <span class="player-dorsal">${dorsalDisplay ? translations[currentLang].dorsal + ': ' + dorsalDisplay : ''}</span>
         </div>
-        ${is202526 ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+        ${is202526 && !isSanse ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
           <button class=\"play-btn\" data-idx=\"${idx}\" style=\"margin-right: -20px;\">▶️</button>
           <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
         </div>` : ''}
@@ -375,9 +428,16 @@ function renderEntrenadores() {
   container.innerHTML = '';
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
-  entrenadores.forEach((coach, idx) => {
+  const isSanse = currentTeam === 'sanse';
+  const entrenadoresRender = isSanse ? sanseEntrenadores : entrenadores;
+  
+  entrenadoresRender.forEach((coach, idx) => {
     const card = document.createElement('div');
     card.className = 'player-card';
+    
+    // Para Sanse usar 'status', para Real Sociedad usar 'rol'
+    const rol = isSanse ? coach.status[currentLang] : coach.rol[currentLang];
+    
     card.innerHTML = `
       <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
@@ -389,9 +449,9 @@ function renderEntrenadores() {
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
-        <span class="player-dorsal">${coach.rol[currentLang]}</span>
+        <span class="player-dorsal">${rol}</span>
       </div>
-      ${is202526 ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+      ${is202526 && !isSanse ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
         <button class=\"play-btn\" data-idx=\"e${idx}\" style=\"margin-right: -20px;\">▶️</button>
         <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
       </div>` : ''}
@@ -415,6 +475,18 @@ function renderEntrenadores() {
 
 function renderVendidos() {
   const container = document.getElementById('vendidosContainer');
+  const title = document.getElementById('vendidosTitle');
+  const isSanse = currentTeam === 'sanse';
+  
+  // Ocultar la sección de salidas en modo Sanse
+  if (isSanse) {
+    container.style.display = 'none';
+    title.style.display = 'none';
+    return;
+  }
+  
+  container.style.display = 'block';
+  title.style.display = 'block';
   container.innerHTML = '';
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
