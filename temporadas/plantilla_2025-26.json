@@ -72,6 +72,7 @@
   { "tipo": "sanse", "name": "Eceizabarrena", "fullname": "Jon Eceizabarrena", "url_name": "jon_eceizabarrena", "dorsal": "-", "dorsal2": 30, "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "name": "M. Rodríguez", "fullname": "Mikel Rodríguez", "url_name": "mikel_rodriguez", "dorsal": "-", "dorsal2": 8, "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "dorsal": "-", "dorsal2": 31, "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "sanse", "name": "Díaz", "fullname": "Dani Díaz", "url_name": "dani_diaz", "dorsal": "-", "dorsal2": 7, "pos": "DEL", "pais": "España", "pais2": null },
   { "tipo": "sanse", "name": "Orobengoa", "fullname": "Ekain Orobengoa", "url_name": "ekain_orobengoa", "dorsal": "-", "dorsal2": 9, "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "name": "Ochieng", "fullname": "Job Ochieng", "url_name": "job_ochieng", "dorsal": "-", "dorsal2": 11, "pos": "DEL", "pais": "Kenya", "pais2": null },
   { "tipo": "sanse", "name": "Osazuwa", "fullname": "Sidney Osazuwa", "url_name": "sidney_osazuwa", "dorsal": "-", "dorsal2": 20, "pos": "DEL", "pais": "España", "pais2": "Nigeria" },
