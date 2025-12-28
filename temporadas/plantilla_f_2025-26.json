@@ -31,9 +31,9 @@
   
   { "tipo": "salida", "name": "Izarne", "fullname": "Izarne Sarasola", "dorsal": 3, "status": { "es": "Transferido", "eu": "Salduta" }, "url_name": "izarne_sarasola", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida", "name": "Viles", "fullname": "Elene Viles", "dorsal": 14, "status": { "es": "Transferido", "eu": "Salduta" }, "url_name": "elene_viles", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "salida", "name": "Sánchez Vera", "fullname": "José Luis Sánchez Vera", "status": { "es": "Fin de contrato acordado", "eu": "Adostutako kontratu amaiera" }, "url_name": "jose_luis_sanchez_vera", "pais": "España", "pais2": null },
-  { "tipo": "salida", "name": "O. Santana", "fullname": "Olatz Santana", "dorsal": 13, "status": { "es": "Fin de contrato acordado", "eu": "Adostutako kontratu amaiera" }, "url_name": "olatz_santana", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "salida", "name": "Sánchez Vera", "fullname": "José Luis Sánchez Vera", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "jose_luis_sanchez_vera", "pais": "España", "pais2": null },
   { "tipo": "salida", "name": "Lete", "fullname": "Elene Lete", "dorsal": 1, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "elene_lete", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "salida", "name": "O. Santana", "fullname": "Olatz Santana", "dorsal": 13, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "olatz_santana", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida", "name": "Amaiur", "fullname": "Amaiur Sarriegi", "dorsal": 7, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "amaiur_sarriegi", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida", "name": "Franssi", "fullname": "Sanni Franssi", "dorsal": 9, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "sanni_franssi", "pais": "Finlandia", "pais2": null },
   { "tipo": "salida", "name": "Vanegas", "fullname": "Manuela Vanegas", "dorsal": 2, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "manuela_vanegas", "pais": "Colombia", "pais2": null },
