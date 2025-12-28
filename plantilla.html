@@ -253,7 +253,7 @@
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
 let jugadores = [], entrenadores = [], salidas = [], sanseJugadores = [], sanseEntrenadores = [], fJugadores = [], fEntrenadores = [], fSalidas = [];
-let currentTeam = 'real'; // 'real', 'sanse' o 'f'
+let currentTeam = localStorage.getItem('team') || 'real'; // 'real', 'sanse' o 'f'
 
 async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
@@ -326,6 +326,7 @@ if (temporadaSelect) {
 if (equipoSelect) {
   equipoSelect.addEventListener('change', function() {
     currentTeam = this.value;
+    localStorage.setItem('team', currentTeam); // Guardar equipo seleccionado
     renderPlayers();
     renderEntrenadores();
     renderVendidos();
