@@ -22,9 +22,9 @@
   { "tipo": "jugador", "dorsal": 22, "name": "Cahynová", "fullname": "Klára Cahynová", "url_name": "klara_cahynova", "pos": "MED", "pais": "Chequia", "pais2": null },
   { "tipo": "jugador", "dorsal": 23, "name": "Edna", "fullname": "Edna Imade", "url_name": "edna_imade", "pos": "DEL", "pais": "Marruecos", "pais2": "Nigeria", "pais3": "España" },
   { "tipo": "jugador", "dorsal": 24, "name": "Aiara", "fullname": "Aiara Agirrezabala", "url_name": "aiara_agirrezabala", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "jugador", "dorsal": 26, "name": "Zunzunegi", "fullname": "Nahia Zunzunegi", "url_name": "nahia_zunzunegi", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "jugador", "dorsal": 27, "name": "Isasisasmendi", "fullname": "Ane Isasisasmendi", "url_name": "ane_isasisasmendi", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "jugador", "dorsal": 31, "name": "Ugartemendia", "fullname": "Ainara Ugartemendia", "url_name": "ainara_ugartemendia", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "dual", "dorsal": 26, "name": "Zunzunegi", "fullname": "Nahia Zunzunegi", "url_name": "nahia_zunzunegi", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "dual", "dorsal": 27, "name": "Isasisasmendi", "fullname": "Ane Isasisasmendi", "url_name": "ane_isasisasmendi", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "dual", "dorsal": 31, "name": "Ugartemendia", "fullname": "Ainara Ugartemendia", "url_name": "ainara_ugartemendia", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
 
 
 
