@@ -327,6 +327,14 @@
     <a href="merkatuSim.html" id="menu-merkatu" class="active">Merkatu simulaketa</a>
   </div>
   <div class="main-content">
+    <div style="display:flex; align-items:center; gap:16px; margin: 7px 0 0 32px;">
+      <label for="equipoSelect" id="equipoLabel" style="color:#fff; font-weight:bold; font-size:1.1em;">Equipo:</label>
+      <select id="equipoSelect" style="font-size:1em; border-radius:6px; padding:4px 12px;">
+        <option value="real" selected>Real Sociedad</option>
+        <option value="f">Real Sociedad F</option>
+        <option value="sanse">Sanse</option>
+      </select>
+    </div>
     <h1 id="pageTitle" style="color:#fff; font-weight:bold; margin-top:20px; margin-left:32px; margin-bottom:0;"></h1>
     <button id="resetBtn" style="background:#e74c3c; color:#fff; border-radius:8px; border:none; font-weight:bold; font-size:0.85em; padding:6px 14px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,0.12); margin-left:32px; margin-top:12px; margin-bottom:24px;">Deshacer cambios</button>
     <h2 id="porterosTitle" style="color:#fff; font-weight:bold; font-size:1.5em; margin-left:40px; margin-top:20px; margin-bottom:10px;"></h2>
@@ -367,15 +375,27 @@
 
   <script>
     // ============= GESTIÓN DE DATOS =============
-    let simulationData = JSON.parse(localStorage.getItem('merkatuSim')) || {
-      porteros: [],
-      defensas: [],
-      centrocampistas: [],
-      delanteros: [],
-      salidas: []
+    // Estructura para guardar datos separados por equipo
+    const getSimulationDataForTeam = (team) => {
+      const stored = localStorage.getItem(`merkatuSim_${team}`);
+      return stored ? JSON.parse(stored) : {
+        porteros: [],
+        defensas: [],
+        centrocampistas: [],
+        delanteros: [],
+        salidas: []
+      };
     };
+    
+    const saveSimulationDataForTeam = (team, data) => {
+      localStorage.setItem(`merkatuSim_${team}`, JSON.stringify(data));
+    };
+    
+    let simulationData = getSimulationDataForTeam(localStorage.getItem('team') || 'real');
     let plantillaCompleta = [];
+    let plantillaFCompleta = [];
     let currentLang = localStorage.getItem('lang') || 'eu';
+    let currentTeam = localStorage.getItem('team') || 'real'; // 'real', 'sanse' o 'f'
     let currentDorsalSection = null;
     let currentDorsalIdx = null;
 
@@ -429,6 +449,7 @@
         menuPlantilla: 'Plantilla',
         menuOnce: 'Crear once',
         menuMerkatu: 'Simulación de mercado',
+        team: 'Equipo:',
         mover: 'Mover a...',
         eliminar: 'Eliminar',
         cambiarDorsal: 'Cambiar dorsal',
@@ -462,12 +483,13 @@
         menuPlantilla: 'Taldea',
         menuOnce: 'Hamaikakoa sortu',
         menuMerkatu: 'Merkatu simulaketa',
+        team: 'Taldea:',
         mover: 'Mugitu...',
         eliminar: 'Ezabatu',
         cambiarDorsal: 'Dortsala aldatu',
         deReal: 'Realekoak',
         personalizado: 'Pertsonalizatua',
-        anadirJugador: 'Jokalaria gehitu',
+        anadirJugadora: 'Jokalaria gehitu',
         nombre: 'Izena',
         nombreDeportivo: 'Kirol-izena',
         foto: 'Argazkia',
@@ -488,33 +510,77 @@
 
     // ============= CARGA INICIAL =============
     async function loadPlantilla() {
+      // Cargar plantilla Real Sociedad
       const data = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_2025-26.json').then(r => r.json());
       plantillaCompleta = data;
       
-      // Inicializar con jugadores elegibles
-      if (!localStorage.getItem('merkatuSimInitialized')) {
+      // Cargar plantilla F
+      try {
+        const dataF = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_f_2025-26.json').then(r => r.json());
+        plantillaFCompleta = dataF;
+      } catch (err) {
+        console.error('Error cargando plantilla_f_2025-26.json:', err);
+      }
+      
+      // Reinicializar datos según el equipo seleccionado
+      reinitializeByTeam();
+      
+      updateLangBtn();
+      renderAllSections();
+    }
+    
+    function reinitializeByTeam() {
+      // Recuperar datos guardados del equipo actual
+      const savedData = getSimulationDataForTeam(currentTeam);
+      
+      // Si hay datos guardados, usarlos; si no, inicializar con datos por defecto
+      if (savedData.porteros.length > 0 || savedData.defensas.length > 0 || 
+          savedData.centrocampistas.length > 0 || savedData.delanteros.length > 0 || 
+          savedData.salidas.length > 0) {
+        simulationData = savedData;
+      } else {
+        // Inicializar con datos por defecto si no hay guardados
+        simulationData = {
+          porteros: [],
+          defensas: [],
+          centrocampistas: [],
+          delanteros: [],
+          salidas: []
+        };
+        
         const excludeUrlNames = ['jon_ansotegi', 'imanol_agirretxe', 'sergio_francisco', 'iosu_rivas', 'imanol_alguacil', 'mikel_labaka'];
-        const eligibleDorsals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 31, 33];
+        let playersToLoad = [];
+        let salidasToLoad = [];
         
-        const inicialJugadores = data.filter(p => 
-          (p.tipo === 'jugador' || p.tipo === 'salida' || p.tipo === 'sanse') && 
-          eligibleDorsals.includes(p.dorsal) &&
-          !excludeUrlNames.includes(p.url_name)
-        );
+        if (currentTeam === 'sanse') {
+          // Sanse: solo 'dual' y 'sanse' (excluir 'jugador')
+          playersToLoad = plantillaCompleta.filter(p => (p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name));
+          salidasToLoad = []; // No hay salidas en Sanse
+        } else if (currentTeam === 'f') {
+          // Real Sociedad F: solo tipo 'jugador' inicialmente (sin 'dual', 'salida' ni entrenador)
+          playersToLoad = plantillaFCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name));
+          salidasToLoad = []; // No cargar salidas al iniciar
+        } else {
+          // Real Sociedad (default): solo 'jugador' al iniciar (salidas no cargadas pero seleccionables)
+          playersToLoad = plantillaCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name));
+          salidasToLoad = []; // No cargar salidas al iniciar
+        }
         
-        inicialJugadores.forEach(player => {
+        // Agregar jugadores
+        playersToLoad.forEach(player => {
           const posMap = { 'POR': 'porteros', 'DEF': 'defensas', 'MED': 'centrocampistas', 'DEL': 'delanteros' };
-          if (player.tipo === 'jugador' && posMap[player.pos]) {
+          if (posMap[player.pos]) {
             simulationData[posMap[player.pos]].push({ ...player, tempId: Date.now() + Math.random() });
           }
         });
         
-        localStorage.setItem('merkatuSim', JSON.stringify(simulationData));
-        localStorage.setItem('merkatuSimInitialized', 'true');
+        // Agregar salidas
+        salidasToLoad.forEach(player => {
+          simulationData.salidas.push({ ...player, tempId: Date.now() + Math.random() });
+        });
+        
+        saveSimulationDataForTeam(currentTeam, simulationData);
       }
-      
-      updateLangBtn();
-      renderAllSections();
     }
 
     // ============= RENDERIZADO =============
@@ -554,8 +620,12 @@
       const card = document.createElement('div');
       card.className = 'player-card';
       
-      // Determinar qué imagen usar
-      let imgSrc = `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/2025-26/${player.url_name}.jpg`;
+      // Determinar qué imagen usar según el equipo
+      let imgFolder = '2025-26';
+      if (currentTeam === 'f') {
+        imgFolder = 'f_2025-26';
+      }
+      let imgSrc = `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${player.url_name}.jpg`;
       if (player.customImageId) {
         getImageFromDB(player.customImageId).then(imageData => {
           if (imageData) {
@@ -565,13 +635,16 @@
         });
       }
       
+      // Usar dorsal2 para Sanse, dorsal para otros
+      const dorsalDisplay = currentTeam === 'sanse' && player.dorsal2 ? player.dorsal2 : player.dorsal;
+      
       card.innerHTML = `
         <img class="player-img" src="${imgSrc}" 
              alt="${player.name}" onerror="this.src='https://via.placeholder.com/72?text=${player.name}'">
         <div class="player-info">
           <span class="player-name">${player.name}</span>
           <span class="player-fullname">${player.fullname || ''}</span>
-          <span class="player-dorsal">${translations[currentLang].dorsal}: ${player.dorsal}</span>
+          <span class="player-dorsal">${translations[currentLang].dorsal}: ${dorsalDisplay}</span>
         </div>
         <button class="menu-btn" onclick="toggleContextMenu(event, '${sectionKey}', ${idx})">⋮</button>
         <div class="context-menu" id="menu-${sectionKey}-${idx}" style="display:none;">
@@ -748,11 +821,50 @@
       const excludeUrlNames = ['jon_ansotegi', 'imanol_agirretxe', 'sergio_francisco', 'iosu_rivas', 'imanol_alguacil', 'mikel_labaka'];
       const currentPlayerNames = new Set(Object.values(simulationData).flat().map(p => p.url_name));
       
-      const availablePlayers = plantillaCompleta.filter(p =>
-        (p.tipo === 'jugador' || p.tipo === 'salida' || p.tipo === 'sanse') &&
-        !excludeUrlNames.includes(p.url_name) &&
-        !currentPlayerNames.has(p.url_name)
-      );
+      let availablePlayers = [];
+      let selectablePlayers = new Set();
+      
+      if (currentTeam === 'sanse') {
+        // Sanse: solo 'sanse' y 'dual' (excluir 'jugador' completamente)
+        availablePlayers = plantillaCompleta.filter(p =>
+          (p.tipo === 'sanse' || p.tipo === 'dual') &&
+          !excludeUrlNames.includes(p.url_name) &&
+          !currentPlayerNames.has(p.url_name)
+        );
+        plantillaCompleta.forEach(p => {
+          if ((p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name)) {
+            selectablePlayers.add(p.url_name);
+          }
+        });
+      } else if (currentTeam === 'f') {
+        // F: disponibles son todos del JSON de F excepto jose_luis_sanchez_vera
+        const excludeF = ['jose_luis_sanchez_vera'];
+        availablePlayers = plantillaFCompleta.filter(p =>
+          !excludeUrlNames.includes(p.url_name) &&
+          !currentPlayerNames.has(p.url_name) &&
+          p.tipo !== 'entrenador' &&
+          !excludeF.includes(p.url_name)
+        );
+        plantillaFCompleta.forEach(p => {
+          if ((p.tipo === 'jugador' || p.tipo === 'dual' || p.tipo === 'salida') && 
+              !excludeUrlNames.includes(p.url_name) &&
+              !excludeF.includes(p.url_name)) {
+            selectablePlayers.add(p.url_name);
+          }
+        });
+      } else {
+        // Real Sociedad: disponibles son 'jugador', 'salida' y 'dual' (este es seleccionable aunque no cargado)
+        availablePlayers = plantillaCompleta.filter(p =>
+          (p.tipo === 'jugador' || p.tipo === 'salida' || p.tipo === 'sanse' || p.tipo === 'dual') &&
+          !excludeUrlNames.includes(p.url_name) &&
+          !currentPlayerNames.has(p.url_name)
+        );
+        plantillaCompleta.forEach(p => {
+          if ((p.tipo === 'jugador' || p.tipo === 'salida' || p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name)) {
+            selectablePlayers.add(p.url_name);
+          }
+        });
+      }
 
       if (availablePlayers.length === 0) {
         container.innerHTML = `<p style="color:#666;">${translations[currentLang].nuevo}</p>`;
@@ -778,9 +890,14 @@
         );
         filtered.forEach(player => {
           const item = document.createElement('div');
-          item.className = 'modal-search-item';
+          const isSelectable = selectablePlayers.has(player.url_name);
+          item.className = 'modal-search-item' + (isSelectable ? '' : ' disabled');
+          item.style.opacity = isSelectable ? '1' : '0.5';
+          item.style.cursor = isSelectable ? 'pointer' : 'not-allowed';
           item.innerHTML = `<strong>${player.name}</strong><br><small>${player.fullname}</small>`;
-          item.onclick = () => addPlayerToSimulation(player);
+          if (isSelectable) {
+            item.onclick = () => addPlayerToSimulation(player);
+          }
           resultsList.appendChild(item);
         });
       }
@@ -870,15 +987,15 @@
 
     // ============= GUARDADO Y ACTUALIZACIÓN =============
     function saveAndRender() {
-      localStorage.setItem('merkatuSim', JSON.stringify(simulationData));
+      saveSimulationDataForTeam(currentTeam, simulationData);
       renderAllSections();
       document.querySelectorAll('.context-menu').forEach(m => m.style.display = 'none');
       document.querySelectorAll('.submenu').forEach(m => m.style.display = 'none');
     }
 
     function resetSimulation() {
-      localStorage.removeItem('merkatuSim');
-      localStorage.removeItem('merkatuSimInitialized');
+      // Limpiar datos del equipo actual
+      localStorage.removeItem(`merkatuSim_${currentTeam}`);
       location.reload();
     }
 
@@ -899,10 +1016,19 @@
       document.getElementById('dorsalTitle').textContent = translations[currentLang].cambiarDorsal;
       document.getElementById('dorsalCancelBtn').textContent = translations[currentLang].cancelar;
       document.getElementById('dorsalSaveBtn').textContent = translations[currentLang].guardar;
+      // Actualizar label de equipo
+      if (document.getElementById('equipoLabel')) {
+        document.getElementById('equipoLabel').textContent = translations[currentLang].team;
+      }
       if (document.getElementById('dorsalTitle')) {
         document.getElementById('dorsalTitle').textContent = translations[currentLang].cambiarDorsal;
         document.getElementById('dorsalCancelBtn').textContent = translations[currentLang].cancelar;
         document.getElementById('dorsalSaveBtn').textContent = translations[currentLang].guardar;
+      }
+      // Sincronizar selector de equipo
+      const equipoSelect = document.getElementById('equipoSelect');
+      if (equipoSelect) {
+        equipoSelect.value = currentTeam;
       }
       renderAllSections();
     }
@@ -938,6 +1064,21 @@
     document.getElementById('dorsalInput').addEventListener('keypress', function(e) {
       if (e.key === 'Enter') saveDorsal();
     });
+    
+    // Event listener para el selector de equipo
+    const equipoSelect = document.getElementById('equipoSelect');
+    if (equipoSelect) {
+      equipoSelect.addEventListener('change', function() {
+        const previousTeam = currentTeam;
+        // Guardar estado del equipo anterior antes de cambiar
+        saveSimulationDataForTeam(previousTeam, simulationData);
+        
+        currentTeam = this.value;
+        localStorage.setItem('team', currentTeam);
+        reinitializeByTeam();
+        renderAllSections();
+      });
+    }
 
     // Iniciar
     initDB();
