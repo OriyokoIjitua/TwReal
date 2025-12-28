@@ -230,6 +230,7 @@
       <select id="equipoSelect" style="font-size:1em; border-radius:6px; padding:4px 12px; display:none;">
         <option value="real" selected>Real Sociedad</option>
         <option value="sanse">Sanse</option>
+        <option value="f">Real Sociedad F</option>
       </select>
     </div>
     <h2 id="plantillaTitle" style="color:#fff; font-weight:bold; margin-top:20px; margin-left:32px; margin-bottom:0px;"></h2>
@@ -251,8 +252,8 @@
 
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
-let jugadores = [], entrenadores = [], salidas = [], sanseJugadores = [], sanseEntrenadores = [];
-let currentTeam = 'real'; // 'real' o 'sanse'
+let jugadores = [], entrenadores = [], salidas = [], sanseJugadores = [], sanseEntrenadores = [], fJugadores = [], fEntrenadores = [], fSalidas = [];
+let currentTeam = 'real'; // 'real', 'sanse' o 'f'
 
 async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
@@ -272,6 +273,18 @@ async function cargarDatosTemporada(temporada) {
   
   // Entrenadores Sanse (tipo: 'entrenador-sanse')
   sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
+  
+  // Cargar datos del equipo F si es 2025-26
+  if (temporada === '2025-26') {
+    try {
+      const dataF = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_f_2025-26.json`).then(r => r.json());
+      fJugadores = dataF.filter(ind => ind.tipo === 'jugador');
+      fEntrenadores = dataF.filter(ind => ind.tipo === 'entrenador');
+      fSalidas = dataF.filter(ind => ind.tipo === 'salida');
+    } catch (err) {
+      console.error('Error cargando plantilla_f_2025-26.json:', err);
+    }
+  }
   
   // Mostrar/ocultar desplegable de equipo
   const equipoSelect = document.getElementById('equipoSelect');
@@ -375,7 +388,17 @@ if (equipoSelect) {
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   const isSanse = currentTeam === 'sanse';
-  const playersToRender = isSanse ? sanseJugadores : jugadores;
+  const isF = currentTeam === 'f';
+  
+  let playersToRender = jugadores;
+  let imgFolder = temporadaCarpeta;
+  
+  if (isSanse) {
+    playersToRender = sanseJugadores;
+  } else if (isF) {
+    playersToRender = fJugadores;
+    imgFolder = 'f_2025-26';
+  }
   
     posList.forEach(({ pos, containerId }) => {
     const container = document.getElementById(containerId);
@@ -385,11 +408,11 @@ if (equipoSelect) {
       const card = document.createElement('div');
       card.className = 'player-card';
       
-      // Usar dorsal2 si es Sanse, dorsal si es Real
+      // Usar dorsal2 si es Sanse, dorsal si es Real o F
       const dorsalDisplay = isSanse && player.dorsal2 ? player.dorsal2 : player.dorsal;
       
       card.innerHTML = `
-        <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
+        <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
           <span class="player-name">
             <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
@@ -401,7 +424,7 @@ if (equipoSelect) {
           <span class="player-fullname">${player.fullname}</span>
           <span class="player-dorsal">${dorsalDisplay ? translations[currentLang].dorsal + ': ' + dorsalDisplay : ''}</span>
         </div>
-        ${is202526 && !isSanse ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+        ${is202526 && !isSanse && !isF ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
           <button class=\"play-btn\" data-idx=\"${idx}\" style=\"margin-right: -20px;\">▶️</button>
           <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
         </div>` : ''}
@@ -431,17 +454,27 @@ function renderEntrenadores() {
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   const isSanse = currentTeam === 'sanse';
-  const entrenadoresRender = isSanse ? sanseEntrenadores : entrenadores;
+  const isF = currentTeam === 'f';
+  
+  let entrenadoresRender = entrenadores;
+  let imgFolder = temporadaCarpeta;
+  
+  if (isSanse) {
+    entrenadoresRender = sanseEntrenadores;
+  } else if (isF) {
+    entrenadoresRender = fEntrenadores;
+    imgFolder = 'f_2025-26';
+  }
   
   entrenadoresRender.forEach((coach, idx) => {
     const card = document.createElement('div');
     card.className = 'player-card';
     
-    // Para Sanse usar 'status', para Real Sociedad usar 'rol'
-    const rol = isSanse ? coach.status[currentLang] : coach.rol[currentLang];
+    // Para Sanse usar 'status', para Real Sociedad y F usar 'rol'
+    const rol = coach.rol[currentLang];
     
     card.innerHTML = `
-      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
+      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
         <span class="player-name">
           <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${coach.pais}.png" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
@@ -453,7 +486,7 @@ function renderEntrenadores() {
         <span class="player-fullname">${coach.fullname}</span>
         <span class="player-dorsal">${rol}</span>
       </div>
-      ${is202526 && !isSanse ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+      ${is202526 && !isSanse && !isF ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
         <button class=\"play-btn\" data-idx=\"e${idx}\" style=\"margin-right: -20px;\">▶️</button>
         <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
       </div>` : ''}
@@ -479,6 +512,9 @@ function renderVendidos() {
   const container = document.getElementById('vendidosContainer');
   const title = document.getElementById('vendidosTitle');
   const isSanse = currentTeam === 'sanse';
+  const isF = currentTeam === 'f';
+  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
+  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   
   // Ocultar la sección de salidas en modo Sanse
   if (isSanse) {
@@ -490,13 +526,17 @@ function renderVendidos() {
   container.style.display = 'grid';
   title.style.display = 'block';
   container.innerHTML = '';
-  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
-  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
-  salidas.forEach((player, idx) => {
+  let imgFolder = temporadaCarpeta;
+  let salidasToRender = salidas;
+  if (isF) {
+    imgFolder = 'f_2025-26';
+    salidasToRender = fSalidas;
+  }
+  salidasToRender.forEach((player, idx) => {
     const card = document.createElement('div');
     card.className = 'player-card';
     card.innerHTML = `
-      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${temporadaCarpeta}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
+      <img class="player-img" src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
         <span class="player-name">
           <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
@@ -508,7 +548,7 @@ function renderVendidos() {
         <span class="player-fullname">${player.fullname}</span>
         <span class="player-dorsal">${player.status[currentLang]}</span>
       </div>
-      ${is202526 ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+      ${is202526 && !isF ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
         <button class=\"play-btn\" data-idx=\"v${idx}\" style=\"margin-right: -20px;\">▶️</button>
         <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
       </div>` : ''}
@@ -570,14 +610,20 @@ function renderVendidos() {
         btn.onclick = function() {
           let idx = btn.getAttribute('data-idx');
           let player, isVendido = false, isEntrenador = false;
+          
+          // Usar los datos correctos según el equipo seleccionado
+          let playersToUse = currentTeam === 'sanse' ? sanseJugadores : (currentTeam === 'f' ? fJugadores : jugadores);
+          let entrenadoresUse = currentTeam === 'sanse' ? sanseEntrenadores : (currentTeam === 'f' ? fEntrenadores : entrenadores);
+          let salidasUse = currentTeam === 'f' ? fSalidas : salidas;
+          
             if (idx.startsWith('v')) {
-              player = salidas[parseInt(idx.slice(1))];
+              player = salidasUse[parseInt(idx.slice(1))];
               isVendido = true;
             } else if (idx.startsWith('e')) {
-              player = entrenadores[parseInt(idx.slice(1))];
+              player = entrenadoresUse[parseInt(idx.slice(1))];
               isEntrenador = true;
             } else {
-              player = jugadores[parseInt(idx)];
+              player = playersToUse[parseInt(idx)];
           }
           let url = getSongUrl(player, isVendido || isEntrenador);
           if (!url) return;
