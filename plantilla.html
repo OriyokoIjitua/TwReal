@@ -259,8 +259,8 @@ async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
   const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => r.json());
   
-  // Jugadores del Real Sociedad (tipo: 'jugador', 'dual' o 'sanse-dual')
-  jugadores = data.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'sanse-dual');
+  // Jugadores del Real Sociedad (tipo: 'jugador' o 'dual')
+  jugadores = data.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual');
   
   // Entrenadores del Real Sociedad (tipo: 'entrenador')
   entrenadores = data.filter(ind => ind.tipo === 'entrenador');
@@ -278,7 +278,7 @@ async function cargarDatosTemporada(temporada) {
   if (temporada === '2025-26') {
     try {
       const dataF = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_f_2025-26.json`).then(r => r.json());
-      fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'sanse-dual');
+      fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual');
       fEntrenadores = dataF.filter(ind => ind.tipo === 'entrenador');
       fSalidas = dataF.filter(ind => ind.tipo === 'salida');
     } catch (err) {
