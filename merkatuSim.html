@@ -750,7 +750,8 @@
     function openDorsalModal(sectionKey, idx) {
       currentDorsalSection = sectionKey;
       currentDorsalIdx = idx;
-      document.getElementById('dorsalInput').value = simulationData[sectionKey][idx].dorsal || '';
+      const dorsalField = currentTeam === 'sanse' ? 'dorsal2' : 'dorsal';
+      document.getElementById('dorsalInput').value = simulationData[sectionKey][idx][dorsalField] || '';
       document.getElementById('dorsalModal').classList.add('active');
       document.getElementById('dorsalInput').focus();
     }
@@ -763,10 +764,11 @@
 
     function saveDorsal() {
       const newDorsal = document.getElementById('dorsalInput').value;
+      const dorsalField = currentTeam === 'sanse' ? 'dorsal2' : 'dorsal';
       if (newDorsal && !isNaN(newDorsal)) {
-        simulationData[currentDorsalSection][currentDorsalIdx].dorsal = parseInt(newDorsal);
+        simulationData[currentDorsalSection][currentDorsalIdx][dorsalField] = parseInt(newDorsal);
       } else {
-        simulationData[currentDorsalSection][currentDorsalIdx].dorsal = 99;
+        simulationData[currentDorsalSection][currentDorsalIdx][dorsalField] = 99;
       }
       saveAndRender();
       closeDorsalModal();
