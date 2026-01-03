@@ -34,11 +34,13 @@
   { "tipo": "dual", "dorsal": 42, "dorsal2": 18, "name": "Carrera", "fullname": "Gorka Carrera", "url_name": "gorka_carrera", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["DC"], "cancion": { "es": "No tenía ni puta idea de qué cancion ponerle, pero descubrí a DJ Mikerinos.", "eu": "Ez nekan ideia putik ze abesti jarri, baina DJ Mikerinos deskubritu nun." } },
   { "tipo": "dual", "dorsal": 43, "dorsal2": 14, "name": "Carbonell", "fullname": "Tomy Carbonell", "url_name": "tomy_carbonell", "pos": "MED", "pais": "Catalunya", "pais2": null, "positions": ["MCD","MC"], "cancion": { "es": "Perdón.", "eu": "Barkatu." } },
   { "tipo": "dual", "dorsal": 44, "dorsal2": 17, "name": "Astiazaran", "fullname": "Lander Astiazaran", "url_name": "lander_astiazaran", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["ED","EI","MCO"], "cancion": { "es": "Lo mismo que Marchal pero remix.", "eu": "Marchalen berdina baina remix." } },
+  { "tipo": "dual", "dorsal": 45, "dorsal2": 15, "name": "Kita", "fullname": "Kazunari Kita", "url_name": "kazunari_kita", "pos": "DEF", "pais": "Japón", "pais2": null, "positions": ["DFC"], "cancion": { "es": "", "eu": "" } },
+  { "tipo": "dual-ber-bi", "dorsal": 46, "dorsal2": 31, "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["MCD","MC"], "cancion": { "es": "", "eu": "" } },
+  
 
   { "tipo": "sanse", "dorsal": 35, "dorsal2": 13, "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 3, "name": "Balda", "fullname": "Jon Balda", "url_name": "jon_balda", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 5, "name": "P. Rodríguez", "fullname": "Peru Rodríguez", "url_name": "peru_rodriguez", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse", "dorsal": "-", "dorsal2": 15, "name": "Kita", "fullname": "Kazunari Kita", "url_name": "kazunari_kita", "pos": "DEF", "pais": "Japón", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 22, "name": "Dadie", "fullname": "Alberto Dadie", "url_name": "alberto_dadie", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 23, "name": "Agote", "fullname": "Unax Agote", "url_name": "unax_agote", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 27, "name": "Astigarraga", "fullname": "Eneko Astigarraga", "url_name": "eneko_astigarraga", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
@@ -50,7 +52,6 @@
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 8, "name": "M. Rodríguez", "fullname": "Mikel Rodríguez", "url_name": "mikel_rodriguez", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 16, "name": "G. Gorosabel", "fullname": "Gorka Gorosabel", "url_name": "gorka_gorosabel", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 30, "name": "Eceizabarrena", "fullname": "Jon Eceizabarrena", "url_name": "jon_eceizabarrena", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 31, "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 34, "name": "Oleaga", "fullname": "Joan Oleaga", "url_name": "joan_oleaga", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 38, "name": "Saenz", "fullname": "Manuel Sáenz", "url_name": "manuel_saenz", "pos": "MED", "pais": "España", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 7, "name": "Díaz", "fullname": "Dani Díaz", "url_name": "dani_diaz", "pos": "DEL", "pais": "España", "pais2": null },
