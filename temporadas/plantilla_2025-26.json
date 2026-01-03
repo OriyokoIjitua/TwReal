@@ -35,7 +35,7 @@
   { "tipo": "dual", "dorsal": 43, "dorsal2": 14, "name": "Carbonell", "fullname": "Tomy Carbonell", "url_name": "tomy_carbonell", "pos": "MED", "pais": "Catalunya", "pais2": null, "positions": ["MCD","MC"], "cancion": { "es": "Perdón.", "eu": "Barkatu." } },
   { "tipo": "dual", "dorsal": 44, "dorsal2": 17, "name": "Astiazaran", "fullname": "Lander Astiazaran", "url_name": "lander_astiazaran", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["ED","EI","MCO"], "cancion": { "es": "Lo mismo que Marchal pero remix.", "eu": "Marchalen berdina baina remix." } },
   { "tipo": "dual", "dorsal": 45, "dorsal2": 15, "name": "Kita", "fullname": "Kazunari Kita", "url_name": "kazunari_kita", "pos": "DEF", "pais": "Japón", "pais2": null, "positions": ["DFC"], "cancion": { "es": "", "eu": "" } },
-  { "tipo": "dual-ber-bi", "dorsal": 46, "dorsal2": 31, "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["MCD","MC"], "cancion": { "es": "", "eu": "" } },
+  { "tipo": "dual-ber-bi", "dorsal": 46, "dorsal2": 31, "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["MCD","MC"], "cancion": { "es": "Lehendakari Aguirre.", "eu": "Aguirre Lehendakaria." } },
   
 
   { "tipo": "sanse", "dorsal": 35, "dorsal2": 13, "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
