@@ -259,8 +259,8 @@ async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
   const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => r.json());
   
-  // Jugadores del Real Sociedad (tipo: 'jugador' o 'dual')
-  jugadores = data.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual');
+  // Jugadores del Real Sociedad (tipo: 'jugador', 'dual' o 'dual-ber-bi')
+  jugadores = data.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
   
   // Entrenadores del Real Sociedad (tipo: 'entrenador')
   entrenadores = data.filter(ind => ind.tipo === 'entrenador');
@@ -268,8 +268,8 @@ async function cargarDatosTemporada(temporada) {
   // Salidas
   salidas = data.filter(ind => ind.tipo === 'salida');
   
-  // Jugadores Sanse (tipo: 'sanse', 'dual' o 'sanse-dual')
-  sanseJugadores = data.filter(ind => ind.tipo === 'sanse' || ind.tipo === 'dual' || ind.tipo === 'sanse-dual').sort((a, b) => a.dorsal2 - b.dorsal2);
+  // Jugadores Sanse (tipo: 'sanse', 'dual', 'sanse-dual' o 'dual-ber-bi')
+  sanseJugadores = data.filter(ind => ind.tipo === 'sanse' || ind.tipo === 'dual' || ind.tipo === 'sanse-dual' || ind.tipo === 'dual-ber-bi').sort((a, b) => a.dorsal2 - b.dorsal2);
   
   // Entrenadores Sanse (tipo: 'entrenador-sanse')
   sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
@@ -278,7 +278,7 @@ async function cargarDatosTemporada(temporada) {
   if (temporada === '2025-26') {
     try {
       const dataF = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_f_2025-26.json`).then(r => r.json());
-      fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual');
+      fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
       fEntrenadores = dataF.filter(ind => ind.tipo === 'entrenador');
       fSalidas = dataF.filter(ind => ind.tipo === 'salida');
     } catch (err) {
