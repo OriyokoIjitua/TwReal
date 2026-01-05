@@ -555,7 +555,7 @@
         if (currentTeam === 'sanse') {
           // Sanse: solo 'dual' y 'sanse' inicialmente (no 'sanse-dual' ni 'dual-ber-bi')
           playersToLoad = plantillaCompleta.filter(p => (p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name));
-          salidasToLoad = []; // No hay salidas en Sanse
+          salidasToLoad = plantillaCompleta.filter(p => p.tipo === 'salida-sanse'); // Cargar salidas-sanse pero no seleccionadas
         } else if (currentTeam === 'f') {
           // Real Sociedad F: solo tipo 'jugador' inicialmente (sin 'dual', 'salida' ni entrenador)
           playersToLoad = plantillaFCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name));
@@ -847,14 +847,14 @@
       let selectablePlayers = new Set();
       
       if (currentTeam === 'sanse') {
-        // Sanse: 'sanse', 'dual', 'sanse-dual' y 'dual-ber-bi' (excluir 'jugador' completamente)
+        // Sanse: 'sanse', 'dual', 'sanse-dual', 'dual-ber-bi' y 'salida-sanse' (excluir 'jugador' completamente)
         availablePlayers = plantillaCompleta.filter(p =>
-          (p.tipo === 'sanse' || p.tipo === 'dual' || p.tipo === 'sanse-dual' || p.tipo === 'dual-ber-bi') &&
+          (p.tipo === 'sanse' || p.tipo === 'dual' || p.tipo === 'sanse-dual' || p.tipo === 'dual-ber-bi' || p.tipo === 'salida-sanse') &&
           !excludeUrlNames.includes(p.url_name) &&
           !currentPlayerNames.has(p.url_name)
         );
         plantillaCompleta.forEach(p => {
-          if ((p.tipo === 'sanse' || p.tipo === 'dual' || p.tipo === 'sanse-dual' || p.tipo === 'dual-ber-bi') && !excludeUrlNames.includes(p.url_name)) {
+          if ((p.tipo === 'sanse' || p.tipo === 'dual' || p.tipo === 'sanse-dual' || p.tipo === 'dual-ber-bi' || p.tipo === 'salida-sanse') && !excludeUrlNames.includes(p.url_name)) {
             selectablePlayers.add(p.url_name);
           }
         });

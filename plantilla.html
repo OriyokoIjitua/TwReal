@@ -252,7 +252,7 @@
 
 
 // --- NUEVO: gestión de datos por temporada desde un solo archivo ---
-let jugadores = [], entrenadores = [], salidas = [], sanseJugadores = [], sanseEntrenadores = [], fJugadores = [], fEntrenadores = [], fSalidas = [];
+let jugadores = [], entrenadores = [], salidas = [], sanseJugadores = [], sanseEntrenadores = [], sanseSalidas = [], fJugadores = [], fEntrenadores = [], fSalidas = [];
 let currentTeam = localStorage.getItem('team') || 'real'; // 'real', 'sanse' o 'f'
 
 async function cargarDatosTemporada(temporada) {
@@ -273,6 +273,9 @@ async function cargarDatosTemporada(temporada) {
   
   // Entrenadores Sanse (tipo: 'entrenador-sanse')
   sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
+  
+  // Salidas Sanse (tipo: 'salida-sanse')
+  sanseSalidas = data.filter(ind => ind.tipo === 'salida-sanse');
   
   // Cargar datos del equipo F si es 2025-26
   if (temporada === '2025-26') {
@@ -348,7 +351,7 @@ if (equipoSelect) {
         centrocampistasTitle: 'Centrocampistas',
         delanterosTitle: 'Delanteros',
         entrenadoresTitle: 'Entrenadores',
-        vendidosTitle: 'Vendidos/Cedidos',
+        vendidosTitle: 'Salidas',
         transferido: 'Transferido',
         cedido: 'Cedido',
         season: 'Temporada:',
@@ -365,7 +368,7 @@ if (equipoSelect) {
         centrocampistasTitle: 'Erdilariak',
         delanterosTitle: 'Aurrelariak',
         entrenadoresTitle: 'Entrenatzaileak',
-        vendidosTitle: 'Salduta/Utzita',
+        vendidosTitle: 'Irteerak',
         transferido: 'Salduta',
         cedido: 'Utzita',
         season: 'Denboraldia:',
@@ -518,8 +521,20 @@ function renderVendidos() {
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
   const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   
-  // Ocultar la sección de salidas en modo Sanse
+  container.innerHTML = '';
+  let salidasToRender = [];
+  let imgFolder = temporadaCarpeta;
+  
   if (isSanse) {
+    salidasToRender = sanseSalidas;
+  } else if (isF) {
+    salidasToRender = fSalidas;
+    imgFolder = 'f_2025-26';
+  } else {
+    salidasToRender = salidas;
+  }
+  
+  if (salidasToRender.length === 0) {
     container.style.display = 'none';
     title.style.display = 'none';
     return;
@@ -527,13 +542,8 @@ function renderVendidos() {
   
   container.style.display = 'grid';
   title.style.display = 'block';
-  container.innerHTML = '';
-  let imgFolder = temporadaCarpeta;
-  let salidasToRender = salidas;
-  if (isF) {
-    imgFolder = 'f_2025-26';
-    salidasToRender = fSalidas;
-  }
+  title.textContent = translations[currentLang].vendidosTitle;
+  
   salidasToRender.forEach((player, idx) => {
     const card = document.createElement('div');
     card.className = 'player-card';
