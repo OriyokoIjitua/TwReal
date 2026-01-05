@@ -560,24 +560,7 @@ function renderVendidos() {
         <span class="player-fullname">${player.fullname}</span>
         <span class="player-dorsal">${player.status[currentLang]}</span>
       </div>
-      ${is202526 && !isF ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
-        <button class=\"play-btn\" data-idx=\"v${idx}\" style=\"margin-right: -20px;\">▶️</button>
-        <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
-      </div>` : ''}
     `;
-    const infoIcon = card.querySelector('.song-info-icon');
-    if (infoIcon) {
-      infoIcon.addEventListener('mouseenter', function() {
-        const expl = player.cancion;
-        if (expl && expl[currentLang]) {
-          infoIcon.querySelector('.song-info-tooltip').textContent = expl[currentLang];
-          infoIcon.querySelector('.song-info-tooltip').style.display = 'block';
-        }
-      });
-      infoIcon.addEventListener('mouseleave', function() {
-        infoIcon.querySelector('.song-info-tooltip').style.display = 'none';
-      });
-    }
     container.appendChild(card);
   });
 }

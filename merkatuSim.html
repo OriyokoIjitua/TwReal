@@ -555,7 +555,7 @@
         if (currentTeam === 'sanse') {
           // Sanse: solo 'dual' y 'sanse' inicialmente (no 'sanse-dual' ni 'dual-ber-bi')
           playersToLoad = plantillaCompleta.filter(p => (p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name));
-          salidasToLoad = plantillaCompleta.filter(p => p.tipo === 'salida-sanse'); // Cargar salidas-sanse pero no seleccionadas
+          salidasToLoad = []; // Salidas-sanse seleccionables pero no cargadas al iniciar
         } else if (currentTeam === 'f') {
           // Real Sociedad F: solo tipo 'jugador' inicialmente (sin 'dual', 'salida' ni entrenador)
           playersToLoad = plantillaFCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name));
