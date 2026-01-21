@@ -11,7 +11,7 @@
   { "tipo": "jugador", "dorsal": 10, "name": "N. Eizagirre", "fullname": "Nerea Eizagirre", "url_name": "nerea_eizagirre", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 11, "name": "Cecilia", "fullname": "Cecilia Marcos", "url_name": "cecilia_marcos", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 12, "name": "Lucía", "fullname": "Lucía Rodríguez", "url_name": "lucia_rodriguez", "pos": "DEF", "pais": "España", "pais2": null },
-  { "tipo": "jugador", "dorsal": 13, "name": "J. Arrula", "fullname": "Julia Arrula", "url_name": "julia_arrula", "pos": "POR", "pais": "Euskal Herria", "pais2": "Nafarroa" },
+  { "tipo": "jugador", "dorsal": 13, "name": "J. Arrula", "fullname": "Julia Arrula", "url_name": "julia_arrula", "pos": "POR", "pais": "Euskal Herria", "pais2": "NafarroaG" },
   { "tipo": "jugador", "dorsal": 14, "name": "Intza", "fullname": "Intza Egiguren", "url_name": "intza_egiguren", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 17, "name": "Maren", "fullname": "Maren Lezeta", "url_name": "maren_lezeta", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 18, "name": "Lavogez", "fullname": "Claire Lavogez", "url_name": "claire_lavogez", "pos": "MED", "pais": "Francia", "pais2": null },
