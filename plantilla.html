@@ -592,22 +592,31 @@ function renderVendidos() {
       return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.url_name}.mp3`;
     }
     
+    const easterEggUsers = ['imanol_alguacil', 'edna_imade'];
+    
     function setupEasterEgg() {
-      document.querySelectorAll('[data-easter-egg="imanol_alguacil"]').forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', function(e) {
-          e.stopPropagation();
-          playEasterEggAudio();
+      easterEggUsers.forEach(username => {
+        document.querySelectorAll(`[data-easter-egg="${username}"]`).forEach(img => {
+          img.style.cursor = 'pointer';
+          img.addEventListener('click', function(e) {
+            e.stopPropagation();
+            playSecretAudio(username);
+          });
         });
       });
     }
     
-    function playEasterEggAudio() {
+    function playSecretAudio(username) {
       if (currentAudio) {
         currentAudio.pause();
-        if (currentBtn) currentBtn.textContent = '▶️';
+        currentAudio.onpause = null;
+        currentAudio.onended = null;
+        if (currentBtn) {
+          currentBtn.textContent = '▶️';
+          currentBtn = null;
+        }
       }
-      currentAudio = new Audio('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/erreala-ale.mp3');
+      currentAudio = new Audio(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${username}_secret.mp3`);
       currentBtn = null;
       currentAudio.play();
       currentAudio.onended = function() {
@@ -655,6 +664,8 @@ function renderVendidos() {
           // Parar el anterior
           if (currentAudio) {
             currentAudio.pause();
+            currentAudio.onpause = null;
+            currentAudio.onended = null;
             if (currentBtn) currentBtn.textContent = '▶️';
           }
           // Crear nuevo audio
