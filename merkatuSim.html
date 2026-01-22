@@ -594,7 +594,8 @@
 
     function sortPlayersByDorsal(section) {
       if (!simulationData[section]) return;
-      simulationData[section].sort((a, b) => (a.dorsal || 0) - (b.dorsal || 0));
+      const dorsalField = currentTeam === 'sanse' ? 'dorsal2' : 'dorsal';
+      simulationData[section].sort((a, b) => (a[dorsalField] || 0) - (b[dorsalField] || 0));
     }
 
     function renderSection(sectionKey, posFilter) {
