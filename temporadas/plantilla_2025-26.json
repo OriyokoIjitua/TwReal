@@ -36,6 +36,7 @@
   { "tipo": "dual", "dorsal": 44, "dorsal2": 17, "name": "Astiazaran", "fullname": "Lander Astiazaran", "url_name": "lander_astiazaran", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["ED","EI","MCO"], "cancion": { "es": "Lo mismo que Marchal pero remix.", "eu": "Marchalen berdina baina remix." } },
   { "tipo": "dual", "dorsal": 45, "dorsal2": 15, "name": "Kita", "fullname": "Kazunari Kita", "url_name": "kazunari_kita", "pos": "DEF", "pais": "Japón", "pais2": null, "positions": ["DFC"], "cancion": { "es": "", "eu": "" } },
   { "tipo": "dual-ber-bi", "dorsal": 46, "dorsal2": 31, "name": "Aguirre", "fullname": "Ibai Aguirre", "url_name": "ibai_aguirre", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "positions": ["MCD","MC"], "cancion": { "es": "Lehendakari Aguirre.", "eu": "Aguirre Lehendakaria." } },
+  { "tipo": "dual", "dorsal": 47, "dorsal2": 11, "name": "Ochieng", "fullname": "Job Ochieng", "url_name": "job_ochieng", "pos": "DEL", "pais": "Kenya", "pais2": null, "positions": ["EI, ED"], "cancion": { "es": "Al parecer esta canción es de Kenya.", "eu": "Abesti hau Kenyakoa omen dela. Mitika." } },
   
 
   { "tipo": "sanse", "dorsal": 35, "dorsal2": 13, "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
@@ -57,7 +58,6 @@
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 38, "name": "Saenz", "fullname": "Manuel Sáenz", "url_name": "manuel_saenz", "pos": "MED", "pais": "España", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 7, "name": "Díaz", "fullname": "Dani Díaz", "url_name": "dani_diaz", "pos": "DEL", "pais": "España", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 9, "name": "Orobengoa", "fullname": "Ekain Orobengoa", "url_name": "ekain_orobengoa", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse", "dorsal": "-", "dorsal2": 11, "name": "Ochieng", "fullname": "Job Ochieng", "url_name": "job_ochieng", "pos": "DEL", "pais": "Kenya", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 20, "name": "Osazuwa", "fullname": "Sidney Osazuwa", "url_name": "sidney_osazuwa", "pos": "DEL", "pais": "España", "pais2": "Nigeria" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 26, "name": "Ramirez", "fullname": "Darío Ramirez", "url_name": "dario_ramirez", "pos": "DEL", "pais": "España", "pais2": null },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 33, "name": "J. Gorosabel", "fullname": "Jakes Gorosabel", "url_name": "jakes_gorosabel", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
