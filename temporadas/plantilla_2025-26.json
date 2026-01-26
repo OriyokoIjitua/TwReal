@@ -63,12 +63,14 @@
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 33, "name": "J. Gorosabel", "fullname": "Jakes Gorosabel", "url_name": "jakes_gorosabel", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 41, "name": "Adjabengs", "fullname": "Andrews Adjabengs", "url_name": "andrews_adjabengs", "pos": "DEL", "pais": "Ghana", "pais2": null },
 
+
   { "tipo": "entrenador", "name": "Matarazzo", "fullname": "Pellegrino Matarazzo", "url_name": "pellegrino_matarazzo", "pais": "USA", "pais2": "Italia", "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" }, "cancion": { "es": "You have been Matarazzed.", "eu": "You have been Matarazzed." } },
   { "tipo": "entrenador", "name": "Maisano", "fullname": "John Maisano", "url_name": "john_maisano", "pais": "Australia", "pais2": "Italia", "rol": { "es": "2.º entrenador", "eu": "2. entrenatzailea" }, "cancion": { "es": "Ni puta idea como es este tío, pero es australiano.", "eu": "Ni puta idea nolakoa den tipo hau, baina australiarra da." } },
   { "tipo": "entrenador", "name": "Toprak", "fullname": "Ömer Toprak", "url_name": "omer_toprak", "pais": "Alemania", "pais2": "Turkey", "rol": { "es": "3.º entrenador", "eu": "3. entrenatzailea" }, "cancion": { "es": "Turkish, orospu çocuğu.", "eu": "Turkish, orospu çocuğu." } },
   { "tipo": "entrenador-sanse", "name": "Ansotegi", "fullname": "Jon Ansotegi", "url_name": "jon_ansotegi", "pais": "Euskal Herria", "pais2": "Bizkaia", "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" } },
   { "tipo": "entrenador-sanse", "name": "Agirretxe", "fullname": "Imanol Agirretxe", "url_name": "imanol_agirretxe", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "rol": { "es": "2.º entrenador", "eu": "2. entrenatzailea" } },
   
+
   { "tipo": "salida", "name": "Sadiq", "fullname": "Sadiq Umar", "dorsal": 15, "status": { "es": "Transferido (Por fin)", "eu": "Salduta (Azkenean)" }, "url_name": "sadiq_umar", "pais": "Nigeria", "pais2": null, "cancion": { "es": "Pensaba que no llegaría este día.", "eu": "Uste nun egun hau etzela iritsiko." } },
   { "tipo": "salida", "name": "Ansotegi", "fullname": "Jon Ansotegi", "url_name": "jon_ansotegi", "pais": "Euskal Herria", "pais2": "Bizkaia", "status": { "es": "1.º entrenador temporal", "eu": "Behin-behineko 1. entrenatzailea" }, "cancion": { "es": "Solo se me ocurre una canción para estos dos. Histórico.", "eu": "Abesti bakarra okurritzen zait bi hauentzat. Historikoa." } },
   { "tipo": "salida", "name": "Agirretxe", "fullname": "Imanol Agirretxe", "url_name": "imanol_agirretxe", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "status": { "es": "2.º entrenador temporal", "eu": "Behin-behineko 2. entrenatzailea" }, "cancion": { "es": "ImaGOL Agirretxe jauna.", "eu": "ImaGOL Agirretxe jauna." } },
@@ -87,6 +89,9 @@
   { "tipo": "salida", "name": "Labaka", "fullname": "Mikel Labaka", "url_name": "mikel_labaka", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa", "cancion": { "es": "Muuuuuuuuuuuuu.", "eu": "Muuuuuuuuuuuuu." } },
   { "tipo": "salida", "name": "N. Aguerd", "fullname": "Nayef Aguerd", "dorsal": 21, "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" }, "url_name": "nayef_aguerd", "pais": "Marruecos", "pais2": null, "cancion": { "es": "إيمانول ألجواسيل، شريف الغجر", "eu": "إيمانول ألجواسيل، شريف الغجر" } },
 
+  
+  { "tipo": "salida-sanse", "name": "Sergio Francisco", "fullname": "Sergio Francisco", "status": { "es": "1. equipo", "eu": "1. taldean" }, "url_name": "sergio_francisco", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "salida-sanse", "name": "Iosu", "fullname": "Iosu Rivas", "status": { "es": "1. equipo", "eu": "1. taldean" }, "url_name": "iosu_rivas", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Goti", "fullname": "Mikel Goti", "dorsal2": 10, "status": { "es": "1. equipo", "eu": "1. taldean" }, "url_name": "mikel_goti", "pais": "Euskal Herria", "pais2": "Bizkaia" },
   { "tipo": "salida-sanse", "name": "Ropero", "fullname": "Iker Ropero", "dorsal2": "-", "status": { "es": "Cedido", "eu": "Lagapena" }, "url_name": "iker_ropero", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Gibelalde", "fullname": "Manex Gibelalde", "dorsal2": 16, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "manex_gibelalde", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
