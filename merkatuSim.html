@@ -54,13 +54,67 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.10);
       display: flex;
       align-items: center;
-      gap: 32px;
-      padding: 18px 32px 18px 32px;
-      margin-bottom: 0;
-      width: 100%;
-      max-width: 390px;
-      min-height: 110px;
-      position: relative;
+  gap: 32px;
+  padding: 18px 32px 18px 32px;
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 390px;
+  min-height: 110px;
+  position: relative;
+    }
+    .play-btn {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  margin-left: 0 !important;
+}
+.play-btn + .song-info-icon {
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 32px);
+  transform: translate(-50%, 0);
+  width: 32px;
+  text-align: center;
+  font-size: 1.3em;
+  color: #0077cc;
+  z-index: 3;
+  margin-top: 0;
+}
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  min-width: 0;
+}
+.player-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #003366;
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 0;
+}
+    .player-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 2px solid #0077cc;
+    }
+    .player-fullname {
+      font-size: 1em;
+      color: #222;
+      font-weight: normal;
+    }
+    .player-dorsal {
+      font-size: 1.1em;
+      color: #0077cc;
+      font-weight: bold;
+      margin-bottom: 2px;
     }
     .player-card.add-btn {
       justify-content: center;
@@ -77,39 +131,6 @@
       font-size: 3em;
       color: #0077cc;
       font-weight: bold;
-    }
-    .player-img {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #0077cc;
-      background: #eee;
-    }
-    .player-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      position: relative;
-    }
-    .player-name {
-      font-size: 1.2em;
-      font-weight: bold;
-      color: #003366;
-      white-space: nowrap;
-      overflow: visible;
-    }
-    .player-fullname {
-      font-size: 1em;
-      color: #222;
-      font-weight: normal;
-    }
-    .player-dorsal {
-      font-size: 1.1em;
-      color: #0077cc;
-      font-weight: bold;
-      margin-bottom: 2px;
     }
     .menu-btn {
       position: absolute;

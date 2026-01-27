@@ -137,29 +137,11 @@
   min-width: 0;
 }
     .player-img {
-    /* Estilo para el botón de play/stop */
-    .play-btn {
-      background: #fff;
-      color: #003366;
-      border: none;
-      border-radius: 16px;
-      padding: 12px 24px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      font-size: 1.3em;
-      margin-left: 32px;
-      position: absolute;
-  right: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 2;
-    }
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
       object-fit: cover;
       border: 2px solid #0077cc;
-      background: #eee;
     }
     .player-info {
       flex: 1;
@@ -429,7 +411,7 @@ if (equipoSelect) {
           <span class="player-fullname">${player.fullname}</span>
           <span class="player-dorsal">${dorsalDisplay ? translations[currentLang].dorsal + ': ' + dorsalDisplay : ''}</span>
         </div>
-        ${is202526 && !isSanse && !isF ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+        ${is202526 && !isSanse && !isF ? `<div style="display: flex; align-items: center; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); gap: 0;">
           <button class=\"play-btn\" data-idx=\"${idx}\" style=\"margin-right: -20px;\">▶️</button>
           <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
         </div>` : ''}
@@ -491,7 +473,7 @@ function renderEntrenadores() {
         <span class="player-fullname">${coach.fullname}</span>
         <span class="player-dorsal">${rol}</span>
       </div>
-      ${is202526 && !isSanse && !isF ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+        ${is202526 && !isSanse && !isF ? `<div style="display: flex; align-items: center; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); gap: 0;">
         <button class=\"play-btn\" data-idx=\"e${idx}\" style=\"margin-right: -20px;\">▶️</button>
         <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
       </div>` : ''}
@@ -562,7 +544,7 @@ function renderVendidos() {
         <span class="player-fullname">${player.fullname}</span>
         <span class="player-dorsal">${player.status[currentLang]}</span>
       </div>
-      ${showControls ? `<div style=\"display: flex; align-items: center; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); gap: 0;\">
+      ${showControls ? `<div style="display: flex; align-items: center; position: absolute; right: 16px; top: 50%; transform: translateY(-50%); gap: 0;">
         <button class=\"play-btn\" data-idx=\"v${idx}\" style=\"margin-right: -20px;\">▶️</button>
         <div class=\"song-info-icon\" tabindex=\"0\" style=\"margin-left: -28px;\">ⓘ<span class=\"song-info-tooltip\"></span></div>
       </div>` : ''}
