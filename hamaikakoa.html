@@ -410,7 +410,7 @@
     // Cargar datos por temporada desde el JSON en raw.githubusercontent (igual que plantilla.html)
     async function cargarDatosTemporada(temporada) {
       try {
-        const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => {
+        const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_${temporada}.json`).then(r => {
           if (!r.ok) throw new Error('HTTP ' + r.status);
           return r.json();
         });

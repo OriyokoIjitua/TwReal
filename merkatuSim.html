@@ -532,12 +532,12 @@
     // ============= CARGA INICIAL =============
     async function loadPlantilla() {
       // Cargar plantilla Real Sociedad
-      const data = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_2025-26.json').then(r => r.json());
+      const data = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_2025-26.json').then(r => r.json());
       plantillaCompleta = data;
       
       // Cargar plantilla F
       try {
-        const dataF = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_f_2025-26.json').then(r => r.json());
+        const dataF = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_f_2025-26.json').then(r => r.json());
         plantillaFCompleta = dataF;
       } catch (err) {
         console.error('Error cargando plantilla_f_2025-26.json:', err);

@@ -239,7 +239,7 @@ let currentTeam = localStorage.getItem('team') || 'real'; // 'real', 'sanse' o '
 
 async function cargarDatosTemporada(temporada) {
   // Carga el archivo único de la carpeta temporadas
-  const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_${temporada}.json`).then(r => r.json());
+  const data = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_${temporada}.json`).then(r => r.json());
   
   // Jugadores del Real Sociedad (tipo: 'jugador', 'dual' o 'dual-ber-bi')
   jugadores = data.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
@@ -262,7 +262,7 @@ async function cargarDatosTemporada(temporada) {
   // Cargar datos del equipo F si es 2025-26
   if (temporada === '2025-26') {
     try {
-      const dataF = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/temporadas/plantilla_f_2025-26.json`).then(r => r.json());
+      const dataF = await fetch(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_f_2025-26.json`).then(r => r.json());
       fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
       fEntrenadores = dataF.filter(ind => ind.tipo === 'entrenador');
       fSalidas = dataF.filter(ind => ind.tipo === 'salida');
@@ -571,7 +571,7 @@ function renderVendidos() {
     let audioPositions = {};
     function getSongUrl(player, isVendido) {
       if (!player.url_name) return null;
-      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${player.url_name}.mp3`;
+      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/audio/${player.url_name}.mp3`;
     }
     
     const easterEggUsers = ['imanol_alguacil', 'edna_imade'];
@@ -598,7 +598,7 @@ function renderVendidos() {
           currentBtn = null;
         }
       }
-      currentAudio = new Audio(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/mp3/${username}_secret.mp3`);
+      currentAudio = new Audio(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/audio/${username}_secret.mp3`);
       currentBtn = null;
       currentAudio.play();
       currentAudio.onended = function() {
