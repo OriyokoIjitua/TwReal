@@ -53,7 +53,7 @@
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 42, "name": "P. Arana", "fullname": "Pello Arana", "url_name": "pello_arana", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Bizkaia" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 8, "name": "M. Rodríguez", "fullname": "Mikel Rodríguez", "url_name": "mikel_rodriguez", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 16, "name": "G. Gorosabel", "fullname": "Gorka Gorosabel", "url_name": "gorka_gorosabel", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse", "dorsal": "-", "dorsal2": 30, "name": "Eceizabarrena", "fullname": "Jon Eceizabarrena", "url_name": "jon_eceizabarrena", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "sanse", "dorsal": "-", "dorsal2": 21, "name": "Eceizabarrena", "fullname": "Jon Eceizabarrena", "url_name": "jon_eceizabarrena", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 34, "name": "Oleaga", "fullname": "Joan Oleaga", "url_name": "joan_oleaga", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 38, "name": "Saenz", "fullname": "Manuel Sáenz", "url_name": "manuel_saenz", "pos": "MED", "pais": "España", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 9, "name": "Orobengoa", "fullname": "Ekain Orobengoa", "url_name": "ekain_orobengoa", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
