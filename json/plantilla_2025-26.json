@@ -93,7 +93,7 @@
   { "tipo": "salida-sanse", "dorsal2": 5, "name": "P. Rodríguez", "fullname": "Peru Rodríguez", "url_name": "peru_rodriguez", "status": { "es": "Transferido", "eu": "Salduta" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Sergio Francisco", "fullname": "Sergio Francisco", "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "sergio_francisco", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Iosu", "fullname": "Iosu Rivas", "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "iosu_rivas", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "salida-sanse", "name": "Goti", "fullname": "Mikel Goti", "dorsal2": 10, "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "mikel_goti", "pais": "Euskal Herria", "pais2": "Bizkaia" },
+  { "tipo": "salida-sanse", "name": "Goti", "fullname": "Mikel Goti", "dorsal2": 10, "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "mikel_goti_2", "pais": "Euskal Herria", "pais2": "Bizkaia" },
   { "tipo": "salida-sanse", "name": "Ropero", "fullname": "Iker Ropero", "dorsal2": "-", "status": { "es": "Cedido", "eu": "Lagapena" }, "url_name": "iker_ropero", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Gibelalde", "fullname": "Manex Gibelalde", "dorsal2": 16, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "manex_gibelalde", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Eder García", "fullname": "Eder García", "dorsal2": 18, "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "url_name": "eder_garcia", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
