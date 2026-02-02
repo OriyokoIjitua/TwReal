@@ -1,0 +1,257 @@
+/* Estilos específicos para hamaikakoa.html - Selector de Formación */
+
+.field-container {
+  position: relative;
+  width: 650px;
+  height: 764px;
+  margin: 40px auto 16px auto;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.field-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.player-pos {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: box-shadow 0.2s, width 0.2s, height 0.2s;
+}
+
+.player-pos.selected {
+  width: 130px;
+  height: 130px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+}
+
+.player-pos:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+}
+
+.player-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  border: 2px solid var(--accent-color);
+}
+
+.plus-icon {
+  font-size: 3em;
+  color: var(--accent-color);
+  font-weight: bold;
+  user-select: none;
+}
+
+.player-list-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.player-list-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+}
+
+.player-list-box h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.player-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.player-list-item:hover {
+  background: var(--light-blue-bg);
+}
+
+.player-list-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  border: 1px solid var(--accent-color);
+}
+
+.player-list-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+}
+
+.player-list-dorsal {
+  font-size: 1em;
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.close-modal-btn {
+  background: #e74c3c;
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 18px;
+  float: right;
+}
+
+.close-modal-btn:hover {
+  background: #c0392b;
+}
+
+#optionsBlock {
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  text-align: center;
+  background: none;
+  position: static !important;
+  z-index: 2;
+  justify-content: center;
+}
+
+#optionsBlock > div {
+  margin-bottom: 20px !important;
+  justify-content: center;
+}
+
+#langSwitch {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  #optionsBlock {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  #optionsBlock > div {
+    margin-bottom: 24px !important;
+    justify-content: center;
+  }
+
+  .field-container {
+    width: 98vw;
+    height: 120vw;
+    min-width: 0;
+    min-height: 0;
+    margin: 16px auto 8px auto;
+    border-radius: 16px;
+  }
+
+  .field-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .player-pos {
+    width: 16vw;
+    height: 16vw;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 90px;
+    max-height: 90px;
+  }
+
+  .player-pos.selected {
+    width: 19vw;
+    height: 19vw;
+    min-width: 70px;
+    min-height: 70px;
+    max-width: 110px;
+    max-height: 110px;
+  }
+
+  #optionsContainer {
+    display: block;
+    margin-top: 24px;
+    margin-bottom: 0;
+  }
+
+  #filterContainer {
+    position: static !important;
+    display: block;
+    margin: 0 auto 0 auto;
+    right: auto !important;
+    top: auto !important;
+    text-align: center;
+    width: 100vw;
+    max-width: 100vw;
+    z-index: 2;
+  }
+
+  #langSwitch {
+    right: 8vw !important;
+    top: 2vw !important;
+  }
+
+  #downloadBtn,
+  #clearBtn {
+    min-width: 120px;
+    font-size: 1.1em;
+    padding: 12px 18px;
+  }
+
+  .player-list-box {
+    max-width: 96vw;
+    padding: 18px 8px;
+  }
+
+  .player-list-img {
+    width: 36px;
+    height: 36px;
+  }
+}

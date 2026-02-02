@@ -1,0 +1,329 @@
+/* Estilos específicos para merkatuSim.html - Mercatu Simulaketa */
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  justify-items: start;
+  margin-left: 40px;
+}
+
+.player-card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 18px 32px;
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 390px;
+  min-height: 110px;
+  position: relative;
+}
+
+.player-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  min-width: 0;
+}
+
+.player-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: visible;
+  min-width: 0;
+}
+
+.player-fullname {
+  font-size: 1em;
+  color: #222;
+  font-weight: normal;
+}
+
+.player-dorsal {
+  font-size: 1.1em;
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.player-card.add-btn {
+  justify-content: center;
+  cursor: pointer;
+  background: var(--light-bg);
+  border: 2px dashed var(--accent-color);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.player-card.add-btn:hover {
+  background: var(--light-blue-bg);
+  transform: scale(1.02);
+}
+
+.add-btn-icon {
+  font-size: 3em;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.menu-btn {
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.menu-btn:hover {
+  background: var(--light-bg);
+}
+
+.context-menu {
+  position: absolute;
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  min-width: 180px;
+}
+
+.context-menu-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.95em;
+  color: var(--text-dark);
+  transition: background 0.2s;
+  position: relative;
+}
+
+.context-menu-item:hover {
+  background: #f5f5f5;
+}
+
+.context-menu-item:first-child {
+  border-radius: 8px 8px 0 0;
+}
+
+.context-menu-item:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+.submenu {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  min-width: 150px;
+  margin-left: 8px;
+}
+
+.submenu-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  font-size: 0.95em;
+  color: var(--text-dark);
+  transition: background 0.2s;
+}
+
+.submenu-item:hover {
+  background: #f5f5f5;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+}
+
+.modal-title {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.modal-section {
+  margin-bottom: 16px;
+}
+
+.modal-label {
+  font-weight: bold;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+  display: block;
+  font-size: 0.95em;
+}
+
+.modal-input,
+.modal-select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 0.95em;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+}
+
+.modal-search-results {
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 8px;
+}
+
+.modal-search-item {
+  padding: 10px 8px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 0.95em;
+}
+
+.modal-search-item:hover {
+  background: #f5f5f5;
+}
+
+.modal-search-item:last-child {
+  border-bottom: none;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  clear: both;
+}
+
+.modal-btn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+  font-size: 0.95em;
+}
+
+.modal-btn-primary {
+  background: var(--accent-color);
+  color: var(--white);
+}
+
+.modal-btn-primary:hover {
+  background: #005aa3;
+}
+
+.modal-btn-secondary {
+  background: #e74c3c;
+  color: var(--white);
+}
+
+.modal-btn-secondary:hover {
+  background: #c0392b;
+}
+
+.modal-btn-tab {
+  background: var(--light-bg);
+  color: var(--text-dark);
+  width: 100%;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.modal-btn-tab.active {
+  background: var(--accent-color);
+  color: var(--white);
+}
+
+.modal-btn-tab:hover {
+  background: #e0e0e0;
+}
+
+.modal-btn-tab.active:hover {
+  background: #005aa3;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .player-card {
+    padding: 12px 8px;
+    gap: 12px;
+  }
+
+  .player-img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 700px) {
+  .players-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    margin-left: 12px;
+  }
+
+  .player-card {
+    max-width: 96vw;
+    width: 96vw;
+  }
+}

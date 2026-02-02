@@ -1,0 +1,60 @@
+{
+  "menu": {
+    "plantilla": "Taldea",
+    "once": "Hamaikakoa sortu",
+    "merkatu": "Merkatu simulaketa"
+  },
+  "plantilla": {
+    "title": "Taldekideak",
+    "dorsal": "Dortsala",
+    "porterosTitle": "Atezainak",
+    "defensasTitle": "Atzelariak",
+    "centrocampistasTitle": "Erdilariak",
+    "delanterosTitle": "Aurrelariak",
+    "entrenadoresTitle": "Entrenatzaileak",
+    "vendidosTitle": "Irteerak",
+    "transferido": "Salduta",
+    "cedido": "Utzita",
+    "season": "Denboraldia:",
+    "team": "Taldea:"
+  },
+  "hamaikakoa": {
+    "filter": "Jokalariak postuarekiko filtratu",
+    "descargar": "Jaitsi",
+    "limpiar": "Garbitu",
+    "seleccionaJugador": "Jokalaria aukeratu",
+    "cerrar": "Itxi",
+    "watermark": "Ur-marka",
+    "formacion": "Formazioa:"
+  },
+  "merkatuSim": {
+    "pageTitle": "Merkatu simulaketa",
+    "porterosTitle": "Atezainak",
+    "defensasTitle": "Atzelariak",
+    "centrocampistasTitle": "Erdilariak",
+    "delanterosTitle": "Aurrelariak",
+    "salidasTitle": "Irteerak",
+    "dorsal": "Dortsala",
+    "team": "Taldea:",
+    "mover": "Mugitu...",
+    "eliminar": "Ezabatu",
+    "cambiarDorsal": "Dortsala aldatu",
+    "deReal": "Realekoak",
+    "personalizado": "Pertsonalizatua",
+    "anadirJugador": "Jokalaria gehitu",
+    "nombre": "Izena",
+    "nombreDeportivo": "Kirol-izena",
+    "foto": "Argazkia",
+    "seleccionar": "Txertatu",
+    "nuevo": "Berria",
+    "portero": "Atezaina",
+    "defensa": "Atzealaria",
+    "centrocampista": "Erdilaria",
+    "delantero": "Aurrelaria",
+    "salida": "Irteera",
+    "cancelar": "Ezeztatu",
+    "guardar": "Gorde",
+    "deshacer": "Aldaketak desegin",
+    "buscar": "Bilatu..."
+  }
+}

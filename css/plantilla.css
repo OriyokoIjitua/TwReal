@@ -1,0 +1,172 @@
+/* Estilos específicos para plantilla.html */
+
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  justify-items: start;
+  margin-left: 40px;
+}
+
+.player-card {
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 18px 32px;
+  margin-bottom: 0;
+  width: 100%;
+  max-width: 390px;
+  min-height: 110px;
+  position: relative;
+}
+
+.player-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--accent-color);
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+}
+
+.player-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--primary-color);
+  white-space: nowrap;
+  overflow: visible;
+}
+
+.player-fullname {
+  font-size: 1em;
+  color: #222;
+  font-weight: normal;
+}
+
+.player-dorsal {
+  font-size: 1.1em;
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.play-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.play-btn:hover {
+  opacity: 0.8;
+}
+
+.play-btn + .song-info-icon {
+  position: relative;
+  width: auto;
+  text-align: center;
+  font-size: 1.3em;
+  color: var(--accent-color);
+  cursor: pointer;
+  padding: 2px;
+  margin: 0;
+}
+
+.song-info-tooltip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: -12px;
+  transform: translate(-50%, -100%);
+  background: var(--white);
+  color: var(--primary-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.18);
+  padding: 6px 12px;
+  font-size: 0.75em;
+  font-weight: normal;
+  min-width: 120px;
+  max-width: 220px;
+  white-space: pre-line;
+  pointer-events: auto;
+  z-index: 99999999999999999;
+}
+
+.song-info-icon:hover .song-info-tooltip,
+.song-info-icon:focus .song-info-tooltip {
+  display: block;
+}
+
+/* Títulos de secciones */
+h2 {
+  color: var(--white);
+  font-weight: bold;
+  margin-left: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+h2#plantillaTitle,
+h2#entrenadoresTitle,
+h2#vendidosTitle {
+  margin-left: 32px;
+  margin-top: 56px;
+  margin-bottom: 40px;
+}
+
+/* Selectores y labels */
+.season-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 7px 0 0 32px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+select {
+  font-size: 1em;
+  border-radius: 6px;
+  padding: 4px 12px;
+  border: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .player-card {
+    padding: 12px 8px;
+    gap: 12px;
+  }
+
+  .player-img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 700px) {
+  .players-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+    margin-left: 12px;
+  }
+
+  .player-card {
+    max-width: 96vw;
+    width: 96vw;
+  }
+}

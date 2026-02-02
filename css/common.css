@@ -1,0 +1,105 @@
+/* Estilos comunes para toda la aplicación */
+
+/* Ocultar el body por defecto hasta que i18next esté listo */
+body:not([data-i18n-ready]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+:root {
+  --primary-color: #003366;
+  --secondary-color: #002244;
+  --accent-color: #0077cc;
+  --background-color: #003366;
+  --white: #fff;
+  --text-dark: #333;
+  --text-light: #222;
+  --border-color: #ddd;
+  --light-bg: #f0f0f0;
+  --light-blue-bg: #f0f8ff;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 100vh;
+  background: var(--secondary-color);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 48px;
+  z-index: 100;
+  box-shadow: 2px 0 12px rgba(0, 0, 0, 0.08);
+}
+
+.sidebar a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 16px 32px;
+  width: 100%;
+  display: block;
+  border-left: 4px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.sidebar a.active,
+.sidebar a:hover {
+  background: var(--primary-color);
+  border-left: 4px solid var(--accent-color);
+}
+
+.main-content {
+  margin-left: 210px;
+  padding: 32px 0 0 0;
+}
+
+/* Responsive sidebar */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 56px;
+    padding-top: 24px;
+  }
+
+  .sidebar a {
+    font-size: 1em;
+    padding: 12px 8px;
+  }
+
+  .main-content {
+    margin-left: 56px;
+  }
+}
+
+/* Language button */
+#langBtn {
+  background: var(--white);
+  color: var(--primary-color);
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  font-size: 1em;
+  padding: 6px 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  z-index: 200;
+}
+
+#langBtn:hover {
+  opacity: 0.9;
+}

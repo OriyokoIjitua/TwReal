@@ -1,0 +1,60 @@
+{
+  "menu": {
+    "plantilla": "Plantilla",
+    "once": "Crear once",
+    "merkatu": "Simulación de mercado"
+  },
+  "plantilla": {
+    "title": "En plantilla",
+    "dorsal": "Dorsal",
+    "porterosTitle": "Porteros",
+    "defensasTitle": "Defensas",
+    "centrocampistasTitle": "Centrocampistas",
+    "delanterosTitle": "Delanteros",
+    "entrenadoresTitle": "Entrenadores",
+    "vendidosTitle": "Salidas",
+    "transferido": "Transferido",
+    "cedido": "Cedido",
+    "season": "Temporada:",
+    "team": "Equipo:"
+  },
+  "hamaikakoa": {
+    "filter": "Filtrar jugadores por posición",
+    "descargar": "Descargar",
+    "limpiar": "Limpiar",
+    "seleccionaJugador": "Selecciona jugador",
+    "cerrar": "Cerrar",
+    "watermark": "Marca de agua",
+    "formacion": "Formación:"
+  },
+  "merkatuSim": {
+    "pageTitle": "Simulación de mercado",
+    "porterosTitle": "Porteros",
+    "defensasTitle": "Defensas",
+    "centrocampistasTitle": "Centrocampistas",
+    "delanterosTitle": "Delanteros",
+    "salidasTitle": "Salidas",
+    "dorsal": "Dorsal",
+    "team": "Equipo:",
+    "mover": "Mover a...",
+    "eliminar": "Eliminar",
+    "cambiarDorsal": "Cambiar dorsal",
+    "deReal": "De la Real",
+    "personalizado": "Personalizado",
+    "anadirJugador": "Añadir jugador",
+    "nombre": "Nombre",
+    "nombreDeportivo": "Nombre deportivo",
+    "foto": "Foto",
+    "seleccionar": "Insertar",
+    "nuevo": "Nuevo",
+    "portero": "Portero",
+    "defensa": "Defensa",
+    "centrocampista": "Centrocampista",
+    "delantero": "Delantero",
+    "salida": "Salida",
+    "cancelar": "Cancelar",
+    "guardar": "Guardar",
+    "deshacer": "Deshacer cambios",
+    "buscar": "Buscar..."
+  }
+}
