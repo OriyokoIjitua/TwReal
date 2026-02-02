@@ -571,7 +571,7 @@ function renderVendidos() {
     let audioPositions = {};
     function getSongUrl(player, isVendido) {
       if (!player.url_name) return null;
-      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/audio/${player.url_name}.mp3`;
+      return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/aud/${player.url_name}.mp3`;
     }
     
     const easterEggUsers = ['imanol_alguacil', 'edna_imade'];
@@ -598,7 +598,7 @@ function renderVendidos() {
           currentBtn = null;
         }
       }
-      currentAudio = new Audio(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/audio/${username}_secret.mp3`);
+      currentAudio = new Audio(`https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/aud/${username}_secret.mp3`);
       currentBtn = null;
       currentAudio.play();
       currentAudio.onended = function() {
