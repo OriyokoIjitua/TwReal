@@ -42,7 +42,6 @@
 
   { "tipo": "sanse", "dorsal": 35, "dorsal2": 13, "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 3, "name": "Balda", "fullname": "Jon Balda", "url_name": "jon_balda", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse", "dorsal": "-", "dorsal2": 5, "name": "P. Rodríguez", "fullname": "Peru Rodríguez", "url_name": "peru_rodriguez", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 22, "name": "Dadie", "fullname": "Alberto Dadie", "url_name": "alberto_dadie", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 23, "name": "Agote", "fullname": "Unax Agote", "url_name": "unax_agote", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 27, "name": "Astigarraga", "fullname": "Eneko Astigarraga", "url_name": "eneko_astigarraga", "pos": "DEF", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
@@ -58,7 +57,6 @@
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 34, "name": "Oleaga", "fullname": "Joan Oleaga", "url_name": "joan_oleaga", "pos": "MED", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 38, "name": "Saenz", "fullname": "Manuel Sáenz", "url_name": "manuel_saenz", "pos": "MED", "pais": "España", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 9, "name": "Orobengoa", "fullname": "Ekain Orobengoa", "url_name": "ekain_orobengoa", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse", "dorsal": "-", "dorsal2": 20, "name": "Osazuwa", "fullname": "Sidney Osazuwa", "url_name": "sidney_osazuwa", "pos": "DEL", "pais": "España", "pais2": "Nigeria" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 26, "name": "Ramirez", "fullname": "Darío Ramirez", "url_name": "dario_ramirez", "pos": "DEL", "pais": "España", "pais2": null },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 33, "name": "J. Gorosabel", "fullname": "Jakes Gorosabel", "url_name": "jakes_gorosabel", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 41, "name": "Adjabengs", "fullname": "Andrews Adjabengs", "url_name": "andrews_adjabengs", "pos": "DEL", "pais": "Ghana", "pais2": null },
@@ -91,6 +89,8 @@
   { "tipo": "salida", "name": "N. Aguerd", "fullname": "Nayef Aguerd", "dorsal": 21, "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" }, "url_name": "nayef_aguerd", "pais": "Marruecos", "pais2": null, "cancion": { "es": "إيمانول ألجواسيل، شريف الغجر", "eu": "إيمانول ألجواسيل، شريف الغجر" } },
 
   
+  { "tipo": "salida-sanse", "dorsal": "-", "dorsal2": 20, "name": "Osazuwa", "fullname": "Sidney Osazuwa", "url_name": "sidney_osazuwa", "status": { "es": "Cedido", "eu": "Lagapena" }, "pos": "DEL", "pais": "España", "pais2": "Nigeria" },
+  { "tipo": "salida-sanse", "dorsal2": 5, "name": "P. Rodríguez", "fullname": "Peru Rodríguez", "url_name": "peru_rodriguez", "status": { "es": "Transferido", "eu": "Salduta" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Sergio Francisco", "fullname": "Sergio Francisco", "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "sergio_francisco", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Iosu", "fullname": "Iosu Rivas", "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "iosu_rivas", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida-sanse", "name": "Goti", "fullname": "Mikel Goti", "dorsal2": 10, "status": { "es": "1. equipo", "eu": "1. taldera" }, "url_name": "mikel_goti", "pais": "Euskal Herria", "pais2": "Bizkaia" },
