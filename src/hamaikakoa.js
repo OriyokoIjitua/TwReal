@@ -423,10 +423,11 @@
           }, 10);
         };
         if (assigned[idx]) {
+          const scaledFontSize = 0.8 * scale; // Escalar el tamaño de fuente
           div.innerHTML = `
             <div style="position:relative;width:100%;height:100%;">
               <img class="player-img" src="${assigned[idx].img}" title="${assigned[idx].name} (${assigned[idx].dorsal})" />
-              <div class="dorsal-badge-onfield" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis; font-size:0.8em;">
+              <div class="dorsal-badge-onfield" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis; font-size:${scaledFontSize}em;">
           ${assigned[idx].dorsal ?? ''}. ${assigned[idx].name}
               </div>
             </div>`;
@@ -540,9 +541,9 @@
       }, 50);
     }
 
-    function closePlayerList() {
+    window.closePlayerList = function closePlayerList() {
       document.getElementById('playerListModal').style.display = 'none';
-    }
+    };
 
     // Descargar alineación como imagen
     function setupButtons() {
