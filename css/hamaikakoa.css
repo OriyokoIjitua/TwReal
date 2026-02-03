@@ -303,6 +303,19 @@
     width: 40px !important;
     height: 40px !important;
   }
+
+  #downloadBtn,
+  #clearBtn {
+    min-width: 100px !important;
+    font-size: 1em !important;
+    padding: 8px 12px !important;
+  }
+
+  /* Botones en la misma fila en móvil */
+  .d-flex.flex-column.flex-md-row {
+    flex-direction: row !important;
+    gap: 12px !important;
+  }
 }
 
 .dorsal-badge-onfield {
