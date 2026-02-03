@@ -176,3 +176,21 @@ select {
     height: 80px;
   }
 }
+
+@media (max-width: 700px) {
+  label[style*="color:#fff"] {
+    flex-basis: 100%;
+  }
+
+  label[style*="margin-left"] {
+    margin-left: 0 !important;
+  }
+
+  div[style*="display:flex"] {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin: 12px 12px 0 12px !important;
+    justify-content: center !important;
+  }
+}
