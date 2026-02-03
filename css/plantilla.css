@@ -160,13 +160,19 @@ select {
 
 @media (max-width: 700px) {
   .players-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px;
     margin-left: 12px;
   }
 
   .player-card {
-    max-width: 96vw;
-    width: 96vw;
+    max-width: 100%;
+    width: 100%;
+    padding: 16px 12px;
+  }
+
+  .player-img {
+    width: 80px;
+    height: 80px;
   }
 }
