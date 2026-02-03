@@ -83,6 +83,66 @@ body {
   }
 }
 
+/* Mobile: sidebar como desplegable */
+@media (max-width: 700px) {
+  .sidebar {
+    width: 210px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  #toggleSidebar {
+    display: block;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 998;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-color);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #toggleSidebar:hover {
+    opacity: 0.9;
+  }
+
+  #langBtn {
+    top: 70px;
+    right: 10px;
+  }
+
+  /* Overlay para cerrar sidebar al clickear fuera */
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+
+  .sidebar-overlay.open {
+    display: block;
+  }
+}
+
 /* Language button */
 #langBtn {
   background: var(--white);
