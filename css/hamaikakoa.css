@@ -25,8 +25,6 @@
 
 .player-pos {
   position: absolute;
-  width: 110px;
-  height: 110px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
@@ -39,8 +37,6 @@
 }
 
 .player-pos.selected {
-  width: 130px;
-  height: 130px;
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
 }
 
@@ -253,6 +249,59 @@
   .player-list-img {
     width: 36px;
     height: 36px;
+  }
+}
+
+@media (max-width: 700px) {
+  .field-container {
+    width: 90vw;
+    height: auto;
+    aspect-ratio: 650 / 764;
+    margin: 20px auto 16px auto;
+  }
+
+  #optionsBlock {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin: 12px 12px 0 12px !important;
+  }
+
+  #optionsBlock > div {
+    margin-bottom: 0 !important;
+    flex-basis: 100% !important;
+    justify-content: center !important;
+  }
+
+  label[style*="color:#fff"] {
+    flex-basis: 100%;
+  }
+
+  /* Excepto los labels que van junto a checkboxes */
+  label[for="filterByPosition"],
+  label[for="watermarkToggle"] {
+    flex-basis: auto;
+  }
+
+  label[style*="margin-left"] {
+    margin-left: 0 !important;
+  }
+
+  div[style*="display:flex"] {
+    flex-direction: column !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    margin: 12px 12px 0 12px !important;
+    justify-content: center !important;
+  }
+
+  .player-list-box {
+    max-width: 90vw !important;
+    padding: 16px 12px !important;
+  }
+
+  .player-list-img {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
 

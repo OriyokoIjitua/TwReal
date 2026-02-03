@@ -62,7 +62,7 @@
           pos: p.pos,
           cancion: p.cancion
         }));
-        renderPositions();
+        if (window.renderPositions) window.renderPositions();
       } catch (err) {
         console.error('Error cargando plantilla_' + temporada + '.json:', err);
         showLoadError('No se ha podido cargar el JSON de plantilla para la temporada ' + temporada + '. Comprueba la conexión o sirve los archivos vía HTTP.');
@@ -221,10 +221,14 @@
 
   // Inicializar formación según el selector
   let currentFormation = document.getElementById('formationSelect').value || '4-2-3-1';
-  let positions = formations[currentFormation];
+  window.positions = formations[currentFormation];
 
     // Estado de jugadores asignados
-    let assigned = Array(positions.length).fill(null);
+    window.assigned = Array(window.positions.length).fill(null);
+    
+    // Referencias locales que apuntan a window para facilitar acceso
+    let positions = window.positions;
+    let assigned = window.assigned;
 
     // Cambiar formación y mantener jugadores
     document.getElementById('formationSelect').addEventListener('change', function() {
@@ -248,27 +252,38 @@
       newAssigned[9] = assigned[9];
       newAssigned[10] = assigned[10];
   currentFormation = newFormation;
-  positions = formations[currentFormation];
-  assigned = newAssigned;
-  renderPositions();
+  positions = window.positions = formations[currentFormation];
+  assigned = window.assigned = newAssigned;
+  if (window.renderPositions) window.renderPositions();
     });
 
-    function renderPositions() {
+    window.renderPositions = function renderPositions() {
       const container = document.getElementById('positions');
       container.innerHTML = '';
-      positions.forEach((pos, idx) => {
+      
+      // Calcular factor de escala basado en el ancho real del contenedor
+      const fieldContainer = document.querySelector('.field-container');
+      const currentWidth = fieldContainer.offsetWidth;
+      const scale = currentWidth / 650; // 650 es el ancho original del campo
+      
+      window.positions.forEach((pos, idx) => {
         const div = document.createElement('div');
-        div.className = 'player-pos' + (assigned[idx] ? ' selected' : '');
-        // Centrar el círculo pequeño respecto al grande
-        if (!assigned[idx]) {
-          // player-pos: 110x110, player-pos.selected: 130x130
-          // Centrar el círculo pequeño (110x110) respecto al grande (130x130)
-          div.style.left = (pos.x + 10) + 'px';
-          div.style.top = (pos.y + 10) + 'px';
-        } else {
-          div.style.left = pos.x + 'px';
-          div.style.top = pos.y + 'px';
-        }
+        div.className = 'player-pos' + (window.assigned[idx] ? ' selected' : '');
+        
+        // Aplicar escala a las coordenadas
+        const scaledX = pos.x * scale;
+        const scaledY = pos.y * scale;
+        const offset = window.assigned[idx] ? 0 : 10;
+        
+        div.style.left = (scaledX + (offset * scale)) + 'px';
+        div.style.top = (scaledY + (offset * scale)) + 'px';
+        
+        // Escalar tamaño del círculo también
+        const baseSize = window.assigned[idx] ? 130 : 110;
+        const scaledSize = baseSize * scale;
+        div.style.width = scaledSize + 'px';
+        div.style.height = scaledSize + 'px';
+        
         div.onclick = (e) => {
           e.stopPropagation();
           openPlayerList(idx);
@@ -297,7 +312,7 @@
           // Traducciones
           const lang = localStorage.getItem('lang') || 'es';
           const opts = [
-            { es: 'Quitar jugador', eu: 'Jokalaria kendu', action: () => { assigned[idx] = null; if (window.cambiosOnce) delete window.cambiosOnce[idx]; renderPositions(); } },
+            { es: 'Quitar jugador', eu: 'Jokalaria kendu', action: () => { assigned = window.assigned; window.assigned[idx] = null; if (window.cambiosOnce) delete window.cambiosOnce[idx]; if (window.renderPositions) window.renderPositions(); } },
             { es: 'Jugador suplente', eu: 'Ordezko jokalaria', action: () => { window.cambioEnPosicion = idx; openCambioList(idx); } }
           ];
     // Lista de jugadores para cambio
@@ -367,7 +382,8 @@
           }
           window.cambiosOnce = cambios;
           modal.style.display = 'none';
-          renderPositions();
+          assigned = window.assigned = assigned;
+          if (window.renderPositions) window.renderPositions();
         };
         item.innerHTML =
           '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
@@ -501,7 +517,8 @@
           }
           window.cambiosOnce = cambios;
           modal.style.display = 'none';
-          renderPositions();
+          assigned = window.assigned = assigned;
+          if (window.renderPositions) window.renderPositions();
         };
         item.innerHTML =
           '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
@@ -511,7 +528,7 @@
       });
     // Actualizar lista de jugadores al cambiar el filtro
     document.getElementById('filterByPosition').addEventListener('change', () => {
-      renderPositions();
+      if (window.renderPositions) window.renderPositions();
     });
       // Cerrar modal al click fuera de la caja
       setTimeout(() => {
@@ -547,8 +564,8 @@
         }
       };
       document.getElementById('clearBtn').onclick = function() {
-        assigned = Array(positions.length).fill(null);
-        renderPositions();
+        assigned = window.assigned = Array(window.positions.length).fill(null);
+        if (window.renderPositions) window.renderPositions();
       };
     }
     setupButtons();
@@ -564,8 +581,8 @@
     document.addEventListener('DOMContentLoaded', function() {
       // Si el selector tiene valor, usarlo
       currentFormation = document.getElementById('formationSelect').value || '4-2-3-1';
-      positions = formations[currentFormation];
-      renderPositions();
+      positions = window.positions = formations[currentFormation];
+      if (window.renderPositions) window.renderPositions();
     });
     document.getElementById('watermarkToggle').addEventListener('change', function() {
   const fieldImg = document.querySelector('.field-img');
@@ -578,6 +595,7 @@
     // Duplicar el contenido de opciones para móvil
 function renderMobileOptions() {
   const mobile = document.getElementById('optionsContainerMobile');
+  if (!mobile) return; // No hacer nada si el elemento no existe
   mobile.innerHTML = `
     <div id="filterContainerMobileInner">
       <label id="formationLabelMobile" style="color:#fff; font-size:1.2em; font-weight:bold; display:block; margin-bottom:8px;">
@@ -611,7 +629,7 @@ function renderMobileOptions() {
   document.getElementById('filterByPositionMobile').checked = document.getElementById('filterByPosition').checked;
   document.getElementById('filterByPositionMobile').onchange = function() {
     document.getElementById('filterByPosition').checked = this.checked;
-    renderPositions();
+    if (window.renderPositions) window.renderPositions();
   };
   document.getElementById('watermarkToggleMobile').checked = document.getElementById('watermarkToggle').checked;
   document.getElementById('watermarkToggleMobile').onchange = function() {
@@ -626,8 +644,15 @@ function renderMobileOptions() {
 }
 // Detectar si es móvil y renderizar opciones
 function checkMobileOptions() {
+  if (!document.getElementById('positions')) return; // Esperar a que hamaikakoa esté listo
   if (window.innerWidth <= 700) {
     renderMobileOptions();
+  }
+  // Re-renderizar posiciones para escalarlas correctamente
+  console.log('checkMobileOptions ejecutada, window.renderPositions disponible:', !!window.renderPositions);
+  if (window.renderPositions) {
+    console.log('Llamando a window.renderPositions()');
+    window.renderPositions();
   }
 }
 window.addEventListener('resize', checkMobileOptions);
