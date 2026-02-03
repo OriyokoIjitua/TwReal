@@ -95,6 +95,9 @@ body {
     top: 0;
     left: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
   }
 
   .sidebar a {
@@ -137,6 +140,12 @@ body {
     right: auto !important;
     bottom: auto !important;
     left: auto !important;
+    width: calc(100% - 64px);
+    text-align: center;
+    margin-top: auto !important;
+    margin-left: 32px !important;
+    margin-right: 32px !important;
+    margin-bottom: 24px !important;
   }
 
   /* Overlay para cerrar sidebar al clickear fuera */
