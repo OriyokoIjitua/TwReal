@@ -83,13 +83,23 @@ body {
   }
 }
 
-/* Mobile: sidebar como desplegable */
+/* Mobile: sidebar como desplegable - prioridad sobre 900px */
 @media (max-width: 700px) {
   .sidebar {
-    width: 210px;
+    width: 210px !important;
+    padding-top: 48px !important;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+  }
+
+  .sidebar a {
+    font-size: 1.2em !important;
+    padding: 16px 32px !important;
   }
 
   .sidebar.open {
@@ -101,7 +111,7 @@ body {
   }
 
   #toggleSidebar {
-    display: block;
+    display: block !important;
     position: fixed;
     top: 10px;
     left: 10px;
@@ -122,8 +132,8 @@ body {
   }
 
   #langBtn {
-    top: 70px;
-    right: 10px;
+    top: 70px !important;
+    right: 10px !important;
   }
 
   /* Overlay para cerrar sidebar al clickear fuera */
