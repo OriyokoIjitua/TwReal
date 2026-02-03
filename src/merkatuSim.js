@@ -76,8 +76,7 @@ async function loadPlantilla() {
   // Reinicializar datos según el equipo seleccionado
   reinitializeByTeam();
   
-  updateLangBtn();
-  renderAllSections();
+  // No renderizar aquí - esperar a que i18next esté completamente listo
 }
 
 function reinitializeByTeam() {
@@ -644,6 +643,10 @@ async function initMerkatuSim() {
   
   // Cargar datos
   await loadPlantilla();
+  
+  // Ahora que i18next está listo, actualizar UI y renderizar
+  updateLangBtn();
+  renderAllSections();
 }
 
 // Event listener para el selector de equipo

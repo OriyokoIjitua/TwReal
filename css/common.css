@@ -132,8 +132,11 @@ body {
   }
 
   #langBtn {
-    top: 70px !important;
-    right: 10px !important;
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
   }
 
   /* Overlay para cerrar sidebar al clickear fuera */
