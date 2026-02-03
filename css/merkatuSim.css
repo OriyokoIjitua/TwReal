@@ -317,7 +317,7 @@
 
 @media (max-width: 700px) {
   .players-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-columns: repeat(1, 1fr) !important;
     gap: 12px;
     margin-left: 12px;
   }
