@@ -350,4 +350,10 @@
     margin: 12px 12px 0 12px !important;
     justify-content: center !important;
   }
+
+  #resetBtn {
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
