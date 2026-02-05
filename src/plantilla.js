@@ -23,8 +23,9 @@ const AUDIO_BASE_URL = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/m
 
 function getFlagStyle(pais) {
   const noDeform = ['NafarroaG', 'Gipuzkoa', 'Bizkaia', 'Araba', 'Lapurdi', 'NafarroaB', 'Zuberoa'];
-  const base = 'vertical-align:middle; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);';
-  return noDeform.includes(pais) ? base + ' object-fit:contain;' : base;
+  const baseStyle = 'vertical-align:middle; width:24px; height:16px;';
+  const withBox = baseStyle + ' border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);';
+  return noDeform.includes(pais) ? baseStyle + ' object-fit:contain;' : withBox;
 }
 
 async function cargarDatosTemporada(temporada) {
@@ -108,10 +109,10 @@ function renderPlayers() {
         <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
           <span class="player-name">
-            <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
-            ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
-            ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
-            ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
+            <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
+            ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
+            ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
+            ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
@@ -196,10 +197,10 @@ function renderEntrenadores() {
       <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
         <span class="player-name">
-          <img src="${IMG_BASE_URL}banderak/${coach.pais}.png" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:2px;">
-          ${coach.pais2 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais2}.png" alt="flag2" style="${getFlagStyle(coach.pais2)} margin-left:2px;">` : ''}
-          ${coach.pais3 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais3}.png" alt="flag3" style="${getFlagStyle(coach.pais3)} margin-left:2px;">` : ''}
-          ${coach.pais4 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais4}.png" alt="flag4" style="${getFlagStyle(coach.pais4)} margin-left:2px;">` : ''}
+          <img src="${IMG_BASE_URL}banderak/${coach.pais}.png" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:1px;">
+          ${coach.pais2 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais2}.png" alt="flag2" style="${getFlagStyle(coach.pais2)} margin-left:1px;">` : ''}
+          ${coach.pais3 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais3}.png" alt="flag3" style="${getFlagStyle(coach.pais3)} margin-left:1px;">` : ''}
+          ${coach.pais4 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais4}.png" alt="flag4" style="${getFlagStyle(coach.pais4)} margin-left:1px;">` : ''}
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
@@ -295,10 +296,10 @@ function renderVendidos() {
       <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
         <span class="player-name">
-          <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
-          ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
-          ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
-          ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}
+          <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
+          ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
+          ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
+          ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}
           ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>

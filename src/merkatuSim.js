@@ -192,18 +192,19 @@ function createPlayerCard(player, sectionKey, idx) {
   // Función para estilos de banderas
   const getFlagStyle = (pais) => {
     const noDeform = ['NafarroaG', 'Gipuzkoa', 'Bizkaia', 'Araba', 'Lapurdi', 'NafarroaB', 'Zuberoa'];
-    const base = 'vertical-align:middle; width:22px; height:16px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);';
-    return noDeform.includes(pais) ? base + ' object-fit:contain;' : base;
+    const baseStyle = 'vertical-align:middle; width:24px; height:16px;';
+    const withBox = baseStyle + ' border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10);';
+    return noDeform.includes(pais) ? baseStyle + ' object-fit:contain;' : withBox;
   };
   
   // Construir HTML de banderas si no es personalizado
   let flagsHtml = '';
   if (!player.customImageId && player.pais) {
     flagsHtml = `
-        <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:2px;">
-        ${player.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:2px;">` : ''}
-        ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:2px;">` : ''}
-        ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:2px;">` : ''}`;
+        <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
+        ${player.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
+        ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
+        ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}`;
   }
   
   card.innerHTML = `
