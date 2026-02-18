@@ -205,6 +205,7 @@ function renderEntrenadores() {
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
+        ${coach.jaioData ? `<span class="player-birthdate">${coach.jaioData}</span>` : ''}
         <span class="player-dorsal">${rol}</span>
       </div>
       ${is202526 && !isSanse && !isF ? `<div style="display: flex; flex-direction: column; align-items: center; position: absolute; right: 16px; top: 50px; gap: 6px;">
