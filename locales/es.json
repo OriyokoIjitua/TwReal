@@ -7,6 +7,7 @@
   "plantilla": {
     "title": "En plantilla",
     "dorsal": "Dorsal",
+    "fechaNacimiento": "Fecha de nacimiento",
     "porterosTitle": "Porteros",
     "defensasTitle": "Defensas",
     "centrocampistasTitle": "Centrocampistas",
@@ -29,6 +30,7 @@
   },
   "merkatuSim": {
     "pageTitle": "Simulación de mercado",
+    "fechaNacimiento": "Fecha de nacimiento",
     "porterosTitle": "Porteros",
     "defensasTitle": "Defensas",
     "centrocampistasTitle": "Centrocampistas",

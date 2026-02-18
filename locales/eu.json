@@ -7,6 +7,7 @@
   "plantilla": {
     "title": "Taldekideak",
     "dorsal": "Dortsala",
+    "fechaNacimiento": "Jaiotze data",
     "porterosTitle": "Atezainak",
     "defensasTitle": "Atzelariak",
     "centrocampistasTitle": "Erdilariak",
@@ -29,6 +30,7 @@
   },
   "merkatuSim": {
     "pageTitle": "Merkatu simulaketa",
+    "fechaNacimiento": "Jaiotze data",
     "porterosTitle": "Atezainak",
     "defensasTitle": "Atzelariak",
     "centrocampistasTitle": "Erdilariak",

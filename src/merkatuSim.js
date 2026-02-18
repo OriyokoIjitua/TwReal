@@ -217,6 +217,7 @@ function createPlayerCard(player, sectionKey, idx) {
       </span>
       <span class="player-fullname">${player.fullname || ''}</span>
         <span class="player-dorsal">${t('merkatuSim.dorsal')}: ${dorsalDisplay}</span>
+        ${player.jaioData ? `<span class="player-dorsal">${t('merkatuSim.fechaNacimiento')}: ${player.jaioData}</span>` : ''}
     </div>
     <button class="menu-btn" onclick="toggleContextMenu(event, '${sectionKey}', ${idx})">⋮</button>
     <div class="context-menu" id="menu-${sectionKey}-${idx}" style="display:none;">
