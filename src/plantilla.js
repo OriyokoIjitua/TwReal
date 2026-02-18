@@ -116,8 +116,8 @@ function renderPlayers() {
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
+          ${player.jaioData ? `<span class="player-birthdate">${player.jaioData}</span>` : ''}
           <span class="player-dorsal">${dorsalDisplay ? t('plantilla.dorsal') + ': ' + dorsalDisplay : ''}</span>
-          ${player.jaioData ? `<span class="player-dorsal">${t('plantilla.fechaNacimiento')}: ${player.jaioData}</span>` : ''}
         </div>
         ${is202526 && !isSanse && !isF ? `<div style="display: flex; flex-direction: column; align-items: center; position: absolute; right: 16px; top: 50px; gap: 6px;">
           <button class="play-btn" data-idx="${idx}">▶️</button>
@@ -304,8 +304,8 @@ function renderVendidos() {
           ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>
+        ${player.jaioData ? `<span class="player-birthdate">${player.jaioData}</span>` : ''}
         <span class="player-dorsal">${player.status[window.currentLang]}</span>
-        ${player.jaioData ? `<span class="player-dorsal">${t('plantilla.fechaNacimiento')}: ${player.jaioData}</span>` : ''}
       </div>
       ${showControls ? `<div style="display: flex; flex-direction: column; align-items: center; position: absolute; right: 16px; top: 50px; gap: 6px;">
         <button class="play-btn" data-idx="v${idx}">▶️</button>

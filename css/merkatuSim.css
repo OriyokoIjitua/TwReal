@@ -62,6 +62,13 @@
   margin-bottom: 2px;
 }
 
+.player-birthdate {
+  font-size: 1em;
+  color: var(--accent-color);
+  font-weight: normal;
+  margin-bottom: 2px;
+}
+
 .player-card.add-btn {
   justify-content: center;
   cursor: pointer;
