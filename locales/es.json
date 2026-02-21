@@ -55,6 +55,7 @@
     "cancelar": "Cancelar",
     "guardar": "Guardar",
     "deshacer": "Deshacer cambios",
-    "buscar": "Buscar..."
+    "buscar": "Buscar...",
+    "cerrar": "Cerrar"
   }
 }
