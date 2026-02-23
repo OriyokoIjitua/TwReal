@@ -57,6 +57,7 @@
     "guardar": "Guardar",
     "deshacer": "Deshacer cambios",
     "buscar": "Buscar...",
-    "cerrar": "Cerrar"
+    "cerrar": "Cerrar",
+    "completaNombre": "Insertar nombre del jugador."
   }
 }

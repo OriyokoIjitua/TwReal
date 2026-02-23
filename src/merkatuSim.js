@@ -177,6 +177,13 @@ function createPlayerCard(player, sectionKey, idx) {
     imgFolder = 'f_2025-26';
   }
   let imgSrc = `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${player.url_name}.jpg`;
+  
+  // Si tiene imagen por defecto, usarla
+  if (player.defaultImage) {
+    imgSrc = `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/${player.defaultImage}`;
+  }
+  
+  // Si tiene imagen personalizada, cargarla desde IndexedDB
   if (player.customImageId) {
     getImageFromDB(player.customImageId).then(imageData => {
       if (imageData) {
@@ -532,7 +539,7 @@ function addCustomPlayer() {
   const fotoFile = document.getElementById('custom-foto').files[0];
 
   if (!nombre) {
-    alert('Completa el nombre');
+    alert(t('merkatuSim.completaNombre'));
     return;
   }
 
@@ -559,12 +566,17 @@ function addCustomPlayer() {
     };
     reader.readAsDataURL(fotoFile);
   } else {
+    const defaultImage = addPlayerSection === 'porteros' 
+      ? 'img/2025-26/def_port.jpg'
+      : 'img/2025-26/def_jug.jpg';
+    
     const newPlayer = {
       tipo: 'jugador',
       name: deportivo || nombre,
       fullname: nombre,
       url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
       dorsal: parseInt(dorsal),
+      defaultImage: defaultImage,
       tempId: Date.now() + Math.random()
     };
     addPlayerToSimulation(newPlayer);
