@@ -225,14 +225,31 @@ function createPlayerCard(player, sectionKey, idx) {
     return `${fechaFormato} (${age} ${t('plantilla.anos')})`;
   };
   
-  // Construir HTML de banderas si no es personalizado
+  // Construir HTML de banderas si no es personalizado (igual que en plantilla)
   let flagsHtml = '';
-  if (!player.customImageId && player.pais) {
-    flagsHtml = `
-        <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
-        ${player.pais2 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
-        ${player.pais3 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
-        ${player.pais4 ? `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}`;
+  if (!player.customImageId) {
+    const buildFlagImg = (pais, flagIdx) => {
+      if (!pais) return '';
+      const margin = flagIdx === 0 ? ' margin-right:1px;' : ' margin-left:1px;';
+      if (pais.startsWith('customFlag:')) {
+        const customFlagId = pais.substring('customFlag:'.length);
+        const altTag = `custom-flag-${sectionKey}-${idx}-${flagIdx}`;
+        getImageFromDB(customFlagId).then(imageData => {
+          if (imageData) {
+            const flagImg = card.querySelector(`img[alt="${altTag}"]`);
+            if (flagImg) flagImg.src = imageData;
+          }
+        });
+        return `<img alt="${altTag}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="${getFlagStyle('custom')}${margin}">`;
+      } else {
+        return `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${pais}.png" alt="flag-${flagIdx}" style="${getFlagStyle(pais)}${margin}">`;
+      }
+    };
+    
+    flagsHtml = `${buildFlagImg(player.pais, 0)}
+            ${player.pais2 ? buildFlagImg(player.pais2, 1) : ''}
+            ${player.pais3 ? buildFlagImg(player.pais3, 2) : ''}
+            ${player.pais4 ? buildFlagImg(player.pais4, 3) : ''}`;
   }
   
   card.innerHTML = `
@@ -262,8 +279,8 @@ function createPlayerCard(player, sectionKey, idx) {
       <button class="context-menu-item" onclick="deletePlayer('${sectionKey}', ${idx})">
         ${t('merkatuSim.eliminar')}
       </button>
-      <button class="context-menu-item" onclick="openDorsalModal('${sectionKey}', ${idx})">
-        ${t('merkatuSim.cambiarDorsal')}
+      <button class="context-menu-item" onclick="openEditModal('${sectionKey}', ${idx})">
+        ${t('merkatuSim.editar')}
       </button>
     </div>
   `;
@@ -355,6 +372,8 @@ function saveDorsal() {
 
 // ============= AÑADIR JUGADOR =============
 let addPlayerSection = null;
+let editPlayerSection = null;
+let editPlayerIdx = null;
 
 function openAddPlayerModal(sectionKey) {
   addPlayerSection = sectionKey;
@@ -366,6 +385,83 @@ function closeAddPlayerModal() {
   document.getElementById('addPlayerModal').classList.remove('active');
   addPlayerSection = null;
   document.getElementById('modalTabsContainer').innerHTML = '';
+}
+
+function openEditModal(sectionKey, idx) {
+  editPlayerSection = sectionKey;
+  editPlayerIdx = idx;
+  const player = simulationData[sectionKey][idx];
+  
+  // Cargar la pestaña de personalizado pero con datos de edición
+  document.getElementById('addPlayerModal').classList.add('active');
+  createEditModalTabs(player, sectionKey, idx);
+}
+
+function closeEditModal() {
+  document.getElementById('addPlayerModal').classList.remove('active');
+  editPlayerSection = null;
+  editPlayerIdx = null;
+  document.getElementById('modalTabsContainer').innerHTML = '';
+}
+
+function createEditModalTabs(player, sectionKey, idx) {
+  const container = document.getElementById('modalTabsContainer');
+  container.innerHTML = `
+    <div id="tab-editar" class="modal-section"></div>
+  `;
+  loadEditTab(player, sectionKey, idx);
+}
+
+function loadEditTab(player, sectionKey, idx) {
+  const container = document.getElementById('tab-editar');
+  container.innerHTML = `
+    <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.nombre')}</label>
+      <input type="text" class="modal-input" id="edit-nombre" placeholder="Jose Luis Korta" value="${player.fullname || ''}">
+    </div>
+    <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.nombreDeportivo')}</label>
+      <input type="text" class="modal-input" id="edit-deportivo" placeholder="Korta" value="${player.name || ''}">
+    </div>
+    <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.dorsal')}</label>
+      <input type="number" class="modal-input" id="edit-dorsal" placeholder="16" value="${player.dorsal || ''}">
+    </div>
+    <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.jaiodata')}</label>
+      <input type="text" class="modal-input" id="edit-jaiodata" placeholder="YYYY-MM-DD" maxlength="10" value="${player.jaioData || ''}">
+    </div>
+    <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.nacionalidad')}</label>
+      <div style="margin-bottom: 10px; font-size: 0.9em; color: #666;">${t('merkatuSim.seleccionar')} hasta 4 banderas</div>
+      <div id="flags-dropdown-edit" style="display: flex; flex-wrap: wrap; gap: 8px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; max-height: 200px; overflow-y: auto;">
+        <label style="cursor: pointer; display: flex; align-items: center; justify-content: center; width: 24px; height: 16px; border: 2px dashed #999; border-radius: 2px; font-size: 12px; font-weight: bold; color: #999;">
+          <input type="file" id="edit-flag-image" accept="image/*" style="display: none;">
+          +
+        </label>
+      </div>
+      <div style="margin-top: 8px; display: flex; gap: 8px;">
+        <input type="hidden" id="edit-pais" value="${player.pais || ''}">
+        <input type="hidden" id="edit-pais2" value="${player.pais2 || ''}">
+        <input type="hidden" id="edit-pais3" value="${player.pais3 || ''}">
+        <input type="hidden" id="edit-pais4" value="${player.pais4 || ''}">
+      </div>
+    </div>
+    <button class="modal-btn modal-btn-primary" style="width: 100%;" onclick="saveEditedPlayer('${sectionKey}', ${idx})">
+      ${t('merkatuSim.guardar')}
+    </button>
+  `;
+  
+  // Configurar el input de fecha
+  const dateInput = document.getElementById('edit-jaiodata');
+  dateInput.addEventListener('input', handleDateInput);
+  dateInput.addEventListener('keypress', handleDateKeypress);
+  
+  // Cargar las banderas disponibles
+  loadFlagsDropdownEdit();
+  
+  // Permitir seleccionar imagen de bandera personalizada
+  document.getElementById('edit-flag-image').addEventListener('change', (e) => handleCustomFlagUploadEdit(e, 'flags-dropdown-edit'));
 }
 
 function createModalTabs() {
@@ -507,6 +603,388 @@ function loadRealPlayers() {
   updateResults();
 }
 
+function getFlagStyle(pais) {
+  const noDeform = ['NafarroaG', 'Gipuzkoa', 'Bizkaia', 'Araba', 'Lapurdi', 'NafarroaB', 'Zuberoa'];
+  const baseStyle = 'width:24px; height:16px; object-fit:cover; border-radius:2px; cursor:pointer;';
+  const withBox = baseStyle + ' box-shadow:0 1px 2px rgba(0,0,0,0.10);';
+  return noDeform.includes(pais) ? baseStyle + ' object-fit:contain;' : withBox;
+}
+
+async function getAvailableFlags() {
+  try {
+    // Intentar obtener el listado de banderas desde un archivo JSON
+    const response = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/banderas.json');
+    if (response.ok) {
+      const data = await response.json();
+      return data.banderas || [];
+    }
+  } catch (err) {
+    console.log('No se pudo cargar banderas.json, intentando con GitHub API...');
+  }
+  
+  // Si el JSON no existe, usar la GitHub API para listar archivos
+  try {
+    const response = await fetch('https://api.github.com/repos/OriyokoIjitua/TwReal/contents/img/banderak');
+    if (response.ok) {
+      const data = await response.json();
+      return data
+        .filter(file => file.name.endsWith('.png'))
+        .map(file => file.name.replace('.png', ''))
+        .sort();
+    }
+  } catch (err) {
+    console.warn('No se pudo obtener listado de banderas desde GitHub API');
+  }
+  
+  // Fallback a lista real actualizada
+  return [
+    'Alemania', 'Araba', 'Armenia', 'Australia', 'Austria', 'Bizkaia', 'Brazil', 'Brittany', 
+    'Cameroon', 'Catalunya', 'Chequia', 'Colombia', 'Croacia', 'Escocia', 'España', 
+    'Euskal Herria', 'Finlandia', 'Francia', 'Galicia', 'Ghana', 'Gipuzkoa', 'Guinea-Bissau', 
+    'Hungaria', 'Inglaterra', 'IslMan', 'Islandia', 'Italia', 'Ivory Coast', 'Japón', 'Kenya', 
+    'Lapurdi', 'Mali', 'Marruecos', 'NafarroaB', 'NafarroaG', 'Netherlands', 'Nigeria', 'Norway', 
+    'Portugal', 'Rusia', 'Surinam', 'Turkey', 'USA', 'Venezuela', 'Zuberoa'
+  ];
+}
+
+async function loadFlagsDropdown() {
+  const dropdown = document.getElementById('flags-dropdown');
+  
+  // Obtener lista de banderas disponibles dinámicamente
+  const flagsList = await getAvailableFlags();
+  
+  flagsList.forEach(flagName => {
+    const label = document.createElement('label');
+    label.style.cssText = 'cursor: pointer; display: flex; align-items: center;';
+    label.className = 'flag-option';
+    label.setAttribute('data-flag', flagName);
+    label.innerHTML = `
+      <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${flagName}.png" 
+           alt="${flagName}" 
+           style="${getFlagStyle(flagName)}"
+           title="${flagName}"
+           onclick="selectCustomFlag('${flagName}')">
+      <input type="radio" name="pais" value="${flagName}" style="display:none;">
+    `;
+    dropdown.appendChild(label);
+  });
+  
+  // Actualizar el display de las banderas
+  updateFlagDisplay();
+}
+
+async function loadFlagsDropdownEdit() {
+  const dropdown = document.getElementById('flags-dropdown-edit');
+  
+  // Obtener lista de banderas disponibles dinámicamente
+  const flagsList = await getAvailableFlags();
+  
+  flagsList.forEach(flagName => {
+    const label = document.createElement('label');
+    label.style.cssText = 'cursor: pointer; display: flex; align-items: center;';
+    label.className = 'flag-option';
+    label.setAttribute('data-flag', flagName);
+    label.innerHTML = `
+      <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${flagName}.png" 
+           alt="${flagName}" 
+           style="${getFlagStyle(flagName)}"
+           title="${flagName}"
+           onclick="selectEditCustomFlag('${flagName}')">
+      <input type="radio" name="pais" value="${flagName}" style="display:none;">
+    `;
+    dropdown.appendChild(label);
+  });
+  
+  // Actualizar el display de las banderas
+  updateFlagDisplayEdit();
+}
+
+async function handleCustomFlagUpload(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = async (event) => {
+    const imageId = 'flag-' + Date.now() + Math.random();
+    try {
+      await saveImageToDB(imageId, event.target.result);
+      
+      // Crear una miniatura de la bandera personalizada
+      const dropdown = document.getElementById('flags-dropdown');
+      const label = document.createElement('label');
+      label.style.cssText = 'cursor: pointer; display: flex; align-items: center;';
+      label.className = 'flag-option custom-flag';
+      
+      const img = document.createElement('img');
+      img.src = event.target.result;
+      img.style.cssText = 'width:24px; height:16px; object-fit:cover; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); cursor:pointer; opacity: 0.5;';
+      img.classList.add('custom-flag-img');
+      img.setAttribute('data-flag-id', imageId);
+      img.onclick = () => selectCustomFlag(imageId, true);
+      img.alt = 'custom-' + imageId;
+      img.title = 'Bandera personalizada';
+      
+      label.appendChild(img);
+      
+      // Insertar después del botón de subida
+      dropdown.insertBefore(label, dropdown.children[1]);
+      
+      // Seleccionar la bandera personalizada
+      selectCustomFlag(imageId, true);
+      
+      // Limpiar el input para permitir subir otro archivo
+      document.getElementById('custom-flag-image').value = '';
+    } catch (err) {
+      console.error('Error saving custom flag:', err);
+      alert('Error al guardar la bandera personalizada');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function selectEditCustomFlag(flagId, isCustom = false) {
+  // Encontrar cuál es el siguiente slot disponible (pais, pais2, pais3, pais4)
+  const pais = document.getElementById('edit-pais').value;
+  const pais2 = document.getElementById('edit-pais2').value;
+  const pais3 = document.getElementById('edit-pais3').value;
+  const pais4 = document.getElementById('edit-pais4').value;
+  
+  const fieldIds = ['edit-pais', 'edit-pais2', 'edit-pais3', 'edit-pais4'];
+  const paisArray = [pais, pais2, pais3, pais4];
+  const newValue = isCustom ? 'customFlag:' + flagId : flagId;
+  
+  // Buscar si la bandera ya está seleccionada para deseleccionarla
+  for (let i = 0; i < paisArray.length; i++) {
+    if (paisArray[i] === newValue) {
+      // Si ya está seleccionada, deseleccionar
+      document.getElementById(fieldIds[i]).value = '';
+      updateFlagDisplayEdit();
+      return;
+    }
+  }
+  
+  // Buscar el primer slot vacío
+  for (let i = 0; i < paisArray.length; i++) {
+    if (!paisArray[i]) {
+      document.getElementById(fieldIds[i]).value = newValue;
+      updateFlagDisplayEdit();
+      return;
+    }
+  }
+  
+  // Si todos están llenos, hacer shift FIFO: desplazar hacia arriba
+  document.getElementById('edit-pais').value = pais2;
+  document.getElementById('edit-pais2').value = pais3;
+  document.getElementById('edit-pais3').value = pais4;
+  document.getElementById('edit-pais4').value = newValue;
+  updateFlagDisplayEdit();
+}
+
+function updateFlagDisplayEdit() {
+  // Actualizar la opacidad de las banderas según lo seleccionado
+  const pais = document.getElementById('edit-pais').value;
+  const pais2 = document.getElementById('edit-pais2').value;
+  const pais3 = document.getElementById('edit-pais3').value;
+  const pais4 = document.getElementById('edit-pais4').value;
+  
+  const selected = [pais, pais2, pais3, pais4].filter(p => p);
+  
+  document.querySelectorAll('#flags-dropdown-edit .flag-option img').forEach(img => {
+    const flagName = img.alt;
+    let isSelected = false;
+    
+    if (img.classList && img.classList.contains('custom-flag-img')) {
+      // Es una bandera personalizada
+      const customId = img.getAttribute('data-flag-id');
+      isSelected = selected.some(s => s === 'customFlag:' + customId);
+    } else {
+      // Es una bandera normal
+      isSelected = selected.some(s => {
+        if (s.startsWith('customFlag:')) {
+          return false;
+        }
+        return s === flagName;
+      });
+    }
+    
+    img.style.opacity = isSelected ? '1' : '0.5';
+    img.style.border = isSelected ? '2px solid #007bff' : 'none';
+  });
+}
+
+async function handleCustomFlagUploadEdit(e, dropdownId) {
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = async (event) => {
+    const imageId = 'flag-' + Date.now() + Math.random();
+    try {
+      await saveImageToDB(imageId, event.target.result);
+      
+      // Crear una miniatura de la bandera personalizada
+      const dropdown = document.getElementById(dropdownId);
+      const label = document.createElement('label');
+      label.style.cssText = 'cursor: pointer; display: flex; align-items: center;';
+      label.className = 'flag-option custom-flag';
+      
+      const img = document.createElement('img');
+      img.src = event.target.result;
+      img.style.cssText = 'width:24px; height:16px; object-fit:cover; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); cursor:pointer; opacity: 0.5;';
+      img.classList.add('custom-flag-img');
+      img.setAttribute('data-flag-id', imageId);
+      img.onclick = () => selectEditCustomFlag(imageId, true);
+      img.alt = 'custom-' + imageId;
+      img.title = 'Bandera personalizada';
+      
+      label.appendChild(img);
+      
+      // Insertar después del botón de subida
+      dropdown.insertBefore(label, dropdown.children[1]);
+      
+      // Seleccionar la bandera personalizada
+      selectEditCustomFlag(imageId, true);
+      
+      // Limpiar el input para permitir subir otro archivo
+      document.getElementById('edit-flag-image').value = '';
+    } catch (err) {
+      console.error('Error saving custom flag:', err);
+      alert('Error al guardar la bandera personalizada');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+function selectCustomFlag(flagId, isCustom = false) {
+  // Encontrar cuál es el siguiente slot disponible (pais, pais2, pais3, pais4)
+  const pais = document.getElementById('custom-pais').value;
+  const pais2 = document.getElementById('custom-pais2').value;
+  const pais3 = document.getElementById('custom-pais3').value;
+  const pais4 = document.getElementById('custom-pais4').value;
+  
+  const fieldIds = ['custom-pais', 'custom-pais2', 'custom-pais3', 'custom-pais4'];
+  const paisArray = [pais, pais2, pais3, pais4];
+  const newValue = isCustom ? 'customFlag:' + flagId : flagId;
+  
+  // Buscar si la bandera ya está seleccionada para deseleccionarla
+  for (let i = 0; i < paisArray.length; i++) {
+    if (paisArray[i] === newValue) {
+      // Si ya está seleccionada, deseleccionar
+      document.getElementById(fieldIds[i]).value = '';
+      updateFlagDisplay();
+      return;
+    }
+  }
+  
+  // Buscar el primer slot vacío
+  for (let i = 0; i < paisArray.length; i++) {
+    if (!paisArray[i]) {
+      document.getElementById(fieldIds[i]).value = newValue;
+      updateFlagDisplay();
+      return;
+    }
+  }
+  
+  // Si todos están llenos, hacer shift FIFO: desplazar hacia arriba
+  document.getElementById('custom-pais').value = pais2;
+  document.getElementById('custom-pais2').value = pais3;
+  document.getElementById('custom-pais3').value = pais4;
+  document.getElementById('custom-pais4').value = newValue;
+  updateFlagDisplay();
+}
+
+function updateFlagDisplay() {
+  // Actualizar la opacidad de las banderas según lo seleccionado
+  const pais = document.getElementById('custom-pais').value;
+  const pais2 = document.getElementById('custom-pais2').value;
+  const pais3 = document.getElementById('custom-pais3').value;
+  const pais4 = document.getElementById('custom-pais4').value;
+  
+  const selected = [pais, pais2, pais3, pais4].filter(p => p);
+  
+  document.querySelectorAll('#flags-dropdown .flag-option img').forEach(img => {
+    const flagName = img.alt;
+    let isSelected = false;
+    
+    if (img.classList && img.classList.contains('custom-flag-img')) {
+      // Es una bandera personalizada
+      const customId = img.getAttribute('data-flag-id');
+      isSelected = selected.some(s => s === 'customFlag:' + customId);
+    } else {
+      // Es una bandera normal
+      isSelected = selected.some(s => {
+        if (s.startsWith('customFlag:')) {
+          return false;
+        }
+        return s === flagName;
+      });
+    }
+    
+    img.style.opacity = isSelected ? '1' : '0.5';
+    img.style.border = isSelected ? '2px solid #007bff' : 'none';
+  });
+}
+
+function handleDateKeypress(e) {
+  const input = e.target;
+  const value = input.value;
+  const cursorPos = input.selectionStart;
+  
+  // Si presiona "-", rellenar con ceros el segmento actual
+  if (e.key === '-') {
+    e.preventDefault();
+    
+    // Filtrar solo números del valor actual
+    const numbersOnly = value.replace(/\D/g, '');
+    
+    if (numbersOnly.length < 4) {
+      // Segmento de año incompleto, rellenar con ceros al principio
+      const fillCount = 4 - numbersOnly.length;
+      input.value = '0'.repeat(fillCount) + numbersOnly + '-';
+    } else if (numbersOnly.length === 4) {
+      // Año completado, crear guión
+      input.value = numbersOnly + '-';
+    } else if (numbersOnly.length < 6) {
+      // Segmento de mes incompleto, rellenar con ceros
+      const yearPart = numbersOnly.substring(0, 4);
+      const monthPart = numbersOnly.substring(4);
+      const fillCount = 2 - monthPart.length;
+      input.value = yearPart + '-' + '0'.repeat(fillCount) + monthPart + '-';
+    } else if (numbersOnly.length === 6) {
+      // Mes completado, crear segundo guión
+      input.value = numbersOnly.substring(0, 4) + '-' + numbersOnly.substring(4) + '-';
+    }
+  }
+}
+
+function handleDateInput(e) {
+  const input = e.target;
+  let value = input.value;
+  
+  // Filtrar solo números
+  const numbersOnly = value.replace(/\D/g, '');
+  
+  // Si ya hay 8 números (YYYYMMDD), no permitir más
+  if (numbersOnly.length > 8) {
+    input.value = value.substring(0, 10); // YYYY-MM-DD = 10 caracteres
+    return;
+  }
+  
+  // Construir el valor formateado
+  let formattedValue = '';
+  if (numbersOnly.length > 0) {
+    formattedValue = numbersOnly.substring(0, 4);
+  }
+  if (numbersOnly.length > 4) {
+    formattedValue += '-' + numbersOnly.substring(4, 6);
+  }
+  if (numbersOnly.length > 6) {
+    formattedValue += '-' + numbersOnly.substring(6, 8);
+  }
+  
+  input.value = formattedValue;
+}
+
 function loadPersonalizedTab() {
   const container = document.getElementById('tab-personalizado');
   container.innerHTML = `
@@ -523,6 +1001,25 @@ function loadPersonalizedTab() {
       <input type="number" class="modal-input" id="custom-dorsal" placeholder="16">
     </div>
     <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.jaiodata')}</label>
+      <input type="text" class="modal-input" id="custom-jaiodata" placeholder="YYYY-MM-DD" maxlength="10">
+    </div>
+    <div class="modal-section">
+      <label class="modal-label">${t('merkatuSim.nacionalidad')}</label>
+      <div id="flags-dropdown" style="display: flex; flex-wrap: wrap; gap: 8px; border: 1px solid #ddd; border-radius: 4px; padding: 8px; max-height: 200px; overflow-y: auto;">
+        <label style="cursor: pointer; display: flex; align-items: center; justify-content: center; width: 24px; height: 16px; border: 2px dashed #999; border-radius: 2px; font-size: 12px; font-weight: bold; color: #999;">
+          <input type="file" id="custom-flag-image" accept="image/*" style="display: none;">
+          +
+        </label>
+      </div>
+      <div style="margin-top: 8px; display: flex; gap: 8px;">
+        <input type="hidden" id="custom-pais" value="">
+        <input type="hidden" id="custom-pais2" value="">
+        <input type="hidden" id="custom-pais3" value="">
+        <input type="hidden" id="custom-pais4" value="">
+      </div>
+    </div>
+    <div class="modal-section">
       <label class="modal-label">${t('merkatuSim.foto')}</label>
       <input type="file" class="modal-input" id="custom-foto" accept="image/*">
     </div>
@@ -530,18 +1027,29 @@ function loadPersonalizedTab() {
       ${t('merkatuSim.seleccionar')}
     </button>
   `;
+  
+  // Configurar el input de fecha
+  const dateInput = document.getElementById('custom-jaiodata');
+  dateInput.addEventListener('input', handleDateInput);
+  dateInput.addEventListener('keypress', handleDateKeypress);
+  
+  // Cargar las banderas disponibles
+  loadFlagsDropdown();
+  
+  // Permitir seleccionar imagen de bandera personalizada
+  document.getElementById('custom-flag-image').addEventListener('change', handleCustomFlagUpload);
 }
 
 function addCustomPlayer() {
-  const nombre = document.getElementById('custom-nombre').value;
+  const nombre = document.getElementById('custom-nombre').value || "Jose Luis Korta";
   const deportivo = document.getElementById('custom-deportivo').value;
   const dorsal = document.getElementById('custom-dorsal').value || '99';
+  const jaioData = document.getElementById('custom-jaiodata').value;
+  const pais = document.getElementById('custom-pais').value;
+  const pais2 = document.getElementById('custom-pais2').value;
+  const pais3 = document.getElementById('custom-pais3').value;
+  const pais4 = document.getElementById('custom-pais4').value;
   const fotoFile = document.getElementById('custom-foto').files[0];
-
-  if (!nombre) {
-    alert(t('merkatuSim.completaNombre'));
-    return;
-  }
 
   if (fotoFile) {
     const reader = new FileReader();
@@ -555,6 +1063,11 @@ function addCustomPlayer() {
           fullname: nombre,
           url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
           dorsal: parseInt(dorsal),
+          jaioData: jaioData,
+          pais: pais,
+          pais2: pais2,
+          pais3: pais3,
+          pais4: pais4,
           customImageId: imageId,
           tempId: Date.now() + Math.random()
         };
@@ -576,11 +1089,41 @@ function addCustomPlayer() {
       fullname: nombre,
       url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
       dorsal: parseInt(dorsal),
+      jaioData: jaioData,
+      pais: pais,
+      pais2: pais2,
+      pais3: pais3,
+      pais4: pais4,
       defaultImage: defaultImage,
       tempId: Date.now() + Math.random()
     };
     addPlayerToSimulation(newPlayer);
   }
+}
+
+function saveEditedPlayer(sectionKey, idx) {
+  const nombre = document.getElementById('edit-nombre').value || "Jose Luis Korta";
+  const deportivo = document.getElementById('edit-deportivo').value;
+  const dorsal = document.getElementById('edit-dorsal').value || '99';
+  const jaioData = document.getElementById('edit-jaiodata').value;
+  const pais = document.getElementById('edit-pais').value;
+  const pais2 = document.getElementById('edit-pais2').value;
+  const pais3 = document.getElementById('edit-pais3').value;
+  const pais4 = document.getElementById('edit-pais4').value;
+
+  // Actualizar el jugador con los nuevos datos
+  const player = simulationData[sectionKey][idx];
+  player.name = deportivo || nombre;
+  player.fullname = nombre;
+  player.dorsal = parseInt(dorsal);
+  player.jaioData = jaioData;
+  player.pais = pais;
+  player.pais2 = pais2;
+  player.pais3 = pais3;
+  player.pais4 = pais4;
+
+  saveAndRender();
+  closeEditModal();
 }
 
 function addPlayerToSimulation(player) {
@@ -618,7 +1161,7 @@ function updateLangBtn() {
   document.getElementById('resetBtn').textContent = t('merkatuSim.deshacer');
   document.getElementById('modalTitle').textContent = t('merkatuSim.anadirJugador');
   document.getElementById('addPlayerCloseBtn').textContent = t('merkatuSim.cerrar');
-  document.getElementById('dorsalTitle').textContent = t('merkatuSim.cambiarDorsal');
+  document.getElementById('dorsalTitle').textContent = t('merkatuSim.editar');
   document.getElementById('dorsalCancelBtn').textContent = t('merkatuSim.cancelar');
   document.getElementById('dorsalSaveBtn').textContent = t('merkatuSim.guardar');
   // Actualizar label de equipo
@@ -626,7 +1169,7 @@ function updateLangBtn() {
     document.getElementById('equipoLabel').textContent = t('merkatuSim.team');
   }
   if (document.getElementById('dorsalTitle')) {
-    document.getElementById('dorsalTitle').textContent = t('merkatuSim.cambiarDorsal');
+    document.getElementById('dorsalTitle').textContent = t('merkatuSim.editar');
     document.getElementById('dorsalCancelBtn').textContent = t('merkatuSim.cancelar');
     document.getElementById('dorsalSaveBtn').textContent = t('merkatuSim.guardar');
   }
@@ -648,7 +1191,11 @@ document.getElementById('resetBtn').onclick = resetSimulation;
 // Cerrar modales al hacer clic fuera
 document.getElementById('addPlayerModal').addEventListener('click', function(e) {
   if (e.target === this) {
-    closeAddPlayerModal();
+    if (editPlayerSection !== null) {
+      closeEditModal();
+    } else {
+      closeAddPlayerModal();
+    }
   }
 });
 

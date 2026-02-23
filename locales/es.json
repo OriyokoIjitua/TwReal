@@ -39,7 +39,7 @@
     "team": "Equipo:",
     "mover": "Mover a...",
     "eliminar": "Eliminar",
-    "cambiarDorsal": "Cambiar dorsal",
+    "editar": "Editar",
     "deReal": "De la Real",
     "personalizado": "Personalizado",
     "anadirJugador": "Añadir jugador",
@@ -58,6 +58,7 @@
     "deshacer": "Deshacer cambios",
     "buscar": "Buscar...",
     "cerrar": "Cerrar",
-    "completaNombre": "Insertar nombre del jugador."
+    "jaiodata": "Fecha de nacimiento",
+    "nacionalidad": "Nacionalidad"
   }
 }

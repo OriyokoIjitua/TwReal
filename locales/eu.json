@@ -39,7 +39,7 @@
     "team": "Taldea:",
     "mover": "Mugitu...",
     "eliminar": "Ezabatu",
-    "cambiarDorsal": "Dortsala aldatu",
+    "editar": "Editatu",
     "deReal": "Realekoak",
     "personalizado": "Pertsonalizatua",
     "anadirJugador": "Jokalaria gehitu",
@@ -58,6 +58,7 @@
     "deshacer": "Aldaketak desegin",
     "buscar": "Bilatu...",
     "cerrar": "Itxi",
-    "completaNombre": "Idatzi jokalariaren izena."
+    "jaiodata": "Jaiotze data",
+    "nacionalidad": "Nazionalitatea"
   }
 }
