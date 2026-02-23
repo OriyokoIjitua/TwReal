@@ -28,6 +28,27 @@ function getFlagStyle(pais) {
   return noDeform.includes(pais) ? baseStyle + ' object-fit:contain;' : withBox;
 }
 
+function formatBirthdateWithAge(jaioData) {
+  if (!jaioData) return '';
+  
+  // Convertir formato YYYY/MM/DD a YYYY-MM-DD si es necesario
+  const fechaFormato = jaioData.replace(/\//g, '-');
+  const [year, month, day] = fechaFormato.split('-').map(Number);
+  
+  const birthDate = new Date(year, month - 1, day);
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+  // Ajustar la edad si el cumpleaños aún no ha ocurrido este año
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < day)) {
+    age--;
+  }
+  
+  return `${fechaFormato} (${age} ${t('plantilla.anos')})`;
+}
+
+
 async function cargarDatosTemporada(temporada) {
   try {
     const data = await fetch(`${JSON_BASE_URL}plantilla_${temporada}.json`).then(r => r.json());
@@ -116,7 +137,7 @@ function renderPlayers() {
             ${player.name}
           </span>
           <span class="player-fullname">${player.fullname}</span>
-          ${player.jaioData ? `<span class="player-birthdate">${player.jaioData}</span>` : ''}
+          ${player.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(player.jaioData)}</span>` : ''}
           <span class="player-dorsal">${dorsalDisplay ? t('plantilla.dorsal') + ': ' + dorsalDisplay : ''}</span>
         </div>
         ${is202526 && !isSanse && !isF ? `<div style="display: flex; flex-direction: column; align-items: center; position: absolute; right: 16px; top: 50px; gap: 6px;">
@@ -205,7 +226,7 @@ function renderEntrenadores() {
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
-        ${coach.jaioData ? `<span class="player-birthdate">${coach.jaioData}</span>` : ''}
+        ${coach.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(coach.jaioData)}</span>` : ''}
         <span class="player-dorsal">${rol}</span>
       </div>
       ${is202526 && !isSanse && !isF ? `<div style="display: flex; flex-direction: column; align-items: center; position: absolute; right: 16px; top: 50px; gap: 6px;">
@@ -305,7 +326,7 @@ function renderVendidos() {
           ${player.name}
         </span>
         <span class="player-fullname">${player.fullname}</span>
-        ${player.jaioData ? `<span class="player-birthdate">${player.jaioData}</span>` : ''}
+        ${player.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(player.jaioData)}</span>` : ''}
         <span class="player-dorsal">${player.status[window.currentLang]}</span>
       </div>
       ${showControls ? `<div style="display: flex; flex-direction: column; align-items: center; position: absolute; right: 16px; top: 50px; gap: 6px;">

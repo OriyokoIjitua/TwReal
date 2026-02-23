@@ -41,7 +41,7 @@
   
 
   { "tipo": "sanse", "dorsal": 35, "dorsal2": 13, "name": "Arana", "fullname": "Egoitz Arana", "url_name": "egoitz_arana", "pos": "POR", "jaioData": "2002-02-19", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "sanse", "dorsal": "-", "dorsal2": 35, "name": "Tompa", "fullname": "Ákos Tompa", "url_name": "akos_tompa", "pos": "POR", "jaioData": "2007-03-10", "pais": "Hungaria", "pais2": null },
+  { "tipo": "sanse-dual", "dorsal": "-", "dorsal2": 35, "name": "Tompa", "fullname": "Ákos Tompa", "url_name": "akos_tompa", "pos": "POR", "jaioData": "2007-03-10", "pais": "Hungaria", "pais2": null },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 3, "name": "Balda", "fullname": "Jon Balda", "url_name": "jon_balda", "pos": "DEF", "jaioData": "2002-04-20", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 22, "name": "Dadie", "fullname": "Alberto Dadie", "url_name": "alberto_dadie", "pos": "DEF", "jaioData": "2002-07-20", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "sanse", "dorsal": "-", "dorsal2": 23, "name": "Agote", "fullname": "Unax Agote", "url_name": "unax_agote", "pos": "DEF", "jaioData": "2003-03-28", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },

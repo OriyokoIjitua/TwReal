@@ -197,6 +197,27 @@ function createPlayerCard(player, sectionKey, idx) {
     return noDeform.includes(pais) ? baseStyle + ' object-fit:contain;' : withBox;
   };
   
+  // Función para formatear fecha de nacimiento con edad
+  const formatBirthdateWithAge = (jaioData) => {
+    if (!jaioData) return '';
+    
+    // Convertir formato YYYY/MM/DD a YYYY-MM-DD si es necesario
+    const fechaFormato = jaioData.replace(/\//g, '-');
+    const [year, month, day] = fechaFormato.split('-').map(Number);
+    
+    const birthDate = new Date(year, month - 1, day);
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    // Ajustar la edad si el cumpleaños aún no ha ocurrido este año
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < day)) {
+      age--;
+    }
+    
+    return `${fechaFormato} (${age} ${t('plantilla.anos')})`;
+  };
+  
   // Construir HTML de banderas si no es personalizado
   let flagsHtml = '';
   if (!player.customImageId && player.pais) {
@@ -216,7 +237,7 @@ function createPlayerCard(player, sectionKey, idx) {
         ${player.name}
       </span>
       <span class="player-fullname">${player.fullname || ''}</span>
-        ${player.jaioData ? `<span class="player-birthdate">${player.jaioData}</span>` : ''}
+        ${player.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(player.jaioData)}</span>` : ''}
         <span class="player-dorsal">${t('merkatuSim.dorsal')}: ${dorsalDisplay}</span>
     </div>
     <button class="menu-btn" onclick="toggleContextMenu(event, '${sectionKey}', ${idx})">⋮</button>
