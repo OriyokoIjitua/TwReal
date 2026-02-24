@@ -43,7 +43,7 @@
   { "tipo": "salida", "name": "Portu", "fullname": "Cristian Portugués", "url_name": "cristian_portugues", "jaioData": "1992-05-21", "status": { "es": "Transferido", "eu": "Salduta" }, "pais": "España", "pais2": null },
   { "tipo": "salida", "name": "Guevara", "fullname": "Ander Guevara", "url_name": "ander_guevara", "jaioData": "1997-07-07", "status": { "es": "Transferido", "eu": "Salduta" }, "pais": "Euskal Herria", "pais2": "Araba" },
   { "tipo": "salida", "name": "Gorosabel", "fullname": "Andoni Gorosabel", "url_name": "andoni_gorosabel", "jaioData": "1996-08-04", "status": { "es": "Transferido", "eu": "Salduta" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "salida", "name": "Illarra", "fullname": "Asier Illarramendi", "url_name": "asier_illarramendi", "jaioData": "1990-03-08", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "salida", "name": "Illarra", "fullname": "Asier Illarramendi", "url_name": "asier_illarramendi", "jaioData": "1990-03-08", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa", "kapitaina": 1 },
   { "tipo": "salida", "name": "Zubiaurre", "fullname": "Andoni Zubiaurre", "url_name": "andoni_zubiaurre", "jaioData": "1996-12-04", "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" }, "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "salida", "name": "Sørloth", "fullname": "Alexander Sørloth", "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" }, "url_name": "alexander_sorloth", "jaioData": "1995-12-05", "pais": "Norway", "pais2": null }
 ]
