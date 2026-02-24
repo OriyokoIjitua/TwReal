@@ -8,7 +8,7 @@
   { "tipo": "jugador", "dorsal": 7, "name": "Barrene", "fullname": "Ander Barrenetxea", "url_name": "ander_barrenetxea", "jaioData": "2001-12-27", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 8, "name": "Merino", "fullname": "Mikel Merino", "url_name": "mikel_merino", "jaioData": "1996-06-22", "pos": "MED", "pais": "Euskal Herria", "pais2": "NafarroaG" },
   { "tipo": "jugador", "dorsal": 9, "name": "Carlos Fdez.", "fullname": "Carlos Fernández", "url_name": "carlos_fernandez", "jaioData": "1996-05-22", "pos": "DEL", "pais": "España", "pais2": null },
-  { "tipo": "jugador", "dorsal": 10, "name": "Oyarzabal", "fullname": "Mikel Oyarzabal", "url_name": "mikel_oyarzabal", "jaioData": "1997-04-21", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "jugador", "dorsal": 10, "name": "Oyarzabal", "fullname": "Mikel Oyarzabal", "url_name": "mikel_oyarzabal", "jaioData": "1997-04-21", "pos": "DEL", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "kapitaina": 1 },
   { "tipo": "jugador", "dorsal": 11, "name": "Becker", "fullname": "Sheraldo Becker", "url_name": "sheraldo_becker", "jaioData": "1995-02-09", "pos": "DEL", "pais": "Surinam", "pais2": "Netherlands" },
   { "tipo": "jugador", "dorsal": 12, "name": "Zakharyan", "fullname": "Arsen Zakharyan", "url_name": "arsen_zakharyan", "jaioData": "2003-05-26", "pos": "MED", "pais": "Rusia", "pais2": "Armenia" },
   { "tipo": "jugador", "dorsal": 13, "name": "Marrero", "fullname": "Unai Marrero", "url_name": "unai_marrero", "jaioData": "2001-10-09", "pos": "POR", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },

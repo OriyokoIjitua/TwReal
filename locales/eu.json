@@ -17,7 +17,20 @@
     "cedido": "Utzita",
     "season": "Denboraldia:",
     "team": "Taldea:",
-    "anos": "urte"
+    "anos": "urte",
+    "modalInfo": "Jokalariaren informazioa",
+    "modalNombre": "Kirol-izena",
+    "modalNombreCompleto": "Izena",
+    "modalFechaNacimiento": "Jaiotze data",
+    "modalEdad": "Adina",
+    "modalNacionalidad": "Nazionalitatea",
+    "modalDorsal": "Dortsala",
+    "modalPosicion": "Posizioa",
+    "modalCerrar": "Itxi",
+    "modalCanterano": "Zubietakoa",
+    "zubieta_si": "Bai",
+    "zubieta_no": "Ez",
+    "zubieta_pasado": "Zubietatik igarotakoa"
   },
   "hamaikakoa": {
     "filter": "Jokalariak postuarekiko filtratu",
@@ -59,6 +72,8 @@
     "buscar": "Bilatu...",
     "cerrar": "Itxi",
     "jaiodata": "Jaiotze data",
-    "nacionalidad": "Nazionalitatea"
+    "nacionalidad": "Nazionalitatea",
+    "darKapitaintza": "Kapitaintza eman",
+    "quitarKapitaintza": "Kapitaintza kendu"
   }
 }

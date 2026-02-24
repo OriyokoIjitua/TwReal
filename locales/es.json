@@ -17,7 +17,20 @@
     "cedido": "Cedido",
     "season": "Temporada:",
     "team": "Equipo:",
-    "anos": "años"
+    "anos": "años",
+    "modalInfo": "Información del jugador",
+    "modalNombre": "Nombre deportivo",
+    "modalNombreCompleto": "Nombre",
+    "modalFechaNacimiento": "Fecha de nacimiento",
+    "modalEdad": "Edad",
+    "modalNacionalidad": "Nacionalidad",
+    "modalDorsal": "Dorsal",
+    "modalPosicion": "Posición",
+    "modalCerrar": "Cerrar",
+    "modalCanterano": "De Zubieta",
+    "zubieta_si": "Sí",
+    "zubieta_no": "No",
+    "zubieta_pasado": "Pasó por Zubieta"
   },
   "hamaikakoa": {
     "filter": "Filtrar jugadores por posición",
@@ -59,6 +72,8 @@
     "buscar": "Buscar...",
     "cerrar": "Cerrar",
     "jaiodata": "Fecha de nacimiento",
-    "nacionalidad": "Nacionalidad"
+    "nacionalidad": "Nacionalidad",
+    "darKapitaintza": "Dar capitanía",
+    "quitarKapitaintza": "Quitar capitanía"
   }
 }

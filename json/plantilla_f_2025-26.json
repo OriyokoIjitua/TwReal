@@ -8,7 +8,7 @@
   { "tipo": "jugador", "dorsal": 7, "name": "L. Pardo", "fullname": "Lucía Pardo", "url_name": "lucia_pardo", "pos": "DEL", "jaioData": "2000-01-05", "pais": "Galicia", "pais2": null },
   { "tipo": "jugador", "dorsal": 8, "name": "Andreia", "fullname": "Andreia Jacinto", "url_name": "andreia_jacinto", "pos": "MED", "jaioData": "2002-06-08", "pais": "Portugal", "pais2": null },
   { "tipo": "jugador", "dorsal": 9, "name": "Mirari", "fullname": "Mirari Uria", "url_name": "mirari_uria", "pos": "DEL", "jaioData": "2003-01-01", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
-  { "tipo": "jugador", "dorsal": 10, "name": "N. Eizagirre", "fullname": "Nerea Eizagirre", "url_name": "nerea_eizagirre", "pos": "MED", "jaioData": "2000-01-04", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
+  { "tipo": "jugador", "dorsal": 10, "name": "N. Eizagirre", "fullname": "Nerea Eizagirre", "url_name": "nerea_eizagirre", "pos": "MED", "jaioData": "2000-01-04", "pais": "Euskal Herria", "pais2": "Gipuzkoa", "kapitaina": 1 },
   { "tipo": "jugador", "dorsal": 11, "name": "Cecilia", "fullname": "Cecilia Marcos", "url_name": "cecilia_marcos", "pos": "DEL", "jaioData": "2001-11-03", "pais": "Euskal Herria", "pais2": "Gipuzkoa" },
   { "tipo": "jugador", "dorsal": 12, "name": "Lucía", "fullname": "Lucía Rodríguez", "url_name": "lucia_rodriguez", "pos": "DEF", "jaioData": "1999-05-24", "pais": "España", "pais2": null },
   { "tipo": "jugador", "dorsal": 13, "name": "J. Arrula", "fullname": "Julia Arrula", "url_name": "julia_arrula", "pos": "POR", "jaioData": "2006-01-29", "pais": "Euskal Herria", "pais2": "NafarroaG" },
