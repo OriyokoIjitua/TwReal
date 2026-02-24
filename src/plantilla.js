@@ -644,7 +644,7 @@ function openPlayerModal(player, isCoach = false) {
         <div class="modal-info-section" style="flex: 1; min-width: 200px;">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
             <h2 style="color: #003366; font-size: 1.8em; font-weight: bold; margin: 0;">${player.name}</h2>
-            ${player.kapitaina === 1 && (currentTeam === 'sanse' || player.tipo === 'jugador') ? `<img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:32px; height:32px; vertical-align:middle;">` : ''}
+            ${player.kapitaina === 1 && (player.tipo.includes('salida') || player.tipo === 'jugador' || currentTeam === 'sanse') ? `<img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:32px; height:32px; vertical-align:middle;">` : ''}
           </div>
           <div class="modal-divider" style="height: 2px; background: #0077cc; margin-bottom: 16px;"></div>
           
