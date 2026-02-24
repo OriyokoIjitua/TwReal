@@ -654,7 +654,7 @@ function openPlayerModal(player, isCoach = false) {
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.fullname}</span>
           </div>
           ` : ''}
-          ${!isCoach ? `
+          ${!player.rol ? `
           ${player.pos ? `
           <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalPosicion')}:</span>
