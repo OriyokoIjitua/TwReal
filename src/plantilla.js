@@ -125,16 +125,17 @@ function renderPlayers() {
       card.className = 'player-card';
 
       const dorsalDisplay = isSanse && player.dorsal2 ? player.dorsal2 : player.dorsal;
+      const isCapitan = player.kapitaina === 1 && (isSanse || player.tipo === 'jugador');
 
       card.innerHTML = `
         <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
-          <span class="player-name">
+          <span class="player-name player-name-clickable" data-player-id="${idx}" style="cursor: pointer;">
             <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
             ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
             ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
             ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}
-            ${player.name}
+            ${player.name}${isCapitan ? ` <img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:18px; height:18px; margin-left:4px; vertical-align:middle;">` : ''}
           </span>
           <span class="player-fullname">${player.fullname}</span>
           ${player.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(player.jaioData)}</span>` : ''}
@@ -145,6 +146,12 @@ function renderPlayers() {
           <div class="song-info-icon" tabindex="0">ⓘ<span class="song-info-tooltip"></span></div>
         </div>` : ''}
       `;
+
+      const playerNameEl = card.querySelector('.player-name-clickable');
+      playerNameEl.addEventListener('click', function(e) {
+        e.stopPropagation();
+        openPlayerModal(player);
+      });
 
       const infoIcon = card.querySelector('.song-info-icon');
       if (infoIcon) {
@@ -218,7 +225,7 @@ function renderEntrenadores() {
     card.innerHTML = `
       <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
-        <span class="player-name">
+        <span class="player-name player-name-clickable" data-coach-id="${idx}" style="cursor: pointer;">
           <img src="${IMG_BASE_URL}banderak/${coach.pais}.png" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:1px;">
           ${coach.pais2 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais2}.png" alt="flag2" style="${getFlagStyle(coach.pais2)} margin-left:1px;">` : ''}
           ${coach.pais3 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais3}.png" alt="flag3" style="${getFlagStyle(coach.pais3)} margin-left:1px;">` : ''}
@@ -234,6 +241,12 @@ function renderEntrenadores() {
         <div class="song-info-icon" tabindex="0">ⓘ<span class="song-info-tooltip"></span></div>
       </div>` : ''}
     `;
+
+    const coachNameEl = card.querySelector('.player-name-clickable');
+    coachNameEl.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openPlayerModal(coach, true);
+    });
 
     const infoIcon = card.querySelector('.song-info-icon');
     if (infoIcon) {
@@ -314,16 +327,17 @@ function renderVendidos() {
     const card = document.createElement('div');
     card.className = 'player-card';
     const showControls = is202526 && !isF && !isSanse;
+    const isCapitan = player.kapitaina === 1;
 
     card.innerHTML = `
       <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
-        <span class="player-name">
+        <span class="player-name player-name-clickable" data-player-id="${idx}" style="cursor: pointer;">
           <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
           ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
           ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
           ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}
-          ${player.name}
+          ${player.name}${isCapitan ? ` <img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:18px; height:18px; margin-left:4px; vertical-align:middle;">` : ''}
         </span>
         <span class="player-fullname">${player.fullname}</span>
         ${player.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(player.jaioData)}</span>` : ''}
@@ -334,6 +348,12 @@ function renderVendidos() {
         <div class="song-info-icon" tabindex="0">ⓘ<span class="song-info-tooltip"></span></div>
       </div>` : ''}
     `;
+
+    const playerNameEl = card.querySelector('.player-name-clickable');
+    playerNameEl.addEventListener('click', function(e) {
+      e.stopPropagation();
+      openPlayerModal(player);
+    });
 
     const infoIcon = card.querySelector('.song-info-icon');
     if (infoIcon) {
@@ -504,6 +524,256 @@ function updateLangBtn() {
   renderVendidos();
   setupPlayButtons();
   setupEasterEgg();
+}
+
+// Modal para información extendida del jugador
+function openPlayerModal(player, isCoach = false) {
+  // Crear modal
+  const modal = document.createElement('div');
+  modal.className = 'player-modal-overlay';
+  modal.id = 'playerModal';
+  
+  // Forzar estilos inline para asegurar que se muestre
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+  `;
+
+  // Calcular edad
+  let age = '';
+  if (player.jaioData) {
+    const fechaFormato = player.jaioData.replace(/\//g, '-');
+    const [year, month, day] = fechaFormato.split('-').map(Number);
+    const birthDate = new Date(year, month - 1, day);
+    const today = new Date();
+    let playerAge = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < day)) {
+      playerAge--;
+    }
+    age = playerAge;
+  }
+
+  // Obtener posición en español/euskera
+  let posicionText = player.pos;
+  const posicionesMap = {
+    'POR': { 'es': 'Portero', 'eu': 'Atezaina' },
+    'DEF': { 'es': 'Defensa', 'eu': 'Atzealaria' },
+    'MED': { 'es': 'Centrocampista', 'eu': 'Erdilaria' },
+    'DEL': { 'es': 'Delantero', 'eu': 'Aurrelaria' }
+  };
+  if (posicionesMap[player.pos]) {
+    posicionText = posicionesMap[player.pos][window.currentLang];
+  }
+
+  // Construir banderas
+  let banderas = '';
+  if (player.pais) {
+    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="${player.pais}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
+  }
+  if (player.pais2) {
+    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="${player.pais2}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
+  }
+  if (player.pais3) {
+    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="${player.pais3}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
+  }
+  if (player.pais4) {
+    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="${player.pais4}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
+  }
+
+  // Obtener valor de zubieta traducido
+  let zubietaText = '';
+  if (player.zubieta !== undefined && player.zubieta !== null && player.zubieta !== '') {
+    if (player.zubieta === 1) {
+      zubietaText = t('plantilla.zubieta_si');
+    } else if (player.zubieta === 0.5) {
+      zubietaText = t('plantilla.zubieta_pasado');
+    } else if (player.zubieta === 0) {
+      zubietaText = t('plantilla.zubieta_no');
+    }
+  }
+
+  // Obtener canción si existe (no mostrar en Sanse)
+  let cancionExpl = '';
+  if (currentTeam !== 'sanse') {
+    if (player.cancion && player.cancion[window.currentLang]) {
+      cancionExpl = player.cancion[window.currentLang];
+    } else if (!isCoach && player.cancion && player.cancion.es) {
+      cancionExpl = player.cancion.es;
+    }
+  }
+
+  // Determinar carpeta de imágenes
+  let imgFolder = '2025-26';
+  const temporadaSelect = document.getElementById('seasonSelect');
+  if (temporadaSelect) {
+    const temporada = temporadaSelect.value;
+    if (temporada === '2024-25') {
+      imgFolder = '2024-25';
+    } else if (temporada === '2023-24') {
+      imgFolder = '2023-24';
+    } else if (temporada === '2025-26' && currentTeam === 'f') {
+      imgFolder = 'f_2025-26';
+    }
+  }
+
+  // Determinar qué dorsal mostrar (usar dorsal2 cuando estamos en Sanse)
+  const dorsalToShow = (currentTeam === 'sanse' && player.dorsal2) ? player.dorsal2 : player.dorsal;
+
+  modal.innerHTML = `
+    <div class="player-modal" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; padding: 20px;">
+      <button class="modal-close-btn" style="position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 2em; cursor: pointer; color: #0077cc; padding: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background-color 0.2s;">&times;</button>
+      <div class="modal-content-wrapper" style="display: flex; gap: 24px; align-items: center;">
+        <div class="modal-image-section" style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0;">
+          <img src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" class="modal-player-img" style="width: 180px; height: 180px; border-radius: 12px; object-fit: cover; border: 3px solid #0077cc; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+          ${cancionExpl ? `
+          <div class="modal-song-bubble" style="background: #f0f8ff; border: 2px solid #0077cc; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; max-width: 280px;">
+            <button class="modal-play-btn" style="background: none; border: none; font-size: 1.4em; cursor: pointer; padding: 0; margin: 0; flex-shrink: 0;">▶️</button>
+            <span style="color: #333; font-size: 0.9em; line-height: 1.4;">${cancionExpl}</span>
+          </div>
+          ` : ''}
+        </div>
+        <div class="modal-info-section" style="flex: 1; min-width: 200px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <h2 style="color: #003366; font-size: 1.8em; font-weight: bold; margin: 0;">${player.name}</h2>
+            ${player.kapitaina === 1 && (currentTeam === 'sanse' || player.tipo === 'jugador') ? `<img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:32px; height:32px; vertical-align:middle;">` : ''}
+          </div>
+          <div class="modal-divider" style="height: 2px; background: #0077cc; margin-bottom: 16px;"></div>
+          
+          ${player.fullname ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalNombreCompleto')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.fullname}</span>
+          </div>
+          ` : ''}
+          ${!isCoach ? `
+          ${player.pos ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalPosicion')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${posicionText}</span>
+          </div>
+          ` : ''}
+
+          ${dorsalToShow ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalDorsal')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${dorsalToShow}</span>
+          </div>
+          ` : ''}
+          ` : `
+          ${player.rol ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalPuesto')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.rol[window.currentLang]}</span>
+          </div>
+          ` : ''}
+          `}
+
+          ${player.jaioData ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalFechaNacimiento')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.jaioData}</span>
+          </div>
+
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalEdad')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${age} ${t('plantilla.anos')}</span>
+          </div>
+          ` : ''}
+
+          ${player.pais ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalNacionalidad')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${banderas}</span>
+          </div>
+          ` : ''}
+
+          ${zubietaText ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: none;">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalCanterano')}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${zubietaText}</span>
+          </div>
+          ` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  // Agregar funcionalidad al botón de play del modal
+  const playBtn = modal.querySelector('.modal-play-btn');
+  if (playBtn && player.url_name) {
+    playBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const songUrl = getSongUrl(player);
+      if (songUrl) {
+        // Si ya hay audio reproduciéndose
+        if (currentAudio && currentBtn === playBtn) {
+          // Toggle: si está playing, pausar
+          if (currentAudio.paused) {
+            currentAudio.play();
+            playBtn.textContent = '⏸️';
+          } else {
+            currentAudio.pause();
+            playBtn.textContent = '▶️';
+          }
+        } else {
+          // Reproducir nuevo audio
+          if (currentAudio) {
+            currentAudio.pause();
+            if (currentBtn) {
+              currentBtn.textContent = '▶️';
+            }
+          }
+          currentAudio = new Audio(songUrl);
+          currentAudio.play();
+          playBtn.textContent = '⏸️';
+          currentBtn = playBtn;
+        }
+      }
+    });
+  }
+
+  // Cerrar modal
+  const closeBtn = modal.querySelector('.modal-close-btn');
+  closeBtn.addEventListener('click', function() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+    if (currentBtn) {
+      currentBtn.textContent = '▶️';
+      currentBtn = null;
+    }
+    modal.remove();
+  });
+
+  const overlay = modal.querySelector('.player-modal-overlay') || modal;
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+      if (currentBtn) {
+        currentBtn.textContent = '▶️';
+        currentBtn = null;
+      }
+      modal.remove();
+    }
+  });
+
+  // Agregar animación de entrada
+  modal.style.animation = 'fadeIn 0.3s ease-in-out';
 }
 
 // Initialize

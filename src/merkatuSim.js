@@ -258,7 +258,7 @@ function createPlayerCard(player, sectionKey, idx) {
     <div class="player-info">
       <span class="player-name">
         ${flagsHtml}
-        ${player.name}
+        ${player.name}${player.kapitaina === 1 ? ` <img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/kapitaina.png" alt="C" style="width:18px; height:18px; margin-left:4px; vertical-align:middle;">` : ''}
       </span>
       <span class="player-fullname">${player.fullname || ''}</span>
         ${player.jaioData ? `<span class="player-birthdate">${formatBirthdateWithAge(player.jaioData)}</span>` : ''}
@@ -281,6 +281,9 @@ function createPlayerCard(player, sectionKey, idx) {
       </button>
       <button class="context-menu-item" onclick="openEditModal('${sectionKey}', ${idx})">
         ${t('merkatuSim.editar')}
+      </button>
+      <button class="context-menu-item" onclick="toggleCaptaincy('${sectionKey}', ${idx})">
+        ${player.kapitaina === 1 ? t('merkatuSim.quitarKapitaintza') : t('merkatuSim.darKapitaintza')}
       </button>
     </div>
   `;
@@ -340,6 +343,29 @@ function movePlayer(fromSection, idx, toSection) {
 
 function deletePlayer(sectionKey, idx) {
   simulationData[sectionKey].splice(idx, 1);
+  saveAndRender();
+}
+
+function toggleCaptaincy(sectionKey, idx) {
+  const player = simulationData[sectionKey][idx];
+  
+  if (player.kapitaina === 1) {
+    // Si es capitán, quitar la capitanía
+    player.kapitaina = 0;
+  } else {
+    // Si no es capitán, buscar y quitar la capitanía al anterior capitán
+    // Buscar en TODAS las secciones
+    for (const section in simulationData) {
+      for (const p of simulationData[section]) {
+        if (p.kapitaina === 1) {
+          p.kapitaina = 0;
+        }
+      }
+    }
+    // Darle la capitanía al jugador actual
+    player.kapitaina = 1;
+  }
+  
   saveAndRender();
 }
 
@@ -1127,6 +1153,16 @@ function saveEditedPlayer(sectionKey, idx) {
 }
 
 function addPlayerToSimulation(player) {
+  if (player.kapitaina === 1) {
+    const hasCaptain = Object.values(simulationData).some(section => 
+      section.some(p => p.kapitaina === 1)
+    );
+    
+    if (hasCaptain) {
+      player.kapitaina = 0;
+    }
+  }
+  
   simulationData[addPlayerSection].push(player);
   saveAndRender();
   closeAddPlayerModal();
