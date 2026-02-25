@@ -7,8 +7,7 @@
     "url_name": "alex_remiro",
     "jaioData": "1995-03-24",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 0
   },
   {
@@ -19,8 +18,7 @@
     "url_name": "alvaro_odriozola",
     "jaioData":"1995-12-14",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -31,8 +29,7 @@
     "url_name": "aihen_munoz",
     "jaioData": "1997-08-16",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1
   },
   {
@@ -43,8 +40,7 @@
     "url_name": "martin_zubimendi",
     "jaioData": "1999-02-02",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -55,8 +51,7 @@
     "url_name": "igor_zubeldia",
     "jaioData": "1997-03-30",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -67,8 +62,7 @@
     "url_name": "aritz_elustondo",
     "jaioData": "1994-03-28",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -79,8 +73,7 @@
     "url_name": "ander_barrenetxea",
     "jaioData": "2001-12-27",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -91,8 +84,7 @@
     "url_name": "arsen_zakharyan",
     "jaioData": "2003-05-26",
     "pos": "MED",
-    "pais": "Rusia",
-    "pais2": "Armenia",
+    "pais": ["Rusia", "Armenia"],
     "zubieta": 0
   },
   {
@@ -103,8 +95,7 @@
     "url_name": "orri_oskarsson",
     "jaioData": "2004-08-29",
     "pos": "DEL",
-    "pais": "Islandia",
-    "pais2": null,
+    "pais": ["Islandia"],
     "zubieta": 0
   },
   {
@@ -115,8 +106,7 @@
     "url_name": "mikel_oyarzabal",
     "jaioData": "1997-04-21",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "kapitaina": 1
   },
@@ -128,8 +118,7 @@
     "url_name": "sheraldo_becker",
     "jaioData": "1995-02-09",
     "pos": "DEL",
-    "pais": "Surinam",
-    "pais2": "Netherlands",
+    "pais": ["Surinam", "Netherlands"],
     "zubieta": 0
   },
   {
@@ -140,8 +129,7 @@
     "url_name": "javi_lopez",
     "jaioData": "2002-03-25",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -152,8 +140,7 @@
     "url_name": "unai_marrero",
     "jaioData": "2001-10-09",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -164,8 +151,7 @@
     "url_name": "takefusa_kubo",
     "jaioData": "2001-06-04",
     "pos": "DEL",
-    "pais": "Japón",
-    "pais2": null,
+    "pais": ["Japón"],
     "zubieta": 0
   },
   {
@@ -176,8 +162,7 @@
     "url_name": "jon_ander_olasagasti",
     "jaioData": "2000-08-16",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -188,8 +173,7 @@
     "url_name": "sergio_gomez",
     "jaioData": "2000-09-04",
     "pos": "DEL",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0
   },
   {
@@ -200,8 +184,7 @@
     "url_name": "hamari_traore",
     "jaioData": "1992-01-27",
     "pos": "DEF",
-    "pais": "Mali",
-    "pais2": null,
+    "pais": ["Mali"],
     "zubieta": 0
   },
   {
@@ -212,8 +195,7 @@
     "url_name": "jon_mikel_aramburu",
     "jaioData": "2002-07-23",
     "pos": "DEF",
-    "pais": "Venezuela",
-    "pais2": "Euskal Herria",
+    "pais": ["Venezuela", "Euskal Herria"],
     "zubieta": 0.5
   },
   {
@@ -224,8 +206,7 @@
     "url_name": "jon_pacheco",
     "jaioData": "2001-01-08",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1
   },
   {
@@ -236,8 +217,7 @@
     "url_name": "nayef_aguerd",
     "jaioData": "1996-03-30",
     "pos": "DEF",
-    "pais": "Marruecos",
-    "pais2": null,
+    "pais": ["Marruecos"],
     "zubieta": 0
   },
   {
@@ -248,8 +228,7 @@
     "url_name": "benat_turrientes",
     "jaioData": "2002-01-31",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -260,8 +239,7 @@
     "url_name": "brais_mendez",
     "jaioData": "1997-01-07",
     "pos": "MED",
-    "pais": "Galicia",
-    "pais2": null,
+    "pais": ["Galicia"],
     "zubieta": 0
   },
   {
@@ -272,8 +250,7 @@
     "url_name": "luka_sucic",
     "jaioData": "2002-09-08",
     "pos": "MED",
-    "pais": "Croacia",
-    "pais2": "Austria",
+    "pais": ["Croacia", "Austria"],
     "zubieta": 0
   },
   {
@@ -284,8 +261,7 @@
     "url_name": "pablo_marin",
     "jaioData": "2003-07-03",
     "pos": "MED",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1
   },
   {
@@ -296,8 +272,7 @@
     "url_name": "jon_martin",
     "jaioData": "2006-04-23",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -308,8 +283,7 @@
     "url_name": "luken_beitia",
     "jaioData": "2004-06-30",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -320,8 +294,7 @@
     "url_name": "arkaitz_mariezkurrena",
     "jaioData": "2005-04-05",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -332,8 +305,7 @@
     "url_name": "dani_diaz",
     "jaioData": "2006-04-07",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1
   },
 
@@ -345,8 +317,7 @@
     "fullname": "Imanol Alguacil",
     "url_name": "imanol_alguacil",
     "jaioData": "1971-07-04",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -356,8 +327,7 @@
     "fullname": "Mikel Labaka",
     "url_name": "mikel_labaka",
     "jaioData": "1980-08-10",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
 
@@ -371,8 +341,7 @@
     "url_name": "urko_gonzalez_de_zarate",
     "jaioData": "2001-03-20",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Araba",
+    "pais": ["Euskal Herria", "Araba"],
     "zubieta": 1
   },
   {
@@ -384,8 +353,7 @@
     "url_name": "sadiq_umar",
     "jaioData": "1997-02-02",
     "pos": "DEL",
-    "pais": "Nigeria",
-    "pais2": null,
+    "pais": ["Nigeria"],
     "zubieta": 0
   },
   {
@@ -397,8 +365,7 @@
     "url_name": "jon_magunazelaia",
     "jaioData": "2001-07-13",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -410,8 +377,7 @@
     "url_name": "jon_gorrotxategi",
     "jaioData": "2002-09-02",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -423,8 +389,7 @@
     "url_name": "jon_karrikaburu",
     "jaioData": "2002-09-19",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1
   },
   {
@@ -436,8 +401,7 @@
     "url_name": "carlos_fernandez",
     "jaioData": "1996-05-22",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -449,8 +413,7 @@
     "url_name": "robin_le_normand",
     "jaioData": "1996-11-11",
     "pos": "DEF",
-    "pais": "Bretagne",
-    "pais2": "España",
+    "pais": ["Bretagne", "España"],
     "zubieta": 0.5
   },
   {
@@ -462,8 +425,7 @@
     "url_name": "mikel_merino",
     "jaioData": "1996-06-22",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 0
   },
   {
@@ -475,8 +437,7 @@
     "url_name": "diego_rico",
     "jaioData": "1993-02-23",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -488,8 +449,7 @@
     "url_name": "alex_sola",
     "jaioData": "1999-06-09",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -501,8 +461,7 @@
     "url_name": "robert_navarro",
     "jaioData": "2002-04-12",
     "pos": "DEL",
-    "pais": "Països Catalans",
-    "pais2": "Euskal Herria",
+    "pais": ["Països Catalans", "Euskal Herria"],
     "zubieta": 0.5
   },
   {
@@ -514,8 +473,7 @@
     "url_name": "martin_merquelanz",
     "jaioData": "1995-06-12",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -527,8 +485,7 @@
     "url_name": "roberto_lopez",
     "jaioData": "2000-04-24",
     "pos": "MED",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1
   },
   {
@@ -540,8 +497,7 @@
     "url_name": "kieran_tierney",
     "jaioData": "1997-06-05",
     "pos": "DEF",
-    "pais": "Escocia",
-    "pais2": "Isle of Man",
+    "pais": ["Escocia", "Isle of Man"],
     "zubieta": 0
   },
   {
@@ -553,8 +509,7 @@
     "url_name": "javi_galan",
     "jaioData": "1994-11-19",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -566,8 +521,7 @@
     "url_name": "andre_silva",
     "jaioData": "1995-11-06",
     "pos": "DEL",
-    "pais": "Portugal",
-    "pais2": null,
+    "pais": ["Portugal"],
     "zubieta": 0
   }
 ]

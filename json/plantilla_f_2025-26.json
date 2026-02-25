@@ -7,8 +7,7 @@
     "url_name": "alazne_estensoro",
     "jaioData": "2006-06-05",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -19,8 +18,7 @@
     "url_name": "claudia_florentino",
     "jaioData": "1998-03-10",
     "pos": "DEF",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0
   },
   {
@@ -31,8 +29,7 @@
     "url_name": "ainhoa_moraza",
     "jaioData": "1995-08-20",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -43,8 +40,7 @@
     "url_name": "nahia_aparicio",
     "jaioData": "2004-01-07",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -55,8 +51,7 @@
     "url_name": "paula_fernandez",
     "jaioData": "1999-07-01",
     "pos": "MED",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0
   },
   {
@@ -67,8 +62,7 @@
     "url_name": "elene_guridi",
     "jaioData": "2002-07-26",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -79,8 +73,7 @@
     "url_name": "lucia_pardo",
     "jaioData": "2000-01-05",
     "pos": "DEL",
-    "pais": "Galicia",
-    "pais2": null,
+    "pais": ["Galicia"],
     "zubieta": 0
   },
   {
@@ -91,8 +84,7 @@
     "url_name": "andreia_jacinto",
     "jaioData": "2002-06-08",
     "pos": "MED",
-    "pais": "Portugal",
-    "pais2": null,
+    "pais": ["Portugal"],
     "zubieta": 0
   },
   {
@@ -103,8 +95,7 @@
     "url_name": "mirari_uria",
     "jaioData": "2003-01-01",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -115,8 +106,7 @@
     "url_name": "nerea_eizagirre",
     "jaioData": "2000-01-04",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "kapitaina": 1
   },
@@ -128,8 +118,7 @@
     "url_name": "cecilia_marcos",
     "jaioData": "2001-11-03",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -140,8 +129,7 @@
     "url_name": "lucia_rodriguez",
     "jaioData": "1999-05-24",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -152,8 +140,7 @@
     "url_name": "julia_arrula",
     "jaioData": "2006-01-29",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1
   },
   {
@@ -164,8 +151,7 @@
     "url_name": "intza_egiguren",
     "jaioData": "2005-12-29",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -176,8 +162,7 @@
     "url_name": "maren_lezeta",
     "jaioData": "2005-06-28",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -188,8 +173,7 @@
     "url_name": "claire_lavogez",
     "jaioData": "1994-06-18",
     "pos": "MED",
-    "pais": "Francia",
-    "pais2": null,
+    "pais": ["Francia"],
     "zubieta": 0
   },
   {
@@ -200,8 +184,7 @@
     "url_name": "arola_aparicio",
     "jaioData": "1997-09-24",
     "pos": "DEL",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0
   },
   {
@@ -212,8 +195,7 @@
     "url_name": "maria_molina",
     "jaioData": "2000-05-09",
     "pos": "DEF",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0
   },
   {
@@ -224,8 +206,7 @@
     "url_name": "emma_ramirez",
     "jaioData": "2002-05-10",
     "pos": "DEF",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0
   },
   {
@@ -236,8 +217,7 @@
     "url_name": "klara_cahynova",
     "jaioData": "1993-12-20",
     "pos": "MED",
-    "pais": "Chequia",
-    "pais2": null,
+    "pais": ["Chequia"],
     "zubieta": 0
   },
   {
@@ -248,8 +228,7 @@
     "url_name": "aiara_agirrezabala",
     "jaioData": "2008-10-02",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -260,8 +239,7 @@
     "url_name": "nahia_zunzunegi",
     "jaioData": "2006-02-01",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -272,8 +250,7 @@
     "url_name": "ane_isasisasmendi",
     "jaioData": "2007-04-22",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -284,8 +261,7 @@
     "url_name": "ainara_ugartemendia",
     "jaioData": "2007-12-28",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -296,8 +272,7 @@
     "url_name": "carlota_chacon",
     "jaioData": "2009-04-04",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1
   },
   {
@@ -308,8 +283,7 @@
     "url_name": "nahia_azpirotz",
     "jaioData": "2006-06-28",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
 
@@ -321,8 +295,7 @@
     "fullname": "Arturo Ruiz",
     "url_name": "arturo_ruiz",
     "jaioData": "1997-03-09",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -332,8 +305,7 @@
     "fullname": "Fernando Torres",
     "url_name": "fernando_torres",
     "jaioData": "1983-11-03",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
  
@@ -347,8 +319,7 @@
     "url_name": "violeta_quiles",
     "jaioData": "1999-12-10",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -360,9 +331,7 @@
     "url_name": "edna_imade",
     "jaioData": "2000-10-05",
     "pos": "DEL",
-    "pais": "Marruecos",
-    "pais2": "Nigeria",
-    "pais3": "España",
+    "pais": ["Marruecos", "Nigeria", "España"],
     "zubieta": 0
   },
   {
@@ -374,8 +343,7 @@
     "url_name": "izarne_sarasola",
     "jaioData": "2002-02-17",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -387,8 +355,7 @@
     "url_name": "elene_viles",
     "jaioData": "2001-07-02",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -399,8 +366,7 @@
     "fullname": "José Luis Sánchez Vera",
     "url_name": "jose_luis_sanchez_vera",
     "jaioData": "1983-02-01",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -412,8 +378,7 @@
     "url_name": "elene_lete",
     "jaioData": "2002-05-07",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -425,8 +390,7 @@
     "url_name": "olatz_santana",
     "jaioData": "1997-05-08",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 0.5
   },
   {
@@ -438,8 +402,7 @@
     "url_name": "amaiur_sarriegi",
     "jaioData": "2000-12-13",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 0
   },
   {
@@ -451,8 +414,7 @@
     "url_name": "sanni_franssi",
     "jaioData": "1995-03-19",
     "pos": "DEL",
-    "pais": "Finlandia",
-    "pais2": null,
+    "pais": ["Finlandia"],
     "zubieta": 0
   },
   {
@@ -464,8 +426,7 @@
     "url_name": "manuela_vanegas",
     "jaioData": "2000-11-09",
     "pos": "DEF",
-    "pais": "Colombia",
-    "pais2": null,
+    "pais": ["Colombia"],
     "zubieta": 0
   },
   {
@@ -477,8 +438,7 @@
     "url_name": "ane_etxezarreta",
     "jaioData": "1995-08-24",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 0
   },
   {
@@ -490,8 +450,7 @@
     "url_name": "lorena_navarro",
     "jaioData": "2000-11-11",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   },
   {
@@ -503,8 +462,7 @@
     "url_name": "maria_valle",
     "jaioData": "2004-11-14",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0
   }
 ]

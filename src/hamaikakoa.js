@@ -53,14 +53,8 @@
         players = jugadoresData.map(p => ({
           dorsal: p.dorsal,
           name: p.name,
-          url_name: p.url_name,
           img: IMG_ROOT + temporada + '/' + (p.url_name || '').trim() + '.jpg',
-          positions: Array.isArray(p.positions) ? p.positions : (p.positions ? [p.positions] : [] ),
-          fullname: p.fullname,
-          pais: p.pais,
-          pais2: p.pais2,
-          pos: p.pos,
-          cancion: p.cancion
+          positions: Array.isArray(p.positions) ? p.positions : (p.positions ? [p.positions] : [] )
         }));
         if (window.renderPositions) window.renderPositions();
       } catch (err) {

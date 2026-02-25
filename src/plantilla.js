@@ -28,6 +28,15 @@ function getFlagStyle(pais) {
   return noDeform.includes(pais) ? baseStyle + ' object-fit:contain;' : withBox;
 }
 
+function buildFlagsHtml(paisArray) {
+  if (!paisArray || !Array.isArray(paisArray)) return '';
+  
+  return paisArray.map((pais, idx) => {
+    if (!pais) return '';
+    return `<img src="${IMG_BASE_URL}banderak/${pais}.png" alt="flag-${idx}" style="${getFlagStyle(pais)} margin-right:4px;">`;
+  }).join('');
+}
+
 function formatBirthdateWithAge(jaioData) {
   if (!jaioData) return '';
   
@@ -131,10 +140,7 @@ function renderPlayers() {
         <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
         <div class="player-info">
           <span class="player-name player-name-clickable" data-player-id="${idx}" style="cursor: pointer;">
-            <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
-            ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
-            ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
-            ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}
+            ${buildFlagsHtml(player.pais)}
             ${player.name}${isCapitan ? ` <img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:18px; height:18px; margin-left:4px; vertical-align:middle;">` : ''}
           </span>
           <span class="player-fullname">${player.fullname}</span>
@@ -226,10 +232,7 @@ function renderEntrenadores() {
       <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
       <div class="player-info">
         <span class="player-name player-name-clickable" data-coach-id="${idx}" style="cursor: pointer;">
-          <img src="${IMG_BASE_URL}banderak/${coach.pais}.png" alt="flag" style="${getFlagStyle(coach.pais)} margin-right:1px;">
-          ${coach.pais2 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais2}.png" alt="flag2" style="${getFlagStyle(coach.pais2)} margin-left:1px;">` : ''}
-          ${coach.pais3 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais3}.png" alt="flag3" style="${getFlagStyle(coach.pais3)} margin-left:1px;">` : ''}
-          ${coach.pais4 ? `<img src="${IMG_BASE_URL}banderak/${coach.pais4}.png" alt="flag4" style="${getFlagStyle(coach.pais4)} margin-left:1px;">` : ''}
+          ${buildFlagsHtml(coach.pais)}
           ${coach.name}
         </span>
         <span class="player-fullname">${coach.fullname}</span>
@@ -333,10 +336,7 @@ function renderVendidos() {
       <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
       <div class="player-info">
         <span class="player-name player-name-clickable" data-player-id="${idx}" style="cursor: pointer;">
-          <img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="flag" style="${getFlagStyle(player.pais)} margin-right:1px;">
-          ${player.pais2 ? `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="flag2" style="${getFlagStyle(player.pais2)} margin-left:1px;">` : ''}
-          ${player.pais3 ? `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="flag3" style="${getFlagStyle(player.pais3)} margin-left:1px;">` : ''}
-          ${player.pais4 ? `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="flag4" style="${getFlagStyle(player.pais4)} margin-left:1px;">` : ''}
+          ${buildFlagsHtml(player.pais)}
           ${player.name}${isCapitan ? ` <img src="${IMG_BASE_URL}other/kapitaina.png" alt="C" style="width:18px; height:18px; margin-left:4px; vertical-align:middle;">` : ''}
         </span>
         <span class="player-fullname">${player.fullname}</span>
@@ -576,17 +576,10 @@ function openPlayerModal(player, isCoach = false) {
 
   // Construir banderas
   let banderas = '';
-  if (player.pais) {
-    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais}.png" alt="${player.pais}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
-  }
-  if (player.pais2) {
-    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais2}.png" alt="${player.pais2}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
-  }
-  if (player.pais3) {
-    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais3}.png" alt="${player.pais3}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
-  }
-  if (player.pais4) {
-    banderas += `<img src="${IMG_BASE_URL}banderak/${player.pais4}.png" alt="${player.pais4}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`;
+  if (Array.isArray(player.pais)) {
+    banderas = player.pais.map(pais => 
+      `<img src="${IMG_BASE_URL}banderak/${pais}.png" alt="${pais}" style="height:24px; border-radius:2px; box-shadow:0 1px 2px rgba(0,0,0,0.10); display: inline-block; margin-right: 4px;">`
+    ).join('');
   }
 
   // Obtener valor de zubieta traducido

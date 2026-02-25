@@ -7,8 +7,7 @@
     "url_name": "alex_remiro",
     "jaioData": "1995-03-24",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 0,
     "positions": ["POR"],
     "cancion": { "es": "La primera frase de la canción, poco más que decir.", "eu": "Abestiko lehen esaldia, badakizue zer dan." }
@@ -21,8 +20,7 @@
     "url_name": "jon_mikel_aramburu",
     "jaioData": "2002-07-23",
     "pos": "DEF",
-    "pais": "Venezuela",
-    "pais2": "Euskal Herria",
+    "pais": ["Venezuela", "Euskal Herria"],
     "zubieta": 0.5,
     "positions": ["LI","CAI","LD","CAD","DFC"],
     "cancion": { "es": "Pues me hizo gracia la canción esta de Maduro, poco más.", "eu": "Grazia in zidan Maduroren abestiak, egia esan." }
@@ -35,8 +33,7 @@
     "url_name": "aihen_munoz",
     "jaioData": "1997-08-16",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1,
     "positions": ["LD","CAD","LI","CAI","DFC"],
     "cancion": { "es": "Porque el tío no deja de ser titular ni bajo tortura", "eu": "Tipoa titularra izango delako mehatxupean ere." }
@@ -49,8 +46,7 @@
     "url_name": "jon_gorrotxategi",
     "jaioData": "2002-09-02",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["MCD","MC"],
     "cancion": { "es": "El puto amo, mi rayito de esperanza tras la marcha de Zubimendi.", "eu": "Puto hoberena da, nere esperantza Zubimendi joan ondoren." }
@@ -63,8 +59,7 @@
     "url_name": "igor_zubeldia",
     "jaioData": "1997-03-30",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["DFC"],
     "cancion": { "es": "Xubel con la pandereta, poco más que decir.", "eu": "Xubel panderoakin, gutxi gehio." }
@@ -77,8 +72,7 @@
     "url_name": "aritz_elustondo",
     "jaioData": "1994-03-28",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["DFC","LD","CAD"],
     "cancion": { "es": "Un cachondo, uno más de nosotros.", "eu": "Tipoa gu baino gehio animatzen du Reala, krixton katxondo da." }
@@ -91,8 +85,7 @@
     "url_name": "ander_barrenetxea",
     "jaioData": "2001-12-27",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["EI","ED","DDC","MCO"],
     "cancion": { "es": "No hacen falta explicaciones.", "eu": "Ez du azalpenik behar." }
@@ -105,8 +98,7 @@
     "url_name": "benat_turrientes",
     "jaioData": "2002-01-31",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["MC","MCD"],
     "cancion": { "es": "HA VUELTO.", "eu": "ORAIN DA." }
@@ -119,8 +111,7 @@
     "url_name": "orri_oskarsson",
     "jaioData": "2004-08-29",
     "pos": "DEL",
-    "pais": "Islandia",
-    "pais2": null,
+    "pais": ["Islandia"],
     "zubieta": 0,
     "positions": ["DC","DDC"],
     "cancion": { "es": "Le sigo esperando.", "eu": "Oraindik zain gaude." }
@@ -133,8 +124,7 @@
     "url_name": "mikel_oyarzabal",
     "jaioData": "1997-04-21",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "kapitaina": 1,
     "positions": ["MCO","DC","DDC","EI","ED"],
@@ -148,8 +138,7 @@
     "url_name": "goncalo_guedes",
     "jaioData": "1996-11-29",
     "pos": "DEL",
-    "pais": "Portugal",
-    "pais2": null,
+    "pais": ["Portugal"],
     "zubieta": 0,
     "positions": ["EI","ED","DC","DDC","CAD"],
     "cancion": { "es": "Quién coño es Neymar prime?", "eu": "Nor da Neymar prime?" }
@@ -162,8 +151,7 @@
     "url_name": "yangel_herrera",
     "jaioData": "1998-01-07",
     "pos": "MED",
-    "pais": "Venezuela",
-    "pais2": null,
+    "pais": ["Venezuela"],
     "zubieta": 0,
     "positions": ["MC","MCD"],
     "cancion": { "es": "Espero que tenga más rojas que partidos.",
@@ -177,8 +165,7 @@
     "url_name": "unai_marrero",
     "jaioData": "2001-10-09",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["POR"],
     "cancion": { "es": "MARRERO MARRERO LOLOLOLOLOLOLOLO", "eu": "MARRERO MARRERO LOLOLOLOLOLOLOLO" }
@@ -191,8 +178,7 @@
     "url_name": "takefusa_kubo",
     "jaioData": "2001-06-04",
     "pos": "DEL",
-    "pais": "Japón",
-    "pais2": null,
+    "pais": ["Japón"],
     "zubieta": 0,
     "positions": ["ED","EI","MCO","DDC"],
     "cancion": { "es": "Gastón Cabezón.", "eu": "Funko Pop Buruhandia." }
@@ -205,8 +191,7 @@
     "url_name": "pablo_marin",
     "jaioData": "2003-07-03",
     "pos": "MED",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1,
     "positions": ["MCD","MC","MCO","EI","ED"],
     "cancion": { "es": "Pablito Marín, el ídolo de tu ídolo.", "eu": "Pablito Marín, Messi ta Cristianon idoloa." }
@@ -219,8 +204,7 @@
     "url_name": "duje_caletacar",
     "jaioData": "1996-09-17",
     "pos": "DEF",
-    "pais": "Croacia",
-    "pais2": null,
+    "pais": ["Croacia"],
     "zubieta": 0,
     "positions": ["DFC"],
     "cancion": { "es": "Que se vaya ya, hay que terminar cesión.", "eu": "Lagapena bertan behera utzi behar degu." }
@@ -233,8 +217,7 @@
     "url_name": "sergio_gomez",
     "jaioData": "2000-09-04",
     "pos": "DEF",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0,
     "positions": ["LD","CAD","LI","CAI","MC","MCO","EI","ED"],
     "cancion": { "es": "Visca el pa amb tomàquet!", "eu": "Visca el pa amb tomàquet!" }
@@ -247,8 +230,7 @@
     "url_name": "carlos_soler",
     "jaioData": "1997-01-02",
     "pos": "MED",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0,
     "positions": ["MC","MCD","MCO"],
     "cancion": { "es": "Es valenciano, no? Pues toma bacalao.", "eu": "Valentziarra da, ezta? Ba beira, bacalao." }
@@ -261,8 +243,7 @@
     "url_name": "jon_karrikaburu",
     "jaioData": "2002-09-19",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1,
     "positions": ["DC","DDC"],
     "cancion": { "es": "Se ve a quedar y va a hacer SEXO.", "eu": "Aurten hemen geratuko da, SEXUA." }
@@ -274,8 +255,7 @@
   "url_name": "alvaro_odriozola",
   "jaioData": "1995-12-14",
   "pos": "DEF",
-  "pais": "Euskal Herria",
-  "pais2": "Gipuzkoa",
+  "pais": ["Euskal Herria", "Gipuzkoa"],
   "zubieta": 1,
   "positions": ["LI","CAI","LD","CAD","ED"],
   "cancion": { "es": "Alvarito 'Porrozale' Odriozola, mi nuevo ídolo.", "eu": "Alvarito 'Porrozale' Odriozola, nere idolo berria." }
@@ -288,8 +268,7 @@
     "url_name": "arsen_zakharyan",
     "jaioData": "2003-05-26",
     "pos": "MED",
-    "pais": "Rusia",
-    "pais2": "Armenia",
+    "pais": ["Rusia", "Armenia"],
     "zubieta": 0,
     "positions": ["MCO","EI","ED"],
     "cancion": { "es": "Putin, hijo de putin, deja que Zakha vuelva de la guerra.", "eu": "Putinek preso du Zakha, ukraniarrak akabatzen. Putinkumea." }
@@ -302,8 +281,7 @@
     "url_name": "wesley_ribeiro",
     "jaioData": "2005-03-05",
     "pos": "DEL",
-    "pais": "Brazil",
-    "pais2": null,
+    "pais": ["Brazil"],
     "zubieta": 0,
     "positions": ["EI","ED","DDC"],
     "cancion": { "es": "SAMBA.", "eu": "SAMBA." }
@@ -316,8 +294,7 @@
     "url_name": "brais_mendez",
     "jaioData": "1997-01-07",
     "pos": "MED",
-    "pais": "Galicia",
-    "pais2": null,
+    "pais": ["Galicia"],
     "zubieta": 0,
     "positions": ["MC","MCO"],
     "cancion": { "es": "Miña terra galega.", "eu": "Nahiz gaita jotzen ez jakin, sentitzen naz gallego." }
@@ -330,8 +307,7 @@
     "url_name": "luka_sucic",
     "jaioData": "2002-09-08",
     "pos": "MED",
-    "pais": "Croacia",
-    "pais2": "Austria",
+    "pais": ["Croacia", "Austria"],
     "zubieta": 0,
     "positions": ["MC","MCO"],
     "cancion": { "es": "Ye ye ye ye.", "eu": "Ye ye ye ye." }
@@ -345,8 +321,7 @@
     "url_name": "dani_diaz",
     "jaioData": "2006-04-07",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1,
     "positions": ["ED","EI"],
     "cancion": { "es": "Le Petit Diable.", "eu": "Le Petit Diable." }
@@ -359,8 +334,7 @@
     "url_name": "jon_martin",
     "jaioData": "2006-04-23",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["DFC"],
     "cancion": { "es": "SERGIO PATXI, DON’T STOP JONMA.", "eu": "SERGIO PATXI, DON’T STOP JONMA." }
@@ -374,8 +348,7 @@
     "url_name": "aitor_fraga",
     "jaioData": "2003-03-12",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["POR"],
     "cancion": { "es": "Por las pedazo cejas que tiene el colega.", "eu": "Sozioak ditun bekain puxkengatik." }
@@ -389,8 +362,7 @@
     "url_name": "inaki_ruperez",
     "jaioData": "2003-01-07",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 0.5,
     "positions": ["LD","CAD","LI","CAI","ED"],
     "cancion": { "es": "El sozio se nos ha muerto.", "eu": "Soziyua hilda dago." }
@@ -404,8 +376,7 @@
     "url_name": "arkaitz_mariezkurrena",
     "jaioData": "2005-04-05",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["DC","DDC","ED","EI","MCO"],
     "cancion": { "es": "Sagardowski.", "eu": "Sagardowski." }
@@ -419,8 +390,7 @@
     "url_name": "alex_lebarbier",
     "jaioData": "2004-08-23",
     "pos": "MED",
-    "pais": "Francia",
-    "pais2": "Cameroon",
+    "pais": ["Francia", "Cameroon"],
     "zubieta": 1,
     "positions": ["DFC","MCD","MC"],
     "cancion": { "es": "Él tampoco sabe cómo está aquí.", "eu": "Berak ere eztaki nola dagon lehen taldeakin." }
@@ -434,8 +404,7 @@
     "url_name": "luken_beitia",
     "jaioData": "2004-06-30",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "kapitaina": 1,
     "positions": ["DFC"],
@@ -450,8 +419,7 @@
     "url_name": "alex_marchal",
     "jaioData": "2007-09-17",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1,
     "positions": ["ED","EI","MCO"],
     "cancion": { "es": "Al otro lado de la AP-8 no te querrán tanto como nosotros, Alex.", "eu": "AP-8aren bestaldean etzaituzte hemen bezala maiteko, Alex." }
@@ -465,8 +433,7 @@
     "url_name": "theo_folgado",
     "jaioData": "2005-01-27",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Lapurdi",
+    "pais": ["Euskal Herria", "Lapurdi"],
     "zubieta": 1,
     "positions": ["POR"],
     "cancion": { "es": "No va convocado, pero está inscrito con dos cojones.", "eu": "Ez dute konbokatzen, baina ligako webean dago, bi potrokin." }
@@ -480,8 +447,7 @@
     "url_name": "gorka_carrera",
     "jaioData": "2005-05-15",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["DC","DDC"],
     "cancion": { "es": "No tenía ni puta idea de qué cancion ponerle, pero descubrí a DJ Mikerinos.", "eu": "Ez nekan ideia putik ze abesti jarri, baina DJ Mikerinos deskubritu nun." }
@@ -495,8 +461,7 @@
     "url_name": "tomy_carbonell",
     "jaioData": "2005-02-23",
     "pos": "MED",
-    "pais": "Països Catalans",
-    "pais2": null,
+    "pais": ["Països Catalans"],
     "zubieta": 0.5,
     "positions": ["MCD","MC"],
     "cancion": { "es": "Perdón.", "eu": "Barkatu." }
@@ -510,8 +475,7 @@
     "url_name": "lander_astiazaran",
     "jaioData": "2006-04-07",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "positions": ["ED","EI","MCO"],
     "cancion": { "es": "Se piensa que es Sportacus.", "eu": "Sportacus dela uste du kottaduak." }
@@ -525,8 +489,7 @@
     "url_name": "kazunari_kita",
     "jaioData": "2005-09-16",
     "pos": "DEF",
-    "pais": "Japón",
-    "pais2": null,
+    "pais": ["Japón"],
     "zubieta": 0.5,
     "positions": ["DFC"],
     "cancion": { "es": "Parece buentxa.", "eu": "Buentxa dirudi." }
@@ -540,9 +503,8 @@
     "url_name": "ibai_aguirre",
     "jaioData": "2007-01-10",
     "pos": "MED",
-    "pais": "Euskal Herria",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
-    "pais2": "Gipuzkoa",
     "positions": ["MCD","MC"],
     "cancion": { "es": "Lehendakari Aguirre.", "eu": "Aguirre Lehendakaria." }
   },
@@ -555,8 +517,7 @@
     "url_name": "job_ochieng",
     "jaioData": "2003-01-17",
     "pos": "DEL",
-    "pais": "Kenya",
-    "pais2": null,
+    "pais": ["Kenya"],
     "zubieta": 0.5,
     "positions": ["EI", "ED"],
     "cancion": { "es": "Al parecer esta canción es de Kenya.", "eu": "Abesti hau Kenyakoa omen dela. Mitika." }
@@ -572,8 +533,7 @@
     "url_name": "jon_balda",
     "jaioData": "2002-04-20",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -585,8 +545,7 @@
     "url_name": "mikel_rodriguez",
     "jaioData": "2002-04-03",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -598,8 +557,7 @@
     "url_name": "ekain_orobengoa",
     "jaioData": "2004-06-17",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -611,8 +569,7 @@
     "url_name": "egoitz_arana",
     "jaioData": "2002-02-19",
     "pos": "POR",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -624,8 +581,7 @@
     "url_name": "gorka_gorosabel",
     "jaioData": "2006-05-13",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -637,8 +593,7 @@
     "url_name": "jon_eceizabarrena",
     "jaioData": "2005-03-23",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -650,8 +605,7 @@
     "url_name": "alberto_dadie",
     "jaioData": "2002-07-20",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -663,8 +617,7 @@
     "url_name": "unax_agote",
     "jaioData": "2003-03-28",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -676,8 +629,7 @@
     "url_name": "dario_ramirez",
     "jaioData": "2005-01-14",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1
   },
   {
@@ -689,8 +641,7 @@
     "url_name": "eneko_astigarraga",
     "jaioData": "2004-01-08",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -702,8 +653,7 @@
     "url_name": "ekain_diaz_de_alda",
     "jaioData": "2003-10-03",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -715,8 +665,7 @@
      "url_name": "jon_garro",
      "jaioData": "2005-06-10",
      "pos": "DEF",
-     "pais": "Euskal Herria",
-     "pais2": "Gipuzkoa",
+     "pais": ["Euskal Herria", "Gipuzkoa"],
      "zubieta": 1
     },
   {
@@ -728,8 +677,7 @@
     "url_name": "jakes_gorosabel",
     "jaioData": "2004-06-29",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -741,8 +689,7 @@
     "url_name": "joan_oleaga",
     "jaioData": "2006-03-07",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -754,8 +701,7 @@
     "url_name": "akos_tompa",
     "jaioData": "2007-03-10",
     "pos": "POR",
-    "pais": "Hungaria",
-    "pais2": null,
+    "pais": ["Hungaria"],
      "zubieta": 1
     },
   {
@@ -767,8 +713,7 @@
     "url_name": "anartz_segurola",
     "jaioData": "2006-06-29",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -780,8 +725,7 @@
     "url_name": "iker_calderon",
     "jaioData": "2006-03-27",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -793,8 +737,7 @@
     "url_name": "manuel_saenz",
     "jaioData": "2007-12-11",
     "pos": "MED",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 1
   },
   {
@@ -806,8 +749,7 @@
     "url_name": "unax_ayo",
     "jaioData": "2006-10-22",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -819,8 +761,7 @@
     "url_name": "andrews_adjabengs",
     "jaioData": "2006-03-04",
     "pos": "DEL",
-    "pais": "Ghana",
-    "pais2": null,
+    "pais": ["Ghana"],
     "zubieta": 1
   },
   {
@@ -832,8 +773,7 @@
     "url_name": "pello_arana",
     "jaioData": "2006-08-11",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Bizkaia",
+    "pais": ["Euskal Herria", "Bizkaia"],
     "zubieta": 1
   },
   {
@@ -845,8 +785,7 @@
     "url_name": "jon_de_orue",
     "jaioData": "2007-04-05",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
 
@@ -858,8 +797,7 @@
     "fullname": "Pellegrino Matarazzo",
     "url_name": "pellegrino_matarazzo",
     "jaioData": "1977-11-28",
-    "pais": "USA",
-    "pais2": "Italia",
+    "pais": ["USA", "Italia"],
     "zubieta": 0,
     "cancion": { "es": "You have been Matarazzed.", "eu": "You have been Matarazzed." }
   },
@@ -870,8 +808,7 @@
     "fullname": "John Maisano",
     "url_name": "john_maisano",
     "jaioData": "1979-01-06",
-    "pais": "Australia",
-    "pais2": "Italia",
+    "pais": ["Australia", "Italia"],
     "zubieta": 0,
     "cancion": { "es": "Ni puta idea como es este tío, pero es australiano.", "eu": "Ni puta idea nolakoa den tipo hau, baina australiarra da." }
   },
@@ -882,8 +819,7 @@
     "fullname": "Ömer Toprak",
     "url_name": "omer_toprak",
     "jaioData": "1989-07-21",
-    "pais": "Alemania",
-    "pais2": "Turkey",
+    "pais": ["Alemania", "Turquía"],
     "zubieta": 0,
     "cancion": { "es": "Turkish, orospu çocuğu.", "eu": "Turkish, orospu çocuğu." }
   },
@@ -894,8 +830,7 @@
     "fullname": "Jon Ansotegi",
     "url_name": "jon_ansotegi",
     "jaioData": "1982-07-13",
-    "pais": "Euskal Herria",
-    "pais2": "Bizkaia",
+    "pais": ["Euskal Herria", "Bizkaia"],
     "zubieta": 1
   },
   {
@@ -905,8 +840,7 @@
     "fullname": "Imanol Agirretxe",
     "url_name": "imanol_agirretxe",
     "jaioData": "1987-02-24",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   
@@ -920,8 +854,7 @@
     "url_name": "mikel_goti",
     "jaioData": "2002-05-23",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Bizkaia",
+    "pais": ["Euskal Herria", "Bizkaia"],
     "zubieta": 0.5,
     "positions": ["MCO","MC","EI","ED"],
     "cancion": { "es": "Atzetik club xd", "eu": "Atzetik club xd" }
@@ -935,8 +868,7 @@
     "url_name": "sadiq_umar",
     "jaioData": "1997-02-02",
     "pos": "DEL",
-    "pais": "Nigeria",
-    "pais2": null,
+    "pais": ["Nigeria"],
     "zubieta": 0,
     "cancion": { "es": "Pensaba que no llegaría este día.", "eu": "Uste nun egun hau etzela iritsiko." }
   },
@@ -948,8 +880,7 @@
     "fullname": "Jon Ansotegi",
     "url_name": "jon_ansotegi",
     "jaioData": "1982-07-13",
-    "pais": "Euskal Herria",
-    "pais2": "Bizkaia",
+    "pais": ["Euskal Herria", "Bizkaia"],
     "zubieta": 1,
     "cancion": { "es": "Solo se me ocurre una canción para estos dos. Histórico.", "eu": "Abesti bakarra okurritzen zait bi hauentzat. Historikoa." }
   },
@@ -961,8 +892,7 @@
     "fullname": "Imanol Agirretxe",
     "url_name": "imanol_agirretxe",
     "jaioData": "1987-02-24",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "ImaGOL Agirretxe jauna.", "eu": "ImaGOL Agirretxe jauna." }
   },
@@ -974,8 +904,7 @@
     "fullname": "Sergio Francisco",
     "url_name": "sergio_francisco",
     "jaioData": "1979-03-19",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "No ha estado al nivel del gitano de orio", "eu": "Ez da oriyoko ijituan mailara egon." }
   },
@@ -987,8 +916,7 @@
     "fullname": "Iosu Rivas",
     "url_name": "iosu_rivas",
     "jaioData": "1983-01-20",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "Nada en su contra, pero qué pena.", "eu": "Ez dakat ezer bere kontra, baina ze pena..." }
   },
@@ -1001,8 +929,7 @@
     "url_name": "javi_lopez",
     "jaioData": "2002-03-25",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0,
     "cancion": { "es": "Más malo que la guerra.", "eu": "Israhell baino txarragoa." }
   },
@@ -1015,8 +942,7 @@
     "url_name": "jon_pacheco",
     "jaioData": "2001-01-08",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "NafarroaG",
+    "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1,
     "cancion": { "es": "Que hayamos cedido a Pacheco para traer a Txaleta-txar...", "eu": "Pacheco lagatzea Txaleta-txar ekartzeko krixton autistada da." }
   },
@@ -1029,8 +955,7 @@
     "url_name": "carlos_fernandez",
     "jaioData": "1996-05-22",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": null,
+    "pais": ["España"],
     "zubieta": 0,
     "cancion": { "es": "Macho, lleva más años teniendo que irse de la Real que como profesional.", "eu": "Tipoak urte gehio daramatza Realetik atera beharrean profesionala izaten baino." }
   },
@@ -1043,8 +968,7 @@
     "url_name": "hamari_traore",
     "jaioData": "1992-01-27",
     "pos": "DEF",
-    "pais": "Mali",
-    "pais2": null,
+    "pais": ["Mali"],
     "zubieta": 0,
     "cancion": { "es": "Vuelve, Juanmari, pintamos a Odriozola de negro y los cambiamos.", "eu": "Gutako bat, Juanmari Traoré, Anderren aita." }
   },
@@ -1057,8 +981,7 @@
     "url_name": "urko_gonzalez_de_zarate",
     "jaioData": "2001-03-20",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Araba",
+    "pais": ["Euskal Herria", "Araba"],
     "zubieta": 1,
     "cancion": { "es": "Aperribay dijo que se iba a quedar, pero se le dio la patada. Aperry joputa.", "eu": "Esan zuten aurten hemen geratu zela, baina ez da hala izan. Aperry putakumia." }
   },
@@ -1071,8 +994,7 @@
     "url_name": "jon_ander_olasagasti",
     "jaioData": "2000-08-16",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "El Zidane del Txofre. Nunca debió irse.", "eu": "Txofreko Zizou. Ez zen jun behar." }
   },
@@ -1085,8 +1007,7 @@
     "url_name": "martin_zubimendi",
     "jaioData": "1999-02-02",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "Nos prometió amor eterno y se ha ido. Pues que no vuelva.", "eu": "Geratzeko aukera izan zun, baina jun egin da. Ba ez dadila itzuli." }
   },
@@ -1099,8 +1020,7 @@
     "url_name": "sheraldo_becker",
     "jaioData": "1995-02-09",
     "pos": "DEL",
-    "pais": "Surinam",
-    "pais2": "Netherlands",
+    "pais": ["Surinam", "Netherlands"],
     "zubieta": 0,
     "cancion": { "es": "El rey del GU.", "eu": "GU-ko erregea." }
   },
@@ -1113,8 +1033,7 @@
     "url_name": "jon_magunazelaia",
     "jaioData": "2001-07-13",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "Se va a Eibar xd", "eu": "Eibarrea doa xd" }
   },
@@ -1126,8 +1045,7 @@
     "fullname": "Imanol Alguacil",
     "url_name": "imanol_alguacil",
     "jaioData": "1971-07-04",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "Oriyoko ijitua.", "eu": "Oriyoko ijitua." }
   },
@@ -1139,8 +1057,7 @@
     "fullname": "Mikel Labaka",
     "url_name": "mikel_labaka",
     "jaioData": "1980-08-10",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "cancion": { "es": "Muuuuuuuuuuuuu.", "eu": "Muuuuuuuuuuuuu." }
   },
@@ -1153,8 +1070,7 @@
     "url_name": "nayef_aguerd",
     "jaioData": "1996-03-30",
     "pos": "DEF",
-    "pais": "Marruecos",
-    "pais2": null,
+    "pais": ["Marruecos"],
     "zubieta": 0,
     "cancion": { "es": "إيمانول ألجواسيل، شريف الغجر", "eu": "إيمانول ألجواسيل، شريف الغجر" }
   },
@@ -1170,8 +1086,7 @@
     "url_name": "sidney_osazuwa",
     "jaioData": "2007-04-21",
     "pos": "DEL",
-    "pais": "España",
-    "pais2": "Nigeria",
+    "pais": ["España", "Nigeria"],
     "zubieta": 0.5
   },
   {
@@ -1183,8 +1098,7 @@
     "url_name": "peru_rodriguez",
     "jaioData": "2002-04-03",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
     "kapitaina": 1
   },
@@ -1196,8 +1110,7 @@
     "fullname": "Sergio Francisco",
     "url_name": "sergio_francisco",
     "jaioData": "1979-03-19",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -1208,8 +1121,7 @@
     "fullname": "Iosu Rivas",
     "url_name": "iosu_rivas",
     "jaioData": "1983-01-20",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -1221,8 +1133,7 @@
     "url_name": "mikel_goti_2",
     "jaioData": "2002-05-23",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Bizkaia",
+    "pais": ["Euskal Herria", "Bizkaia"],
     "zubieta": 0.5
   },
   {
@@ -1235,8 +1146,7 @@
     "url_name": "iker_ropero",
     "jaioData": "2006-06-01",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -1248,8 +1158,7 @@
     "url_name": "manex_gibelalde",
     "jaioData": "2004-04-22",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -1261,8 +1170,7 @@
     "url_name": "eder_garcia",
     "jaioData": "2004-01-04",
     "pos": "MED",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -1274,8 +1182,7 @@
     "url_name": "ibrahima_camara",
     "jaioData": "2003-01-18",
     "pos": "DEF",
-    "pais": "España",
-    "pais2": "Guinea-Bissau",
+    "pais": ["España", "Guinea-Bissau"],
     "zubieta": 0.5
   },
   {
@@ -1287,8 +1194,7 @@
     "url_name": "jon_merino",
     "jaioData": "2003-03-03",
     "pos": "DEF",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   },
   {
@@ -1300,8 +1206,7 @@
     "url_name": "javi_soroeta",
     "jaioData": "2005-02-16",
     "pos": "DEL",
-    "pais": "Euskal Herria",
-    "pais2": "Gipuzkoa",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
   }  
 ]

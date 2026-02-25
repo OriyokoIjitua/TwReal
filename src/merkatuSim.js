@@ -230,7 +230,6 @@ function createPlayerCard(player, sectionKey, idx) {
   if (!player.customImageId) {
     const buildFlagImg = (pais, flagIdx) => {
       if (!pais) return '';
-      const margin = flagIdx === 0 ? ' margin-right:1px;' : ' margin-left:1px;';
       if (pais.startsWith('customFlag:')) {
         const customFlagId = pais.substring('customFlag:'.length);
         const altTag = `custom-flag-${sectionKey}-${idx}-${flagIdx}`;
@@ -240,16 +239,14 @@ function createPlayerCard(player, sectionKey, idx) {
             if (flagImg) flagImg.src = imageData;
           }
         });
-        return `<img alt="${altTag}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="${getFlagStyle('custom')}${margin}">`;
+        return `<img alt="${altTag}" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" style="${getFlagStyle('custom')} margin-right:4px;">`;
       } else {
-        return `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${pais}.png" alt="flag-${flagIdx}" style="${getFlagStyle(pais)}${margin}">`;
+        return `<img src="https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/banderak/${pais}.png" alt="flag-${flagIdx}" style="${getFlagStyle(pais)} margin-right:4px;">`;
       }
     };
     
-    flagsHtml = `${buildFlagImg(player.pais, 0)}
-            ${player.pais2 ? buildFlagImg(player.pais2, 1) : ''}
-            ${player.pais3 ? buildFlagImg(player.pais3, 2) : ''}
-            ${player.pais4 ? buildFlagImg(player.pais4, 3) : ''}`;
+    // Iterar sobre array de países
+    flagsHtml = player.pais.map((pais, idx) => buildFlagImg(pais, idx)).join('');
   }
   
   card.innerHTML = `
@@ -467,10 +464,7 @@ function loadEditTab(player, sectionKey, idx) {
         </label>
       </div>
       <div style="margin-top: 8px; display: flex; gap: 8px;">
-        <input type="hidden" id="edit-pais" value="${player.pais || ''}">
-        <input type="hidden" id="edit-pais2" value="${player.pais2 || ''}">
-        <input type="hidden" id="edit-pais3" value="${player.pais3 || ''}">
-        <input type="hidden" id="edit-pais4" value="${player.pais4 || ''}">
+        <input type="hidden" id="edit-pais-array" value="${JSON.stringify(Array.isArray(player.pais) ? player.pais : [])}">
       </div>
     </div>
     <button class="modal-btn modal-btn-primary" style="width: 100%;" onclick="saveEditedPlayer('${sectionKey}', ${idx})">
@@ -769,54 +763,45 @@ async function handleCustomFlagUpload(e) {
 }
 
 function selectEditCustomFlag(flagId, isCustom = false) {
-  // Encontrar cuál es el siguiente slot disponible (pais, pais2, pais3, pais4)
-  const pais = document.getElementById('edit-pais').value;
-  const pais2 = document.getElementById('edit-pais2').value;
-  const pais3 = document.getElementById('edit-pais3').value;
-  const pais4 = document.getElementById('edit-pais4').value;
+  // Obtener el array actual de países
+  const paisArrayInput = document.getElementById('edit-pais-array');
+  let paisArray = [];
+  try {
+    paisArray = JSON.parse(paisArrayInput.value || '[]');
+  } catch (e) {
+    paisArray = [];
+  }
   
-  const fieldIds = ['edit-pais', 'edit-pais2', 'edit-pais3', 'edit-pais4'];
-  const paisArray = [pais, pais2, pais3, pais4];
   const newValue = isCustom ? 'customFlag:' + flagId : flagId;
   
   // Buscar si la bandera ya está seleccionada para deseleccionarla
-  for (let i = 0; i < paisArray.length; i++) {
-    if (paisArray[i] === newValue) {
-      // Si ya está seleccionada, deseleccionar
-      document.getElementById(fieldIds[i]).value = '';
-      updateFlagDisplayEdit();
-      return;
-    }
+  const index = paisArray.indexOf(newValue);
+  if (index !== -1) {
+    paisArray.splice(index, 1);
+    paisArrayInput.value = JSON.stringify(paisArray);
+    updateFlagDisplayEdit();
+    return;
   }
   
-  // Buscar el primer slot vacío
-  for (let i = 0; i < paisArray.length; i++) {
-    if (!paisArray[i]) {
-      document.getElementById(fieldIds[i]).value = newValue;
-      updateFlagDisplayEdit();
-      return;
-    }
+  // Si no hemos llegado al límite de 4, agregar la bandera
+  if (paisArray.length < 4) {
+    paisArray.push(newValue);
+    paisArrayInput.value = JSON.stringify(paisArray);
+    updateFlagDisplayEdit();
   }
-  
-  // Si todos están llenos, hacer shift FIFO: desplazar hacia arriba
-  document.getElementById('edit-pais').value = pais2;
-  document.getElementById('edit-pais2').value = pais3;
-  document.getElementById('edit-pais3').value = pais4;
-  document.getElementById('edit-pais4').value = newValue;
-  updateFlagDisplayEdit();
 }
 
 function updateFlagDisplayEdit() {
   // Actualizar la opacidad de las banderas según lo seleccionado
-  const pais = document.getElementById('edit-pais').value;
-  const pais2 = document.getElementById('edit-pais2').value;
-  const pais3 = document.getElementById('edit-pais3').value;
-  const pais4 = document.getElementById('edit-pais4').value;
-  
-  const selected = [pais, pais2, pais3, pais4].filter(p => p);
+  const paisArrayInput = document.getElementById('edit-pais-array');
+  let selected = [];
+  try {
+    selected = JSON.parse(paisArrayInput.value || '[]');
+  } catch (e) {
+    selected = [];
+  }
   
   document.querySelectorAll('#flags-dropdown-edit .flag-option img').forEach(img => {
-    const flagName = img.alt;
     let isSelected = false;
     
     if (img.classList && img.classList.contains('custom-flag-img')) {
@@ -825,6 +810,7 @@ function updateFlagDisplayEdit() {
       isSelected = selected.some(s => s === 'customFlag:' + customId);
     } else {
       // Es una bandera normal
+      const flagName = img.alt;
       isSelected = selected.some(s => {
         if (s.startsWith('customFlag:')) {
           return false;
@@ -882,54 +868,45 @@ async function handleCustomFlagUploadEdit(e, dropdownId) {
 }
 
 function selectCustomFlag(flagId, isCustom = false) {
-  // Encontrar cuál es el siguiente slot disponible (pais, pais2, pais3, pais4)
-  const pais = document.getElementById('custom-pais').value;
-  const pais2 = document.getElementById('custom-pais2').value;
-  const pais3 = document.getElementById('custom-pais3').value;
-  const pais4 = document.getElementById('custom-pais4').value;
+  // Obtener el array actual de países
+  const paisArrayInput = document.getElementById('custom-pais-array');
+  let paisArray = [];
+  try {
+    paisArray = JSON.parse(paisArrayInput.value || '[]');
+  } catch (e) {
+    paisArray = [];
+  }
   
-  const fieldIds = ['custom-pais', 'custom-pais2', 'custom-pais3', 'custom-pais4'];
-  const paisArray = [pais, pais2, pais3, pais4];
   const newValue = isCustom ? 'customFlag:' + flagId : flagId;
   
   // Buscar si la bandera ya está seleccionada para deseleccionarla
-  for (let i = 0; i < paisArray.length; i++) {
-    if (paisArray[i] === newValue) {
-      // Si ya está seleccionada, deseleccionar
-      document.getElementById(fieldIds[i]).value = '';
-      updateFlagDisplay();
-      return;
-    }
+  const index = paisArray.indexOf(newValue);
+  if (index !== -1) {
+    paisArray.splice(index, 1);
+    paisArrayInput.value = JSON.stringify(paisArray);
+    updateFlagDisplay();
+    return;
   }
   
-  // Buscar el primer slot vacío
-  for (let i = 0; i < paisArray.length; i++) {
-    if (!paisArray[i]) {
-      document.getElementById(fieldIds[i]).value = newValue;
-      updateFlagDisplay();
-      return;
-    }
+  // Si no hemos llegado al límite de 4, agregar la bandera
+  if (paisArray.length < 4) {
+    paisArray.push(newValue);
+    paisArrayInput.value = JSON.stringify(paisArray);
+    updateFlagDisplay();
   }
-  
-  // Si todos están llenos, hacer shift FIFO: desplazar hacia arriba
-  document.getElementById('custom-pais').value = pais2;
-  document.getElementById('custom-pais2').value = pais3;
-  document.getElementById('custom-pais3').value = pais4;
-  document.getElementById('custom-pais4').value = newValue;
-  updateFlagDisplay();
 }
 
 function updateFlagDisplay() {
   // Actualizar la opacidad de las banderas según lo seleccionado
-  const pais = document.getElementById('custom-pais').value;
-  const pais2 = document.getElementById('custom-pais2').value;
-  const pais3 = document.getElementById('custom-pais3').value;
-  const pais4 = document.getElementById('custom-pais4').value;
-  
-  const selected = [pais, pais2, pais3, pais4].filter(p => p);
+  const paisArrayInput = document.getElementById('custom-pais-array');
+  let selected = [];
+  try {
+    selected = JSON.parse(paisArrayInput.value || '[]');
+  } catch (e) {
+    selected = [];
+  }
   
   document.querySelectorAll('#flags-dropdown .flag-option img').forEach(img => {
-    const flagName = img.alt;
     let isSelected = false;
     
     if (img.classList && img.classList.contains('custom-flag-img')) {
@@ -938,6 +915,7 @@ function updateFlagDisplay() {
       isSelected = selected.some(s => s === 'customFlag:' + customId);
     } else {
       // Es una bandera normal
+      const flagName = img.alt;
       isSelected = selected.some(s => {
         if (s.startsWith('customFlag:')) {
           return false;
@@ -1039,10 +1017,7 @@ function loadPersonalizedTab() {
         </label>
       </div>
       <div style="margin-top: 8px; display: flex; gap: 8px;">
-        <input type="hidden" id="custom-pais" value="">
-        <input type="hidden" id="custom-pais2" value="">
-        <input type="hidden" id="custom-pais3" value="">
-        <input type="hidden" id="custom-pais4" value="">
+        <input type="hidden" id="custom-pais-array" value="[]">
       </div>
     </div>
     <div class="modal-section">
@@ -1071,10 +1046,16 @@ function addCustomPlayer() {
   const deportivo = document.getElementById('custom-deportivo').value;
   const dorsal = document.getElementById('custom-dorsal').value || '99';
   const jaioData = document.getElementById('custom-jaiodata').value;
-  const pais = document.getElementById('custom-pais').value;
-  const pais2 = document.getElementById('custom-pais2').value;
-  const pais3 = document.getElementById('custom-pais3').value;
-  const pais4 = document.getElementById('custom-pais4').value;
+  
+  // Obtener el array de países
+  const paisArrayInput = document.getElementById('custom-pais-array');
+  let paisArray = [];
+  try {
+    paisArray = JSON.parse(paisArrayInput.value || '[]');
+  } catch (e) {
+    paisArray = [];
+  }
+  
   const fotoFile = document.getElementById('custom-foto').files[0];
 
   if (fotoFile) {
@@ -1090,10 +1071,7 @@ function addCustomPlayer() {
           url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
           dorsal: parseInt(dorsal),
           jaioData: jaioData,
-          pais: pais,
-          pais2: pais2,
-          pais3: pais3,
-          pais4: pais4,
+          pais: paisArray.length > 0 ? paisArray : ['España'],
           customImageId: imageId,
           tempId: Date.now() + Math.random()
         };
@@ -1116,10 +1094,7 @@ function addCustomPlayer() {
       url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
       dorsal: parseInt(dorsal),
       jaioData: jaioData,
-      pais: pais,
-      pais2: pais2,
-      pais3: pais3,
-      pais4: pais4,
+      pais: paisArray.length > 0 ? paisArray : ['España'],
       defaultImage: defaultImage,
       tempId: Date.now() + Math.random()
     };
@@ -1132,10 +1107,15 @@ function saveEditedPlayer(sectionKey, idx) {
   const deportivo = document.getElementById('edit-deportivo').value;
   const dorsal = document.getElementById('edit-dorsal').value || '99';
   const jaioData = document.getElementById('edit-jaiodata').value;
-  const pais = document.getElementById('edit-pais').value;
-  const pais2 = document.getElementById('edit-pais2').value;
-  const pais3 = document.getElementById('edit-pais3').value;
-  const pais4 = document.getElementById('edit-pais4').value;
+  
+  // Obtener el array de países
+  const paisArrayInput = document.getElementById('edit-pais-array');
+  let paisArray = [];
+  try {
+    paisArray = JSON.parse(paisArrayInput.value || '[]');
+  } catch (e) {
+    paisArray = [];
+  }
 
   // Actualizar el jugador con los nuevos datos
   const player = simulationData[sectionKey][idx];
@@ -1143,10 +1123,7 @@ function saveEditedPlayer(sectionKey, idx) {
   player.fullname = nombre;
   player.dorsal = parseInt(dorsal);
   player.jaioData = jaioData;
-  player.pais = pais;
-  player.pais2 = pais2;
-  player.pais3 = pais3;
-  player.pais4 = pais4;
+  player.pais = paisArray.length > 0 ? paisArray : player.pais; // Mantener el array de países
 
   saveAndRender();
   closeEditModal();
