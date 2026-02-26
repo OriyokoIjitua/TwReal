@@ -200,4 +200,38 @@ select {
     margin: 12px 12px 0 12px !important;
     justify-content: center !important;
   }
+
+  .player-modal {
+    padding: 12px !important;
+  }
+
+  .modal-content-wrapper {
+    flex-direction: column !important;
+    gap: 12px !important;
+    align-items: center !important;
+  }
+
+  .modal-player-img {
+    width: 140px !important;
+    height: 140px !important;
+  }
+
+  .modal-info-section {
+    min-width: 100% !important;
+    width: 100%;
+  }
+
+  .modal-info-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  .modal-label {
+    min-width: auto !important;
+  }
+
+  .modal-value {
+    text-align: left !important;
+  }
 }
