@@ -114,7 +114,7 @@
     "pais": ["Islandia"],
     "zubieta": 0,
     "positions": ["DC","DDC"],
-    "cancion": { "es": "Le sigo esperando.", "eu": "Oraindik zain gaude." }
+    "cancion": { "es": "LLEVAME A SEVILLA.", "eu": "Berriro ilusionatu naz finalakin, onartzen det." }
   },
   {
     "tipo": "jugador",
@@ -154,8 +154,7 @@
     "pais": ["Venezuela"],
     "zubieta": 0,
     "positions": ["MC","MCD"],
-    "cancion": { "es": "Espero que tenga más rojas que partidos.",
-    "eu": "Partida baino txartel gorri gehiagorekin bukatzea espero det." }
+    "cancion": { "es": "Me suena que en su momento fichamos a un tal \"Yangel\".", "eu": "\"Yangel\" izeneko norbait fitxatu genuela esango nuke." }
   },
   {
     "tipo": "jugador",
