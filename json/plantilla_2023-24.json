@@ -369,6 +369,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "FC Andorra",
     "dorsal": 27,
     "name": "Karrikaburu",
     "fullname": "Jon Karrikaburu",
@@ -381,6 +382,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "UD Tenerife",
     "dorsal": "-",
     "name": "R. López",
     "fullname": "Roberto López",
@@ -393,6 +395,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Getafe CF",
     "dorsal": 15,
     "name": "Rico",
     "fullname": "Diego Rico",
@@ -405,6 +408,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Deportivo Alavés",
     "dorsal": 2,
     "name": "Sola",
     "fullname": "Alex Sola",
@@ -417,6 +421,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Cádiz CF",
     "dorsal": 17,
     "name": "Navarro",
     "fullname": "Robert Navarro",
@@ -429,6 +434,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "OGC Nice",
     "dorsal": 11,
     "name": "Cho",
     "fullname": "Mohamed-Ali Cho",
@@ -441,6 +447,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Getafe CF",
     "dorsal": 7,
     "name": "Portu",
     "fullname": "Cristian Portugués",
@@ -453,6 +460,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Deportivo Alavés",
     "dorsal": 16,
     "name": "Guevara",
     "fullname": "Ander Guevara",
@@ -465,6 +473,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Deportivo Alavés",
     "dorsal": 18,
     "name": "Gorosabel",
     "fullname": "Andoni Gorosabel",
@@ -477,6 +486,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "FC Dallas",
     "dorsal": 4,
     "name": "Illarra",
     "fullname": "Asier Illarramendi",
@@ -490,6 +500,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "CD Eldense",
     "dorsal": 13,
     "name": "Zubiaurre",
     "fullname": "Andoni Zubiaurre",
@@ -502,6 +513,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" },
+    "newTeam": "RB Leipzig",
     "dorsal": 19,
     "name": "Sørloth",
     "fullname": "Alexander Sørloth",

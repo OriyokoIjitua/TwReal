@@ -335,6 +335,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "RCD Espanyol",
     "dorsal": 15,
     "name": "Urko",
     "fullname": "Urko González de Zarate",
@@ -347,6 +348,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Valencia CF",
     "dorsal": 19,
     "name": "Sadiq",
     "fullname": "Sadiq Umar",
@@ -359,6 +361,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Córdoba CF",
     "dorsal": 25,
     "name": "Magunazelaia",
     "fullname": "Jon Magunazelaia",
@@ -371,6 +374,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "CD Mirandés",
     "dorsal": "-",
     "name": "Gorrotxa",
     "fullname": "Jon Gorrotxategi",
@@ -383,6 +387,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Real Racing Club",
     "dorsal": 27,
     "name": "Karrikaburu",
     "fullname": "Jon Karrikaburu",
@@ -395,6 +400,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Cádiz CF",
     "dorsal": 9,
     "name": "Carlos Fdez.",
     "fullname": "Carlos Fernández",
@@ -407,6 +413,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Atlético Madrid",
     "dorsal": 24,
     "name": "Le Normand",
     "fullname": "Robin Le Normand",
@@ -419,6 +426,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Arsenal FC",
     "dorsal": 8,
     "name": "Merino",
     "fullname": "Mikel Merino",
@@ -431,6 +439,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Getafe CF",
     "dorsal": 15,
     "name": "Rico",
     "fullname": "Diego Rico",
@@ -443,6 +452,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Getafe CF",
     "dorsal": 2,
     "name": "Sola",
     "fullname": "Alex Sola",
@@ -455,6 +465,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "RCD Mallorca",
     "dorsal": 17,
     "name": "Navarro",
     "fullname": "Robert Navarro",
@@ -467,8 +478,9 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
-    "name": "Merquelanz",
+    "newTeam": "SD Eibar",
     "dorsal": "-",
+    "name": "Merquelanz",
     "fullname": "Martin Merquelanz",
     "url_name": "martin_merquelanz",
     "jaioData": "1995-06-12",
@@ -479,6 +491,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "CD Leganés",
     "dorsal": "-",
     "name": "R. López",
     "fullname": "Roberto López",
@@ -491,6 +504,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" },
+    "newTeam": "Arsenal FC",
     "dorsal": 17,
     "name": "Tierney",
     "fullname": "Kieran Tierney",
@@ -503,6 +517,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" },
+    "newTeam": "Atlético Madrid",
     "dorsal": 25,
     "name": "Javi Galán",
     "fullname": "Javi Galán",
@@ -515,6 +530,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" },
+    "newTeam": "RB Leipzig",
     "dorsal": 21,
     "name": "André Silva",
     "fullname": "André Silva",
