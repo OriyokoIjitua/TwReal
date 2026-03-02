@@ -984,7 +984,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
-    "newTeam": "RCD Espanyol de Barcelona",
+    "newTeam": "RCD Espanyol",
     "dorsal": 15,
     "name": "Urko",
     "fullname": "Urko González de Zarate",
@@ -1152,7 +1152,7 @@
     "dorsal2": 10,
     "name": "Goti",
     "fullname": "Mikel Goti",
-    "url_name": "mikel_goti_2",
+    "url_name": "mikel_goti-2",
     "jaioData": "2002-05-23",
     "pos": "MED",
     "pais": ["Euskal Herria", "Bizkaia"],

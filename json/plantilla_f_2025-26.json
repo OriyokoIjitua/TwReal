@@ -313,6 +313,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "CD Tenerife",
     "dorsal": 16,
     "name": "V. Quiles",
     "fullname": "Violeta Quiles",
@@ -325,6 +326,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Robo", "eu": "Lapurreta" },
+    "newTeam": "FC Bayern München",
     "dorsal": 23,
     "name": "Edna",
     "fullname": "Edna Imade",
@@ -337,6 +339,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "FC Nantes",
     "dorsal": 3,
     "name": "Izarne",
     "fullname": "Izarne Sarasola",
@@ -349,6 +352,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Deportivo Alavés",
     "dorsal": 14,
     "name": "Viles",
     "fullname": "Elene Viles",
@@ -361,6 +365,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Lanbide",
     "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
     "name": "Sánchez Vera",
     "fullname": "José Luis Sánchez Vera",
@@ -372,6 +377,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "London City Lionesses",
     "dorsal": 1,
     "name": "Lete",
     "fullname": "Elene Lete",
@@ -384,6 +390,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Athletic Club",
     "dorsal": 13,
     "name": "O. Santana",
     "fullname": "Olatz Santana",
@@ -396,6 +403,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Atlético Madrid",
     "dorsal": 7,
     "name": "Amaiur",
     "fullname": "Amaiur Sarriegi",
@@ -408,6 +416,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "London City Lionesses",
     "dorsal": 9,
     "name": "Franssi",
     "fullname": "Sanni Franssi",
@@ -420,6 +429,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Brighton & Hove Albion FC",
     "dorsal": 2,
     "name": "Vanegas",
     "fullname": "Manuela Vanegas",
@@ -432,6 +442,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "SD Eibar",
     "dorsal": 6,
     "name": "Etxezarreta",
     "fullname": "Ane Etxezarreta",
@@ -444,6 +455,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "FC Badalona Women",
     "dorsal": 19,
     "name": "Lorena",
     "fullname": "Lorena Navarro",
@@ -456,6 +468,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" },
+    "newTeam": "Real Madrid B",
     "dorsal": 5,
     "name": "M. Valle",
     "fullname": "María Valle",
