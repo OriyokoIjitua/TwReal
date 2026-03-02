@@ -621,6 +621,20 @@ function openPlayerModal(player, isCoach = false) {
   // Determinar qué dorsal mostrar (usar dorsal2 cuando estamos en Sanse)
   const dorsalToShow = (currentTeam === 'sanse' && player.dorsal2) ? player.dorsal2 : player.dorsal;
 
+  // Determinar qué atributos se van a mostrar
+  const showFullname = !!player.fullname;
+  const showPos = !player.rol && !!player.pos;
+  const showDorsal = !player.rol && !!dorsalToShow;
+  const showRol = !!player.rol;
+  const showBirthdate = !!player.jaioData;
+  const showPais = !!player.pais;
+  const showZubieta = !!zubietaText;
+  const showNewTeam = !!player.newTeam;
+
+  // Función auxiliar para determinar si hay otro atributo después
+  const attributesInOrder = [showFullname, showPos, showDorsal || showRol, showBirthdate, showPais, showZubieta, showNewTeam];
+  const hasNextAttribute = (currentIndex) => attributesInOrder.slice(currentIndex + 1).some(attr => attr);
+
   modal.innerHTML = `
     <div class="player-modal" style="background: white; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); max-width: 700px; width: 90%; max-height: 90vh; overflow-y: auto; position: relative; padding: 20px;">
       <button class="modal-close-btn" style="position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 2em; cursor: pointer; color: #0077cc; padding: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background-color 0.2s;">&times;</button>
@@ -641,62 +655,60 @@ function openPlayerModal(player, isCoach = false) {
           </div>
           <div class="modal-divider" style="height: 2px; background: #0077cc; margin-bottom: 16px;"></div>
           
-          ${player.fullname ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          ${showFullname ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(0) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalNombreCompleto')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.fullname}</span>
           </div>
           ` : ''}
-          ${!player.rol ? `
-          ${player.pos ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          ${showPos ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(1) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalPosicion')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${posicionText}</span>
           </div>
           ` : ''}
 
-          ${dorsalToShow ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          ${showDorsal ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(2) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalDorsal')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${dorsalToShow}</span>
           </div>
           ` : ''}
-          ` : `
-          ${player.rol ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          
+          ${showRol ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(2) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalPuesto')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.rol[window.currentLang]}</span>
           </div>
           ` : ''}
-          `}
 
-          ${player.jaioData ? `
+          ${showBirthdate ? `
           <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalFechaNacimiento')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.jaioData}</span>
           </div>
 
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(3) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalEdad')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${age} ${t('plantilla.anos')}</span>
           </div>
           ` : ''}
 
-          ${player.pais ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          ${showPais ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(4) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalNacionalidad')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${banderas}</span>
           </div>
           ` : ''}
 
-          ${zubietaText ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
+          ${showZubieta ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(5) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalCanterano')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${zubietaText}</span>
           </div>
           ` : ''}
 
-          ${player.newTeam ? `
+          ${showNewTeam ? `
           <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: none;">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalNuevoEquipo')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
