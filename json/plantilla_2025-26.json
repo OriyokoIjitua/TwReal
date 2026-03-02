@@ -847,6 +847,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Córdoba CF",
     "dorsal": 22,
     "name": "Goti",
     "fullname": "Mikel Goti",
@@ -861,6 +862,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido (Por fin)", "eu": "Salduta (Azkenean)" },
+    "newTeam": "Valencia CF",
     "dorsal": 15,
     "name": "Sadiq",
     "fullname": "Sadiq Umar",
@@ -875,6 +877,7 @@
     "tipo": "salida",
     "status": { "es": "De vuelta al Sanse", "eu": "Sansen bueltan" },
     "rol": { "es": "1.º entrenador temporal", "eu": "Behin-behineko 1. entrenatzailea" },
+    "newTeam": "Sanse",
     "name": "Ansotegi",
     "fullname": "Jon Ansotegi",
     "url_name": "jon_ansotegi",
@@ -887,6 +890,7 @@
     "tipo": "salida",
     "status": { "es": "De vuelta al Sanse", "eu": "Sansen bueltan" },
     "rol": { "es": "2.º entrenador temporal", "eu": "Behin-behineko 2. entrenatzailea" },
+    "newTeam": "Sanse",
     "name": "Agirretxe",
     "fullname": "Imanol Agirretxe",
     "url_name": "imanol_agirretxe",
@@ -899,6 +903,7 @@
     "tipo": "salida",
     "status": { "es": "Destituido", "eu": "Kargugabetua" },
     "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
+    "newTeam": "Lanbide",
     "name": "Sergio Francisco",
     "fullname": "Sergio Francisco",
     "url_name": "sergio_francisco",
@@ -911,6 +916,7 @@
     "tipo": "salida",
     "status": { "es": "Destituido", "eu": "Kargugabetua" },
     "rol": { "es": "2.º entrenador", "eu": "2. entrenatzailea" },
+    "newTeam": "Lanbide",
     "name": "Iosu",
     "fullname": "Iosu Rivas",
     "url_name": "iosu_rivas",
@@ -922,6 +928,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Real Oviedo",
     "dorsal": 12,
     "name": "Javi López",
     "fullname": "Javi López",
@@ -935,6 +942,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Deportivo Alavés",
     "dorsal": 20,
     "name": "Pacheco",
     "fullname": "Jon Pacheco",
@@ -948,6 +956,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "CD Mirandés",
     "dorsal": 9,
     "name": "Carlos Fdez.",
     "fullname": "Carlos Fernández",
@@ -961,6 +970,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Paris FC",
     "dorsal": 18,
     "name": "H. Traoré",
     "fullname": "Hamari Traoré",
@@ -974,6 +984,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "RCD Espanyol de Barcelona",
     "dorsal": 15,
     "name": "Urko",
     "fullname": "Urko González de Zarate",
@@ -987,6 +998,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Levante UD",
     "dorsal": 16,
     "name": "Olasagasti",
     "fullname": "Jon Ander Olasagasti",
@@ -1000,6 +1012,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Arsenal FC",
     "dorsal": 4,
     "name": "Zubimendi",
     "fullname": "Martin Zubimendi",
@@ -1013,6 +1026,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "CA Osasuna",
     "dorsal": 11,
     "name": "Becker",
     "fullname": "Sheraldo Becker",
@@ -1026,6 +1040,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "SD Eibar",
     "dorsal": 25,
     "name": "Magunazelaia",
     "fullname": "Jon Magunazelaia",
@@ -1039,6 +1054,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Al-Shabab FC",
     "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
     "name": "Imanol",
     "fullname": "Imanol Alguacil",
@@ -1051,6 +1067,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Lanbide",
     "rol": { "es": "2.º entrenador", "eu": "2. entrenatzailea" },
     "name": "Labaka",
     "fullname": "Mikel Labaka",
@@ -1063,6 +1080,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Fin de cesión", "eu": "Lagapenaren amaiera" },
+    "newTeam": "West Ham United",
     "dorsal": 21,
     "name": "N. Aguerd",
     "fullname": "Nayef Aguerd",
@@ -1078,6 +1096,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "AZ Alkmaar U21",
     "dorsal": "-",
     "dorsal2": 20,
     "name": "Osazuwa",
@@ -1091,6 +1110,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Transferido", "eu": "Salduta" },
+    "newTeam": "Cultural y Deportiva Leonesa",
     "dorsal2": 5,
     "name": "P. Rodríguez",
     "fullname": "Peru Rodríguez",
@@ -1104,6 +1124,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "1. equipo", "eu": "1. taldera" },
+    "newTeam": "Real Sociedad",
     "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
     "name": "Sergio Francisco",
     "fullname": "Sergio Francisco",
@@ -1115,6 +1136,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "1. equipo", "eu": "1. taldera" },
+    "newTeam": "Real Sociedad",
     "rol": { "es": "2.º entrenador", "eu": "2. entrenatzailea" },
     "name": "Iosu",
     "fullname": "Iosu Rivas",
@@ -1126,6 +1148,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "1. equipo", "eu": "1. taldera" },
+    "newTeam": "Real Sociedad",
     "dorsal2": 10,
     "name": "Goti",
     "fullname": "Mikel Goti",
@@ -1138,6 +1161,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Barakaldo CF",
     "dorsal": "-",
     "dorsal2": "-",
     "name": "Ropero",
@@ -1151,6 +1175,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Bilbao Athletic",
     "dorsal2": 16,
     "name": "Gibelalde",
     "fullname": "Manex Gibelalde",
@@ -1163,6 +1188,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Bilbao Athletic",
     "dorsal2": 18,
     "name": "Eder García",
     "fullname": "Eder García",
@@ -1175,6 +1201,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Rayo Vallecano B",
     "dorsal2": 14,
     "name": "Ibra",
     "fullname": "Ibrahima Cámara",
@@ -1187,6 +1214,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Arenas Club",
     "dorsal2": 21,
     "name": "Merino",
     "fullname": "Jon Merino",
@@ -1199,6 +1227,7 @@
   {
     "tipo": "salida-sanse",
     "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Real Unión Club",
     "dorsal2": "-",
     "name": "Soroeta",
     "fullname": "Javi Soroeta",
