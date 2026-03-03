@@ -322,7 +322,7 @@
     "url_name": "arturo_ruiz",
     "jaioData": "1997-03-09",
     "pais": ["España"],
-    "ficha": "Granada CF",
+    "prevTeam": "Granada CF",
     "zubieta": 0
   },
   {
@@ -333,7 +333,7 @@
     "url_name": "fernando_torres",
     "jaioData": "1983-11-03",
     "pais": ["España"],
-    "prevTeam": "Sanse",
+    "prevTeam": "Atlético Madrid",
     "zubieta": 0
   },
  
@@ -349,7 +349,6 @@
     "jaioData": "1999-12-10",
     "pos": "DEF",
     "pais": ["España"],
-    "prevTeam": "Atlético Madrid",
     "zubieta": 0
   },
   {
