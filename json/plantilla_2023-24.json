@@ -8,6 +8,7 @@
     "jaioData": "1995-03-24",
     "pos": "POR",
     "pais": ["Euskal Herria", "NafarroaG"],
+    "prevTeam": "Athletic Club",
     "zubieta": 0
   },
   {
@@ -19,6 +20,7 @@
     "jaioData":"1995-12-14",
     "pos": "DEF",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Real Madrid CF",
     "zubieta": 1
   },
   {
@@ -30,6 +32,7 @@
     "jaioData": "1997-08-16",
     "pos": "DEF",
     "pais": ["Euskal Herria", "NafarroaG"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -41,6 +44,7 @@
     "jaioData": "1999-02-02",
     "pos": "MED",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -52,6 +56,7 @@
     "jaioData": "1997-03-30",
     "pos": "DEF",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -63,6 +68,7 @@
     "jaioData": "1994-03-28",
     "pos": "DEF",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -74,6 +80,7 @@
     "jaioData": "2001-12-27",
     "pos": "DEL",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -85,6 +92,7 @@
     "jaioData": "1996-06-22",
     "pos": "MED",
     "pais": ["Euskal Herria", "NafarroaG"],
+    "prevTeam": "Newcastle United FC",
     "zubieta": 0
   },
   {
@@ -96,6 +104,7 @@
     "jaioData": "1996-05-22",
     "pos": "DEL",
     "pais": ["España"],
+    "prevTeam": "Sevilla FC",
     "zubieta": 0
   },
   {
@@ -107,6 +116,7 @@
     "jaioData": "1997-04-21",
     "pos": "DEL",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1,
     "kapitaina": 1
   },
@@ -119,6 +129,7 @@
     "jaioData": "1995-02-09",
     "pos": "DEL",
     "pais": ["Surinam", "Netherlands"],
+    "prevTeam": "1. Fußballclub Union Berlin",
     "zubieta": 0
   },
   {
@@ -130,6 +141,7 @@
     "jaioData": "2003-05-26",
     "pos": "MED",
     "pais": ["Rusia", "Armenia"],
+    "prevTeam": "FC Dynamo Moskva",
     "zubieta": 0
   },
   {
@@ -141,6 +153,7 @@
     "jaioData": "2001-10-09",
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -152,6 +165,7 @@
     "jaioData": "2001-06-04",
     "pos": "DEL",
     "pais": ["Japón"],
+    "prevTeam": "Real Madrid CF",
     "zubieta": 0
   },
   {
@@ -163,6 +177,7 @@
     "jaioData": "2001-03-20",
     "pos": "MED",
     "pais": ["Euskal Herria", "Araba"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -174,6 +189,7 @@
     "jaioData": "2000-08-16",
     "pos": "MED",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -185,6 +201,7 @@
     "jaioData": "1997-06-05",
     "pos": "DEF",
     "pais": ["Escocia", "Isle of Man"],
+    "prevTeam": "Arsenal FC",
     "zubieta": 0
   },
   {
@@ -196,6 +213,7 @@
     "jaioData": "1992-01-27",
     "pos": "DEF",
     "pais": ["Mali"],
+    "prevTeam": "Stade Rennais FC",
     "zubieta": 0
   },
   {
@@ -207,6 +225,7 @@
     "jaioData": "1997-02-02",
     "pos": "DEL",
     "pais": ["Nigeria"],
+    "prevTeam": "UD Almería",
     "zubieta": 0
   },
   {
@@ -218,6 +237,7 @@
     "jaioData": "2001-01-08",
     "pos": "DEF",
     "pais": ["Euskal Herria", "NafarroaG"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -229,6 +249,7 @@
     "jaioData": "1995-11-06",
     "pos": "DEL",
     "pais": ["Portugal"],
+    "prevTeam": "RB Leipzig",
     "zubieta": 0
   },
   {
@@ -240,6 +261,7 @@
     "jaioData": "2002-01-31",
     "pos": "MED",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -251,6 +273,7 @@
     "jaioData": "1997-01-07",
     "pos": "MED",
     "pais": ["Galicia"],
+    "prevTeam": "RC Celta de Vigo",
     "zubieta": 0
   },
   {
@@ -262,6 +285,7 @@
     "jaioData": "1996-11-11",
     "pos": "DEF",
     "pais": ["Bretagne", "España"],
+    "prevTeam": "Sanse",
     "zubieta": 0.5
   },
   {
@@ -273,10 +297,11 @@
     "jaioData": "1994-11-19",
     "pos": "DEF",
     "pais": ["España"],
+    "prevTeam": "Atlético Madrid",
     "zubieta": 0
   },
   {
-    "tipo": "jugador",
+    "tipo": "dual",
     "dorsal": 28,
     "name": "Magunazelaia",
     "fullname": "Jon Magunazelaia",
@@ -284,10 +309,11 @@
     "jaioData": "2001-07-13",
     "pos": "DEL",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
     "zubieta": 1
   },
   {
-    "tipo": "jugador",
+    "tipo": "dual",
     "dorsal": 36,
     "name": "Jon Martín",
     "fullname": "Jon Martín",
@@ -295,10 +321,11 @@
     "jaioData": "2006-04-23",
     "pos": "DEF",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
     "zubieta": 1
   },
   {
-    "tipo": "jugador",
+    "tipo": "dual",
     "dorsal": 38,
     "name": "Dadie",
     "fullname": "Alberto Dadie",
@@ -306,10 +333,11 @@
     "jaioData": "2002-07-20",
     "pos": "DEL",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
     "zubieta": 1
   },
   {
-    "tipo": "jugador",
+    "tipo": "dual",
     "dorsal": 39,
     "name": "Aramburu",
     "fullname": "Jon Mikel Aramburu",
@@ -317,6 +345,7 @@
     "jaioData": "2002-07-23",
     "pos": "DEF",
     "pais": ["Venezuela", "Euskal Herria"],
+    "ficha": "Sanse",
     "zubieta": 0.5
   },
   {
@@ -328,6 +357,7 @@
     "jaioData": "1995-06-12",
     "pos": "DEL",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
  
@@ -340,6 +370,7 @@
     "url_name": "imanol_alguacil",
     "jaioData": "1971-07-04",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
   {
@@ -350,6 +381,7 @@
     "url_name": "mikel_labaka",
     "jaioData": "1980-08-10",
     "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
     "zubieta": 1
   },
 
