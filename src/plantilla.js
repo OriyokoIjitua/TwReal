@@ -629,10 +629,32 @@ function openPlayerModal(player, isCoach = false) {
   const showBirthdate = !!player.jaioData;
   const showPais = !!player.pais;
   const showZubieta = !!zubietaText;
+  
+  // Determinar qué equipo anterior mostrar (ficha o prevTeam)
+  let prevTeamToShow = '';
+  let prevTeamLabel = '';
+  if (player.prevTeam && player.ficha) {
+    // Si tiene los dos, depende del equipo actual
+    if (currentTeam === 'sanse') {
+      prevTeamToShow = player.prevTeam;
+      prevTeamLabel = 'modalPrevTeam';
+    } else {
+      prevTeamToShow = player.ficha;
+      prevTeamLabel = 'modalFicha';
+    }
+  } else if (player.prevTeam) {
+    prevTeamToShow = player.prevTeam;
+    prevTeamLabel = 'modalPrevTeam';
+  } else if (player.ficha) {
+    prevTeamToShow = player.ficha;
+    prevTeamLabel = 'modalFicha';
+  }
+  
+  const showPrevTeam = !!prevTeamToShow;
   const showNewTeam = !!player.newTeam;
 
   // Función auxiliar para determinar si hay otro atributo después
-  const attributesInOrder = [showFullname, showPos, showDorsal || showRol, showBirthdate, showPais, showZubieta, showNewTeam];
+  const attributesInOrder = [showFullname, showPos, showDorsal || showRol, showPrevTeam, showBirthdate, showPais, showZubieta, showNewTeam];
   const hasNextAttribute = (currentIndex) => attributesInOrder.slice(currentIndex + 1).some(attr => attr);
 
   modal.innerHTML = `
@@ -682,27 +704,37 @@ function openPlayerModal(player, isCoach = false) {
           </div>
           ` : ''}
 
+          ${showPrevTeam ? `
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(3) ? '1px solid #e0e0e0' : 'none'};">
+            <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.' + prevTeamLabel)}:</span>
+            <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em; display: flex; align-items: center; justify-content: flex-end; gap: 8px;">
+              <img src="img/teams/${prevTeamToShow}.png" alt="${prevTeamToShow}" style="max-width: 40px; max-height: 30px; object-fit: contain;">
+              <span>${prevTeamToShow}</span>
+            </span>
+          </div>
+          ` : ''}
+
           ${showBirthdate ? `
           <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #e0e0e0;">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalFechaNacimiento')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${player.jaioData}</span>
           </div>
 
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(3) ? '1px solid #e0e0e0' : 'none'};">
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(4) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalEdad')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${age} ${t('plantilla.anos')}</span>
           </div>
           ` : ''}
 
           ${showPais ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(4) ? '1px solid #e0e0e0' : 'none'};">
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(5) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalNacionalidad')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${banderas}</span>
           </div>
           ` : ''}
 
           ${showZubieta ? `
-          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(5) ? '1px solid #e0e0e0' : 'none'};">
+          <div class="modal-info-row" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: ${hasNextAttribute(6) ? '1px solid #e0e0e0' : 'none'};">
             <span class="modal-label" style="font-weight: bold; color: #003366; min-width: 140px; font-size: 0.9em;">${t('plantilla.modalCanterano')}:</span>
             <span class="modal-value" style="color: #555; text-align: right; flex: 1; padding-left: 12px; font-size: 0.95em;">${zubietaText}</span>
           </div>
