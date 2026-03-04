@@ -860,6 +860,19 @@
     "ficha": "Real Sociedad C",
     "zubieta": 1
   },
+  {
+    "tipo": "sanse-dual",
+    "dorsal": "-",
+    "dorsal2": 45,
+    "name": "Olasagasti",
+    "fullname": "Lander Olasagasti",
+    "url_name": "lander_olasagasti",
+    "jaioData": "2002-02-19",
+    "pos": "POR",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Real Sociedad C",
+    "zubieta": 1
+  },
 
 
   {
