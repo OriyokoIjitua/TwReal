@@ -11,7 +11,7 @@
     "prevTeam": "Athletic Club",
     "zubieta": 0,
     "positions": ["POR"],
-    "cancion": { "es": "La primera frase de la canción, poco más que decir.", "eu": "Abestiko lehen esaldia, badakizue zer dan." }
+    "cancion": { "es": "Menos cuentos y más paradas, Jandro.", "eu": "Kontu gutxio ta geldiketa gehio, Jandro." }
   },
   {
     "tipo": "jugador",
@@ -1253,7 +1253,6 @@
     "tipo": "salida-sanse",
     "status": { "es": "Cedido", "eu": "Lagapena" },
     "newTeam": "Barakaldo CF",
-    "dorsal": "-",
     "dorsal2": "-",
     "name": "Ropero",
     "fullname": "Iker Ropero",
