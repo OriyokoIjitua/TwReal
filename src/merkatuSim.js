@@ -1071,7 +1071,7 @@ function addCustomPlayer() {
           url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
           dorsal: parseInt(dorsal),
           jaioData: jaioData,
-          pais: paisArray.length > 0 ? paisArray : ['España'],
+          pais: paisArray.length > 0 ? paisArray : ["Euskal Herria", "Gipuzkoa"],
           customImageId: imageId,
           tempId: Date.now() + Math.random()
         };
@@ -1094,7 +1094,7 @@ function addCustomPlayer() {
       url_name: nombre.replace(/\s+/g, '_').toLowerCase(),
       dorsal: parseInt(dorsal),
       jaioData: jaioData,
-      pais: paisArray.length > 0 ? paisArray : ['España'],
+      pais: paisArray.length > 0 ? paisArray : ["Euskal Herria", "Gipuzkoa"],
       defaultImage: defaultImage,
       tempId: Date.now() + Math.random()
     };
