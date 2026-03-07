@@ -278,6 +278,18 @@
   },
   {
     "tipo": "dual",
+    "dorsal": 29,
+    "name": "Azpirotz",
+    "fullname": "Nahia Azpirotz",
+    "url_name": "nahia_azpirotz",
+    "jaioData": "2006-06-28",
+    "pos": "DEF",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
+    "zubieta": 1
+  },
+  {
+    "tipo": "dual",
     "dorsal": 31,
     "name": "Ugartemendia",
     "fullname": "Ainara Ugartemendia",
@@ -297,18 +309,6 @@
     "jaioData": "2009-04-04",
     "pos": "DEL",
     "pais": ["España"],
-    "ficha": "Sanse",
-    "zubieta": 1
-  },
-  {
-    "tipo": "dual",
-    "dorsal": "",
-    "name": "Azpirotz",
-    "fullname": "Nahia Azpirotz",
-    "url_name": "nahia_azpirotz",
-    "jaioData": "2006-06-28",
-    "pos": "DEF",
-    "pais": ["Euskal Herria", "Gipuzkoa"],
     "ficha": "Sanse",
     "zubieta": 1
   },
