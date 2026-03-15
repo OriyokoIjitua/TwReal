@@ -278,6 +278,18 @@
   },
   {
     "tipo": "dual",
+    "dorsal": 28,
+    "name": "Soroa",
+    "fullname": "Iraia Soroa",
+    "url_name": "iraia_soroa",
+    "jaioData": "2008-09-22",
+    "pos": "DEF",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
+    "zubieta": 1
+  },
+  {
+    "tipo": "dual",
     "dorsal": 29,
     "name": "Azpirotz",
     "fullname": "Nahia Azpirotz",

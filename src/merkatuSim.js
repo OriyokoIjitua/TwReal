@@ -1,4 +1,14 @@
 // ============= GESTIÓN DE DATOS =============
+// Función para obtener el placeholder correcto según la sección
+const getPlaceholderImage = (section) => {
+  const imgFolder = currentTeam === 'f' ? 'f_2025-26' : '2025-26';
+  if (section === 'porteros') {
+    return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/def_port.jpg`;
+  } else {
+    return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/def_jug.jpg`;
+  }
+};
+
 // Estructura para guardar datos separados por equipo
 const getSimulationDataForTeam = (team) => {
   const stored = localStorage.getItem(`merkatuSim_${team}`);
@@ -54,12 +64,14 @@ const getImageFromDB = (imageId) => {
     const tx = imageDB.transaction(['images'], 'readonly');
     const store = tx.objectStore('images');
     const request = store.get(imageId);
-    request.onsuccess = () => resolve(request.result?.data);
+    request.onsuccess = () => resolve(request.result && request.result.data);
     request.onerror = () => reject(tx.error);
   });
 };
 
 // ============= CARGA INICIAL =============
+let playersCache = {}; // Cachear jugadores para cada equipo
+
 async function loadPlantilla() {
   // Cargar plantilla Real Sociedad
   const data = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_2025-26.json').then(r => r.json());
@@ -73,23 +85,79 @@ async function loadPlantilla() {
     console.error('Error cargando plantilla_f_2025-26.json:', err);
   }
   
+  // Pre-cachear jugadores para cada équipo
+  cachePlayersForAllTeams();
+  
   // Reinicializar datos según el equipo seleccionado
   reinitializeByTeam();
   
   // No renderizar aquí - esperar a que i18next esté completamente listo
 }
 
+function cachePlayersForAllTeams() {
+  const excludeUrlNames = ['jon_ansotegi', 'imanol_agirretxe', 'sergio_francisco', 'iosu_rivas', 'imanol_alguacil', 'mikel_labaka'];
+  
+  // Cachear para Real Sociedad
+  playersCache['real'] = {
+    porteros: [],
+    defensas: [],
+    centrocampistas: [],
+    delanteros: [],
+    salidas: []
+  };
+  plantillaCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name)).forEach(player => {
+    const posMap = { 'POR': 'porteros', 'DEF': 'defensas', 'MED': 'centrocampistas', 'DEL': 'delanteros' };
+    if (posMap[player.pos]) {
+      playersCache['real'][posMap[player.pos]].push({ ...player, tempId: Date.now() + Math.random() });
+    }
+  });
+  
+  // Cachear para Sanse
+  playersCache['sanse'] = {
+    porteros: [],
+    defensas: [],
+    centrocampistas: [],
+    delanteros: [],
+    salidas: []
+  };
+  plantillaCompleta.filter(p => (p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name)).forEach(player => {
+    const posMap = { 'POR': 'porteros', 'DEF': 'defensas', 'MED': 'centrocampistas', 'DEL': 'delanteros' };
+    if (posMap[player.pos]) {
+      playersCache['sanse'][posMap[player.pos]].push({ ...player, tempId: Date.now() + Math.random() });
+    }
+  });
+  
+  // Cachear para F
+  playersCache['f'] = {
+    porteros: [],
+    defensas: [],
+    centrocampistas: [],
+    delanteros: [],
+    salidas: []
+  };
+  plantillaFCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name)).forEach(player => {
+    const posMap = { 'POR': 'porteros', 'DEF': 'defensas', 'MED': 'centrocampistas', 'DEL': 'delanteros' };
+    if (posMap[player.pos]) {
+      playersCache['f'][posMap[player.pos]].push({ ...player, tempId: Date.now() + Math.random() });
+    }
+  });
+}
+
 function reinitializeByTeam() {
   // Recuperar datos guardados del equipo actual
   const savedData = getSimulationDataForTeam(currentTeam);
   
-  // Si hay datos guardados, usarlos; si no, inicializar con datos por defecto
+  // Si hay datos guardados, usarlos
   if (savedData.porteros.length > 0 || savedData.defensas.length > 0 || 
       savedData.centrocampistas.length > 0 || savedData.delanteros.length > 0 || 
       savedData.salidas.length > 0) {
     simulationData = savedData;
+  } else if (playersCache[currentTeam]) {
+    // Si no hay datos guardados pero el cache existe, usar el cache
+    simulationData = JSON.parse(JSON.stringify(playersCache[currentTeam])); // Copia profunda
+    saveSimulationDataForTeam(currentTeam, simulationData);
   } else {
-    // Inicializar con datos por defecto si no hay guardados
+    // Fallback: inicializar vacío si no hay cache
     simulationData = {
       porteros: [],
       defensas: [],
@@ -97,39 +165,6 @@ function reinitializeByTeam() {
       delanteros: [],
       salidas: []
     };
-    
-    const excludeUrlNames = ['jon_ansotegi', 'imanol_agirretxe', 'sergio_francisco', 'iosu_rivas', 'imanol_alguacil', 'mikel_labaka'];
-    let playersToLoad = [];
-    let salidasToLoad = [];
-    
-    if (currentTeam === 'sanse') {
-      // Sanse: solo 'dual' y 'sanse' inicialmente (no 'sanse-dual' ni 'dual-ber-bi')
-      playersToLoad = plantillaCompleta.filter(p => (p.tipo === 'sanse' || p.tipo === 'dual') && !excludeUrlNames.includes(p.url_name));
-      salidasToLoad = []; // Salidas-sanse seleccionables pero no cargadas al iniciar
-    } else if (currentTeam === 'f') {
-      // Real Sociedad F: solo tipo 'jugador' inicialmente (sin 'dual', 'salida' ni entrenador)
-      playersToLoad = plantillaFCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name));
-      salidasToLoad = []; // No cargar salidas al iniciar
-    } else {
-      // Real Sociedad (default): solo 'jugador' al iniciar (dual y dual-ber-bi seleccionables pero no cargados)
-      playersToLoad = plantillaCompleta.filter(p => p.tipo === 'jugador' && !excludeUrlNames.includes(p.url_name));
-      salidasToLoad = []; // No cargar salidas al iniciar
-    }
-    
-    // Agregar jugadores
-    playersToLoad.forEach(player => {
-      const posMap = { 'POR': 'porteros', 'DEF': 'defensas', 'MED': 'centrocampistas', 'DEL': 'delanteros' };
-      if (posMap[player.pos]) {
-        simulationData[posMap[player.pos]].push({ ...player, tempId: Date.now() + Math.random() });
-      }
-    });
-    
-    // Agregar salidas
-    salidasToLoad.forEach(player => {
-      simulationData.salidas.push({ ...player, tempId: Date.now() + Math.random() });
-    });
-    
-    saveSimulationDataForTeam(currentTeam, simulationData);
   }
 }
 
@@ -145,7 +180,11 @@ function renderAllSections() {
 function sortPlayersByDorsal(section) {
   if (!simulationData[section]) return;
   const dorsalField = currentTeam === 'sanse' ? 'dorsal2' : 'dorsal';
-  simulationData[section].sort((a, b) => (a[dorsalField] || 0) - (b[dorsalField] || 0));
+  simulationData[section].sort((a, b) => {
+    const aNum = parseInt(a[dorsalField]) || 99;
+    const bNum = parseInt(b[dorsalField]) || 99;
+    return aNum - bNum;
+  });
 }
 
 function renderSection(sectionKey, posFilter) {
@@ -154,9 +193,12 @@ function renderSection(sectionKey, posFilter) {
   container.innerHTML = '';
   const players = simulationData[sectionKey] || [];
   
+  // Usar DocumentFragment para batching de DOM updates
+  const fragment = document.createDocumentFragment();
+  
   players.forEach((player, idx) => {
     const card = createPlayerCard(player, sectionKey, idx);
-    container.appendChild(card);
+    fragment.appendChild(card);
   });
   
   // Botón de agregar jugador
@@ -164,7 +206,10 @@ function renderSection(sectionKey, posFilter) {
   addCard.className = 'player-card add-btn';
   addCard.innerHTML = '<div class="add-btn-icon">+</div>';
   addCard.onclick = () => openAddPlayerModal(sectionKey);
-  container.appendChild(addCard);
+  fragment.appendChild(addCard);
+  
+  // Agregar todo de una vez
+  container.appendChild(fragment);
 }
 
 function createPlayerCard(player, sectionKey, idx) {
@@ -251,7 +296,7 @@ function createPlayerCard(player, sectionKey, idx) {
   
   card.innerHTML = `
     <img class="player-img" src="${imgSrc}" 
-         alt="${player.name}" onerror="this.src='https://via.placeholder.com/72?text=${player.name}'">
+         alt="${player.name}" onerror="this.src='${getPlaceholderImage(sectionKey)}'">
     <div class="player-info">
       <span class="player-name">
         ${flagsHtml}
@@ -519,7 +564,7 @@ function loadTabContent(tabId) {
 function showTabContent(event, tabId) {
   if (event) event.target.classList.add('active');
   document.querySelectorAll('.modal-btn-tab').forEach(btn => {
-    if (btn !== event?.target) btn.classList.remove('active');
+    if (btn !== (event && event.target)) btn.classList.remove('active');
   });
   
   // Limpiar contenido anterior
@@ -1151,6 +1196,13 @@ function saveAndRender() {
   renderAllSections();
   document.querySelectorAll('.context-menu').forEach(m => m.style.display = 'none');
   document.querySelectorAll('.submenu').forEach(m => m.style.display = 'none');
+  
+  // Actualizar merkatuPlayers si Screen 2 está activa
+  const screen2 = document.getElementById('screen2');
+  if (screen2 && screen2.classList.contains('active')) {
+    updateMerkatuPlayersFromSimulationData();
+    renderMerkatuPositions();
+  }
 }
 
 function resetSimulation() {
@@ -1165,6 +1217,8 @@ function updateLangBtn() {
   document.getElementById('menu-once').textContent = t('menu.once');
   document.getElementById('menu-merkatu').textContent = t('menu.merkatu');
   document.getElementById('pageTitle').textContent = t('merkatuSim.pageTitle');
+  document.getElementById('screenBtn1').textContent = t('merkatuSim.gestionarPlantilla');
+  document.getElementById('screenBtn2').textContent = t('merkatuSim.onceEnCampo');
   document.getElementById('porterosTitle').textContent = t('merkatuSim.porterosTitle');
   document.getElementById('defensasTitle').textContent = t('merkatuSim.defensasTitle');
   document.getElementById('centrocampistasTitle').textContent = t('merkatuSim.centrocampistasTitle');
@@ -1195,11 +1249,40 @@ function updateLangBtn() {
 }
 document.getElementById('langBtn').onclick = function() {
   const newLang = window.currentLang === 'es' ? 'eu' : 'es';
-  changeLanguage(newLang);
+  window.currentLang = newLang;
+  i18next.changeLanguage(newLang);
   updateLangBtn();
+  // Actualizar UI del hamaikakoa/once si está inicializado
+  if (window.hamaiakolaInitialized) {
+    updateMerkatuHamaiakolaUI();
+  }
 };
 
 document.getElementById('resetBtn').onclick = resetSimulation;
+
+// ============= FUNCIONES DE PANTALLAS =============
+function switchMerkatuScreen(screenNum) {
+  // Cambiar clases de pantalla
+  document.getElementById('screen1').classList.toggle('active', screenNum === 1);
+  document.getElementById('screen2').classList.toggle('active', screenNum === 2);
+  
+  // Cambiar botones activos
+  document.getElementById('screenBtn1').classList.toggle('active', screenNum === 1);
+  document.getElementById('screenBtn2').classList.toggle('active', screenNum === 2);
+  
+  // Si cambio a pantalla 2 y no está inicializado, inicializar
+  if (screenNum === 2 && !window.hamaiakolaInitialized) {
+    // Usar setTimeout para asegurar que el DOM esté actualizado
+    setTimeout(() => {
+      initMerkatuHamaikakoa();
+      window.hamaiakolaInitialized = true;
+    }, 0);
+  } else if (screenNum === 2 && window.hamaiakolaInitialized) {
+    // Si ya fue inicializado, actualizar jugadores con cambios de Screen 1 y re-renderizar
+    updateMerkatuPlayersFromSimulationData();
+    renderMerkatuPositions();
+  }
+}
 
 // Cerrar modales al hacer clic fuera
 document.getElementById('addPlayerModal').addEventListener('click', function(e) {
@@ -1249,13 +1332,20 @@ const equipoSelect = document.getElementById('equipoSelect');
 if (equipoSelect) {
   equipoSelect.addEventListener('change', function() {
     const previousTeam = currentTeam;
-    // Guardar estado del equipo anterior antes de cambiar
+    // Guardar estado del equipo anterior (incluyendo campo si estamos en screen 2)
     saveSimulationDataForTeam(previousTeam, simulationData);
+    if (previousTeam === currentTeam) {
+      saveMerkatuState(); // Guardar estado del campo del equipo anterior
+    }
     
     currentTeam = this.value;
     localStorage.setItem('team', currentTeam);
     reinitializeByTeam();
     renderAllSections();
+    // Limpiar estado del campo al cambiar de equipo
+    merkatuAssigned = Array(11).fill(null);
+    window.merkatuCambiosOnce = {};
+    merkatuCurrentFormation = '4-2-3-1';
   });
 }
 
@@ -1264,4 +1354,540 @@ if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initMerkatuSim);
 } else {
   initMerkatuSim();
+}
+
+// ============= SEGUNDA PANTALLA: HAMAIKAKOA INTEGRADO =============
+// Variables para la segunda pantalla (hamaikakoa)
+let merkatuPlayers = [];
+let merkatuCurrentFormation = '4-2-3-1';
+let merkatuAssigned = Array(11).fill(null);
+window.merkatuCambiosOnce = {};
+let merkatuCambioEnPosicion = null;
+
+// Funciones para guardar/cargar estado del campo
+function saveMerkatuState() {
+  const state = {
+    assigned: merkatuAssigned,
+    cambios: window.merkatuCambiosOnce || {},
+    formation: merkatuCurrentFormation
+  };
+  localStorage.setItem(`merkatuState_${currentTeam}`, JSON.stringify(state));
+}
+
+function loadMerkatuState() {
+  const stored = localStorage.getItem(`merkatuState_${currentTeam}`);
+  if (stored) {
+    try {
+      const state = JSON.parse(stored);
+      merkatuAssigned = state.assigned || Array(11).fill(null);
+      window.merkatuCambiosOnce = state.cambios || {};
+      merkatuCurrentFormation = state.formation || '4-2-3-1';
+    } catch (e) {
+      console.error('Error loading merkatuState:', e);
+      merkatuAssigned = Array(11).fill(null);
+      window.merkatuCambiosOnce = {};
+      merkatuCurrentFormation = '4-2-3-1';
+    }
+  }
+}
+
+function clearMerkatuStateForTeam() {
+  localStorage.removeItem(`merkatuState_${currentTeam}`);
+  merkatuAssigned = Array(11).fill(null);
+  window.merkatuCambiosOnce = {};
+  merkatuCurrentFormation = '4-2-3-1';
+}
+
+const formations = {
+  '4-2-3-1': [
+    { x: 60, y: 100, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 100, role: 'ED' },
+    { x: 260, y: 190, role: 'MCO' }, { x: 160, y: 310, role: 'MCD' }, { x: 360, y: 310, role: 'MCD' },
+    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
+    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '4-3-3': [
+    { x: 60, y: 60, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 60, role: 'ED' },
+    { x: 360, y: 190, role: 'MCO' }, { x: 160, y: 210, role: 'MC' }, { x: 260, y: 310, role: 'MCD' },
+    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
+    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '4-4-2 (1)': [
+    { x: 160, y: 40, role: 'DDC' }, { x: 360, y: 40, role: 'DDC' }, { x: 420, y: 190, role: 'MCO' },
+    { x: 100, y: 190, role: 'MC' }, { x: 190, y: 310, role: 'MCD' }, { x: 330, y: 310, role: 'MCD' },
+    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
+    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '4-4-2 (2)': [
+    { x: 160, y: 40, role: 'DDC' }, { x: 360, y: 40, role: 'DDC' }, { x: 260, y: 160, role: 'MCO' },
+    { x: 100, y: 220, role: 'MC' }, { x: 420, y: 220, role: 'MC' }, { x: 260, y: 320, role: 'MCD' },
+    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
+    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '3-4-1-2': [
+    { x: 160, y: 30, role: 'DDC' }, { x: 360, y: 30, role: 'DDC' }, { x: 260, y: 150, role: 'MCO' },
+    { x: 160, y: 270, role: 'MC' }, { x: 360, y: 280, role: 'MCD' }, { x: 260, y: 440, role: 'DFC' },
+    { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' }, { x: 35, y: 360, role: 'CAI' },
+    { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '5-3-2': [
+    { x: 160, y: 40, role: 'DDC' }, { x: 360, y: 40, role: 'DDC' }, { x: 380, y: 180, role: 'MCO' },
+    { x: 140, y: 200, role: 'MC' }, { x: 260, y: 300, role: 'MCD' }, { x: 260, y: 440, role: 'DFC' },
+    { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' }, { x: 35, y: 360, role: 'CAI' },
+    { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '5-2-3': [
+    { x: 60, y: 120, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 120, role: 'ED' },
+    { x: 160, y: 280, role: 'MC' }, { x: 360, y: 280, role: 'MCD' }, { x: 260, y: 440, role: 'DFC' },
+    { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' }, { x: 35, y: 360, role: 'CAI' },
+    { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '5-1-3-1': [
+    { x: 60, y: 100, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 100, role: 'ED' },
+    { x: 260, y: 220, role: 'MCO' }, { x: 140, y: 320, role: 'MC' }, { x: 380, y: 320, role: 'MCD' },
+    { x: 260, y: 440, role: 'DFC' }, { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' },
+    { x: 35, y: 360, role: 'CAI' }, { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '4-5-1': [
+    { x: 60, y: 140, role: 'EI' }, { x: 460, y: 140, role: 'ED' }, { x: 260, y: 20, role: 'DC' },
+    { x: 100, y: 210, role: 'MC' }, { x: 260, y: 190, role: 'MCO' }, { x: 420, y: 210, role: 'MCD' },
+    { x: 160, y: 340, role: 'MC' }, { x: 360, y: 340, role: 'MC' }, { x: 35, y: 420, role: 'LI' },
+    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '4-2-1-2-1': [
+    { x: 160, y: 125, role: 'MCO' }, { x: 260, y: 10, role: 'DC' }, { x: 360, y: 125, role: 'MCO' },
+    { x: 110, y: 260, role: 'MC' }, { x: 410, y: 260, role: 'MC' }, { x: 260, y: 340, role: 'MCD' },
+    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 400, role: 'LI' },
+    { x: 485, y: 400, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ],
+  '4-1-2-2-1': [
+    { x: 160, y: 125, role: 'MCO' }, { x: 260, y: 10, role: 'DC' }, { x: 360, y: 125, role: 'MCO' },
+    { x: 110, y: 260, role: 'MC' }, { x: 410, y: 260, role: 'MC' }, { x: 260, y: 340, role: 'MCD' },
+    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 400, role: 'LI' },
+    { x: 485, y: 400, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
+  ]
+};
+
+function updateMerkatuPlayersFromSimulationData() {
+  // Reconstruir merkatuPlayers desde simulationData para reflejar cambios de Screen 1
+  merkatuPlayers = [];
+  const allPlayers = [
+    ...simulationData.porteros,
+    ...simulationData.defensas,
+    ...simulationData.centrocampistas,
+    ...simulationData.delanteros
+  ];
+  const dorsalField = currentTeam === 'sanse' ? 'dorsal2' : 'dorsal';
+  
+  allPlayers.forEach(player => {
+    merkatuPlayers.push({
+      dorsal: player[dorsalField] || player.dorsal || 99,
+      name: player.name,
+      fullname: player.fullname || player.name,
+      img: getPlayerImgUrl(player),
+      positions: Array.isArray(player.positions) ? player.positions : (player.positions ? [player.positions] : []),
+      url_name: player.url_name
+    });
+  });
+  
+  merkatuPlayers.sort((a, b) => {
+    const dorsalA = parseInt(a.dorsal) || 99;
+    const dorsalB = parseInt(b.dorsal) || 99;
+    return dorsalA - dorsalB;
+  });
+}
+
+function initMerkatuHamaikakoa() {
+  // Construir lista de jugadores desde simulationData
+  updateMerkatuPlayersFromSimulationData();
+  
+  // Cargar estado guardado del campo
+  loadMerkatuState();
+  if (document.getElementById('formationSelect2')) {
+    document.getElementById('formationSelect2').value = merkatuCurrentFormation;
+  }
+  
+  // Configurar event listeners
+  document.getElementById('formationSelect2').addEventListener('change', function() {
+    merkatuCurrentFormation = this.value;
+    saveMerkatuState();
+    renderMerkatuPositions();
+  });
+  
+  document.getElementById('filterByPosition2').addEventListener('change', function() {
+    renderMerkatuPositions();
+  });
+  
+  document.getElementById('watermarkToggle2').addEventListener('change', function() {
+    const fieldImg = document.querySelector('#screen2 .field-img');
+    if (this.checked) {
+      fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia.jpg';
+    } else {
+      fieldImg.src = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/other/Zelaia2.jpg';
+    }
+  });
+  
+  document.getElementById('downloadBtn2').onclick = downloadMerkatuOnce;
+  document.getElementById('clearBtn2').onclick = clearMerkatuOnce;
+  
+  // Re-renderizar cuando cambia el tamaño de la ventana
+  window.addEventListener('resize', () => {
+    renderMerkatuPositions();
+  });
+  
+  renderMerkatuPositions();
+  updateMerkatuHamaiakolaUI();
+}
+
+function getPlayerImgUrl(player) {
+  let imgFolder = '2025-26';
+  if (currentTeam === 'f') {
+    imgFolder = 'f_2025-26';
+  }
+  
+  if (player.customImageId) {
+    return 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==';
+  }
+  
+  return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${player.url_name}.jpg`;
+}
+
+function renderMerkatuPositions() {
+  const container = document.getElementById('positions2');
+  if (!container) return;
+  container.innerHTML = '';
+  
+  const fieldContainer = document.querySelector('#screen2 .field-container');
+  let currentWidth = fieldContainer ? fieldContainer.offsetWidth : 650;
+  
+  if (currentWidth === 0) {
+    currentWidth = 650;
+  }
+  
+  const scale = currentWidth / 650;
+  const positions = formations[merkatuCurrentFormation];
+  if (!positions) return;
+  
+  positions.forEach((pos, idx) => {
+    const div = document.createElement('div');
+    div.className = 'player-pos' + (merkatuAssigned[idx] ? ' selected' : '');
+    
+    const scaledX = pos.x * scale;
+    const scaledY = pos.y * scale;
+    const offset = merkatuAssigned[idx] ? 0 : 10;
+    
+    div.style.left = (scaledX + (offset * scale)) + 'px';
+    div.style.top = (scaledY + (offset * scale)) + 'px';
+    
+    const baseSize = merkatuAssigned[idx] ? 130 : 110;
+    const scaledSize = baseSize * scale;
+    div.style.width = scaledSize + 'px';
+    div.style.height = scaledSize + 'px';
+    
+    div.onclick = (e) => {
+      e.stopPropagation();
+      openMerkatuPlayerList(idx);
+    };
+    
+    div.oncontextmenu = (e) => {
+      e.preventDefault();
+      if (!merkatuAssigned[idx]) return;
+      openMerkatuContextMenu(e, idx);
+    };
+    
+    if (merkatuAssigned[idx]) {
+      const scaledFontSize = 0.8 * scale;
+      div.innerHTML = `
+        <div style="position:relative;width:100%;height:100%;">
+          <img class="player-img" src="${merkatuAssigned[idx].img}" title="${merkatuAssigned[idx].name} (${merkatuAssigned[idx].dorsal})" />
+          <div class="dorsal-badge-onfield" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis; font-size:${scaledFontSize}em;">
+            ${merkatuAssigned[idx].dorsal !== null && merkatuAssigned[idx].dorsal !== undefined ? merkatuAssigned[idx].dorsal : ''}. ${merkatuAssigned[idx].name}
+          </div>
+        </div>`;
+    } else {
+      div.innerHTML = '<span class="plus-icon">+</span>';
+    }
+    
+    container.appendChild(div);
+    
+    // Mostrar suplentes bajo el círculo
+    const cambios = window.merkatuCambiosOnce || {};
+    if (Array.isArray(cambios[idx]) && cambios[idx].length > 0) {
+      const cambioLabels = document.createElement('div');
+      cambioLabels.style.position = 'absolute';
+      cambioLabels.style.left = (pos.x + 11.5) + 'px';
+      cambioLabels.style.top = (pos.y + 130) + 'px';
+      cambioLabels.style.width = '110px';
+      cambioLabels.style.pointerEvents = 'none';
+      cambioLabels.style.zIndex = '10';
+      cambioLabels.style.textAlign = 'center';
+      cambioLabels.style.display = 'flex';
+      cambioLabels.style.flexDirection = 'column';
+      cambioLabels.style.gap = '2px';
+      cambios[idx].forEach(nombre => {
+        const cambioLabel = document.createElement('div');
+        cambioLabel.textContent = nombre;
+        cambioLabel.style.color = '#fff';
+        cambioLabel.style.fontWeight = 'bold';
+        cambioLabel.style.fontSize = '1em';
+        cambioLabel.style.textShadow = '0 0 2px #0077cc, 0 0 2px #0077cc, 0 0 2px #0077cc';
+        cambioLabels.appendChild(cambioLabel);
+      });
+      container.appendChild(cambioLabels);
+    }
+  });
+}
+
+function openMerkatuPlayerList(idx) {
+  const modal = document.getElementById('playerListModal2');
+  modal.style.display = 'flex';
+  const list = document.getElementById('playerList2');
+  list.innerHTML = '';
+  
+  // Actualizar título y botón de cerrar del modal con la traducción actual
+  const modalTitle = document.querySelector('#playerListModal2 .player-list-box h3');
+  if (modalTitle) modalTitle.textContent = t('hamaikakoa.seleccionaJugador');
+  const closeBtn = document.querySelector('#playerListModal2 .close-modal-btn');
+  if (closeBtn) closeBtn.textContent = t('hamaikakoa.cerrar');
+  
+  // Cerrar modal al hacer clic fuera
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      closePlayerList2();
+    }
+  };
+  
+  const filterActive = document.getElementById('filterByPosition2').checked;
+  const positions = formations[merkatuCurrentFormation];
+  const posRole = positions[idx].role;
+  
+  const filteredPlayers = merkatuPlayers.filter(player => {
+    const hasDefinedPositions = player.positions && Array.isArray(player.positions) && player.positions.length > 0;
+    const matchesPosition = !hasDefinedPositions || player.positions.includes(posRole);
+    const shouldShow = !filterActive || matchesPosition;
+    return shouldShow;
+  }).sort((a, b) => {
+    const dorsalA = parseInt(a.dorsal) || 99;
+    const dorsalB = parseInt(b.dorsal) || 99;
+    return dorsalA - dorsalB;
+  });
+  
+  filteredPlayers.forEach(player => {
+    
+    const item = document.createElement('div');
+    item.className = 'player-list-item';
+    item.onclick = () => {
+      const getId = p => p ? (p.dorsal ? p.dorsal : p.name) : null;
+      const playerId = getId(player);
+      const cambios = window.merkatuCambiosOnce || {};
+      
+      Object.keys(cambios).forEach(k => {
+        cambios[k] = cambios[k].filter(n => n !== player.name);
+      });
+      
+      const currentIdx = merkatuAssigned.findIndex(p => getId(p) === playerId);
+      if (currentIdx !== -1 && currentIdx !== idx) {
+        const temp = merkatuAssigned[idx];
+        merkatuAssigned[idx] = player;
+        merkatuAssigned[currentIdx] = temp;
+        if (Array.isArray(cambios[currentIdx]) && cambios[currentIdx].length > 0) {
+          const nuevoTitular = cambios[currentIdx][0];
+          const nuevoPlayer = merkatuPlayers.find(p => p.name === nuevoTitular);
+          merkatuAssigned[currentIdx] = nuevoPlayer;
+          cambios[currentIdx] = cambios[currentIdx].filter(n => n !== nuevoTitular);
+          window.merkatuCambiosOnce = cambios;
+        }
+        if (Array.isArray(cambios[idx]) && !cambios[idx].includes(temp && temp.name) && temp) {
+          cambios[idx].push(temp.name);
+        }
+      } else {
+        merkatuAssigned[idx] = player;
+      }
+      window.merkatuCambiosOnce = cambios;
+      saveMerkatuState();
+      modal.style.display = 'none';
+      renderMerkatuPositions();
+    };
+    
+    item.innerHTML =
+      '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
+      '<img class="player-list-img" src="' + player.img + '" />' +
+      '<span class="player-list-name">' + player.name + '</span>';
+    
+    list.appendChild(item);
+  });
+}
+
+function openMerkatuCambioList(idx) {
+  const modal = document.getElementById('playerListModal2');
+  modal.style.display = 'flex';
+  const list = document.getElementById('playerList2');
+  list.innerHTML = '';
+  
+  // Actualizar título y botón de cerrar del modal con la traducción actual
+  const modalTitle = document.querySelector('#playerListModal2 .player-list-box h3');
+  if (modalTitle) modalTitle.textContent = t('hamaikakoa.seleccionaJugador');
+  const closeBtn = document.querySelector('#playerListModal2 .close-modal-btn');
+  if (closeBtn) closeBtn.textContent = t('hamaikakoa.cerrar');
+  
+  // Cerrar modal al hacer clic fuera
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      closePlayerList2();
+    }
+  };
+  
+  const filterActive = document.getElementById('filterByPosition2').checked;
+  const positions = formations[merkatuCurrentFormation];
+  const posRole = positions[idx].role;
+  const cambios = window.merkatuCambiosOnce || {};
+  if (!Array.isArray(cambios[idx])) cambios[idx] = [];
+  
+  // Filtrar jugadores y ordenar globalmente por dorsal (numérica)
+  const filteredPlayers = merkatuPlayers.filter(player => {
+    // Si hay filtro activo: 
+    // - Mostrar jugadores con positions definidas que coincidan con la posición
+    // - Mostrar TODOS los jugadores sin positions definidas (pueden ocupar cualquier posición)
+    const hasDefinedPositions = player.positions && Array.isArray(player.positions) && player.positions.length > 0;
+    const matchesPosition = !hasDefinedPositions || player.positions.includes(posRole);
+    const shouldShow = !filterActive || matchesPosition;
+    return shouldShow;
+  }).sort((a, b) => {
+    const dorsalA = parseInt(a.dorsal) || 99;
+    const dorsalB = parseInt(b.dorsal) || 99;
+    return dorsalA - dorsalB;
+  });
+  
+  filteredPlayers.forEach(player => {
+    
+    const item = document.createElement('div');
+    item.className = 'player-list-item';
+    const isSelected = cambios[idx].includes(player.name);
+    item.style.background = isSelected ? '#e0f7fa' : '';
+    item.onclick = () => {
+      if (isSelected) {
+        cambios[idx] = cambios[idx].filter(n => n !== player.name);
+      } else {
+        const getId = p => p ? (p.dorsal ? p.dorsal : p.name) : null;
+        const playerId = getId(player);
+        const titularIdx = merkatuAssigned.findIndex(p => getId(p) === playerId);
+        if (titularIdx !== -1) {
+          if (Array.isArray(cambios[titularIdx]) && cambios[titularIdx].length > 0) {
+            const nuevoTitular = cambios[titularIdx][0];
+            const nuevoPlayer = merkatuPlayers.find(p => p.name === nuevoTitular);
+            merkatuAssigned[titularIdx] = nuevoPlayer;
+            cambios[titularIdx] = cambios[titularIdx].filter(n => n !== nuevoTitular);
+          } else {
+            merkatuAssigned[titularIdx] = null;
+          }
+          cambios[idx].push(player.name);
+          Object.keys(cambios).forEach(k => {
+            if (k != idx.toString()) cambios[k] = cambios[k].filter(n => n !== player.name);
+          });
+        } else {
+          let foundIdx = null;
+          Object.keys(cambios).forEach(k => {
+            if (cambios[k].includes(player.name)) foundIdx = k;
+          });
+          if (foundIdx !== null && foundIdx != idx) {
+            cambios[foundIdx] = cambios[foundIdx].filter(n => n !== player.name);
+            cambios[idx].push(player.name);
+          } else {
+            cambios[idx].push(player.name);
+          }
+        }
+      }
+      window.merkatuCambiosOnce = cambios;
+      saveMerkatuState();
+      modal.style.display = 'none';
+      renderMerkatuPositions();
+    };
+    
+    item.innerHTML =
+      '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
+      '<img class="player-list-img" src="' + player.img + '" />' +
+      '<span class="player-list-name">' + player.name + '</span>';
+    
+    list.appendChild(item);
+  });
+}
+
+function openMerkatuContextMenu(e, idx) {
+  const oldMenu = document.getElementById('contextMenu');
+  if (oldMenu) oldMenu.remove();
+  
+  const menu = document.createElement('div');
+  menu.id = 'contextMenu';
+  menu.style.position = 'fixed';
+  menu.style.left = e.clientX + 'px';
+  menu.style.top = e.clientY + 'px';
+  menu.style.background = '#fff';
+  menu.style.border = '1px solid #0077cc';
+  menu.style.borderRadius = '8px';
+  menu.style.boxShadow = '0 2px 12px rgba(0,0,0,0.18)';
+  menu.style.zIndex = '9999';
+  menu.style.padding = '8px 0';
+  menu.style.minWidth = '160px';
+  menu.style.fontSize = '1em';
+  
+  const lang = window.currentLang || 'es';
+  const opts = [
+    { text: t('hamaikakoa.quitarJugador'), action: () => { merkatuAssigned[idx] = null; if (window.merkatuCambiosOnce) delete window.merkatuCambiosOnce[idx]; saveMerkatuState(); renderMerkatuPositions(); } },
+    { text: t('hamaikakoa.jugadorSuplente'), action: () => { merkatuCambioEnPosicion = idx; openMerkatuCambioList(idx); } }
+  ];
+  
+  opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.textContent = opt.text;
+    btn.style.display = 'block';
+    btn.style.width = '100%';
+    btn.style.background = 'none';
+    btn.style.border = 'none';
+    btn.style.padding = '10px 18px';
+    btn.style.textAlign = 'left';
+    btn.style.cursor = 'pointer';
+    btn.style.fontWeight = 'bold';
+    btn.onmouseover = () => btn.style.background = '#f0f8ff';
+    btn.onmouseout = () => btn.style.background = 'none';
+    btn.onclick = () => {
+      opt.action();
+      menu.remove();
+    };
+    menu.appendChild(btn);
+  });
+  
+  document.body.appendChild(menu);
+  
+  setTimeout(() => {
+    document.addEventListener('click', function handler(ev) {
+      if (!menu.contains(ev.target)) {
+        menu.remove();
+        document.removeEventListener('click', handler);
+      }
+    });
+  }, 10);
+}
+
+function closePlayerList2() {
+  document.getElementById('playerListModal2').style.display = 'none';
+}
+
+function downloadMerkatuOnce() {
+  alert('Coming soon: Download feature');
+}
+
+function clearMerkatuOnce() {
+  clearMerkatuStateForTeam();
+  renderMerkatuPositions();
+}
+
+function updateMerkatuHamaiakolaUI() {
+  document.getElementById('formationText2').textContent = t('hamaikakoa.formacion');
+  document.getElementById('filterText2').textContent = t('hamaikakoa.filter');
+  document.getElementById('watermarkText2').textContent = t('hamaikakoa.watermark');
+  document.getElementById('downloadBtn2').textContent = t('hamaikakoa.descargar');
+  document.getElementById('clearBtn2').textContent = t('hamaikakoa.limpiar');
+  const modalTitle = document.querySelector('#playerListModal2 .player-list-box h3');
+  if (modalTitle) modalTitle.textContent = t('hamaikakoa.seleccionaJugador');
+  const closeBtn = document.querySelector('#playerListModal2 .close-modal-btn');
+  if (closeBtn) closeBtn.textContent = t('hamaikakoa.cerrar');
 }

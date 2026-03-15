@@ -57,6 +57,14 @@ function formatBirthdateWithAge(jaioData) {
   return `${fechaFormato} (${age} ${t('plantilla.anos')})`;
 }
 
+function getPlaceholderImage(position, imgFolder) {
+  if (position === 'POR') {
+    return `${IMG_BASE_URL}${imgFolder}/def_port.jpg`;
+  } else {
+    return `${IMG_BASE_URL}${imgFolder}/def_jug.jpg`;
+  }
+}
+
 
 async function cargarDatosTemporada(temporada) {
   try {
@@ -137,7 +145,7 @@ function renderPlayers() {
       const isCapitan = player.kapitaina === 1 && (isSanse || player.tipo === 'jugador');
 
       card.innerHTML = `
-        <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
+        <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}" onerror="this.src='${getPlaceholderImage(pos, imgFolder)}'">
         <div class="player-info">
           <span class="player-name player-name-clickable" data-player-id="${idx}" style="cursor: pointer;">
             ${buildFlagsHtml(player.pais)}
@@ -229,7 +237,7 @@ function renderEntrenadores() {
     const rol = coach.rol[window.currentLang];
 
     card.innerHTML = `
-      <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}">
+      <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${coach.url_name}.jpg" alt="${coach.name}" data-easter-egg="${coach.url_name}" onerror="this.src='${IMG_BASE_URL}${imgFolder}/def_jug.jpg'">
       <div class="player-info">
         <span class="player-name player-name-clickable" data-coach-id="${idx}" style="cursor: pointer;">
           ${buildFlagsHtml(coach.pais)}
@@ -333,7 +341,7 @@ function renderVendidos() {
     const isCapitan = player.kapitaina === 1;
 
     card.innerHTML = `
-      <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}">
+      <img class="player-img" src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" data-easter-egg="${player.url_name}" onerror="this.src='${IMG_BASE_URL}${imgFolder}/def_jug.jpg'">
       <div class="player-info">
         <span class="player-name player-name-clickable" data-player-id="${idx}" style="cursor: pointer;">
           ${buildFlagsHtml(player.pais)}
@@ -662,7 +670,7 @@ function openPlayerModal(player, isCoach = false) {
       <button class="modal-close-btn" style="position: absolute; top: 12px; right: 12px; background: none; border: none; font-size: 2em; cursor: pointer; color: #0077cc; padding: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background-color 0.2s;">&times;</button>
       <div class="modal-content-wrapper" style="display: flex; gap: 24px; align-items: center;">
         <div class="modal-image-section" style="display: flex; flex-direction: column; align-items: center; gap: 12px; flex-shrink: 0;">
-          <img src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" class="modal-player-img" style="width: 180px; height: 180px; border-radius: 12px; object-fit: cover; border: 3px solid #0077cc; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);">
+          <img src="${IMG_BASE_URL}${imgFolder}/${player.url_name}.jpg" alt="${player.name}" class="modal-player-img" style="width: 180px; height: 180px; border-radius: 12px; object-fit: cover; border: 3px solid #0077cc; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);" onerror="this.src='${player.pos === 'POR' ? IMG_BASE_URL + imgFolder + '/def_port.jpg' : IMG_BASE_URL + imgFolder + '/def_jug.jpg'}'" >
           ${cancionExpl ? `
           <div class="modal-song-bubble" style="background: #f0f8ff; border: 2px solid #0077cc; border-radius: 12px; padding: 12px 16px; display: flex; align-items: center; gap: 12px; max-width: 280px;">
             <button class="modal-play-btn" style="background: none; border: none; font-size: 1.4em; cursor: pointer; padding: 0; margin: 0; flex-shrink: 0;">▶️</button>

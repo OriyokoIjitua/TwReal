@@ -42,6 +42,14 @@
     let players = [];
     const IMG_ROOT = 'https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/';
 
+    const getPlaceholderImage = (position, temporada) => {
+      if (position === 'POR') {
+        return `${IMG_ROOT}${temporada}/def_port.jpg`;
+      } else {
+        return `${IMG_ROOT}${temporada}/def_jug.jpg`;
+      }
+    };
+
     // Cargar datos por temporada desde el JSON en raw.githubusercontent (igual que plantilla.html)
     async function cargarDatosTemporada(temporada) {
       try {
@@ -53,7 +61,9 @@
         players = jugadoresData.map(p => ({
           dorsal: p.dorsal,
           name: p.name,
+          pos: p.pos,
           img: IMG_ROOT + temporada + '/' + (p.url_name || '').trim() + '.jpg',
+          placeholder: getPlaceholderImage(p.pos, temporada),
           positions: Array.isArray(p.positions) ? p.positions : (p.positions ? [p.positions] : [] )
         }));
         if (window.renderPositions) window.renderPositions();
@@ -381,7 +391,7 @@
         };
         item.innerHTML =
           '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
-          '<img class="player-list-img" src="' + player.img + '" />' +
+          '<img class="player-list-img" src="' + player.img + '" onerror="this.src=\'' + player.placeholder + '\'" />' +
           '<span class="player-list-name">' + player.name + '</span>';
         list.appendChild(item);
       });
@@ -420,7 +430,7 @@
           const scaledFontSize = 0.8 * scale; // Escalar el tamaño de fuente
           div.innerHTML = `
             <div style="position:relative;width:100%;height:100%;">
-              <img class="player-img" src="${assigned[idx].img}" title="${assigned[idx].name} (${assigned[idx].dorsal})" />
+              <img class="player-img" src="${assigned[idx].img}" onerror="this.src='${assigned[idx].placeholder}'" title="${assigned[idx].name} (${assigned[idx].dorsal})" />
               <div class="dorsal-badge-onfield" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis; font-size:${scaledFontSize}em;">
           ${assigned[idx].dorsal ?? ''}. ${assigned[idx].name}
               </div>
@@ -517,7 +527,7 @@
         };
         item.innerHTML =
           '<span class="player-list-dorsal" style="display:inline-block;min-width:22px;max-width:22px;text-align:right;">' + (player.dorsal ? player.dorsal : '&nbsp;') + '</span>' +
-          '<img class="player-list-img" src="' + player.img + '" />' +
+          '<img class="player-list-img" src="' + player.img + '" onerror="this.src=\'' + player.placeholder + '\'" />' +
           '<span class="player-list-name">' + player.name + '</span>';
         list.appendChild(item);
       });

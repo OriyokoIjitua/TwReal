@@ -364,3 +364,420 @@
     margin-right: auto !important;
   }
 }
+
+/* Pantallas de merkatuSim */
+.merkatu-screen {
+  display: none;
+}
+
+.merkatu-screen.active {
+  display: block;
+}
+
+.screen-tab-btn {
+  background: #0077cc;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.screen-tab-btn:hover {
+  background: #005aa3;
+}
+
+.screen-tab-btn.active {
+  background: #27ae60;
+}
+
+.screen-tab-btn.active:hover {
+  background: #229954;
+}
+
+/* ========== ESTILOS HAMAIKAKOA INTEGRADOS ========== */
+.field-container {
+  position: relative;
+  width: 650px;
+  height: 764px;
+  margin: 40px auto 16px auto;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.field-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+.player-pos {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: box-shadow 0.2s, width 0.2s, height 0.2s;
+}
+
+.player-pos.selected {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+}
+
+.player-pos:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+}
+
+.player-pos .player-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  border: 2px solid var(--accent-color);
+}
+
+.plus-icon {
+  font-size: 3em;
+  color: var(--accent-color);
+  font-weight: bold;
+  user-select: none;
+}
+
+.dorsal-badge-onfield {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 1.05em;
+  font-weight: bold;
+  border-radius: 0 8px 0 12px;
+  padding: 2px 10px 2px 8px;
+  z-index: 3;
+  min-width: 24px;
+  text-align: left;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+  letter-spacing: 1px;
+}
+
+/* Estilos para segunda pantalla (hamaikakoa integrado) */
+.screen-tab-btn.active {
+  background: #0077cc !important;
+}
+
+.screen-tab-btn:not(.active) {
+  background: #666 !important;
+}
+
+#screen1.active,
+#screen2.active {
+  display: block;
+}
+
+#screen1:not(.active),
+#screen2:not(.active) {
+  display: none;
+}
+
+.field-container {
+  position: relative;
+  width: 650px;
+  height: 764px;
+  margin: 40px auto 16px auto;
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.field-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: relative;
+  z-index: 1;
+}
+
+#positions2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.player-pos {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: box-shadow 0.2s, width 0.2s, height 0.2s;
+}
+
+.player-pos.selected {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+}
+
+.player-pos:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+}
+
+.player-pos img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  border: 2px solid var(--accent-color);
+}
+
+.plus-icon {
+  font-size: 3em;
+  color: var(--accent-color);
+  font-weight: bold;
+  user-select: none;
+}
+
+.player-list-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.player-list-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+  position: relative;
+}
+
+.player-list-box h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  cursor: pointer;
+  color: #666;
+}
+
+.player-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.player-list-item:hover {
+  background: #f9f9f9;
+}
+
+.player-list-dorsal {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.player-list-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
+
+.player-list-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-list-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.player-list-modal.active {
+  display: flex;
+}
+
+.player-list-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 32px 24px;
+  max-width: 420px;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+}
+
+.player-list-box h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.player-list-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.player-list-item:hover {
+  background: var(--light-blue-bg);
+}
+
+.player-list-item:last-child {
+  border-bottom: none;
+}
+
+.player-list-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #eee;
+  border: 1px solid var(--accent-color);
+}
+
+.player-list-name {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #222;
+}
+
+.player-list-dorsal {
+  font-size: 1em;
+  color: var(--accent-color);
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+#playerListModal2 .close-modal-btn {
+  background: #e74c3c;
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-size: 1em;
+  cursor: pointer;
+  margin-top: 18px;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+  position: static;
+}
+
+.close-modal-btn:hover {
+  background: #c0392b;
+}
+
+#optionsBlock {
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  text-align: center;
+  background: none;
+  position: static !important;
+  z-index: 2;
+  justify-content: center;
+}
+
+#optionsBlock2 {
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 32px;
+  margin-bottom: 24px;
+  text-align: center;
+  background: none;
+  position: static !important;
+  z-index: 2;
+  justify-content: center;
+}
+
+/* Responsive para field-container */
+@media (max-width: 700px) {
+  .field-container {
+    width: 98vw;
+    height: 120vw;
+    min-width: 0;
+    min-height: 0;
+    margin: 16px auto 8px auto;
+    border-radius: 16px;
+  }
+
+  .field-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  #optionsBlock {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 32px;
+  }
+
+  #optionsBlock > div {
+    margin-bottom: 24px !important;
+    justify-content: center;
+  }
+}

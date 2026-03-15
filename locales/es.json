@@ -43,10 +43,14 @@
     "seleccionaJugador": "Selecciona jugador",
     "cerrar": "Cerrar",
     "watermark": "Marca de agua",
-    "formacion": "Formación:"
+    "formacion": "Formación:",
+    "quitarJugador": "Quitar jugador",
+    "jugadorSuplente": "Jugador suplente"
   },
   "merkatuSim": {
     "pageTitle": "Simulación de mercado",
+    "gestionarPlantilla": "Gestionar plantilla",
+    "onceEnCampo": "Once en el campo",
     "porterosTitle": "Porteros",
     "defensasTitle": "Defensas",
     "centrocampistasTitle": "Centrocampistas",

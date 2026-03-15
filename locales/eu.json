@@ -43,10 +43,14 @@
     "seleccionaJugador": "Jokalaria aukeratu",
     "cerrar": "Itxi",
     "watermark": "Ur-marka",
-    "formacion": "Formazioa:"
+    "formacion": "Formazioa:",
+    "quitarJugador": "Jokalaria kendu",
+    "jugadorSuplente": "Ordezko jokalaria"
   },
   "merkatuSim": {
     "pageTitle": "Merkatu simulaketa",
+    "gestionarPlantilla": "Taldea kudeatu",
+    "onceEnCampo": "Hamaikakoa zelaian",
     "porterosTitle": "Atezainak",
     "defensasTitle": "Atzelariak",
     "centrocampistasTitle": "Erdilariak",
