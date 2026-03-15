@@ -1,13 +1,4 @@
 // ============= GESTIÓN DE DATOS =============
-// Función para obtener el placeholder correcto según la sección
-const getPlaceholderImage = (section) => {
-  const imgFolder = currentTeam === 'f' ? 'f_2025-26' : '2025-26';
-  if (section === 'porteros') {
-    return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/def_port.jpg`;
-  } else {
-    return `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/def_jug.jpg`;
-  }
-};
 
 // Estructura para guardar datos separados por equipo
 const getSimulationDataForTeam = (team) => {
@@ -85,13 +76,8 @@ async function loadPlantilla() {
     console.error('Error cargando plantilla_f_2025-26.json:', err);
   }
   
-  // Pre-cachear jugadores para cada équipo
   cachePlayersForAllTeams();
-  
-  // Reinicializar datos según el equipo seleccionado
   reinitializeByTeam();
-  
-  // No renderizar aquí - esperar a que i18next esté completamente listo
 }
 
 function cachePlayersForAllTeams() {
@@ -296,7 +282,7 @@ function createPlayerCard(player, sectionKey, idx) {
   
   card.innerHTML = `
     <img class="player-img" src="${imgSrc}" 
-         alt="${player.name}" onerror="this.src='${getPlaceholderImage(sectionKey)}'">
+         alt="${player.name}" onerror="(function(){ const team = window.currentTeam || 'real'; let path = 'img/2025-26/'; if (team === 'f') path = 'img/f_2025-26/'; else if (team === 'sanse') path = 'img/2025-26/sanse_'; path += '${sectionKey}' === 'porteros' ? 'def_port.jpg' : 'def_jug.jpg'; this.src = path; }).call(this)">
     <div class="player-info">
       <span class="player-name">
         ${flagsHtml}
@@ -1128,9 +1114,20 @@ function addCustomPlayer() {
     };
     reader.readAsDataURL(fotoFile);
   } else {
-    const defaultImage = addPlayerSection === 'porteros' 
-      ? 'img/2025-26/def_port.jpg'
-      : 'img/2025-26/def_jug.jpg';
+    let defaultImage;
+    if (currentTeam === 'f') {
+      defaultImage = addPlayerSection === 'porteros' 
+        ? 'img/f_2025-26/def_port.jpg'
+        : 'img/f_2025-26/def_jug.jpg';
+    } else if (currentTeam === 'sanse') {
+      defaultImage = addPlayerSection === 'porteros' 
+        ? 'img/2025-26/sanse_def_port.jpg'
+        : 'img/2025-26/sanse_def_jug.jpg';
+    } else {
+      defaultImage = addPlayerSection === 'porteros' 
+        ? 'img/2025-26/def_port.jpg'
+        : 'img/2025-26/def_jug.jpg';
+    }
     
     const newPlayer = {
       tipo: 'jugador',
