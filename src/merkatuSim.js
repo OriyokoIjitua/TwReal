@@ -1396,73 +1396,150 @@ function clearMerkatuStateForTeam() {
 }
 
 const formations = {
-  '4-2-3-1': [
-    { x: 60, y: 100, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 100, role: 'ED' },
-    { x: 260, y: 190, role: 'MCO' }, { x: 160, y: 310, role: 'MCD' }, { x: 360, y: 310, role: 'MCD' },
-    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
-    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '4-3-3': [
-    { x: 60, y: 60, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 60, role: 'ED' },
-    { x: 360, y: 190, role: 'MCO' }, { x: 160, y: 210, role: 'MC' }, { x: 260, y: 310, role: 'MCD' },
-    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
-    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '4-4-2 (1)': [
-    { x: 160, y: 40, role: 'DDC' }, { x: 360, y: 40, role: 'DDC' }, { x: 420, y: 190, role: 'MCO' },
-    { x: 100, y: 190, role: 'MC' }, { x: 190, y: 310, role: 'MCD' }, { x: 330, y: 310, role: 'MCD' },
-    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
-    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '4-4-2 (2)': [
-    { x: 160, y: 40, role: 'DDC' }, { x: 360, y: 40, role: 'DDC' }, { x: 260, y: 160, role: 'MCO' },
-    { x: 100, y: 220, role: 'MC' }, { x: 420, y: 220, role: 'MC' }, { x: 260, y: 320, role: 'MCD' },
-    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 420, role: 'LI' },
-    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '3-4-1-2': [
-    { x: 160, y: 30, role: 'DDC' }, { x: 360, y: 30, role: 'DDC' }, { x: 260, y: 150, role: 'MCO' },
-    { x: 160, y: 270, role: 'MC' }, { x: 360, y: 280, role: 'MCD' }, { x: 260, y: 440, role: 'DFC' },
-    { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' }, { x: 35, y: 360, role: 'CAI' },
-    { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '5-3-2': [
-    { x: 160, y: 40, role: 'DDC' }, { x: 360, y: 40, role: 'DDC' }, { x: 380, y: 180, role: 'MCO' },
-    { x: 140, y: 200, role: 'MC' }, { x: 260, y: 300, role: 'MCD' }, { x: 260, y: 440, role: 'DFC' },
-    { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' }, { x: 35, y: 360, role: 'CAI' },
-    { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '5-2-3': [
-    { x: 60, y: 120, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 120, role: 'ED' },
-    { x: 160, y: 280, role: 'MC' }, { x: 360, y: 280, role: 'MCD' }, { x: 260, y: 440, role: 'DFC' },
-    { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' }, { x: 35, y: 360, role: 'CAI' },
-    { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '5-1-3-1': [
-    { x: 60, y: 100, role: 'EI' }, { x: 260, y: 20, role: 'DC' }, { x: 460, y: 100, role: 'ED' },
-    { x: 260, y: 220, role: 'MCO' }, { x: 140, y: 320, role: 'MC' }, { x: 380, y: 320, role: 'MCD' },
-    { x: 260, y: 440, role: 'DFC' }, { x: 120, y: 490, role: 'DFC' }, { x: 400, y: 490, role: 'DFC' },
-    { x: 35, y: 360, role: 'CAI' }, { x: 485, y: 360, role: 'CAD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '4-5-1': [
-    { x: 60, y: 140, role: 'EI' }, { x: 460, y: 140, role: 'ED' }, { x: 260, y: 20, role: 'DC' },
-    { x: 100, y: 210, role: 'MC' }, { x: 260, y: 190, role: 'MCO' }, { x: 420, y: 210, role: 'MCD' },
-    { x: 160, y: 340, role: 'MC' }, { x: 360, y: 340, role: 'MC' }, { x: 35, y: 420, role: 'LI' },
-    { x: 485, y: 420, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '4-2-1-2-1': [
-    { x: 160, y: 125, role: 'MCO' }, { x: 260, y: 10, role: 'DC' }, { x: 360, y: 125, role: 'MCO' },
-    { x: 110, y: 260, role: 'MC' }, { x: 410, y: 260, role: 'MC' }, { x: 260, y: 340, role: 'MCD' },
-    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 400, role: 'LI' },
-    { x: 485, y: 400, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ],
-  '4-1-2-2-1': [
-    { x: 160, y: 125, role: 'MCO' }, { x: 260, y: 10, role: 'DC' }, { x: 360, y: 125, role: 'MCO' },
-    { x: 110, y: 260, role: 'MC' }, { x: 410, y: 260, role: 'MC' }, { x: 260, y: 340, role: 'MCD' },
-    { x: 180, y: 470, role: 'DFC' }, { x: 340, y: 470, role: 'DFC' }, { x: 35, y: 400, role: 'LI' },
-    { x: 485, y: 400, role: 'LD' }, { x: 260, y: 600, role: 'POR' }
-  ]
-};
+      '4-2-3-1': [
+        { x: 60, y: 100, role: 'EI' }, // Extremo Izq
+        { x: 260, y: 20, role: 'DC' }, // Delantero Centro
+        { x: 460, y: 100, role: 'ED' }, // Extremo Der
+        { x: 260, y: 190, role: 'MCO' }, // Mediopunta
+        { x: 160, y: 310, role: 'MCD' }, // Pivote izq
+        { x: 360, y: 310, role: 'MCD' }, // Pivote der
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 420, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-3-3': [
+        { x: 60, y: 60, role: 'EI' }, // Extremo Izq
+        { x: 260, y: 20, role: 'DC' }, // Delantero Centro
+        { x: 460, y: 60, role: 'ED' }, // Extremo Der
+        { x: 360, y: 190, role: 'MCO' }, // Mediopunta der
+        { x: 160, y: 210, role: 'MC' }, // Mediocentro izq
+        { x: 260, y: 310, role: 'MCD' }, // Pivote
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 420, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-4-2 (1)': [
+        { x: 160, y: 40, role: 'DDC' }, // Delantero Izq
+        { x: 360, y: 40, role: 'DDC' }, // Delantero Der
+        { x: 420, y: 190, role: 'MCO' }, // Mediopunta der
+        { x: 100, y: 190, role: 'MC' }, // Mediocentro izq
+        { x: 190, y: 310, role: 'MCD' }, // Pivote izq
+        { x: 330, y: 310, role: 'MCD' }, // Pivote der
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 420, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-4-2 (2)': [
+        { x: 160, y: 40, role: 'DDC' }, // Delantero Izq
+        { x: 360, y: 40, role: 'DDC' }, // Delantero Der
+        { x: 260, y: 160, role: 'MCO' }, // Mediopunta
+        { x: 100, y: 220, role: 'MC' }, // MC izq
+        { x: 420, y: 220, role: 'MC' }, // MC der
+        { x: 260, y: 320, role: 'MCD' }, // Pivote
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 420, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 420, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '3-4-1-2': [
+        { x: 160, y: 30, role: 'DDC' }, // Delantero Izq
+        { x: 360, y: 30, role: 'DDC' }, // Delantero Der
+        { x: 260, y: 150, role: 'MCO' }, // Mediopunta
+        { x: 160, y: 270, role: 'MC' }, // Mediocentro
+        { x: 360, y: 280, role: 'MCD' }, // Pivote
+        { x: 260, y: 440, role: 'DFC' }, // Central
+        { x: 120, y: 490, role: 'DFC' }, // Central Izq
+        { x: 400, y: 490, role: 'DFC' }, // Central Der
+        { x: 35, y: 360, role: 'CAI' }, // Carrilero Izq
+        { x: 485, y: 360, role: 'CAD' }, // Carrilero Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '5-3-2': [
+        { x: 160, y: 40, role: 'DDC' }, // Delantero Izq
+        { x: 360, y: 40, role: 'DDC' }, // Delantero Der
+        { x: 380, y: 180, role: 'MCO' }, // Mediopunta der
+        { x: 140, y: 200, role: 'MC' }, // Mediocentro izq
+        { x: 260, y: 300, role: 'MCD' }, // Pivote
+        { x: 260, y: 440, role: 'DFC' }, // Central
+        { x: 120, y: 490, role: 'DFC' }, // Central Izq
+        { x: 400, y: 490, role: 'DFC' }, // Central Der
+        { x: 35, y: 360, role: 'CAI' }, // Carrilero Izq
+        { x: 485, y: 360, role: 'CAD' }, // Carrilero Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '5-2-3': [
+        { x: 60, y: 120, role: 'EI' }, // Extremo Izq
+        { x: 260, y: 20, role: 'DC' }, // Delantero Centro
+        { x: 460, y: 120, role: 'ED' }, // Extremo Der
+        { x: 360, y: 250, role: 'MC' }, // Mediocentro der
+        { x: 160, y: 280, role: 'MCD' }, // Pivote izq
+        { x: 260, y: 440, role: 'DFC' }, // Central
+        { x: 120, y: 490, role: 'DFC' }, // Central Izq
+        { x: 400, y: 490, role: 'DFC' }, // Central Der
+        { x: 35, y: 360, role: 'CAI' }, // Carrilero Izq
+        { x: 485, y: 360, role: 'CAD' }, // Carrilero Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '5-1-3-1': [
+        { x: 60, y: 120, role: 'EI' }, // Extremo Izq
+        { x: 260, y: 20, role: 'DC' }, // Delantero Centro
+        { x: 460, y: 120, role: 'ED' }, // Extremo Der
+        { x: 260, y: 170, role: 'MCO' }, // Mediapunta
+        { x: 260, y: 310, role: 'MCD' }, // Pivote
+        { x: 260, y: 440, role: 'DFC' }, // Central
+        { x: 120, y: 490, role: 'DFC' }, // Central Izq
+        { x: 400, y: 490, role: 'DFC' }, // Central Der
+        { x: 35, y: 360, role: 'CAI' }, // Carrilero Izq
+        { x: 485, y: 360, role: 'CAD' }, // Carrilero Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-5-1': [
+        { x: 50, y: 140, role: 'MCO' }, // Centro izquierdo
+        { x: 260, y: 20, role: 'DC' }, // Delantero Centro
+        { x: 470, y: 140, role: 'MCO' }, // Centro derecho
+        { x: 160, y: 240, role: 'MC' }, // Pivote izq
+        { x: 360, y: 240, role: 'MC' }, // Pivote der
+        { x: 260, y: 340, role: 'MCD' }, // Medio
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 400, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 400, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-2-1-2-1': [
+        { x: 100, y: 150, role: 'MCO' }, // Centro izquierdo
+        { x: 260, y: 20, role: 'DC' }, // Delantero Centro
+        { x: 420, y: 150, role: 'MCO' }, // Centro derecho
+        { x: 260, y: 190, role: 'MC' }, // Medio
+        { x: 160, y: 310, role: 'MCD' }, // Pivote izq
+        { x: 360, y: 310, role: 'MCD' }, // Pivote der
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 400, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 400, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ],
+      '4-1-2-2-1': [
+        { x: 160, y: 125, role: 'MCO' }, // Centro izquierdo
+        { x: 260, y: 10, role: 'DC' }, // Delantero Centro
+        { x: 360, y: 125, role: 'MCO' }, // Centro derecho
+        { x: 110, y: 260, role: 'MC' }, // Pivote izq
+        { x: 410, y: 260, role: 'MC' }, // Pivote der
+        { x: 260, y: 340, role: 'MCD' }, // Medio
+        { x: 180, y: 470, role: 'DFC' }, // Central Izq
+        { x: 340, y: 470, role: 'DFC' }, // Central Der
+        { x: 35, y: 400, role: 'LI' }, // Lateral Izq
+        { x: 485, y: 400, role: 'LD' }, // Lateral Der
+        { x: 260, y: 600, role: 'POR' }
+      ]
+    };
 
 function updateMerkatuPlayersFromSimulationData() {
   // Reconstruir merkatuPlayers desde simulationData para reflejar cambios de Screen 1
