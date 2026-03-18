@@ -929,7 +929,7 @@
     "fullname": "Imanol Agirretxe",
     "url_name": "imanol_agirretxe",
     "jaioData": "1987-02-24",
-    "pais": ["Euskal Herria", "Gipuzkoa", "Ijitoa"],
+    "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Real Sociedad",
     "zubieta": 1
   },
@@ -1151,7 +1151,7 @@
     "fullname": "Imanol Alguacil",
     "url_name": "imanol_alguacil",
     "jaioData": "1971-07-04",
-    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "pais": ["Euskal Herria", "Gipuzkoa", "Ijitoa"],
     "zubieta": 1,
     "cancion": { "es": "Oriyoko ijitua.", "eu": "Oriyoko ijitua." }
   },
