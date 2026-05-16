@@ -9,7 +9,8 @@
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
   {
     "tipo": "jugador",
@@ -154,7 +155,8 @@
     "pos": "POR",
     "pais": ["Euskal Herria", "NafarroaG"],
     "prevTeam": "Sanse",
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
   {
     "tipo": "jugador",
@@ -310,7 +312,8 @@
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "ficha": "Sanse",
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
   {
     "tipo": "dual",
@@ -425,7 +428,8 @@
     "jaioData": "2002-05-07",
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
   {
     "tipo": "salida",
@@ -438,7 +442,8 @@
     "jaioData": "1997-05-08",
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
-    "zubieta": 0.5
+    "zubieta": 0.5,
+    "positions": ["POR"]
   },
   {
     "tipo": "salida",

@@ -624,7 +624,8 @@
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "San Fernando CD",
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
   {
     "tipo": "sanse",
@@ -767,7 +768,8 @@
     "pos": "POR",
     "pais": ["Hungaria"],
     "ficha": "Real Sociedad Jub. A",
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
   {
     "tipo": "sanse-dual",
@@ -871,7 +873,8 @@
     "pos": "POR",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "ficha": "Real Sociedad C",
-    "zubieta": 1
+    "zubieta": 1,
+    "positions": ["POR"]
   },
 
 

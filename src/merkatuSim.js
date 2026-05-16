@@ -1736,7 +1736,7 @@ function openMerkatuPlayerList(idx) {
   
   const filteredPlayers = merkatuPlayers.filter(player => {
     const hasDefinedPositions = player.positions && Array.isArray(player.positions) && player.positions.length > 0;
-    const matchesPosition = !hasDefinedPositions || player.positions.includes(posRole);
+    const matchesPosition = hasDefinedPositions ? player.positions.includes(posRole) : posRole !== 'POR';
     const shouldShow = !filterActive || matchesPosition;
     return shouldShow;
   }).sort((a, b) => {
@@ -1820,9 +1820,9 @@ function openMerkatuCambioList(idx) {
   const filteredPlayers = merkatuPlayers.filter(player => {
     // Si hay filtro activo: 
     // - Mostrar jugadores con positions definidas que coincidan con la posición
-    // - Mostrar TODOS los jugadores sin positions definidas (pueden ocupar cualquier posición)
+    // - Mostrar jugadores sin positions definidas en todas las posiciones excepto portero
     const hasDefinedPositions = player.positions && Array.isArray(player.positions) && player.positions.length > 0;
-    const matchesPosition = !hasDefinedPositions || player.positions.includes(posRole);
+    const matchesPosition = hasDefinedPositions ? player.positions.includes(posRole) : posRole !== 'POR';
     const shouldShow = !filterActive || matchesPosition;
     return shouldShow;
   }).sort((a, b) => {
