@@ -545,16 +545,16 @@
     "tipo": "dual-ber-bi",
     "dorsal": 46,
     "dorsal2": 31,
-    "name": "Aguirre",
-    "fullname": "Ibai Aguirre",
-    "url_name": "ibai_aguirre",
+    "name": "Agirre",
+    "fullname": "Ibai Agirre",
+    "url_name": "ibai_Agirre",
     "jaioData": "2007-01-10",
     "pos": "MED",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "ficha": "Real Sociedad C",
     "zubieta": 1,
     "positions": ["MCD","MC"],
-    "cancion": { "es": "Lehendakari Aguirre.", "eu": "Aguirre Lehendakaria." }
+    "cancion": { "es": "Lehendakari Agirre.", "eu": "Agirre Lehendakaria." }
   },
   {
     "tipo": "dual",
