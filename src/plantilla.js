@@ -119,7 +119,7 @@ function renderPlayers() {
 
   const temporadaSelect = document.getElementById('seasonSelect');
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2026-27';
-  const is202627 = temporadaSelect && temporadaSelect.value === '2026-27';
+  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
@@ -216,7 +216,7 @@ function renderEntrenadores() {
 
   const temporadaSelect = document.getElementById('seasonSelect');
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2026-27';
-  const is202627 = temporadaSelect && temporadaSelect.value === '2026-27';
+  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
@@ -307,7 +307,7 @@ function renderVendidos() {
 
   const temporadaSelect = document.getElementById('seasonSelect');
   const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2026-27';
-  const is202627 = temporadaSelect && temporadaSelect.value === '2026-27';
+  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
@@ -337,7 +337,7 @@ function renderVendidos() {
   salidasToRender.forEach((player, idx) => {
     const card = document.createElement('div');
     card.className = 'player-card';
-    const showControls = is202627 && !isF && !isSanse;
+    const showControls = is202526 && !isF && !isSanse;
     const isCapitan = player.kapitaina === 1;
 
     card.innerHTML = `
