@@ -77,20 +77,20 @@ async function cargarDatosTemporada(temporada) {
     sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
     sanseSalidas = data.filter(ind => ind.tipo === 'salida-sanse');
 
-    if (temporada === '2026-27') {
+    if (temporada === '2025-26' || temporada === '2026-27') {
       try {
-        const dataF = await fetch(`${JSON_BASE_URL}plantilla_f_2026-27.json`).then(r => r.json());
+        const dataF = await fetch(`${JSON_BASE_URL}plantilla_f_${temporada}.json`).then(r => r.json());
         fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
         fEntrenadores = dataF.filter(ind => ind.tipo === 'entrenador');
         fSalidas = dataF.filter(ind => ind.tipo === 'salida');
       } catch (err) {
-        console.error('Error cargando plantilla_f_2026-27.json:', err);
+        console.error(`Error cargando plantilla_f_${temporada}.json:`, err);
       }
     }
 
     const equipoSelect = document.getElementById('equipoSelect');
     const equipoLabel = document.getElementById('equipoLabel');
-    if (temporada === '2026-27') {
+    if (temporada === '2025-26' || temporada === '2026-27') {
       equipoSelect.style.display = 'block';
       equipoLabel.style.display = 'block';
       equipoSelect.value = currentTeam;
