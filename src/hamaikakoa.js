@@ -74,7 +74,7 @@
     }
 
     // Cargar la temporada por defecto (igual que plantilla.html)
-    cargarDatosTemporada('2025-26');
+    cargarDatosTemporada('2026-27');
 
     // Definición de formaciones
     const formations = {
@@ -664,7 +664,7 @@ window.addEventListener('resize', checkMobileOptions);
 document.addEventListener('DOMContentLoaded', checkMobileOptions);
       
       // Llamar cargarDatosTemporada aquí, dentro de initHamaikakoa
-      cargarDatosTemporada('2025-26');
+      cargarDatosTemporada('2026-27');
     }
     
     // Llamar la función async cuando el DOM esté listo

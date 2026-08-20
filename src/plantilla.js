@@ -77,20 +77,20 @@ async function cargarDatosTemporada(temporada) {
     sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
     sanseSalidas = data.filter(ind => ind.tipo === 'salida-sanse');
 
-    if (temporada === '2025-26') {
+    if (temporada === '2026-27') {
       try {
-        const dataF = await fetch(`${JSON_BASE_URL}plantilla_f_2025-26.json`).then(r => r.json());
+        const dataF = await fetch(`${JSON_BASE_URL}plantilla_f_2026-27.json`).then(r => r.json());
         fJugadores = dataF.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
         fEntrenadores = dataF.filter(ind => ind.tipo === 'entrenador');
         fSalidas = dataF.filter(ind => ind.tipo === 'salida');
       } catch (err) {
-        console.error('Error cargando plantilla_f_2025-26.json:', err);
+        console.error('Error cargando plantilla_f_2026-27.json:', err);
       }
     }
 
     const equipoSelect = document.getElementById('equipoSelect');
     const equipoLabel = document.getElementById('equipoLabel');
-    if (temporada === '2025-26') {
+    if (temporada === '2026-27') {
       equipoSelect.style.display = 'block';
       equipoLabel.style.display = 'block';
       equipoSelect.value = currentTeam;
@@ -118,8 +118,8 @@ function renderPlayers() {
   ];
 
   const temporadaSelect = document.getElementById('seasonSelect');
-  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
-  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
+  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2026-27';
+  const is202627 = temporadaSelect && temporadaSelect.value === '2026-27';
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
@@ -130,7 +130,7 @@ function renderPlayers() {
     playersToRender = sanseJugadores;
   } else if (isF) {
     playersToRender = fJugadores;
-    imgFolder = 'f_2025-26';
+    imgFolder = 'f_2026-27';
   }
 
   posList.forEach(({ pos, containerId }) => {
@@ -215,8 +215,8 @@ function renderEntrenadores() {
   container.innerHTML = '';
 
   const temporadaSelect = document.getElementById('seasonSelect');
-  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
-  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
+  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2026-27';
+  const is202627 = temporadaSelect && temporadaSelect.value === '2026-27';
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
@@ -227,7 +227,7 @@ function renderEntrenadores() {
     entrenadoresRender = sanseEntrenadores;
   } else if (isF) {
     entrenadoresRender = fEntrenadores;
-    imgFolder = 'f_2025-26';
+    imgFolder = 'f_2026-27';
   }
 
   entrenadoresRender.forEach((coach, idx) => {
@@ -306,8 +306,8 @@ function renderVendidos() {
   const title = document.getElementById('vendidosTitle');
 
   const temporadaSelect = document.getElementById('seasonSelect');
-  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2025-26';
-  const is202526 = temporadaSelect && temporadaSelect.value === '2025-26';
+  const temporadaCarpeta = temporadaSelect && temporadaSelect.value ? temporadaSelect.value : '2026-27';
+  const is202627 = temporadaSelect && temporadaSelect.value === '2026-27';
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
@@ -319,7 +319,7 @@ function renderVendidos() {
     salidasToRender = sanseSalidas;
   } else if (isF) {
     salidasToRender = fSalidas;
-    imgFolder = 'f_2025-26';
+    imgFolder = 'f_2026-27';
   } else {
     salidasToRender = salidas;
   }
@@ -337,7 +337,7 @@ function renderVendidos() {
   salidasToRender.forEach((player, idx) => {
     const card = document.createElement('div');
     card.className = 'player-card';
-    const showControls = is202526 && !isF && !isSanse;
+    const showControls = is202627 && !isF && !isSanse;
     const isCapitan = player.kapitaina === 1;
 
     card.innerHTML = `
@@ -613,14 +613,18 @@ function openPlayerModal(player, isCoach = false) {
   }
 
   // Determinar carpeta de imágenes
-  let imgFolder = '2025-26';
+  let imgFolder = '2026-27';
   const temporadaSelect = document.getElementById('seasonSelect');
   if (temporadaSelect) {
     const temporada = temporadaSelect.value;
-    if (temporada === '2024-25') {
+    if (temporada === '2025-26') {
+      imgFolder = '2025-26';
+    } else if (temporada === '2024-25') {
       imgFolder = '2024-25';
     } else if (temporada === '2023-24') {
       imgFolder = '2023-24';
+    } else if (temporada === '2026-27' && currentTeam === 'f') {
+      imgFolder = 'f_2026-27';
     } else if (temporada === '2025-26' && currentTeam === 'f') {
       imgFolder = 'f_2025-26';
     }
@@ -847,7 +851,7 @@ async function initPlantilla() {
     });
     cargarDatosTemporada(temporadaSelect.value);
   } else {
-    cargarDatosTemporada('2025-26');
+    cargarDatosTemporada('2026-27');
   }
 
   if (equipoSelect) {

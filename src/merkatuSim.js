@@ -65,15 +65,15 @@ let playersCache = {}; // Cachear jugadores para cada equipo
 
 async function loadPlantilla() {
   // Cargar plantilla Real Sociedad
-  const data = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_2025-26.json').then(r => r.json());
+  const data = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_2026-27.json').then(r => r.json());
   plantillaCompleta = data;
   
   // Cargar plantilla F
   try {
-    const dataF = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_f_2025-26.json').then(r => r.json());
+    const dataF = await fetch('https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/json/plantilla_f_2026-27.json').then(r => r.json());
     plantillaFCompleta = dataF;
   } catch (err) {
-    console.error('Error cargando plantilla_f_2025-26.json:', err);
+    console.error('Error cargando plantilla_f_2026-27.json:', err);
   }
   
   cachePlayersForAllTeams();
@@ -203,9 +203,9 @@ function createPlayerCard(player, sectionKey, idx) {
   card.className = 'player-card';
   
   // Determinar qué imagen usar según el equipo
-  let imgFolder = '2025-26';
+  let imgFolder = '2026-27';
   if (currentTeam === 'f') {
-    imgFolder = 'f_2025-26';
+    imgFolder = 'f_2026-27';
   }
   let imgSrc = `https://raw.githubusercontent.com/OriyokoIjitua/TwReal/main/img/${imgFolder}/${player.url_name}.jpg`;
   
@@ -282,7 +282,7 @@ function createPlayerCard(player, sectionKey, idx) {
   
   card.innerHTML = `
     <img class="player-img" src="${imgSrc}" 
-         alt="${player.name}" onerror="(function(){ const team = window.currentTeam || 'real'; let path = 'img/2025-26/'; if (team === 'f') path = 'img/f_2025-26/'; else if (team === 'sanse') path = 'img/2025-26/sanse_'; path += '${sectionKey}' === 'porteros' ? 'def_port.jpg' : 'def_jug.jpg'; this.src = path; }).call(this)">
+         alt="${player.name}" onerror="(function(){ const team = window.currentTeam || 'real'; let path = 'img/2026-27/'; if (team === 'f') path = 'img/f_2026-27/'; else if (team === 'sanse') path = 'img/2026-27/sanse_'; path += '${sectionKey}' === 'porteros' ? 'def_port.jpg' : 'def_jug.jpg'; this.src = path; }).call(this)">
     <div class="player-info">
       <span class="player-name">
         ${flagsHtml}
@@ -1117,16 +1117,16 @@ function addCustomPlayer() {
     let defaultImage;
     if (currentTeam === 'f') {
       defaultImage = addPlayerSection === 'porteros' 
-        ? 'img/f_2025-26/def_port.jpg'
-        : 'img/f_2025-26/def_jug.jpg';
+        ? 'img/f_2026-27/def_port.jpg'
+        : 'img/f_2026-27/def_jug.jpg';
     } else if (currentTeam === 'sanse') {
       defaultImage = addPlayerSection === 'porteros' 
-        ? 'img/2025-26/sanse_def_port.jpg'
-        : 'img/2025-26/sanse_def_jug.jpg';
+        ? 'img/2026-27/sanse_def_port.jpg'
+        : 'img/2026-27/sanse_def_jug.jpg';
     } else {
       defaultImage = addPlayerSection === 'porteros' 
-        ? 'img/2025-26/def_port.jpg'
-        : 'img/2025-26/def_jug.jpg';
+        ? 'img/2026-27/def_port.jpg'
+        : 'img/2026-27/def_jug.jpg';
     }
     
     const newPlayer = {
@@ -1613,9 +1613,9 @@ function initMerkatuHamaikakoa() {
 }
 
 function getPlayerImgUrl(player) {
-  let imgFolder = '2025-26';
+  let imgFolder = '2026-27';
   if (currentTeam === 'f') {
-    imgFolder = 'f_2025-26';
+    imgFolder = 'f_2026-27';
   }
   
   if (player.customImageId) {
