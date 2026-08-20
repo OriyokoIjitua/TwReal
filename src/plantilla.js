@@ -130,7 +130,7 @@ function renderPlayers() {
     playersToRender = sanseJugadores;
   } else if (isF) {
     playersToRender = fJugadores;
-    imgFolder = 'f_2026-27';
+    imgFolder = `f_${temporadaCarpeta}`;
   }
 
   posList.forEach(({ pos, containerId }) => {
@@ -227,7 +227,7 @@ function renderEntrenadores() {
     entrenadoresRender = sanseEntrenadores;
   } else if (isF) {
     entrenadoresRender = fEntrenadores;
-    imgFolder = 'f_2026-27';
+    imgFolder = `f_${temporadaCarpeta}`;
   }
 
   entrenadoresRender.forEach((coach, idx) => {
@@ -319,7 +319,7 @@ function renderVendidos() {
     salidasToRender = sanseSalidas;
   } else if (isF) {
     salidasToRender = fSalidas;
-    imgFolder = 'f_2026-27';
+    imgFolder = `f_${temporadaCarpeta}`;
   } else {
     salidasToRender = salidas;
   }
@@ -617,16 +617,14 @@ function openPlayerModal(player, isCoach = false) {
   const temporadaSelect = document.getElementById('seasonSelect');
   if (temporadaSelect) {
     const temporada = temporadaSelect.value;
-    if (temporada === '2025-26') {
+    if (currentTeam === 'f') {
+      imgFolder = `f_${temporada}`;
+    } else if (temporada === '2025-26') {
       imgFolder = '2025-26';
     } else if (temporada === '2024-25') {
       imgFolder = '2024-25';
     } else if (temporada === '2023-24') {
       imgFolder = '2023-24';
-    } else if (temporada === '2026-27' && currentTeam === 'f') {
-      imgFolder = 'f_2026-27';
-    } else if (temporada === '2025-26' && currentTeam === 'f') {
-      imgFolder = 'f_2025-26';
     }
   }
 
