@@ -675,7 +675,7 @@
   {
     "tipo": "sanse",
     "dorsal": "-",
-    "dorsal2": "-",
+    "dorsal2": 29,
     "name": "Ropero",
     "fullname": "Iker Ropero",
     "url_name": "iker_ropero",
