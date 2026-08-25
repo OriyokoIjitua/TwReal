@@ -75,7 +75,7 @@
   {
     "tipo": "jugador",
     "dorsal": 7,
-    "name": "Cami",
+    "name": "L. Camino",
     "fullname": "Laura Camino",
     "url_name": "laura_camino",
     "jaioData": "2002-04-01",
@@ -87,7 +87,7 @@
   {
     "tipo": "jugador",
     "dorsal": 8,
-    "name": "Ainhoa Marín",
+    "name": "Ainhoa M.",
     "fullname": "Ainhoa Marín",
     "url_name": "ainhoa_marin",
     "jaioData": "2001-03-21",
@@ -173,7 +173,7 @@
   {
     "tipo": "jugador",
     "dorsal": 18,
-    "name": "Ava",
+    "name": "Seelenfreund",
     "fullname": "Ava Seelenfreund",
     "url_name": "ava_seelenfreund",
     "jaioData": "2001-01-18",

@@ -323,7 +323,7 @@
   
   
   {
-    "tipo": "sanse",
+    "tipo": "dual",
     "dorsal": 32,
     "dorsal2": 1,
     "name": "Fraga",
@@ -429,8 +429,8 @@
     "cancion": { "es": "Le Petit Diable.", "eu": "Le Petit Diable." }
   },
   {
-    "tipo": "sanse",
-    "dorsal": 46,
+    "tipo": "dual",
+    "dorsal": 26,
     "dorsal2": 8,
     "name": "Aguirre",
     "fullname": "Ibai Aguirre",
