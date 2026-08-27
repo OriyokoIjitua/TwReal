@@ -10,8 +10,7 @@
     "pais": ["Euskal Herria", "NafarroaG"],
     "prevTeam": "Athletic Club",
     "zubieta": 0,
-    "positions": ["POR"],
-    "cancion": { "es": "Menos cuentos y más paradas, Jandro.", "eu": "Kontu gutxio ta geldiketa gehio, Jandro." }
+    "positions": ["POR"]
   },
   {
     "tipo": "jugador",
@@ -24,8 +23,7 @@
     "pais": ["Venezuela", "Euskal Herria"],
     "prevTeam": "Sanse",
     "zubieta": 0.5,
-    "positions": ["LI","CAI","LD","CAD","DFC"],
-    "cancion": { "es": "Pues me hizo gracia la canción esta de Maduro, poco más.", "eu": "Grazia in zidan Maduroren abestiak, egia esan." }
+    "positions": ["LI","CAI","LD","CAD","DFC"]
   },
   {
     "tipo": "jugador",
@@ -38,8 +36,7 @@
     "pais": ["Euskal Herria", "NafarroaG"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["LD","CAD","LI","CAI","DFC"],
-    "cancion": { "es": "Porque el tío no deja de ser titular ni bajo tortura", "eu": "Tipoa titularra izango delako mehatxupean ere." }
+    "positions": ["LD","CAD","LI","CAI","DFC"]
   },
   {
     "tipo": "jugador",
@@ -52,8 +49,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "CD Mirandés",
     "zubieta": 1,
-    "positions": ["MCD","MC"],
-    "cancion": { "es": "El puto amo, mi rayito de esperanza tras la marcha de Zubimendi.", "eu": "Puto hoberena da, nere esperantza Zubimendi joan ondoren." }
+    "positions": ["MCD","MC"]
   },
   {
     "tipo": "jugador",
@@ -66,8 +62,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["DFC"],
-    "cancion": { "es": "Xubel con la pandereta, poco más que decir.", "eu": "Xubel panderoakin, gutxi gehio." }
+    "positions": ["DFC"]
   },
   {
     "tipo": "jugador",
@@ -80,8 +75,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["EI","ED","DDC","MCO"],
-    "cancion": { "es": "No hacen falta explicaciones.", "eu": "Ez du azalpenik behar." }
+    "positions": ["EI","ED","DDC","MCO"]
   },
   {
     "tipo": "jugador",
@@ -94,8 +88,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["MC","MCD"],
-    "cancion": { "es": "HA VUELTO.", "eu": "ORAIN DA." }
+    "positions": ["MC","MCD"]
   },
   {
     "tipo": "jugador",
@@ -108,8 +101,7 @@
     "pais": ["Islandia"],
     "prevTeam": "FC København",
     "zubieta": 0,
-    "positions": ["DC","DDC"],
-    "cancion": { "es": "LLEVAME A SEVILLA.", "eu": "Berriro ilusionatu naz finalakin, onartzen det." }
+    "positions": ["DC","DDC"]
   },
   {
     "tipo": "jugador",
@@ -123,8 +115,7 @@
     "prevTeam": "Sanse",
     "zubieta": 1,
     "kapitaina": 1,
-    "positions": ["MCO","DC","DDC","EI","ED"],
-    "cancion": { "es": "El oligarca del sexo.", "eu": "Mikelontxu, sexuaren oligarka." }
+    "positions": ["MCO","DC","DDC","EI","ED"]
   },
   {
     "tipo": "jugador",
@@ -137,8 +128,7 @@
     "pais": ["Portugal"],
     "prevTeam": "Wolverhampton Wanderers FC",
     "zubieta": 0,
-    "positions": ["EI","ED","DC","DDC","CAD"],
-    "cancion": { "es": "Quién coño es Neymar prime?", "eu": "Nor da Neymar prime?" }
+    "positions": ["EI","ED","DC","DDC","CAD"]
   },
   {
     "tipo": "jugador",
@@ -151,8 +141,7 @@
     "pais": ["Kenya"],
     "prevTeam": "Sanse",
     "zubieta": 0.5,
-    "positions": ["EI", "ED"],
-    "cancion": { "es": "Al parecer esta canción es de Kenya.", "eu": "Abesti hau Kenyakoa omen dela. Mitika." }
+    "positions": ["EI", "ED"]
   },
   {
     "tipo": "jugador",
@@ -165,8 +154,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["POR"],
-    "cancion": { "es": "MARRERO MARRERO LOLOLOLOLOLOLOLO", "eu": "MARRERO MARRERO LOLOLOLOLOLOLOLO" }
+    "positions": ["POR"]
   },
   {
     "tipo": "jugador",
@@ -179,8 +167,7 @@
     "pais": ["Japón"],
     "prevTeam": "Real Madrid CF",
     "zubieta": 0,
-    "positions": ["ED","EI","MCO","DDC"],
-    "cancion": { "es": "Gastón Cabezón.", "eu": "Funko Pop Buruhandia." }
+    "positions": ["ED","EI","MCO","DDC"]
   },
   {
     "tipo": "jugador",
@@ -193,8 +180,7 @@
     "pais": ["España"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["LD","CAD","LI","CAI","MCD","MC","MCO","EI","ED","DDC"],
-    "cancion": { "es": "Pablito Marín, el ídolo de tu ídolo.", "eu": "Pablito Marín, Messi ta Cristianon idoloa." }
+    "positions": ["LD","CAD","LI","CAI","MCD","MC","MCO","EI","ED","DDC"]
   },
   { "tipo": "jugador",
     "dorsal": 16,
@@ -206,8 +192,7 @@
     "pais": ["Euskal Herria", "NafarroaG"],
     "prevTeam": "Deportivo Alavés",
     "zubieta": 1,
-    "positions": ["DFC"],
-    "cancion": { "es": "Venga Pache, ya va tocando rendir.", "eu": "Aupa Pache, aurten bai." }
+    "positions": ["DFC"]
   },
   {
     "tipo": "jugador",
@@ -220,8 +205,7 @@
     "pais": ["Països Catalans"],
     "prevTeam": "Manchester City FC",
     "zubieta": 0,
-    "positions": ["LD","CAD","LI","CAI","MC","MCO","EI","ED"],
-    "cancion": { "es": "Más posiciones que goles en la Real.", "eu": "Realean gol baino posizio gehio." }
+    "positions": ["LD","CAD","LI","CAI","MC","MCO","EI","ED"]
   },
   {
     "tipo": "jugador",
@@ -234,8 +218,7 @@
     "pais": ["Països Catalans"],
     "prevTeam": "Paris Saint-Germain FC",
     "zubieta": 0,
-    "positions": ["MC","MCD","MCO"],
-    "cancion": { "es": "Es valenciano, no? Pues toma bacalao.", "eu": "Valentziarra da, ezta? Ba beira, bacalao." }
+    "positions": ["MC","MCD","MCO"]
   },
   { "tipo": "jugador",
     "dorsal": 20,
@@ -247,8 +230,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Real Madrid CF",
     "zubieta": 1,
-    "positions": ["LI","CAI","LD","CAD","ED"],
-    "cancion": { "es": "Alvarito 'Porrozale' Odriozola, mi nuevo ídolo.", "eu": "Alvarito 'Porrozale' Odriozola, nere idolo berria." }
+    "positions": ["LI","CAI","LD","CAD","ED"]
   },
   {
     "tipo": "jugador",
@@ -261,8 +243,7 @@
     "pais": ["Venezuela"],
     "prevTeam": "Girona FC",
     "zubieta": 0,
-    "positions": ["MC","MCD"],
-    "cancion": { "es": "Me suena que en su momento fichamos a un tal \"Yangel\".", "eu": "\"Yangel\" izeneko norbait fitxatu genuela esango nuke." }
+    "positions": ["MC","MCD"]
   },
   {
     "tipo": "jugador",
@@ -275,8 +256,7 @@
     "pais": ["Euskal Herria", "Bizkaia"],
     "prevTeam": "Córdoba CF",
     "zubieta": 0.5,
-    "positions": ["MCO","MC","EI","ED"],
-    "cancion": { "es": "Atzetik club xd", "eu": "Atzetik club xd" }
+    "positions": ["MCO","MC","EI","ED"]
   },
   {
     "tipo": "jugador",
@@ -289,8 +269,7 @@
     "pais": ["Rusia", "Armenia"],
     "prevTeam": "FC Dynamo Moskva",
     "zubieta": 0,
-    "positions": ["MCO","EI","ED"],
-    "cancion": { "es": "Putin, hijo de putin, deja que Zakha vuelva de la guerra.", "eu": "Putinek preso du Zakha, ukraniarrak akabatzen. Putinkumea." }
+    "positions": ["MCO","EI","ED"]
   },
   {
     "tipo": "jugador",
@@ -303,8 +282,7 @@
     "pais": ["Croacia", "Austria"],
     "prevTeam": "RB Salzburg",
     "zubieta": 0,
-    "positions": ["MC","MCO"],
-    "cancion": { "es": "Ye ye ye ye.", "eu": "Ye ye ye ye." }
+    "positions": ["MC","MCO"]
   },
   {
     "tipo": "jugador",
@@ -317,8 +295,7 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["DFC"],
-    "cancion": { "es": "Nuestro Golden Boy.", "eu": "Gure Golden Boy." }
+    "positions": ["DFC"]
   },
   {
     "tipo": "jugador",
@@ -331,8 +308,7 @@
     "pais": ["Senegal", "Francia"],
     "prevTeam": "Chelsea FC",
     "zubieta": 0,
-    "positions": ["DFC"],
-    "cancion": { "es": "", "eu": "" }
+    "positions": ["DFC"]
   },
   
   
@@ -349,8 +325,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["POR"],
-    "cancion": { "es": "Por las pedazo cejas que tiene el colega.", "eu": "Sozioak ditun bekain puxkengatik." }
+    "positions": ["POR"]
   },
   {
     "tipo": "sanse",
@@ -392,8 +367,7 @@
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
     "kapitaina": 1,
-    "positions": ["DFC"],
-    "cancion": { "es": "He's back.", "eu": "He's back." }
+    "positions": ["DFC"]
   },
   {
     "tipo": "sanse",
@@ -408,8 +382,7 @@
     "ficha": "Sanse",
     "prevTeam": "Kyoto Sanga FC",
     "zubieta": 0.5,
-    "positions": ["DFC"],
-    "cancion": { "es": "La sorpresa del Sanse.", "eu": "Ez nun ezer espero, ta harritu egin nau." }
+    "positions": ["DFC"]
   },
   {
     "tipo": "dual",
@@ -424,8 +397,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["DFC","MCD","MC"],
-    "cancion": { "es": "Él tampoco sabe cómo está aquí.", "eu": "Berak ere eztaki nola dagon lehen taldeakin." }
+    "positions": ["DFC","MCD","MC"]
   },
   {
     "tipo": "sanse",
@@ -439,8 +411,7 @@
     "pais": ["España"],
     "prevTeam": "Real Sociedad Jub. A",
     "zubieta": 1,
-    "positions": ["ED","EI"],
-    "cancion": { "es": "Le Petit Diable.", "eu": "Le Petit Diable." }
+    "positions": ["ED","EI"]
   },
   {
     "tipo": "dual",
@@ -455,8 +426,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["MCD","MC"],
-    "cancion": { "es": "Lehendakari Agirre.", "eu": "Agirre Lehendakaria." }
+    "positions": ["MCD","MC"]
   },
   {
     "tipo": "sanse",
@@ -484,8 +454,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["DC","DDC","ED","EI","MCO"],
-    "cancion": { "es": "Sagardowski.", "eu": "Sagardowski." }
+    "positions": ["DC","DDC","ED","EI","MCO"]
   },
   {
     "tipo": "dual",
@@ -500,8 +469,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad Jub. A",
     "zubieta": 1,
-    "positions": ["ED","EI","MCO"],
-    "cancion": { "es": "Al otro lado de la AP-8 no te querrán tanto como nosotros, Alex.", "eu": "AP-8aren bestaldean etzaituzte hemen bezala maiteko, Alex." }
+    "positions": ["ED","EI","MCO"]
   },
   {
     "tipo": "sanse",
@@ -529,8 +497,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["POR"],
-    "cancion": { "es": "No va convocado, pero está inscrito con dos cojones.", "eu": "Ez dute konbokatzen, baina ligako webean dago, bi potrokin." }
+    "positions": ["POR"]
   },
   {
     "tipo": "sanse",
@@ -545,8 +512,7 @@
     "ficha": "Sanse",
     "prevTeam": "CF Badalona Juv. A",
     "zubieta": 0.5,
-    "positions": ["MCD","MC"],
-    "cancion": { "es": "Perdón.", "eu": "Barkatu." }
+    "positions": ["MCD","MC"]
   },
   {
     "tipo": "sanse",
@@ -587,8 +553,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["ED","EI","MCO"],
-    "cancion": { "es": "Se piensa que es Sportacus.", "eu": "Sportacus dela uste du kottaduak." }
+    "positions": ["ED","EI","MCO"]
   },
   {
     "tipo": "dual",
@@ -603,8 +568,7 @@
     "ficha": "Sanse",
     "prevTeam": "Real Sociedad C",
     "zubieta": 1,
-    "positions": ["DC","DDC"],
-    "cancion": { "es": "No tenía ni puta idea de qué cancion ponerle, pero descubrí a DJ Mikerinos.", "eu": "Ez nekan ideia putik ze abesti jarri, baina DJ Mikerinos deskubritu nun." }
+    "positions": ["DC","DDC"]
   },
   {
     "tipo": "sanse",
@@ -657,8 +621,7 @@
     "pais": ["Euskal Herria", "NafarroaG"],
     "prevTeam": "Real Sociedad C",
     "zubieta": 0.5,
-    "positions": ["LD","CAD","LI","CAI","ED"],
-    "cancion": { "es": "El sozio se nos ha muerto.", "eu": "Soziyua hilda dago." }
+    "positions": ["LD","CAD","LI","CAI","ED"]
   },
   {
     "tipo": "sanse",
@@ -763,8 +726,7 @@
     "jaioData": "1977-11-28",
     "pais": ["USA", "Italia"],
     "prevTeam": "TSG 1899 Hoffenheim",
-    "zubieta": 0,
-    "cancion": { "es": "You have been Matarazzed.", "eu": "You have been Matarazzed." }
+    "zubieta": 0
   },
   {
     "tipo": "entrenador",
@@ -775,8 +737,7 @@
     "jaioData": "1979-01-06",
     "pais": ["Australia", "Italia"],
     "prevTeam": "Sydney FC",
-    "zubieta": 0,
-    "cancion": { "es": "Ni puta idea como es este tío, pero es australiano.", "eu": "Ni puta idea nolakoa den tipo hau, baina australiarra da." }
+    "zubieta": 0
   },
   {
     "tipo": "entrenador",
@@ -787,8 +748,7 @@
     "jaioData": "1989-07-21",
     "pais": ["Alemania", "Turkey"],
     "prevTeam": "SK Weingarten",
-    "zubieta": 0,
-    "cancion": { "es": "Turkish, orospu çocuğu.", "eu": "Turkish, orospu çocuğu." }
+    "zubieta": 0
   },
   {
     "tipo": "entrenador-sanse",
@@ -825,8 +785,7 @@
     "jaioData": "2002-03-25",
     "pos": "DEF",
     "pais": ["España"],
-    "zubieta": 0,
-    "cancion": { "es": "Más malo que la guerra.", "eu": "Israhell baino txarragoa." }
+    "zubieta": 0
   },
   {
     "tipo": "salida",
@@ -840,8 +799,7 @@
     "pos": "MED",
     "pais": ["Galicia"],
     "zubieta": 0,
-    "positions": ["MC","MCO"],
-    "cancion": { "es": "Miña terra galega.", "eu": "Nahiz gaita jotzen ez jakin, sentitzen naz gallego." }
+    "positions": ["MC","MCO"]
   },
   {
     "tipo": "salida",
@@ -855,8 +813,7 @@
     "pos": "DEL",
     "pais": ["España"],
     "zubieta": 0,
-    "positions": ["MCO","DC","DDC"],
-    "cancion": { "es": "Macho, lleva más años teniendo que irse de la Real que como profesional.", "eu": "Tipoak urte gehio daramatza Realetik atera beharrean profesionala izaten baino." }
+    "positions": ["MCO","DC","DDC"]
   },
   {
     "tipo": "salida",
@@ -870,8 +827,7 @@
     "pos": "DEL",
     "pais": ["Euskal Herria", "NafarroaG"],
     "zubieta": 1,
-    "positions": ["DC","DDC"],
-    "cancion": { "es": "No se le ha dado oportunidad, una pena.", "eu": "Etzaio aukerarik eman, pena." }
+    "positions": ["DC","DDC"]
   },
   {
     "tipo": "salida",
@@ -885,8 +841,7 @@
     "pos": "DEF",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1,
-    "positions": ["DFC","LD","CAD"],
-    "cancion": { "es": "Agur eta ohore.", "eu": "Agur eta ohore." }
+    "positions": ["DFC","LD","CAD"]
   },
   {
     "tipo": "salida",
@@ -900,8 +855,7 @@
     "pos": "DEF",
     "pais": ["Croacia"],
     "zubieta": 0,
-    "positions": ["DFC"],
-    "cancion": { "es": "Al final le cogí cariño :(", "eu": "Azkenean kariño hartu nion :(" }
+    "positions": ["DFC"]
   },
   {
     "tipo": "salida",
@@ -915,8 +869,7 @@
     "pos": "DEL",
     "pais": ["Brazil"],
     "zubieta": 0,
-    "positions": ["EI","ED","DDC"],
-    "cancion": { "es": "Experiencia Erasmus en Donosti.", "eu": "Erasmus experience Donostin." }
+    "positions": ["EI","ED","DDC"]
   },
 
   
