@@ -242,6 +242,55 @@
     "prevTeam": "Sanse",
     "zubieta": 1
   },
+  {
+    "tipo": "dual",
+    "dorsal": 26,
+    "name": "Chacón",
+    "fullname": "Carlota Chacón",
+    "url_name": "carlota_chacon",
+    "jaioData": "2009-04-04",
+    "pos": "DEL",
+    "pais": ["España"],
+    "ficha": "Sanse",
+    "zubieta": 1
+  },
+  {
+    "tipo": "dual",
+    "dorsal": 27,
+    "name": "Isasisasmendi",
+    "fullname": "Ane Isasisasmendi",
+    "url_name": "ane_isasisasmendi",
+    "jaioData": "2007-04-22",
+    "pos": "DEL",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
+    "zubieta": 1
+  },
+  {
+    "tipo": "dual",
+    "dorsal": 28,
+    "name": "Soroa",
+    "fullname": "Iraia Soroa",
+    "url_name": "iraia_soroa",
+    "jaioData": "2008-09-22",
+    "pos": "DEF",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "ficha": "Sanse",
+    "zubieta": 1
+  },
+  {
+    "tipo": "dual",
+    "dorsal": 30,
+    "name": "Mendiburu",
+    "fullname": "Maite Mendiburu",
+    "url_name": "maite_mendiburu",
+    "jaioData": "2007-12-23",
+    "pos": "POR",
+    "pais": ["Euskal Herria", "Lapurdi"],
+    "ficha": "Sanse",
+    "zubieta": 1,
+    "positions": ["POR"]
+  },
 
 
   {
