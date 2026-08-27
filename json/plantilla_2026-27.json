@@ -320,6 +320,20 @@
     "positions": ["DFC"],
     "cancion": { "es": "Nuestro Golden Boy.", "eu": "Gure Golden Boy." }
   },
+  {
+    "tipo": "jugador",
+    "dorsal": null,
+    "name": "Sarr",
+    "fullname": "Mamadou Sarr",
+    "url_name": "mamadou_sarr",
+    "jaioData": "2005-08-29",
+    "pos": "DEF",
+    "pais": ["Senegal", "Francia"],
+    "prevTeam": "Chelsea FC",
+    "zubieta": 0,
+    "positions": ["DFC"],
+    "cancion": { "es": "", "eu": "" }
+  },
   
   
   {
