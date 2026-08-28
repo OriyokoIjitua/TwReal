@@ -220,6 +220,19 @@
     "zubieta": 0,
     "positions": ["MC","MCD","MCO"]
   },
+  {
+    "tipo": "jugador",
+    "dorsal": 19,
+    "name": "M. Sarr",
+    "fullname": "Mamadou Sarr",
+    "url_name": "mamadou_sarr",
+    "jaioData": "2005-08-29",
+    "pos": "DEF",
+    "pais": ["Senegal", "Francia"],
+    "prevTeam": "Chelsea FC",
+    "zubieta": 0,
+    "positions": ["DFC"]
+  },
   { "tipo": "jugador",
     "dorsal": 20,
     "name": "Odriozola",
@@ -295,19 +308,6 @@
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "prevTeam": "Sanse",
     "zubieta": 1,
-    "positions": ["DFC"]
-  },
-  {
-    "tipo": "jugador",
-    "dorsal": null,
-    "name": "Sarr",
-    "fullname": "Mamadou Sarr",
-    "url_name": "mamadou_sarr",
-    "jaioData": "2005-08-29",
-    "pos": "DEF",
-    "pais": ["Senegal", "Francia"],
-    "prevTeam": "Chelsea FC",
-    "zubieta": 0,
     "positions": ["DFC"]
   },
   
@@ -818,7 +818,7 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
-    "newTeam": "-",
+    "newTeam": "Burgos CF",
     "dorsal": 19,
     "name": "Karrikaburu",
     "fullname": "Jon Karrikaburu",
