@@ -310,6 +310,19 @@
     "zubieta": 1,
     "positions": ["DFC"]
   },
+  {
+    "tipo": "jugador",
+    "dorsal": null,
+    "name": "H. Fort",
+    "fullname": "Héctor Fort",
+    "url_name": "hector_fort",
+    "jaioData": "2005-08-29",
+    "pos": "DEF",
+    "pais": ["Països Catalans"],
+    "prevTeam": "FC Barcelona",
+    "zubieta": 0,
+    "positions": ["LD", "CAD", "LI", "CAI", "DFC"]
+  },
   
   
   {
