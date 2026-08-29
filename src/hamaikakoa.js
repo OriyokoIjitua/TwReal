@@ -336,7 +336,12 @@
       const posRole = positions[idx].role;
       const cambios = window.cambiosOnce || {};
       if (!Array.isArray(cambios[idx])) cambios[idx] = [];
-      players.forEach(player => {
+      const sortedPlayers = players.sort((a, b) => {
+        const dorsalA = parseInt(a.dorsal) || 99;
+        const dorsalB = parseInt(b.dorsal) || 99;
+        return dorsalA - dorsalB;
+      });
+      sortedPlayers.forEach(player => {
         if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
         const item = document.createElement('div');
         item.className = 'player-list-item';
@@ -479,7 +484,12 @@
       if (closeBtn) closeBtn.textContent = t('hamaikakoa.cerrar');
       const filterActive = document.getElementById('filterByPosition').checked;
       const posRole = positions[idx].role;
-      players.forEach(player => {
+      const sortedPlayers = players.sort((a, b) => {
+        const dorsalA = parseInt(a.dorsal) || 99;
+        const dorsalB = parseInt(b.dorsal) || 99;
+        return dorsalA - dorsalB;
+      });
+      sortedPlayers.forEach(player => {
         if (filterActive && (!player.positions || !player.positions.includes(posRole))) return;
         const item = document.createElement('div');
         item.className = 'player-list-item';
