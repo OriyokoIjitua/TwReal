@@ -66,6 +66,19 @@
   },
   {
     "tipo": "jugador",
+    "dorsal": 6,
+    "name": "Jon Martín",
+    "fullname": "Jon Martín",
+    "url_name": "jon_martin",
+    "jaioData": "2006-04-23",
+    "pos": "DEF",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "Sanse",
+    "zubieta": 1,
+    "positions": ["DFC"]
+  },
+  {
+    "tipo": "jugador",
     "dorsal": 7,
     "name": "Barrene",
     "fullname": "Ander Barrenetxea",
@@ -261,15 +274,15 @@
   {
     "tipo": "jugador",
     "dorsal": 22,
-    "name": "Goti",
-    "fullname": "Mikel Goti",
-    "url_name": "mikel_goti",
-    "jaioData": "2002-05-23",
-    "pos": "MED",
-    "pais": ["Euskal Herria", "Bizkaia"],
-    "prevTeam": "Córdoba CF",
-    "zubieta": 0.5,
-    "positions": ["MCO","MC","EI","ED"]
+    "name": "H. Fort",
+    "fullname": "Héctor Fort",
+    "url_name": "hector_fort",
+    "jaioData": "2006-08-02",
+    "pos": "DEF",
+    "pais": ["Països Catalans"],
+    "prevTeam": "FC Barcelona",
+    "zubieta": 0,
+    "positions": ["LD", "CAD", "LI", "CAI", "DFC"]
   },
   {
     "tipo": "jugador",
@@ -296,32 +309,6 @@
     "prevTeam": "RB Salzburg",
     "zubieta": 0,
     "positions": ["MC","MCO"]
-  },
-  {
-    "tipo": "jugador",
-    "dorsal": 31,
-    "name": "Jon Martín",
-    "fullname": "Jon Martín",
-    "url_name": "jon_martin",
-    "jaioData": "2006-04-23",
-    "pos": "DEF",
-    "pais": ["Euskal Herria", "Gipuzkoa"],
-    "prevTeam": "Sanse",
-    "zubieta": 1,
-    "positions": ["DFC"]
-  },
-  {
-    "tipo": "jugador",
-    "dorsal": null,
-    "name": "H. Fort",
-    "fullname": "Héctor Fort",
-    "url_name": "hector_fort",
-    "jaioData": "2006-08-02",
-    "pos": "DEF",
-    "pais": ["Països Catalans"],
-    "prevTeam": "FC Barcelona",
-    "zubieta": 0,
-    "positions": ["LD", "CAD", "LI", "CAI", "DFC"]
   },
   
   
@@ -790,6 +777,20 @@
   {
     "tipo": "salida",
     "status": { "es": "Cedido", "eu": "Lagapena" },
+    "newTeam": "Real Oviedo",
+    "dorsal": 22,
+    "name": "Goti",
+    "fullname": "Mikel Goti",
+    "url_name": "mikel_goti",
+    "jaioData": "2002-05-23",
+    "pos": "MED",
+    "pais": ["Euskal Herria", "Bizkaia"],
+    "zubieta": 0.5,
+    "positions": ["MCO","MC","EI","ED"]
+  },
+  {
+    "tipo": "salida",
+    "status": { "es": "Cedido", "eu": "Lagapena" },
     "newTeam": "Feyenoord Rotterdam",
     "dorsal": 12,
     "name": "Javi López",
@@ -803,16 +804,16 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
-    "newTeam": "Columbus Crew",
-    "dorsal": 23,
-    "name": "Brais Méndez",
-    "fullname": "Brais Méndez",
-    "url_name": "brais_mendez",
-    "jaioData": "1997-01-07",
-    "pos": "MED",
-    "pais": ["Galicia"],
-    "zubieta": 0,
-    "positions": ["MC","MCO"]
+    "newTeam": "Burgos CF",
+    "dorsal": 19,
+    "name": "Karrikaburu",
+    "fullname": "Jon Karrikaburu",
+    "url_name": "jon_karrikaburu",
+    "jaioData": "2002-09-19",
+    "pos": "DEL",
+    "pais": ["Euskal Herria", "NafarroaG"],
+    "zubieta": 1,
+    "positions": ["DC","DDC"]
   },
   {
     "tipo": "salida",
@@ -831,16 +832,16 @@
   {
     "tipo": "salida",
     "status": { "es": "Transferido", "eu": "Salduta" },
-    "newTeam": "Burgos CF",
-    "dorsal": 19,
-    "name": "Karrikaburu",
-    "fullname": "Jon Karrikaburu",
-    "url_name": "jon_karrikaburu",
-    "jaioData": "2002-09-19",
-    "pos": "DEL",
-    "pais": ["Euskal Herria", "NafarroaG"],
-    "zubieta": 1,
-    "positions": ["DC","DDC"]
+    "newTeam": "Columbus Crew",
+    "dorsal": 23,
+    "name": "Brais Méndez",
+    "fullname": "Brais Méndez",
+    "url_name": "brais_mendez",
+    "jaioData": "1997-01-07",
+    "pos": "MED",
+    "pais": ["Galicia"],
+    "zubieta": 0,
+    "positions": ["MC","MCO"]
   },
   {
     "tipo": "salida",
