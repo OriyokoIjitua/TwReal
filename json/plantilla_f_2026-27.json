@@ -296,12 +296,12 @@
   {
     "tipo": "entrenador",
     "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
-    "name": "Arturo Ruiz",
-    "fullname": "Arturo Ruiz",
-    "url_name": "arturo_ruiz",
-    "jaioData": "1997-03-09",
-    "pais": ["España"],
-    "prevTeam": "Granada CF",
+    "name": "Gorka Álvarez",
+    "fullname": "Gorka Álvarez",
+    "url_name": "gorka_alvarez",
+    "jaioData": "1985-11-16",
+    "pais": ["Euskal Herria", "Gipuzkoa"],
+    "prevTeam": "SD Eibar",
     "zubieta": 0
   },
   {
@@ -329,6 +329,18 @@
     "pos": "MED",
     "pais": ["Euskal Herria", "Gipuzkoa"],
     "zubieta": 1
+  },
+  {
+    "tipo": "salida",
+    "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "newTeam": "Brighton & Hove Albion FC",
+    "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
+    "name": "Arturo Ruiz",
+    "fullname": "Arturo Ruiz",
+    "url_name": "arturo_ruiz",
+    "jaioData": "1997-03-09",
+    "pais": ["España"],
+    "zubieta": 0
   },
   {
     "tipo": "salida",
