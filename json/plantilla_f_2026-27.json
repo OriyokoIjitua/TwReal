@@ -332,7 +332,7 @@
   },
   {
     "tipo": "salida",
-    "status": { "es": "Fin de contrato", "eu": "Kontratu amaiera" },
+    "status": { "es": "Transferido", "eu": "Salduta" },
     "newTeam": "Brighton & Hove Albion FC",
     "rol": { "es": "1.º entrenador", "eu": "1. entrenatzailea" },
     "name": "Arturo Ruiz",
