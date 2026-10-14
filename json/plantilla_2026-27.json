@@ -295,7 +295,7 @@
     "pais": ["Rusia", "Armenia"],
     "prevTeam": "FC Dynamo Moskva",
     "zubieta": 0,
-    "positions": ["MCO","EI","ED"]
+    "positions": ["MCO","EI","ED","DC","DDC"]
   },
   {
     "tipo": "jugador",
@@ -308,7 +308,7 @@
     "pais": ["Croacia", "Austria"],
     "prevTeam": "RB Salzburg",
     "zubieta": 0,
-    "positions": ["MC","MCO"]
+    "positions": ["MC","MCO","ED"]
   },
   
   
