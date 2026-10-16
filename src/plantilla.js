@@ -65,6 +65,30 @@ function getPlaceholderImage(position, imgFolder) {
   }
 }
 
+function sortPlayersByDorsal(players, dorsalField) {
+  return [...players].sort((a, b) => {
+    const dorsalA = Number(a[dorsalField]);
+    const dorsalB = Number(b[dorsalField]);
+    const validDorsalA = Number.isFinite(dorsalA);
+    const validDorsalB = Number.isFinite(dorsalB);
+
+    if (!validDorsalA && !validDorsalB) return 0;
+    if (!validDorsalA) return 1;
+    if (!validDorsalB) return -1;
+    return dorsalA - dorsalB;
+  });
+}
+
+function getPlayersForCurrentTeam() {
+  if (currentTeam === 'sanse') {
+    return sortPlayersByDorsal(sanseJugadores, 'dorsal2');
+  }
+  if (currentTeam === 'f') {
+    return sortPlayersByDorsal(fJugadores, 'dorsal');
+  }
+  return sortPlayersByDorsal(jugadores, 'dorsal');
+}
+
 
 async function cargarDatosTemporada(temporada) {
   try {
@@ -73,7 +97,7 @@ async function cargarDatosTemporada(temporada) {
     jugadores = data.filter(ind => ind.tipo === 'jugador' || ind.tipo === 'dual' || ind.tipo === 'dual-ber-bi');
     entrenadores = data.filter(ind => ind.tipo === 'entrenador');
     salidas = data.filter(ind => ind.tipo === 'salida');
-    sanseJugadores = data.filter(ind => ind.tipo === 'sanse' || ind.tipo === 'dual' || ind.tipo === 'sanse-dual' || ind.tipo === 'dual-ber-bi').sort((a, b) => a.dorsal2 - b.dorsal2);
+    sanseJugadores = data.filter(ind => ind.tipo === 'sanse' || ind.tipo === 'dual' || ind.tipo === 'sanse-dual' || ind.tipo === 'dual-ber-bi');
     sanseEntrenadores = data.filter(ind => ind.tipo === 'entrenador-sanse');
     sanseSalidas = data.filter(ind => ind.tipo === 'salida-sanse');
 
@@ -123,13 +147,10 @@ function renderPlayers() {
   const isSanse = currentTeam === 'sanse';
   const isF = currentTeam === 'f';
 
-  let playersToRender = jugadores;
+  let playersToRender = getPlayersForCurrentTeam();
   let imgFolder = temporadaCarpeta;
 
-  if (isSanse) {
-    playersToRender = sanseJugadores;
-  } else if (isF) {
-    playersToRender = fJugadores;
+  if (isF) {
     imgFolder = `f_${temporadaCarpeta}`;
   }
 
@@ -451,7 +472,7 @@ function setupPlayButtons() {
       let idx = btn.getAttribute('data-idx');
       let player, isVendido = false, isEntrenador = false;
 
-      let playersToUse = currentTeam === 'sanse' ? sanseJugadores : (currentTeam === 'f' ? fJugadores : jugadores);
+      let playersToUse = getPlayersForCurrentTeam();
       let entrenadoresUse = currentTeam === 'sanse' ? sanseEntrenadores : (currentTeam === 'f' ? fEntrenadores : entrenadores);
       let salidasUse = currentTeam === 'f' ? fSalidas : salidas;
 
